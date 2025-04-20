@@ -1,0 +1,38 @@
+/* Custom fonts for Navbar name effect using Google Fonts and fallbacks */
+
+/* Import some Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'); /* For Blackletter */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap'); /* For Stencil */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap'); /* For Desdemona */
+@import url('https://fonts.googleapis.com/css2?family=Bauhaus+Unica&display=swap'); /* For Bauhaus */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /* For Modern Love Grunge */
+
+/* Classes with fallbacks for better compatibility */
+.font-desdemona {
+  font-family: 'Cinzel Decorative', 'Times New Roman', serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.font-bauhaus {
+  font-family: 'Bauhaus Unica', 'Arial Rounded MT Bold', sans-serif;
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.font-blackletter {
+  font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+  letter-spacing: 1px;
+}
+
+.font-modern-love {
+  font-family: 'Rock Salt', 'Brush Script MT', cursive;
+  letter-spacing: 1px;
+}
+
+.font-stencil {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
