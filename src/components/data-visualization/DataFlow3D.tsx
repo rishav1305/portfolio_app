@@ -150,9 +150,7 @@ export default function DataFlow3D() {
       <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
         <Scene />
       </Canvas>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm font-medium opacity-70 bg-black/30 px-4 py-1 rounded-full">
-        Data Engineering Pipeline Architecture
-      </div>
+      {/* Removed the label with 'Data Engineering Pipeline Architecture' text */}
     </div>
   );
 }
