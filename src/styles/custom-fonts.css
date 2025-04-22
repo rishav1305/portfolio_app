@@ -6,7 +6,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap'); /* For Desdemona */
 @import url('https://fonts.googleapis.com/css2?family=Bauhaus+Unica&display=swap'); /* For Bauhaus */
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /* For Modern Love Grunge */
-
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap'); /* For Braggadocio alternative */
+@import url('https://fonts.cdnfonts.com/css/braggadocio');
+@import url('https://db.onlinewebfonts.com/c/955ae876a7acdcec19eb9ea5e48ae554?family=Braggadocio+W01');
 /* Classes with fallbacks for better compatibility */
 .font-desdemona {
   font-family: 'Cinzel Decorative', 'Times New Roman', serif;
@@ -35,4 +37,20 @@
   font-family: 'Special Elite', 'Courier New', monospace;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.font-braggadocio1{
+  font-family: 'Bungee Shade', 'Impact', 'Arial Black', sans-serif;
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+.font-braggadocio2 {
+  font-family: 'Braggadocio', 'Impact', sans-serif;
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+.font-braggadocio {
+  font-family: 'Braggadocio W01', 'Courier New', sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
 }

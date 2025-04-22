@@ -26,12 +26,12 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'HOME', path: '/' },
+    { name: 'ABOUT', path: '/about' },
     { name: 'PROJECTS', path: '/projects' },
-    { name: 'BLOG', path: '/blog' },
     { name: 'TIMELINE', path: '/timeline' },
     { name: 'TECH SKILLS', path: '/tech-skills' },
     { name: 'AI INNOVATIONS', path: '/ai-innovations' },
-    { name: 'ABOUT', path: '/about' },
+    { name: 'BLOG', path: '/blog' },
     { name: 'CONTACT', path: '/contact' },
   ];
 
@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo with diagonal line effect */}
-          <NavbarName />
+          <NavbarName isScrolled={isScrolled} />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
@@ -56,7 +56,11 @@ export default function Navbar() {
                 href={link.path}
                 className={`relative px-2 py-1 text-xs lg:text-sm font-medium tracking-wide transition-colors ${
                   pathname === link.path
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? isScrolled 
+                      ? 'text-white' 
+                      : 'text-blue-600 dark:text-blue-400'
+                    : isScrolled
+                    ? 'text-white hover:text-blue-300'
                     : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
               >
@@ -75,7 +79,11 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-700 dark:text-gray-200"
+              className={`p-2 ${
+                isScrolled 
+                ? 'text-white' 
+                : 'text-gray-700 dark:text-gray-200'
+              }`}
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -141,7 +149,9 @@ export default function Navbar() {
                 href={link.path}
                 className={`text-3xl font-medium ${
                   pathname === link.path
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? isScrolled 
+                      ? 'text-white' 
+                      : 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-700 dark:text-gray-200'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}

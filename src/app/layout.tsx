@@ -4,6 +4,7 @@ import "./globals.css";
 import "../styles/custom-fonts.css"; 
 import Navbar from "@/components/navbar/Navbar";
 import Script from "next/script";
+import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,8 +59,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
-        <Navbar />
-        {children}
+        <HydrationErrorSuppressor>
+          <Navbar />
+          {children}
+        </HydrationErrorSuppressor>
       </body>
     </html>
   );

@@ -23,7 +23,7 @@ function Node({ position, color }: { position: [number, number, number], color: 
 
 // Connection line between nodes
 function Connection({ start, end, color }: { start: [number, number, number], end: [number, number, number], color: string }) {
-  const ref = useRef<THREE.Line>(null!);
+  const ref = useRef<THREE.Object3D>(null!);
   
   useEffect(() => {
     const points = [];
@@ -31,11 +31,13 @@ function Connection({ start, end, color }: { start: [number, number, number], en
     points.push(new THREE.Vector3(...end));
     
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    ref.current.geometry = geometry;
+    if (ref.current && 'geometry' in ref.current) {
+      (ref.current as any).geometry = geometry;
+    }
   }, [start, end]);
   
   return (
-    <line ref={ref}>
+    <line ref={ref as any}>
       <bufferGeometry />
       <lineBasicMaterial color={color} linewidth={1} />
     </line>
@@ -84,11 +86,11 @@ function Scene() {
   
   // Define our data flow architecture nodes and connections
   const nodes = [
-    { id: 'source', position: [-4, 0, 0], color: '#4299e1' },
-    { id: 'transform', position: [-1, 2, 0], color: '#38b2ac' },
-    { id: 'process', position: [0, -2, 1], color: '#ed8936' },
-    { id: 'warehouse', position: [2, 1, -1], color: '#9f7aea' },
-    { id: 'analytics', position: [4, -1, 0], color: '#48bb78' },
+    { id: 'source', position: [-4, 0, 0] as [number, number, number], color: '#4299e1' },
+    { id: 'transform', position: [-1, 2, 0] as [number, number, number], color: '#38b2ac' },
+    { id: 'process', position: [0, -2, 1] as [number, number, number], color: '#ed8936' },
+    { id: 'warehouse', position: [2, 1, -1] as [number, number, number], color: '#9f7aea' },
+    { id: 'analytics', position: [4, -1, 0] as [number, number, number], color: '#48bb78' },
   ];
   
   const connections = [
