@@ -2,33 +2,50 @@ import React from 'react';
 
 export default function TechSkillsPage() {
   const skills = {
-    'AI Research': [
-      { name: 'Large Language Models', level: 95 },
-      { name: 'Multimodal AI', level: 90 },
-      { name: 'Reinforcement Learning', level: 87 },
-      { name: 'Computer Vision', level: 85 },
-      { name: 'Knowledge Graphs', level: 82 },
+    'Python': [
+      { name: 'Pandas', level: 80 },
+      { name: 'Pyspark', level: 70 },
+      { name: 'Sklearn', level: 60 },
+      { name: 'Selenium', level: 70 },
     ],
-    'ML Engineering': [
-      { name: 'PyTorch', level: 92 },
-      { name: 'TensorFlow', level: 88 },
-      { name: 'JAX', level: 85 },
-      { name: 'ONNX', level: 80 },
-      { name: 'HuggingFace', level: 90 },
+    'SQL': [
+      { name: 'SQL Server', level: 90 },
+      { name: 'Postgre SQL', level: 90 },
+      { name: 'Spark SQL', level: 80 },
+      { name: 'SnowSQL', level: 70 },
     ],
-    'MLOps & Infrastructure': [
-      { name: 'Distributed Training', level: 88 },
-      { name: 'ML Pipelines', level: 85 },
-      { name: 'Kubernetes', level: 80 },
-      { name: 'Docker', level: 85 },
-      { name: 'Cloud ML Platforms', level: 90 },
+    'ETL Tools': [
+      { name: 'AWS Glue', level: 80 },
+      { name: 'Azure Databricks', level: 80 },
+      { name: 'AWS Batch', level: 90 },
+      { name: 'Alteryx', level: 70 },
     ],
-    'Programming': [
-      { name: 'Python', level: 95 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'C++', level: 75 },
-      { name: 'SQL', level: 88 },
-      { name: 'Julia', level: 70 },
+    'Analytical Tools': [
+      { name: 'Tableau CRM', level: 80 },
+      { name: 'Qlik Sense', level: 70 },
+      { name: 'Preset', level: 70 },
+      { name: 'Power BI', level: 60 },
+      { name: 'Microsoft Excel', level: 80 },
+    ],
+    'Big Data Tools': [
+      { name: 'Apache Spark', level: 70 },
+      { name: 'HIVE', level: 60 },
+    ],
+    'Cloud Services': [
+      { name: 'AWS', level: 80 },
+      { name: 'Azure', level: 70 },
+      { name: 'Databricks', level: 70 },
+    ],
+    'Data Warehouse': [
+      { name: 'Redshift', level: 90 },
+      { name: 'Azure SQL DWH', level: 90 },
+      { name: 'Snowflake', level: 80 },
+    ],
+    'Project Management': [
+      { name: 'JIRA', level: 80 },
+      { name: 'Confluence', level: 70 },
+      { name: 'Figma', level: 60 },
+      { name: 'Trello', level: 70 },
     ]
   };
   
@@ -40,7 +57,7 @@ export default function TechSkillsPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Technical Expertise</h1>
           <div className="w-20 h-1 bg-blue-500 mb-10"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-            My expertise spans AI research, machine learning engineering, and large-scale system design
+            My expertise spans data engineering, analytics, cloud services, and project management
           </p>
         </div>
       </section>
@@ -63,9 +80,13 @@ export default function TechSkillsPage() {
                       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
                         <div 
                           className={`h-2.5 rounded-full ${
-                            category === 'AI Research' ? 'bg-purple-600' : 
-                            category === 'ML Engineering' ? 'bg-blue-600' : 
-                            category === 'MLOps & Infrastructure' ? 'bg-green-600' : 'bg-yellow-600'
+                            category === 'Python' ? 'bg-green-600' : 
+                            category === 'SQL' ? 'bg-blue-600' : 
+                            category === 'ETL Tools' ? 'bg-purple-600' : 
+                            category === 'Analytical Tools' ? 'bg-yellow-600' : 
+                            category === 'Big Data Tools' ? 'bg-red-600' : 
+                            category === 'Cloud Services' ? 'bg-indigo-600' : 
+                            category === 'Data Warehouse' ? 'bg-teal-600' : 'bg-orange-600'
                           }`}
                           style={{ width: `${skill.level}%` }}
                         ></div>
@@ -81,14 +102,14 @@ export default function TechSkillsPage() {
             <h2 className="text-3xl font-bold mb-8 text-center">Research Domains</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { name: 'Natural Language Processing', icon: '🔤' },
-                { name: 'Computer Vision', icon: '👁️' },
-                { name: 'Multimodal Learning', icon: '🔄' },
-                { name: 'Reinforcement Learning', icon: '🎮' },
-                { name: 'Knowledge Representation', icon: '🧠' },
-                { name: 'AI Ethics', icon: '⚖️' },
-                { name: 'Generative AI', icon: '✨' },
-                { name: 'AI Systems', icon: '⚙️' },
+                { name: 'Data Engineering', icon: '⚙️' },
+                { name: 'Business Intelligence', icon: '📊' },
+                { name: 'Cloud Architecture', icon: '☁️' },
+                { name: 'ETL Processing', icon: '🔄' },
+                { name: 'Data Visualization', icon: '📈' },
+                { name: 'Data Warehousing', icon: '🏢' },
+                { name: 'Big Data', icon: '📚' },
+                { name: 'Project Management', icon: '📋' },
               ].map((domain, index) => (
                 <div key={index} className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
                   <div className="text-3xl mb-2">{domain.icon}</div>
