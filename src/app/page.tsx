@@ -12,21 +12,24 @@ export default function Home() {
       {/* About Section with Profile Image */}
       <section className="py-16 px-6 md:px-20 bg-gray-200">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-center">
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gray-300 overflow-hidden flex-shrink-0">
-            {/* Replace with actual profile image when available */}
-            <div className="w-full h-full flex items-center justify-center text-4xl">RC</div>
+          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 relative">
+            {/* Using the uploaded profile image */}
+            <Image 
+              src="/images/profile.jpg"
+              alt="Rishav Chatterjee"
+              fill
+              sizes="(max-width: 768px) 12rem, 16rem"
+              className="object-cover"
+              priority
+            />
           </div>
           <div>
             <h2 className="text-3xl font-bold mb-6">Hi, I'm Rishav.</h2>
             <p className="text-lg text-gray-700 mb-6">
-              I specialize in helping companies and researchers analyze and visualize their datasets. 
-              I excel in <span className="font-bold">data visualization</span>. 
-              If you're looking for guidance on presenting your results or building complex interactive charts, 
-              I'm the expert you're seeking.
+            I help companies turn complex datasets into clear, actionable insights through advanced data modeling and visualization. 
             </p>
             <p className="text-lg text-gray-700">
-              With a solid track record in data science, I've collaborated with prestigious research institutes
-              and leading private companies.
+            With experience across top firms, I build scalable, interactive dashboards and analytics solutions—leveraging AI tools to boost productivity and drive smarter, data-informed decisions.
             </p>
           </div>
         </div>

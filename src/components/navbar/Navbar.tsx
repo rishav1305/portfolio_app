@@ -27,10 +27,10 @@ export default function Navbar() {
   const navLinks = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT', path: '/about' },
+    { name: 'EXPERIENCE', path: '/experience' },
+    { name: 'SKILLS', path: '/tech-skills' },
     { name: 'PROJECTS', path: '/projects' },
     { name: 'TIMELINE', path: '/timeline' },
-    { name: 'TECH SKILLS', path: '/tech-skills' },
-    { name: 'AI INNOVATIONS', path: '/ai-innovations' },
     { name: 'BLOG', path: '/blog' },
     { name: 'CONTACT', path: '/contact' },
   ];
