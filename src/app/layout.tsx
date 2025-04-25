@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../styles/custom-fonts.css"; 
 import Navbar from "@/components/navbar/Navbar";
+import ContactSidebar from "@/components/ui/ContactSidebar";
 import Script from "next/script";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
       >
         <HydrationErrorSuppressor>
           <Navbar />
+          <ContactSidebar />
           {children}
         </HydrationErrorSuppressor>
       </body>

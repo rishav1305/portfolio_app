@@ -1,69 +1,124 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function TechSkillsPage() {
   const skills = {
     'Python': [
-      { name: 'Pandas', level: 80 },
-      { name: 'Pyspark', level: 70 },
-      { name: 'Sklearn', level: 60 },
-      { name: 'Selenium', level: 70 },
+      { name: 'Pandas', level: 4 },
+      { name: 'Pyspark', level: 3.5 },
+      { name: 'Sklearn', level: 3 },
+      { name: 'Selenium', level: 3.5 },
     ],
     'SQL': [
-      { name: 'SQL Server', level: 90 },
-      { name: 'Postgre SQL', level: 90 },
-      { name: 'Spark SQL', level: 80 },
-      { name: 'SnowSQL', level: 70 },
+      { name: 'SQL Server', level: 4.5 },
+      { name: 'Postgre SQL', level: 4.5 },
+      { name: 'Spark SQL', level: 4 },
+      { name: 'SnowSQL', level: 3.5 },
     ],
     'ETL Tools': [
-      { name: 'AWS Glue', level: 80 },
-      { name: 'Azure Databricks', level: 80 },
-      { name: 'AWS Batch', level: 90 },
-      { name: 'Alteryx', level: 70 },
+      { name: 'AWS Glue', level: 4 },
+      { name: 'Azure Databricks', level: 4 },
+      { name: 'AWS Batch', level: 4.5 },
+      { name: 'Alteryx', level: 3.5 },
     ],
     'Analytical Tools': [
-      { name: 'Tableau CRM', level: 80 },
-      { name: 'Qlik Sense', level: 70 },
-      { name: 'Preset', level: 70 },
-      { name: 'Power BI', level: 60 },
-      { name: 'Microsoft Excel', level: 80 },
+      { name: 'Tableau CRM', level: 4 },
+      { name: 'Qlik Sense', level: 3.5 },
+      { name: 'Preset', level: 3.5 },
+      { name: 'Power BI', level: 3 },
+      { name: 'Microsoft Excel', level: 4 },
     ],
     'Big Data Tools': [
-      { name: 'Apache Spark', level: 70 },
-      { name: 'HIVE', level: 60 },
+      { name: 'Apache Spark', level: 3.5 },
+      { name: 'HIVE', level: 3 },
     ],
     'Cloud Services': [
-      { name: 'AWS', level: 80 },
-      { name: 'Azure', level: 70 },
-      { name: 'Databricks', level: 70 },
+      { name: 'AWS', level: 4 },
+      { name: 'Azure', level: 3.5 },
+      { name: 'Databricks', level: 3.5 },
     ],
     'Data Warehouse': [
-      { name: 'Redshift', level: 90 },
-      { name: 'Azure SQL DWH', level: 90 },
-      { name: 'Snowflake', level: 80 },
+      { name: 'Redshift', level: 4.5 },
+      { name: 'Azure SQL DWH', level: 4.5 },
+      { name: 'Snowflake', level: 4 },
     ],
     'Project Management': [
-      { name: 'JIRA', level: 80 },
-      { name: 'Confluence', level: 70 },
-      { name: 'Figma', level: 60 },
-      { name: 'Trello', level: 70 },
+      { name: 'JIRA', level: 4 },
+      { name: 'Confluence', level: 3.5 },
+      { name: 'Figma', level: 3 },
+      { name: 'Trello', level: 3.5 },
     ]
+  };
+  
+  // Function to render stars based on skill level
+  const renderStars = (level: number) => {
+    const stars = [];
+    const fullStars = Math.floor(level);
+    const hasHalfStar = level % 1 !== 0;
+    
+    // Add full stars
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(
+        <svg key={`full-${i}`} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+        </svg>
+      );
+    }
+    
+    // Add half star if needed
+    if (hasHalfStar) {
+      stars.push(
+        <svg key="half" className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="half-star-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="50%" stopColor="currentColor" />
+              <stop offset="50%" stopColor="white" />
+            </linearGradient>
+          </defs>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="url(#half-star-gradient)"></path>
+        </svg>
+      );
+    }
+    
+    // Add empty stars
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <svg key={`empty-${i}`} className="w-5 h-5 text-white dark:text-white/40" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+        </svg>
+      );
+    }
+    
+    return stars;
   };
   
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section with padding for navbar */}
-      <section className="pt-32 pb-20 px-6 md:px-20">
+      <section className="pt-32 pb-6 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Technical Expertise</h1>
-          <div className="w-20 h-1 bg-blue-500 mb-10"></div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Technical Expertise</h1>
+          <div className="w-20 h-1 bg-blue-500 mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
             My expertise spans data engineering, analytics, cloud services, and project management
           </p>
         </div>
       </section>
       
-      <section className="py-16 px-6 md:px-20">
+      <section className="pt-0 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
+          {/* Skills Rating Image */}
+          <div className="mb-8 flex justify-center">
+            <Image
+              src="/images/Skills Ratings.png"
+              alt="Skills Rating Overview"
+              width={800}
+              height={400}
+              className="rounded-lg shadow-md"
+            />
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {Object.entries(skills).map(([category, categorySkills]) => (
               <div key={category} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
@@ -75,21 +130,9 @@ export default function TechSkillsPage() {
                     <div key={skill.name} className="mb-4">
                       <div className="flex justify-between mb-1">
                         <span className="font-medium">{skill.name}</span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                        <div 
-                          className={`h-2.5 rounded-full ${
-                            category === 'Python' ? 'bg-green-600' : 
-                            category === 'SQL' ? 'bg-blue-600' : 
-                            category === 'ETL Tools' ? 'bg-purple-600' : 
-                            category === 'Analytical Tools' ? 'bg-yellow-600' : 
-                            category === 'Big Data Tools' ? 'bg-red-600' : 
-                            category === 'Cloud Services' ? 'bg-indigo-600' : 
-                            category === 'Data Warehouse' ? 'bg-teal-600' : 'bg-orange-600'
-                          }`}
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
+                        <div className="flex">
+                          {renderStars(skill.level)}
+                        </div>
                       </div>
                     </div>
                   ))}

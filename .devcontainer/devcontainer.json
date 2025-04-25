@@ -1,0 +1,27 @@
+{
+  "name": "Python Data Science",
+  "dockerFile": "Dockerfile",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers-contrib/features/jupyterlab:2": {}
+  },
+  "forwardPorts": [8888],
+  "postCreateCommand": "jupyter lab --generate-config && echo 'c.ServerApp.ip = \"0.0.0.0\"' >> ~/.jupyter/jupyter_lab_config.py && echo 'c.ServerApp.allow_root = True' >> ~/.jupyter/jupyter_lab_config.py",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "jupyter.notebookFileRoot": "${workspaceFolder}"
+      }
+    }
+  }
+}
