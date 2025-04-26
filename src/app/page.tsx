@@ -169,68 +169,66 @@ export default function Home() {
       <section className="py-16 px-6 md:px-20 bg-gray-100">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
+          
+          {/* Professional Experience - Mobile-friendly card layout */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-6 border-b pb-2">Professional Experience</h3>
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
-                <thead className="bg-gray-50 text-gray-700">
-                  <tr>
-                    <th className="py-4 px-6 text-left">Period</th>
-                    <th className="py-4 px-6 text-left">Company</th>
-                    <th className="py-4 px-6 text-left">Role</th>
-                    <th className="py-4 px-6 text-left">Key Achievements</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {experience.map((job, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      <td className="py-4 px-6 align-top">
-                        <p className="font-bold">{job.period}</p>
-                        <p className="text-gray-500">{job.location}</p>
-                      </td>
-                      <td className="py-4 px-6 align-top">{job.company}</td>
-                      <td className="py-4 px-6 align-top">{job.role}</td>
-                      <td className="py-4 px-6">
-                        <ul className="list-disc pl-5 space-y-1">
-                          {job.achievements.map((achievement, i) => (
-                            <li key={i}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="space-y-6">
+              {experience.map((job, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                      <div className="mb-4 md:mb-0">
+                        <h4 className="text-xl font-bold text-gray-800">{job.role}</h4>
+                        <p className="text-blue-600 font-medium">{job.company}</p>
+                      </div>
+                      <div className="text-gray-600">
+                        <p className="font-semibold">{job.period}</p>
+                        <p>{job.location}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <p className="font-medium text-gray-700 mb-2">Key Achievements:</p>
+                      <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                        {job.achievements.map((achievement, i) => (
+                          <li key={i}>{achievement}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           
-          {/* Education Table */}
+          {/* Education - Mobile-friendly card layout */}
           <div>
             <h3 className="text-2xl font-bold mb-6 border-b pb-2">Education</h3>
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
-                <thead className="bg-gray-50 text-gray-700">
-                  <tr>
-                    <th className="py-4 px-6 text-left">Period</th>
-                    <th className="py-4 px-6 text-left">Institution</th>
-                    <th className="py-4 px-6 text-left">Degree/Certificate</th>
-                    <th className="py-4 px-6 text-left">Focus Area</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {education.map((edu, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      <td className="py-4 px-6">
-                        <p className="font-bold">{edu.period}</p>
-                        <p className="text-gray-500">{edu.location}</p>
-                      </td>
-                      <td className="py-4 px-6">{edu.institution}</td>
-                      <td className="py-4 px-6">{edu.degree}</td>
-                      <td className="py-4 px-6">{edu.focusArea}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="space-y-6">
+              {education.map((edu, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                      <div className="mb-4 md:mb-0">
+                        <h4 className="text-xl font-bold text-gray-800">{edu.institution}</h4>
+                        <p className="text-blue-600 font-medium">{edu.degree}</p>
+                      </div>
+                      <div className="text-gray-600">
+                        <p className="font-semibold">{edu.period}</p>
+                        <p>{edu.location}</p>
+                      </div>
+                    </div>
+                    
+                    {edu.focusArea && (
+                      <div className="mt-4">
+                        <p className="font-medium text-gray-700 mb-2">Focus Area:</p>
+                        <p className="text-gray-700">{edu.focusArea}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           

@@ -47,7 +47,10 @@ export default function ContactSidebar() {
             ) : (
               <div className="flex flex-col items-center h-full justify-center">
                 <div className="transform whitespace-nowrap font-bold tracking-wider">
-                  {personalInfo.contactInfo.buttonText}
+                  {/* Mobile text - visible only on small screens */}
+                  <span className="md:hidden">CONNECT</span>
+                  {/* Desktop text - visible on medium screens and above */}
+                  <span className="hidden md:inline">CONNECT WITH RISHAV</span>
                 </div>
               </div>
             )}
