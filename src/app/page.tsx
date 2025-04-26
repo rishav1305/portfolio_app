@@ -1,56 +1,86 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons";
+import portfolioData from "@/data/portfolioData";
+import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 
 export default function Home() {
-  // Calculate years of experience dynamically
-  const currentYear = new Date().getFullYear();
-  const yearsOfExperience = currentYear - 2018;
+  const yearsOfExperience = portfolioData.getYearsOfExperience();
+  const skillCategories = portfolioData.getAverageSkillRatings();
+  const { personalInfo, experience, education } = portfolioData;
   
-  // Calculate average ratings for each skill category
-  const skillCategories = {
-    'Python': 3.5,
-    'SQL': 4.1,
-    'ETL Tools': 4.0, 
-    'Analytical Tools': 3.6,
-    'Big Data Tools': 3.3,
-    'Cloud Services': 3.7,
-    'Data Warehouse': 4.3,
-    'Project Management': 3.5
-  };
-
-  // Function to render stars based on skill level
+  // Function to render stars based on skill level with more precise .00, .25, .50, and .75 increments
+  // Also colors stars green for ratings >= 4, yellow for others
   const renderStars = (level: number) => {
     const stars = [];
     const fullStars = Math.floor(level);
-    const hasHalfStar = level % 1 >= 0.3 && level % 1 <= 0.7;
+    const fraction = level - fullStars;
+    
+    // Determine which type of partial star to show
+    let partialType = null;
+    if (fraction >= 0.13 && fraction < 0.38) {
+      partialType = "quarter";
+    } else if (fraction >= 0.38 && fraction < 0.63) {
+      partialType = "half";
+    } else if (fraction >= 0.63 && fraction < 0.88) {
+      partialType = "three-quarter";
+    }
+    
+    // Determine color based on skill level
+    const starColor = level >= 4 ? "text-green-500" : "text-yellow-400";
     
     // Add full stars
     for (let i = 0; i < fullStars; i++) {
       stars.push(
-        <svg key={`full-${i}`} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg key={`full-${i}`} className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
         </svg>
       );
     }
     
-    // Add half star if needed
-    if (hasHalfStar) {
+    // Add the appropriate partial star if needed
+    if (partialType === "quarter") {
       stars.push(
-        <svg key="half" className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg key="quarter" className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="half-star-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id={`quarter-star-gradient-${level}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="25%" stopColor="currentColor" />
+              <stop offset="25%" stopColor="#e5e7eb" />
+            </linearGradient>
+          </defs>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill={`url(#quarter-star-gradient-${level})`}></path>
+        </svg>
+      );
+    } else if (partialType === "half") {
+      stars.push(
+        <svg key="half" className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id={`half-star-gradient-${level}`} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="50%" stopColor="currentColor" />
               <stop offset="50%" stopColor="#e5e7eb" />
             </linearGradient>
           </defs>
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="url(#half-star-gradient)"></path>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill={`url(#half-star-gradient-${level})`}></path>
+        </svg>
+      );
+    } else if (partialType === "three-quarter") {
+      stars.push(
+        <svg key="three-quarter" className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id={`three-quarter-star-gradient-${level}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="75%" stopColor="currentColor" />
+              <stop offset="75%" stopColor="#e5e7eb" />
+            </linearGradient>
+          </defs>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill={`url(#three-quarter-star-gradient-${level})`}></path>
         </svg>
       );
     }
     
     // Add empty stars
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    const emptyStars = 5 - fullStars - (partialType ? 1 : 0);
     for (let i = 0; i < emptyStars; i++) {
       stars.push(
         <svg key={`empty-${i}`} className="w-5 h-5 text-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +104,7 @@ export default function Home() {
             {/* Using the uploaded profile image */}
             <Image 
               src="/images/profile.png"
-              alt="Rishav Chatterjee"
+              alt={personalInfo.name}
               fill
               sizes="(max-width: 768px) 12rem, 16rem"
               className="object-cover"
@@ -82,12 +112,12 @@ export default function Home() {
             />
           </div>
           <div>
-            <h2 className="text-3xl font-bold mb-6">Hi, I'm Rishav.</h2>
+            <h2 className="text-3xl font-bold mb-6">Hi, I'm {personalInfo.name.split(' ')[0]}.</h2>
             <p className="text-lg text-gray-700 mb-6">
-            I help companies turn complex datasets into clear, actionable insights through advanced data modeling and visualization. 
+              {personalInfo.shortBio}
             </p>
             <p className="text-lg text-gray-700 mb-6">
-            With experience across top firms, I build scalable, interactive dashboards and analytics solutions—leveraging AI tools to boost productivity and drive smarter, data-informed decisions.
+              {personalInfo.longBio[2]}
             </p>
             <div className="mt-4">
               <Link 
@@ -103,10 +133,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Testimonials Section - Enhanced with AutoScrollTestimonials */}
+      <section className="py-16 px-6 md:px-20 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800 relative inline-block">
+              Client Testimonials
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-6">
+              What clients and colleagues say about working with me
+            </p>
+          </div>
+          
+          {/* Auto-scrolling testimonial carousel */}
+          <div className="mb-10">
+            <AutoScrollTestimonials testimonials={portfolioData.testimonials || []} />
+          </div>
+          
+          <div className="text-center mt-10">
+            <Link 
+              href="/testimonials" 
+              className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300"
+            >
+              View All Testimonials
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Experience & Education Section */}
       <section className="py-16 px-6 md:px-20 bg-gray-100">
         <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-6 border-b pb-2">Professional Experience</h3>
             <div className="overflow-x-auto">
@@ -120,54 +182,23 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6 align-top">
-                      <p className="font-bold">Dec 2022 - Present</p>
-                      <p className="text-gray-500">Pune, Maharashtra</p>
-                    </td>
-                    <td className="py-4 px-6 align-top">Bitwise Private Limited</td>
-                    <td className="py-4 px-6 align-top">Technology Lead</td>
-                    <td className="py-4 px-6">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more</li>
-                        <li>Optimized Programmatic Advertisers pipeline, reducing processing time by 60%</li>
-                        <li>Executed NetSuite invoice data integration with Salesforce</li>
-                        <li>Led migration from Qlik Sense to Python for Datorama nPrinting</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6 align-top">
-                      <p className="font-bold">May 2020 - Dec 2022</p>
-                      <p className="text-gray-500">Hyderabad, Telangana</p>
-                    </td>
-                    <td className="py-4 px-6 align-top">Novartis Healthcare Private Limited</td>
-                    <td className="py-4 px-6 align-top">Senior Data Engineer</td>
-                    <td className="py-4 px-6">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>Migrated from HIVE to Snowflake, increasing pipeline performance by 60%</li>
-                        <li>Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by 40%</li>
-                        <li>Maintained 99.5% data accuracy with 9.5/10 stakeholder satisfaction</li>
-                        <li>Led team of 3, collaborating with 15+ data vendors and 10+ brand leaders</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6 align-top">
-                      <p className="font-bold">Jun 2018 - Apr 2020</p>
-                      <p className="text-gray-500">Noida, Uttar Pradesh</p>
-                    </td>
-                    <td className="py-4 px-6 align-top">Polestar Solutions and Services</td>
-                    <td className="py-4 px-6 align-top">Data Engineer</td>
-                    <td className="py-4 px-6">
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li>Worked with Jubilant FoodWorks to reduce production pipeline execution time by 66%</li>
-                        <li>Migrated IndiaMART's on-premises system to AWS</li>
-                        <li>Delivered automated prediction model workflows for Reckitt Benckiser using Azure Databricks</li>
-                        <li>Successfully started cloud-based services as a new vertical for the organization</li>
-                      </ul>
-                    </td>
-                  </tr>
+                  {experience.map((job, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="py-4 px-6 align-top">
+                        <p className="font-bold">{job.period}</p>
+                        <p className="text-gray-500">{job.location}</p>
+                      </td>
+                      <td className="py-4 px-6 align-top">{job.company}</td>
+                      <td className="py-4 px-6 align-top">{job.role}</td>
+                      <td className="py-4 px-6">
+                        <ul className="list-disc pl-5 space-y-1">
+                          {job.achievements.map((achievement, i) => (
+                            <li key={i}>{achievement}</li>
+                          ))}
+                        </ul>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -187,33 +218,17 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6">
-                      <p className="font-bold">Aug 2014 - May 2018</p>
-                      <p className="text-gray-500">Rohini, Delhi</p>
-                    </td>
-                    <td className="py-4 px-6">Delhi Technological University (DTU)</td>
-                    <td className="py-4 px-6">Bachelor's Degree</td>
-                    <td className="py-4 px-6">Environmental Engineering</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6">
-                      <p className="font-bold">Apr 2013 - Mar 2014</p>
-                      <p className="text-gray-500">R.K. Puram, Delhi</p>
-                    </td>
-                    <td className="py-4 px-6">LBS Senior Secondary School with FIITJEE</td>
-                    <td className="py-4 px-6">12th Education</td>
-                    <td className="py-4 px-6">Science</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-4 px-6">
-                      <p className="font-bold">Apr 2011 - Mar 2012</p>
-                      <p className="text-gray-500">Faridabad, Haryana</p>
-                    </td>
-                    <td className="py-4 px-6">MVN School, Aravalli Hills</td>
-                    <td className="py-4 px-6">10th Education</td>
-                    <td className="py-4 px-6">CBSE</td>
-                  </tr>
+                  {education.map((edu, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="py-4 px-6">
+                        <p className="font-bold">{edu.period}</p>
+                        <p className="text-gray-500">{edu.location}</p>
+                      </td>
+                      <td className="py-4 px-6">{edu.institution}</td>
+                      <td className="py-4 px-6">{edu.degree}</td>
+                      <td className="py-4 px-6">{edu.focusArea}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -236,27 +251,30 @@ export default function Home() {
       {/* Technical Skills Section */}
       <section className="py-16 px-6 md:px-20 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">Technical Skills</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               My expertise spans data engineering, analytics, cloud services, and project management
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            {Object.entries(skillCategories).map(([category, rating]) => (
-              <div key={category} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="flex items-center mb-3">
-                  <h3 className="text-xl font-semibold mr-3">{category}</h3>
-                  <div className="flex">
-                    {renderStars(rating)}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {Object.entries(skillCategories)
+              .sort(([, ratingA], [, ratingB]) => ratingB - ratingA) // Sort by rating in descending order
+              .map(([category, rating]) => (
+                <div key={category} className="bg-white p-3 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold">{category}</h3>
+                    <div className="flex">
+                      {renderStars(rating)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
           
-          <div className="text-center mt-10">
+          <div className="text-center mt-8">
             <Link 
               href="/tech-skills" 
               className="inline-flex items-center text-blue-600 font-medium hover:underline"
@@ -273,7 +291,7 @@ export default function Home() {
       {/* Connect With Me Section */}
       <section className="py-16 px-6 md:px-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-10 text-center">Connect With Rishav</h2>
+          <h2 className="text-3xl font-bold mb-10 text-center">Connect With {personalInfo.name.split(' ')[0]}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* LinkedIn Card */}
@@ -290,7 +308,7 @@ export default function Home() {
                 Connect professionally and follow my career updates and insights on data engineering and visualization.
               </p>
               <a 
-                href="https://www.linkedin.com/in/chatterjeerishav/" 
+                href={personalInfo.socialMedia.linkedin}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-blue-600 font-medium hover:underline"
@@ -316,7 +334,7 @@ export default function Home() {
                 Check out my problem-solving skills and algorithmic solutions on LeetCode.
               </p>
               <a 
-                href="https://leetcode.com/u/rishav115/" 
+                href={personalInfo.socialMedia.leetcode}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-yellow-600 font-medium hover:underline"
@@ -342,7 +360,7 @@ export default function Home() {
                 Explore my projects, code repositories, and open source contributions.
               </p>
               <a 
-                href="https://github.com/rishav1305" 
+                href={personalInfo.socialMedia.github}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-gray-800 font-medium hover:underline"
@@ -363,20 +381,17 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-6">CONTACT</h2>
           <p className="text-lg text-gray-700 mb-10">
             Feel free to contact me for any question. For open source projects, please open an issue or pull request on 
-            Github. If you want to follow my work, reach me on Twitter. Otherwise, send me an email at 
-            <a href="mailto:your.email@example.com" className="text-blue-600 ml-1">
-              your.email@example.com
+            Github. Otherwise, send me an email at 
+            <a href={`mailto:${personalInfo.email}`} className="text-blue-600 ml-1">
+              {personalInfo.email}
             </a>.
           </p>
           
           <div className="flex justify-center gap-6">
-            <a href="https://github.com/yourusername" className="text-gray-700 hover:text-blue-600">
+            <a href={personalInfo.socialMedia.github} className="text-gray-700 hover:text-blue-600">
               GITHUB
             </a>
-            <a href="https://twitter.com/yourusername" className="text-gray-700 hover:text-blue-600">
-              TWITTER
-            </a>
-            <a href="mailto:your.email@example.com" className="text-gray-700 hover:text-blue-600">
+            <a href={`mailto:${personalInfo.email}`} className="text-gray-700 hover:text-blue-600">
               MAIL
             </a>
           </div>
@@ -387,7 +402,7 @@ export default function Home() {
       <footer className="py-8 px-6 md:px-20 border-t border-gray-200 bg-gray-50">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 mb-4 md:mb-0">
-            © {new Date().getFullYear()} Rishav Chatterjee. All rights reserved.
+            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/privacy" className="text-gray-500 hover:text-gray-700">

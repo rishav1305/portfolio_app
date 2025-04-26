@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 interface NavbarNameProps {
+  name: string;
   isScrolled?: boolean;
+  className?: string;
 }
 
-export default function NavbarName({ isScrolled = false }: NavbarNameProps) {
+export default function NavbarName({ name, isScrolled = false, className = "" }: NavbarNameProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   
@@ -28,10 +29,10 @@ export default function NavbarName({ isScrolled = false }: NavbarNameProps) {
   }, []);
   
   return (
-    <Link href="/" className={`relative block text-xl md:text-2xl font-braggadocio tracking-wide overflow-hidden ${
+    <div className={`relative block text-xl md:text-2xl font-braggadocio tracking-wide overflow-hidden ${
       isScrolled ? 'text-white' : ''
-    }`}>
-      <span className="relative z-10">RISHAV CHATTERJEE</span>
+    } ${className}`}>
+      <span className="relative z-10">{name}</span>
       
       {/* Diagonal line overlay - only render with animation when client-side */}
       {isMounted && (
@@ -59,6 +60,6 @@ export default function NavbarName({ isScrolled = false }: NavbarNameProps) {
           }}
         />
       )}
-    </Link>
+    </div>
   );
 }

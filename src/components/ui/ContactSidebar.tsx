@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import portfolioData from '@/data/portfolioData';
 
 export default function ContactSidebar() {
+  const { personalInfo } = portfolioData;
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -45,7 +47,7 @@ export default function ContactSidebar() {
             ) : (
               <div className="flex flex-col items-center h-full justify-center">
                 <div className="transform whitespace-nowrap font-bold tracking-wider">
-                  CONNECT WITH RISHAV
+                  {personalInfo.contactInfo.buttonText}
                 </div>
               </div>
             )}
@@ -62,12 +64,12 @@ export default function ContactSidebar() {
                 className="bg-white dark:bg-gray-800 rounded-l-md border-l border-t border-b border-gray-200 dark:border-gray-700 overflow-hidden"
               >
                 <div className="p-4 w-72">
-                  <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">CONNECT WITH RISHAV</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">{personalInfo.contactInfo.sidebarTitle}</h3>
                   
                   <div className="space-y-4">
                     {/* WhatsApp */}
                     <a 
-                      href="https://wa.me/919560382351" 
+                      href={`https://wa.me/${personalInfo.whatsapp.replace(/\D/g, '')}`}
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
@@ -79,13 +81,13 @@ export default function ContactSidebar() {
                       </div>
                       <div>
                         <span className="text-sm font-medium">WhatsApp</span>
-                        <p className="text-xs">+91 9560382351</p>
+                        <p className="text-xs">{personalInfo.whatsapp}</p>
                       </div>
                     </a>
 
                     {/* Email with Gmail icon */}
                     <a 
-                      href="mailto:rishavchatterjee2024@gmail.com" 
+                      href={`mailto:${personalInfo.email}`}
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-red-500 dark:hover:text-red-400 transition-colors"
                     >
                       <div className="bg-red-100 dark:bg-red-900/30 p-2 rounded-full mr-3">
@@ -95,13 +97,13 @@ export default function ContactSidebar() {
                       </div>
                       <div>
                         <span className="text-sm font-medium">Email</span>
-                        <p className="text-xs">rishavchatterjee2024@gmail.com</p>
+                        <p className="text-xs">{personalInfo.email}</p>
                       </div>
                     </a>
 
                     {/* LinkedIn */}
                     <a 
-                      href="https://www.linkedin.com/in/chatterjeerishav/" 
+                      href={personalInfo.socialMedia.linkedin}
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-500 transition-colors"
@@ -116,7 +118,7 @@ export default function ContactSidebar() {
 
                     {/* LeetCode */}
                     <a 
-                      href="https://leetcode.com/u/rishav115/" 
+                      href={personalInfo.socialMedia.leetcode}
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
@@ -131,7 +133,7 @@ export default function ContactSidebar() {
 
                     {/* GitHub */}
                     <a 
-                      href="https://github.com/rishav1305" 
+                      href={personalInfo.socialMedia.github}
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"

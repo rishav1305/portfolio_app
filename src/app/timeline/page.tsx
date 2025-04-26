@@ -1,45 +1,121 @@
 import React from 'react';
+import portfolioData from "@/data/portfolioData";
 
-export default function TimelinePage() {
-  return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Hero Section with padding for navbar */}
-      <section className="pt-32 pb-20 px-6 md:px-20">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Timeline</h1>
-          <div className="w-20 h-1 bg-blue-500 mb-10"></div>
-        </div>
-      </section>
+export default function Timeline() {
+  const { experience, education } = portfolioData;
+  
+  // Helper function to convert month name to month number (0-11)
+  const getMonthNumber = (monthName: string): number => {
+    const months: {[key: string]: number} = {
+      'jan': 0, 'january': 0,
+      'feb': 1, 'february': 1,
+      'mar': 2, 'march': 2,
+      'apr': 3, 'april': 3,
+      'may': 4,
+      'jun': 5, 'june': 5,
+      'jul': 6, 'july': 6,
+      'aug': 7, 'august': 7,
+      'sep': 8, 'september': 8,
+      'oct': 9, 'october': 9,
+      'nov': 10, 'november': 10,
+      'dec': 11, 'december': 11
+    };
+    
+    return months[monthName.toLowerCase()] || 0;
+  };
+  
+  const timelineEvents = [
+    ...experience.map(job => ({
+      type: 'work',
+      startDate: new Date(job.startDate),
+      endDate: job.endDate ? new Date(job.endDate) : new Date(),
+      title: job.role,
+      subtitle: job.company,
+      description: job.achievements[0],
+      location: job.location,
+      period: job.period
+    })),
+    ...education.map(edu => {
+      // Approximate dates for education entries based on period string
+      const yearRange = edu.period.split(' - ');
+      const startYear = parseInt(yearRange[0].split(' ')[1]);
+      const startMonth = getMonthNumber(yearRange[0].split(' ')[0]);
       
-      <section className="py-16 px-6 md:px-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative max-w-3xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-800"></div>
-            
-            {/* Timeline items */}
-            {[
-              { year: "2025", title: "Current Position", description: "Senior Developer at Tech Company" },
-              { year: "2023", title: "Career Advancement", description: "Promoted to Lead Developer" },
-              { year: "2021", title: "New Role", description: "Joined as Full Stack Developer" },
-              { year: "2020", title: "Education", description: "Completed Master's in Computer Science" },
-              { year: "2018", title: "First Job", description: "Junior Developer at Startup" },
-              { year: "2016", title: "Education", description: "Bachelor's in Computer Science" },
-            ].map((item, index) => (
-              <div key={index} className={`relative mb-16 ${index % 2 === 0 ? 'pl-8 md:pl-0 md:pr-8 md:text-right md:ml-auto md:mr-1/2' : 'pl-8 md:ml-1/2'}`}>
-                <div className="absolute left-0 md:left-1/2 top-1 transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white dark:border-gray-900"></div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                  <span className="inline-block px-3 py-1 mb-3 text-sm font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">
-                    {item.year}
-                  </span>
-                  <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+      const endYearString = yearRange[1];
+      const endYear = parseInt(endYearString.split(' ')[1]);
+      const endMonth = getMonthNumber(endYearString.split(' ')[0]);
+      
+      return {
+        type: 'education',
+        startDate: new Date(startYear, startMonth, 1),
+        endDate: new Date(endYear, endMonth, 28),
+        title: edu.degree,
+        subtitle: edu.institution,
+        description: edu.focusArea,
+        location: edu.location,
+        period: edu.period,
+        institution: edu.institution,
+        degree: edu.degree
+      };
+    })
+  ].sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
+  
+  return (
+    <div className="min-h-screen bg-gray-50 pt-24 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">My Journey</h1>
+        
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+          
+          <div className="space-y-12">
+            {timelineEvents.map((item, index) => (
+              <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                {/* Timeline point */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"></div>
+                
+                {/* Content box */}
+                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
+                  <div className="bg-white p-6 rounded-lg shadow-lg">
+                    <div className={`${item.type === 'education' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'} inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2`}>
+                      {item.type === 'education' ? 'Education' : 'Work Experience'}
+                    </div>
+                    
+                    <div className="mb-2">
+                      <h3 className="text-xl font-bold">
+                        {item.type === 'education' ? item.institution : item.subtitle}
+                      </h3>
+                      <p className="text-gray-600">
+                        {item.type === 'education' ? item.degree : item.title}
+                      </p>
+                    </div>
+                    
+                    <div className="text-sm text-gray-500">
+                      <p>{item.period}</p>
+                      <p>{item.location}</p>
+                    </div>
+                    
+                    {item.type === 'education' && item.description && (
+                      <p className="mt-3 text-gray-700">{item.description}</p>
+                    )}
+                    
+                    {item.type === 'work' && (
+                      <div className="mt-3">
+                        <p className="font-semibold text-gray-700">Key Achievement:</p>
+                        <p className="text-gray-700 text-sm">{item.description}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
+                
+                {/* Empty space for opposite side */}
+                <div className="w-5/12"></div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
