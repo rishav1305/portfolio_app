@@ -195,6 +195,7 @@ const portfolioData = {
   skills: {
     'Python': [
       { name: 'Pandas', level: 4.5 },
+      { name: 'SQLAlchemy', level: 4.5 },
       { name: 'Pyspark', level: 4 },
       { name: 'Sklearn', level: 4 },
       { name: 'Selenium', level: 4.5 },
@@ -229,7 +230,7 @@ const portfolioData = {
       { name: 'Client Management', level: 4.5 },
       { name: 'Problem-solving', level: 4.5 },
       { name: 'Leadership', level: 4 },
-      { name: 'Critical thinking', level: 4.5 }
+      { name: 'Prompt Engineering', level: 4.5 }
     ],
     'Cloud Services': [
       { name: 'AWS', level: 4.5 },

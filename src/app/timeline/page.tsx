@@ -1,6 +1,30 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
 
+// Define interfaces for timeline events to fix TypeScript errors
+interface BaseTimelineEvent {
+  type: string;
+  startDate: Date;
+  endDate: Date;
+  title: string;
+  subtitle: string;
+  description: string;
+  location: string;
+  period: string;
+}
+
+interface WorkTimelineEvent extends BaseTimelineEvent {
+  type: 'work';
+}
+
+interface EducationTimelineEvent extends BaseTimelineEvent {
+  type: 'education';
+  institution: string;
+  degree: string;
+}
+
+type TimelineEvent = WorkTimelineEvent | EducationTimelineEvent;
+
 export default function Timeline() {
   const { experience, education } = portfolioData;
   
@@ -24,9 +48,9 @@ export default function Timeline() {
     return months[monthName.toLowerCase()] || 0;
   };
   
-  const timelineEvents = [
+  const timelineEvents: TimelineEvent[] = [
     ...experience.map(job => ({
-      type: 'work',
+      type: 'work' as const,
       startDate: new Date(job.startDate),
       endDate: job.endDate ? new Date(job.endDate) : new Date(),
       title: job.role,
@@ -46,7 +70,7 @@ export default function Timeline() {
       const endMonth = getMonthNumber(endYearString.split(' ')[0]);
       
       return {
-        type: 'education',
+        type: 'education' as const,
         startDate: new Date(startYear, startMonth, 1),
         endDate: new Date(endYear, endMonth, 28),
         title: edu.degree,
