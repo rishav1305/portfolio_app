@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   try {
     // Launch Puppeteer
     const browser = await puppeteer.launch({ 
-      headless: 'new',
+      headless: true,
       // Add args to help with potential issues in deployment environments
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
