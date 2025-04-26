@@ -1,4 +1,5 @@
 // PDF Template generator utilities
+import { WorkExperience, Education, Project, SkillRating } from '@/data/portfolioData';
 
 /**
  * Generates HTML template for the one-page CV
@@ -139,7 +140,7 @@ export function generateOnePageCVHTML(portfolioData: any) {
       
       <div class="section">
         <h2>PROFESSIONAL EXPERIENCE</h2>
-        ${portfolioData.experience.map(job => `
+        ${portfolioData.experience.map((job: WorkExperience) => `
           <div class="job">
             <div class="job-header">
               <div>
@@ -149,7 +150,7 @@ export function generateOnePageCVHTML(portfolioData: any) {
               <div class="period">${job.period}</div>
             </div>
             <ul class="achievements">
-              ${job.achievements.slice(0, 3).map(achievement => `
+              ${job.achievements.slice(0, 3).map((achievement: string) => `
                 <li>${achievement}</li>
               `).join('')}
             </ul>
@@ -160,14 +161,14 @@ export function generateOnePageCVHTML(portfolioData: any) {
       <div class="section">
         <h2>TECHNICAL SKILLS</h2>
         <div class="skills-grid">
-          ${keySkillCategories.map(category => `
+          ${keySkillCategories.map((category: string) => `
             <div class="skill-category">
               <span class="skill-name">${category}:</span> 
               ${portfolioData.skills[category] 
                 ? portfolioData.skills[category]
-                  .sort((a, b) => b.level - a.level)
+                  .sort((a: SkillRating, b: SkillRating) => b.level - a.level)
                   .slice(0, 3)
-                  .map(skill => skill.name)
+                  .map((skill: SkillRating) => skill.name)
                   .join(', ')
                 : ''}
             </div>
@@ -178,7 +179,7 @@ export function generateOnePageCVHTML(portfolioData: any) {
       <div class="section">
         <h2>NOTABLE PROJECTS</h2>
         <div class="projects">
-          ${portfolioData.projects.slice(0, 4).map(project => `
+          ${portfolioData.projects.slice(0, 4).map((project: Project) => `
             <div class="project">
               <p class="project-title">${project.title}</p>
               <p>${project.description.slice(0, 100)}${project.description.length > 100 ? '...' : ''}</p>
@@ -191,7 +192,7 @@ export function generateOnePageCVHTML(portfolioData: any) {
       <div class="section">
         <h2>EDUCATION</h2>
         <div class="education">
-          ${portfolioData.education.slice(0, 2).map(edu => `
+          ${portfolioData.education.slice(0, 2).map((edu: Education) => `
             <div class="edu-item">
               <p class="institution">${edu.institution}</p>
               <p>${edu.degree} in ${edu.focusArea}</p>
@@ -373,13 +374,13 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       <div class="section">
         <h2>PROFESSIONAL SUMMARY</h2>
         <div class="bio">
-          ${portfolioData.personalInfo.longBio.map(para => `<p>${para}</p>`).join('')}
+          ${portfolioData.personalInfo.longBio.map((para: string) => `<p>${para}</p>`).join('')}
         </div>
       </div>
       
       <div class="section">
         <h2>PROFESSIONAL EXPERIENCE</h2>
-        ${portfolioData.experience.map(job => `
+        ${portfolioData.experience.map((job: WorkExperience) => `
           <div class="job">
             <div class="job-header">
               <div>
@@ -389,14 +390,14 @@ export function generateDetailedResumeHTML(portfolioData: any) {
               <div class="period">${job.period}</div>
             </div>
             <ul class="achievements">
-              ${job.achievements.map(achievement => `
+              ${job.achievements.map((achievement: string) => `
                 <li>${achievement}</li>
               `).join('')}
             </ul>
             ${job.clients ? `
               <div class="clients">
                 <p><strong>Key Clients:</strong></p>
-                ${job.clients.map(client => `
+                ${job.clients.map((client: {name: string; description: string}) => `
                   <div class="client">
                     <p class="client-name">${client.name}</p>
                     <p>${client.description}</p>
@@ -406,7 +407,7 @@ export function generateDetailedResumeHTML(portfolioData: any) {
             ` : ''}
             ${job.tags ? `
               <div class="tags">
-                ${job.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                ${job.tags.map((tag: string) => `<span class="tag">${tag}</span>`).join('')}
               </div>
             ` : ''}
           </div>
@@ -416,13 +417,13 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       <div class="section">
         <h2>TECHNICAL SKILLS</h2>
         <div class="skills-container">
-          ${Object.entries(portfolioData.skills).map(([category, skills]) => `
+          ${Object.entries(portfolioData.skills as Record<string, SkillRating[]>).map(([category, skills]) => `
             <div class="skill-category">
               <h3>${category}</h3>
               <ul>
                 ${skills
-                  .sort((a, b) => b.level - a.level)
-                  .map(skill => `<li>${skill.name}</li>`)
+                  .sort((a: SkillRating, b: SkillRating) => b.level - a.level)
+                  .map((skill: SkillRating) => `<li>${skill.name}</li>`)
                   .join('')}
               </ul>
             </div>
@@ -433,7 +434,7 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       <div class="section">
         <h2>NOTABLE PROJECTS</h2>
         <div class="projects-grid">
-          ${portfolioData.projects.map(project => `
+          ${portfolioData.projects.map((project: Project) => `
             <div class="project">
               <p class="project-title">${project.title}</p>
               <p>${project.description}</p>
@@ -445,7 +446,7 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       
       <div class="section">
         <h2>EDUCATION</h2>
-        ${portfolioData.education.map(edu => `
+        ${portfolioData.education.map((edu: Education) => `
           <div class="edu-item">
             <div class="job-header">
               <div>
