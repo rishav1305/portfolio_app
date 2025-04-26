@@ -171,7 +171,7 @@ const portfolioData = {
       location: "Rohini, Delhi",
       institution: "Delhi Technological University (DTU)",
       degree: "Bachelor's Degree",
-      focusArea: "Environmental Engineering",
+      focusArea: "Environmental",
       description: "Focused on environmental engineering principles and sustainable technologies. Participated in multiple research projects related to waste management and environmental impact assessment. Developed strong analytical and problem-solving skills through practical lab work and field studies. Active member of the Engineering Society and Environmental Club."
     },
     {
