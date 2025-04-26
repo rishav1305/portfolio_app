@@ -179,7 +179,7 @@ const portfolioData = {
       location: "R.K. Puram, Delhi",
       institution: "LBS Senior Secondary School - FIITJEE",
       degree: "12th Education",
-      focusArea: "Science",
+      focusArea: "Physics, Chemistry, Mathematics",
       description: "Completed senior secondary education with specialization in science subjects. Achieved academic excellence with particular strength in mathematics and physics. Participated in various inter-school competitions and science exhibitions. Developed strong foundations in analytical thinking and scientific concepts that later supported engineering studies."
     },
     {
@@ -187,7 +187,7 @@ const portfolioData = {
       location: "Faridabad, Haryana",
       institution: "MVN School, Aravalli Hills",
       degree: "10th Education",
-      focusArea: "CBSE",
+      focusArea: "English, Mathematics, Science, Social Studies, Sanskrit",
       description: "Completed foundational education with a strong academic record across all subjects. Actively participated in various extracurricular activities including sports, cultural events, and science exhibitions. Received recognition for academic performance and leadership skills in group projects and classroom activities."
     }
   ],

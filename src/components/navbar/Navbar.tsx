@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavbarName from './NavbarName';
+import DownloadButton, { MobileDownloadLinks } from './DownloadButton';
 import portfolioData from '@/data/portfolioData';
 
 const Navbar = () => {
@@ -11,6 +12,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +27,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Function to close the mobile menu
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${
@@ -29,7 +40,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-3">
-          <Link href="/">
+          <Link href="/" onClick={closeMenu}>
             <NavbarName name={personalInfo.name} />
           </Link>
         </div>
@@ -65,21 +76,23 @@ const Navbar = () => {
           <NavLink href="/timeline" isActive={pathname === '/timeline'}>Timeline</NavLink>
           <ExternalNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalNavLink>
           <NavLink href="/contact" isActive={pathname === '/contact'}>Contact</NavLink>
+          <DownloadButton />
         </div>
       </div>
       
       {/* Mobile Menu */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} pt-4 pb-2 px-4`}>
         <div className="flex flex-col space-y-4">
-          <MobileNavLink href="/" isActive={pathname === '/'}>Home</MobileNavLink>
-          <MobileNavLink href="/about" isActive={pathname === '/about'}>About</MobileNavLink>
-          <MobileNavLink href="/testimonials" isActive={pathname === '/testimonials'}>Testimonials</MobileNavLink>
-          <MobileNavLink href="/experience" isActive={pathname === '/experience'}>Experience</MobileNavLink>
-          <MobileNavLink href="/tech-skills" isActive={pathname === '/tech-skills'}>Skills</MobileNavLink>
-          <MobileNavLink href="/projects" isActive={pathname === '/projects'}>Projects</MobileNavLink>
-          <MobileNavLink href="/timeline" isActive={pathname === '/timeline'}>Timeline</MobileNavLink>
-          <ExternalMobileNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalMobileNavLink>
-          <MobileNavLink href="/contact" isActive={pathname === '/contact'}>Contact</MobileNavLink>
+          <MobileNavLink href="/" isActive={pathname === '/'} onClick={closeMenu}>Home</MobileNavLink>
+          <MobileNavLink href="/about" isActive={pathname === '/about'} onClick={closeMenu}>About</MobileNavLink>
+          <MobileNavLink href="/testimonials" isActive={pathname === '/testimonials'} onClick={closeMenu}>Testimonials</MobileNavLink>
+          <MobileNavLink href="/experience" isActive={pathname === '/experience'} onClick={closeMenu}>Experience</MobileNavLink>
+          <MobileNavLink href="/tech-skills" isActive={pathname === '/tech-skills'} onClick={closeMenu}>Skills</MobileNavLink>
+          <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Projects</MobileNavLink>
+          <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
+          <ExternalMobileNavLink href={personalInfo.socialMedia.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
+          <MobileNavLink href="/contact" isActive={pathname === '/contact'} onClick={closeMenu}>Contact</MobileNavLink>
+          <MobileDownloadLinks onClick={closeMenu} />
         </div>
       </div>
     </nav>
@@ -117,10 +130,21 @@ const ExternalNavLink = ({ href, children }: { href: string; children: React.Rea
 };
 
 // Mobile navigation link
-const MobileNavLink = ({ href, children, isActive }: { href: string; children: React.ReactNode; isActive: boolean }) => {
+const MobileNavLink = ({ 
+  href, 
+  children, 
+  isActive, 
+  onClick 
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  isActive: boolean;
+  onClick: () => void;
+}) => {
   return (
     <Link 
       href={href} 
+      onClick={onClick}
       className={`block text-base font-medium uppercase py-2 px-4 rounded transition-colors duration-200 ${
         isActive 
           ? 'bg-blue-50 text-blue-600' 
@@ -133,12 +157,21 @@ const MobileNavLink = ({ href, children, isActive }: { href: string; children: R
 };
 
 // External mobile navigation link (opens in new tab)
-const ExternalMobileNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const ExternalMobileNavLink = ({ 
+  href, 
+  children,
+  onClick
+}: { 
+  href: string; 
+  children: React.ReactNode;
+  onClick: () => void;
+}) => {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={onClick}
       className="block text-base font-medium uppercase py-2 px-4 rounded transition-colors duration-200 text-gray-600 hover:bg-gray-100"
     >
       {children}
