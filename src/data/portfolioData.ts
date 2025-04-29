@@ -171,7 +171,7 @@ const portfolioData = {
       location: "Rohini, Delhi",
       institution: "Delhi Technological University (DTU)",
       degree: "Bachelor's Degree",
-      focusArea: "Environmental",
+      focusArea: "Environmental Engineering",
       description: "Focused on environmental engineering principles and sustainable technologies. Participated in multiple research projects related to waste management and environmental impact assessment. Developed strong analytical and problem-solving skills through practical lab work and field studies. Active member of the Engineering Society and Environmental Club."
     },
     {
@@ -367,29 +367,29 @@ const portfolioData = {
       text: "Rishav quickly became an invaluable part of our team. His ability to understand complex requirements and translate them into efficient, scalable solutions is truly impressive. I highly recommend his work.",
       image: "/images/testimonial5.jpg"
     }
-  ],
+  ]
+};
 
-  // Helper function to calculate average rating for each skill category
-  getAverageSkillRatings() {
-    const result: {[key: string]: number} = {};
-    
-    Object.entries(this.skills).forEach(([category, skills]) => {
-      const sum = skills.reduce((acc, skill) => acc + skill.level, 0);
-      const average = sum / skills.length;
-      
-      // Round to the nearest 0.25 increment
-      const roundedAverage = Math.round(average * 4) / 4;
-      result[category] = roundedAverage;
-    });
-    
-    return result;
-  },
+// Export helper functions separately so they can be called directly
+export const getAverageSkillRatings = () => {
+  const result: {[key: string]: number} = {};
   
-  // Helper function to calculate years of experience
-  getYearsOfExperience() {
-    const currentYear = new Date().getFullYear();
-    return currentYear - this.personalInfo.yearsExperienceStartYear;
-  }
+  Object.entries(portfolioData.skills).forEach(([category, skills]) => {
+    const sum = skills.reduce((acc, skill) => acc + skill.level, 0);
+    const average = sum / skills.length;
+    
+    // Round to the nearest 0.25 increment
+    const roundedAverage = Math.round(average * 4) / 4;
+    result[category] = roundedAverage;
+  });
+  
+  return result;
+};
+
+// Helper function to calculate years of experience
+export const getYearsOfExperience = () => {
+  const currentYear = new Date().getFullYear();
+  return currentYear - portfolioData.personalInfo.yearsExperienceStartYear;
 };
 
 export default portfolioData;

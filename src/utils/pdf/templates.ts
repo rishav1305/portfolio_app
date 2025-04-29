@@ -1,5 +1,6 @@
 // PDF Template generator utilities
 import { WorkExperience, Education, Project, SkillRating } from '@/data/portfolioData';
+import { getYearsOfExperience } from '@/data/portfolioData';
 
 /**
  * Generates HTML template for the one-page CV
@@ -130,7 +131,7 @@ export function generateOnePageCVHTML(portfolioData: any) {
           <p>${portfolioData.personalInfo.email}</p>
           <p>WhatsApp: ${portfolioData.personalInfo.whatsapp}</p>
           <p>Location: ${portfolioData.personalInfo.location}</p>
-          <p>Experience: ${portfolioData.getYearsOfExperience()}+ years</p>
+          <p>Experience: ${getYearsOfExperience()}+ years</p>
           <div class="social-links">
             <a href="${portfolioData.personalInfo.socialMedia.linkedin}" class="social-link">LinkedIn</a>
             <a href="${portfolioData.personalInfo.socialMedia.github}" class="social-link">GitHub</a>
@@ -362,7 +363,7 @@ export function generateDetailedResumeHTML(portfolioData: any) {
           <p>${portfolioData.personalInfo.email}</p>
           <p>WhatsApp: ${portfolioData.personalInfo.whatsapp}</p>
           <p>Location: ${portfolioData.personalInfo.location}</p>
-          <p>Experience: ${portfolioData.getYearsOfExperience()}+ years</p>
+          <p>Experience: ${getYearsOfExperience()}+ years</p>
           <div class="social-links">
             <a href="${portfolioData.personalInfo.socialMedia.linkedin}" class="social-link">LinkedIn</a>
             <a href="${portfolioData.personalInfo.socialMedia.github}" class="social-link">GitHub</a>

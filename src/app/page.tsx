@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons";
-import portfolioData from "@/data/portfolioData";
+import portfolioData, { getYearsOfExperience, getAverageSkillRatings } from "@/data/portfolioData";
 import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 
 export default function Home() {
-  const yearsOfExperience = portfolioData.getYearsOfExperience();
-  const skillCategories = portfolioData.getAverageSkillRatings();
+  const yearsOfExperience = getYearsOfExperience();
+  const skillCategories = getAverageSkillRatings();
   const { personalInfo, experience, education } = portfolioData;
   
   // Function to render stars based on skill level with more precise .00, .25, .50, and .75 increments
