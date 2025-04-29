@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import portfolioData from '@/data/portfolioData';
+import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
 
 export default function About() {
   const { personalInfo } = portfolioData;
-  const yearsOfExperience = portfolioData.getYearsOfExperience();
+  const yearsOfExperience = getYearsOfExperience();
   
   return (
     <div className="min-h-screen bg-gray-50">
