@@ -30,14 +30,12 @@ function calculateDuration(startDate: string, endDate: string): string {
   }
 }
 
-type Params = {
-  slug: string;
-}
-
-export default async function ProjectDetails({ params }: { params: Params }) {
+// Let Next.js 15 handle the types
+export default function ProjectDetails({ params }) {
   // Find the project by slug
+  const slug = params?.slug || '';
   const project = portfolioData.projects.find(
-    p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(params.slug)
+    p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(slug)
   );
   
   // If project not found, show 404
