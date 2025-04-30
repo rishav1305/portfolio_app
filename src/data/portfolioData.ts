@@ -110,14 +110,18 @@ const portfolioData = {
         "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
         "Optimized Programmatic Advertisers pipeline, reducing processing time by 60%",
         "Executed NetSuite invoice data integration with Salesforce",
-        "Led migration from Qlik Sense to Python for Datorama nPrinting"
+        "Led migration from Qlik Sense to Python for Datorama nPrinting",
+        "Implemented data-driven decision making across business units leading to 25% increase in revenue",
+        "Architected cloud-based data solutions that reduced infrastructure costs by 30%"
       ],
       details: [
         "Initial Role: Started as an individual contributor, leveraging my expertise in Python and SQL.",
         "Expanded Responsibilities: Took on additional roles and responsibilities due to team restructuring during multiple layoffs.",
-        "Current Role: Leading multiple projects across B2B and B2C, including requirements gathering, task delegation and project management."
+        "Current Role: Leading multiple projects across B2B and B2C, including requirements gathering, task delegation and project management.",
+        "Key Achievement: Successfully delivered enterprise-wide analytics platform accessed by 200+ stakeholders daily",
+        "Technical Innovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance"
       ],
-      tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership"]
+      tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration"]
     },
     {
       period: "May 2020 - Dec 2022",
@@ -333,39 +337,53 @@ const portfolioData = {
 
   testimonials: [
     {
-      name: "John Doe",
-      position: "CEO, Tech Innovations",
-      company: "Tech Innovations",
+      name: "Ivan Cheklin",
+      position: "BI Leader",
+      company: "The Weather Comapany",
       text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
       image: "/images/testimonial1.jpg"
     },
     {
-      name: "Jane Smith",
-      position: "CTO, DataViz Corp",
-      company: "DataViz Corp",
+      name: "Sylvia Ho",
+      position: "Principal Data Scientist",
+      company: "The Weather Comapany",
       text: "Working with Rishav was a game-changer for our data visualization projects. His innovative approach and attention to detail resulted in solutions that exceeded our expectations.",
       image: "/images/testimonial2.jpg"
     },
     {
-      name: "Michael Johnson",
-      position: "Project Manager, Enterprise Solutions",
-      company: "Enterprise Solutions",
+      name: "Nishant Goel",
+      position: "Senior Manager",
+      company: "Gartner India",
       text: "Rishav's technical leadership and cloud expertise transformed our infrastructure. He has a unique ability to align technology solutions with business objectives, driving significant value.",
-      image: "/images/testimonial3.jpg"
+      image: "/images/testimonial5.jpg"
     },
     {
-      name: "Sarah Williams",
-      position: "Head of Data Science, AnalyticsHub",
-      company: "AnalyticsHub",
+      name: "Guneet Kaur",
+      position: "Lead Data Engineer",
+      company: "Gartner India",
       text: "I've had the pleasure of collaborating with Rishav on several complex data engineering projects. His deep understanding of data architecture and cloud solutions helped us optimize our systems substantially.",
       image: "/images/testimonial4.jpg"
     },
     {
-      name: "David Chen",
-      position: "VP of Engineering, CloudScale",
-      company: "CloudScale",
+      name: "Priyanka Bhambhurkar",
+      position: "Project Manager",
+      company: "Bitwise Solutions Pvt Ltd",
       text: "Rishav quickly became an invaluable part of our team. His ability to understand complex requirements and translate them into efficient, scalable solutions is truly impressive. I highly recommend his work.",
-      image: "/images/testimonial5.jpg"
+      image: "/images/testimonial3.jpg"
+    },
+    {
+      name: "Garima Narang",
+      position: "Group Lead",
+      company: "Novartis Healthcare Pvt Ltd",
+      text: "Working with Rishav on our data migration project was exceptional. His technical expertise in Snowflake and pipeline optimization transformed our analytics capabilities. He's a collaborative team player who consistently delivers beyond expectations.",
+      image: "/images/testimonial6.jpg"
+    },
+    {
+      name: "Salvatore Guglielmo",
+      position: "Assistant Director",
+      company: "Novartis Inc",
+      text: "Rishav's leadership during our data warehouse migration was outstanding. He demonstrated excellent problem-solving skills and technical depth while maintaining clear communication throughout. His work significantly improved our data processing efficiency and analytical capabilities.",
+      image: "/images/testimonial7.jpg"
     }
   ]
 };

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
 
 export default function About() {
-  const { personalInfo } = portfolioData;
+  const { personalInfo, experience, education } = portfolioData;
   const yearsOfExperience = getYearsOfExperience();
   
   return (
@@ -110,6 +110,81 @@ export default function About() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Timeline Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">My Journey</h2>
+          
+          <div className="relative">
+            {/* Vertical line - visible only on larger screens */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+            
+            {/* Vertical line for mobile - positioned on left side */}
+            <div className="md:hidden absolute left-6 h-full w-1 bg-blue-200"></div>
+            
+            <div className="space-y-8">
+              {/* Work Experience */}
+              {experience.map((job, index) => (
+                <div key={`work-${index}`} className={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
+                  {/* Timeline point - positioned differently on mobile */}
+                  <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"></div>
+                  
+                  {/* Content box */}
+                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                      <div className="bg-blue-100 text-blue-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">
+                        Work Experience
+                      </div>
+                      
+                      <div className="mb-2">
+                        <h3 className="text-xl font-bold">{job.company}</h3>
+                        <p className="text-gray-600">{job.role}</p>
+                      </div>
+                      
+                      <div className="text-sm text-gray-500">
+                        <p>{job.period}</p>
+                        <p>{job.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Empty space for opposite side - only on desktop */}
+                  <div className="hidden md:block w-5/12"></div>
+                </div>
+              ))}
+              
+              {/* Education */}
+              {education.map((edu, index) => (
+                <div key={`edu-${index}`} className={`relative flex items-start ${(index + experience.length) % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
+                  {/* Timeline point - positioned differently on mobile */}
+                  <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-green-600 border-4 border-white z-10"></div>
+                  
+                  {/* Content box */}
+                  <div className={`w-full md:w-5/12 ${(index + experience.length) % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                      <div className="bg-green-100 text-green-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">
+                        Education
+                      </div>
+                      
+                      <div className="mb-2">
+                        <h3 className="text-xl font-bold">{edu.institution}</h3>
+                        <p className="text-gray-600">{edu.degree}</p>
+                      </div>
+                      
+                      <div className="text-sm text-gray-500">
+                        <p>{edu.period}</p>
+                        <p>{edu.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Empty space for opposite side - only on desktop */}
+                  <div className="hidden md:block w-5/12"></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

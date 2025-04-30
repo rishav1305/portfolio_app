@@ -36,13 +36,23 @@ export async function GET(request: NextRequest) {
       fs.mkdirSync(publicDir, { recursive: true });
     }
     
-    // Generate PDF
-    await page.pdf({
-      path: filePath,
-      format: 'A4',
-      margin: { top: '1cm', right: '1cm', bottom: '1cm', left: '1cm' },
-      printBackground: true
-    });
+    // Generate PDF with reduced margins for CV
+    if (type === 'cv') {
+      await page.pdf({
+        path: filePath,
+        format: 'A4',
+        margin: { top: '0.5cm', right: '0.5cm', bottom: '0.5cm', left: '0.5cm' },
+        printBackground: true
+      });
+    } else {
+      // Standard margins for detailed resume
+      await page.pdf({
+        path: filePath,
+        format: 'A4',
+        margin: { top: '1cm', right: '1cm', bottom: '1cm', left: '1cm' },
+        printBackground: true
+      });
+    }
     
     await browser.close();
     
