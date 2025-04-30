@@ -4,14 +4,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import portfolioData from "@/data/portfolioData";
 
-// Use Next.js 15 compatible type definition
-type ProjectPageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-};
-
 // Helper function to format date as Month Year
 function formatMonthYear(dateString: string): string {
   if (!dateString) return '';
@@ -38,7 +30,12 @@ function calculateDuration(startDate: string, endDate: string): string {
   }
 }
 
-export default function ProjectDetails({ params, searchParams }: ProjectPageProps) {
+// Use proper typing for Next.js 15 page components
+export default function ProjectDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
   // Find the project by slug
   const project = portfolioData.projects.find(
     p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(params.slug)
