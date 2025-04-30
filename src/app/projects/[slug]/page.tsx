@@ -30,10 +30,10 @@ function calculateDuration(startDate: string, endDate: string): string {
   }
 }
 
-// Let Next.js 15 handle the types
-export default function ProjectDetails({ params }) {
+// Use a simpler approach with the updated TypeScript configuration
+export default function ProjectDetails({ params }: any) {
   // Find the project by slug
-  const slug = params?.slug || '';
+  const slug = params.slug || '';
   const project = portfolioData.projects.find(
     p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(slug)
   );

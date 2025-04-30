@@ -1,5 +1,6 @@
 'use client';
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons";
@@ -14,12 +15,12 @@ export default function Home() {
   // Function to render stars based on skill level with more precise .00, .25, .50, and .75 increments
   // Also colors stars green for ratings >= 4, yellow for others
   const renderStars = (level: number) => {
-    const stars = [];
+    const stars: React.ReactNode[] = [];
     const fullStars = Math.floor(level);
     const fraction = level - fullStars;
     
     // Determine which type of partial star to show
-    let partialType = null;
+    let partialType: string | null = null;
     if (fraction >= 0.13 && fraction < 0.38) {
       partialType = "quarter";
     } else if (fraction >= 0.38 && fraction < 0.63) {

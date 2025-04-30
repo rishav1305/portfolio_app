@@ -26,7 +26,7 @@ function Connection({ start, end, color }: { start: [number, number, number], en
   const ref = useRef<THREE.Object3D>(null!);
   
   useEffect(() => {
-    const points = [];
+    const points: THREE.Vector3[] = [];
     points.push(new THREE.Vector3(...start));
     points.push(new THREE.Vector3(...end));
     

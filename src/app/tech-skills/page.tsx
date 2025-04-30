@@ -7,7 +7,7 @@ export default function TechSkills() {
   
   // Function to render stars based on skill level
   const renderStars = (level: number) => {
-    const stars = [];
+    const stars: React.ReactNode[] = [];
     const fullStars = Math.floor(level);
     const hasHalfStar = level % 1 >= 0.3 && level % 1 <= 0.7;
     
