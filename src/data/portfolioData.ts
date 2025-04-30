@@ -57,10 +57,14 @@ export type PersonalInfo = {
 export type Project = {
   title: string;
   description: string;
+  short_description?: string;
   image: string;
+  thumbnail?: string;
   techStack: string[];
   link: string;
   category: string;
+  company?: string;
+  clients?: string;
 };
 
 export type Testimonial = {
@@ -254,90 +258,56 @@ const portfolioData = {
 
   projects: [
     {
-      title: "Interactive Sales Analytics Dashboard",
-      description: "Created a comprehensive sales analytics dashboard with drill-down capabilities and predictive forecasting for a retail client.",
-      image: "/images/profile_bg.jpg",
-      techStack: ["Python", "Tableau CRM", "SQL", "AWS"],
-      link: "#",
-      category: "Data Visualization"
+      title: "Migration from On-premise to AWS Infra",
+      short_description: "This project aimed at migrating the existing on-premises system to Amazon Web Services and generate Power BI reports for Sales and HR by extracting Parquet files.",
+      description: "This project aimed at migrating the existing on-premises system to Amazon Web Services and generate Power BI reports for Sales and HR by extracting Parquet files from Amazon S3 and creating a warehouse in Amazon Redshift while processing the data in AWS Glue using Pyspark.",
+      image: "/images/projects/images/im_aws_migration.png",
+      thumbnail: "/images/projects/thumbnail/im_aws_migration.png",
+      techStack: ["Cloud", "AWS", "AWS Glue", "Amazon S3", "AWS Lambda", "SQL", "Python", "Pyspark", "Redshift", "Power BI"],
+      category: "Completed",
+      company: "Polestar Solutions and Services",
+      clients: "IndiaMART InterMESH Ltd",
+      start_date: "2018-09-01",
+      end_date: "2019-03-01",
+      link: "projects/migration-from-on-premise-to-aws-infra"
+
     },
     {
-      title: "ETL Pipeline for E-commerce Data",
-      description: "Developed a robust ETL pipeline that processes millions of daily transactions and integrates multiple data sources for a global e-commerce platform.",
-      image: "/images/photo_bg.png",
-      techStack: ["Python", "Apache Spark", "AWS Glue", "Redshift", "Airflow"],
-      link: "#",
-      category: "Data Engineering"
+      title: "Data Wrangling for Prediction Model",
+      short_description: "In this project, the aim was to deliver automated workflows to preprocess the data for the prediction model on Azure Databricks Platform.",
+      description: "In this project, the aim was to deliver automated workflows to preprocess the data for the prediction model on Azure Databricks Platform. Data needed to be extracted from Azure Blob Storage and Azure SQL Data Warehouse, then the data cleansing process is conducted and further these files were loaded in the Azure Databricks File System which was shared with the DataRobot Team who implemented the prediction models and then loaded the data into the cube.",
+      image: "/images/projects/images/rb_databricks_wrangling.png",
+      thumbnail: "/images/projects/thumbnail/rb_databricks_wrangling.png",
+      techStack: ["Cloud", "Azure", "Azure Databricks", "Azure Blob Storage", "Azure SQL Data Warehouse", "Azure Databricks File System", "SQL", "Python", "Pyspark"],
+      category: "Completed",
+      company: "Polestar Solutions and Services",
+      clients: "Reckitt Benckiser Group",
+      start_date: "2019-03-01",
+      end_date: "2019-06-01",
+      link: "projects/data-wrangling-for-prediction-model"
+
     },
     {
-      title: "Customer Segmentation Analysis",
-      description: "Performed advanced customer segmentation using machine learning techniques to identify high-value customer groups and personalization opportunities.",
-      image: "/images/profile_bg.jpg",
-      techStack: ["Python", "scikit-learn", "Pandas", "Matplotlib"],
-      link: "#",
-      category: "Data Science"
-    },
-    {
-      title: "Automated Marketing Performance Reporting",
-      description: "Built an automated system that pulls data from multiple marketing platforms and generates comprehensive performance reports with minimal manual intervention.",
-      image: "/images/photo_bg.png",
-      techStack: ["Python", "Google Analytics API", "Google Ads API", "Facebook Marketing API", "Preset"],
-      link: "#",
-      category: "Automation"
-    },
-    {
-      title: "Cloud Data Warehouse Migration",
-      description: "Led the migration of a legacy data warehouse to a modern cloud-based solution, improving query performance by 70% and reducing operating costs.",
-      image: "/images/profile_bg.jpg",
-      techStack: ["Snowflake", "AWS", "Python", "dbt"],
-      link: "#",
-      category: "Cloud Infrastructure"
-    },
-    {
-      title: "Real-time Data Processing System",
-      description: "Designed and implemented a real-time data processing system that handles high-volume streaming data for immediate business insights.",
-      image: "/images/photo_bg.png",
-      techStack: ["Apache Kafka", "Apache Spark Streaming", "Redis", "ElasticSearch"],
-      link: "#",
-      category: "Streaming Data"
-    },
-    {
-      title: "Automated Data Pipeline with AI",
-      description: "Built an automated data pipeline that uses machine learning to detect anomalies in real-time data streams. The system employs a combination of statistical methods and neural networks to identify patterns that deviate from expected behavior.",
-      image: "/images/profile_bg.jpg",
-      techStack: ["Python", "TensorFlow", "Apache Kafka", "Docker"],
-      link: "#",
-      category: "Artificial Intelligence"
-    },
-    {
-      title: "Natural Language Processing for Business Insights",
-      description: "Developed an NLP solution that analyzes customer feedback across multiple channels and extracts actionable business insights. This tool helped stakeholders understand customer sentiment and identify emerging issues quickly.",
-      image: "/images/photo_bg.png",
-      techStack: ["Python", "NLTK", "spaCy", "Hugging Face Transformers"],
-      link: "#",
-      category: "Artificial Intelligence"
-    },
-    {
-      title: "Predictive Analytics Dashboard",
-      description: "Created a real-time dashboard that uses AI to predict business metrics and forecast trends. The system integrates with multiple data sources and provides visual analytics with predictive capabilities.",
-      image: "/images/profile_bg.jpg",
-      techStack: ["Python", "Scikit-learn", "ReactJS", "D3.js"],
-      link: "#",
-      category: "Artificial Intelligence"
-    },
-    {
-      title: "AI-powered Content Recommendation Engine",
-      description: "Built a content recommendation engine that uses collaborative filtering and deep learning to suggest personalized content to users based on their behavior and preferences.",
-      image: "/images/photo_bg.png",
-      techStack: ["Python", "PyTorch", "FastAPI", "Redis"],
-      link: "#",
-      category: "Artificial Intelligence"
+      title: "Maintain and optimize the production pipelines",
+      short_description: "The aim of this project was to develop, maintain and upgrade data pipelines to automate and optimize the production process on AWS Infrastructure",
+      description: "The aim of this project was to develop, maintain and upgrade data pipelines to automate and optimize the production process on AWS Infrastructure. Successfully reduced the execution time for the production pipeline by 66% and decreased the cost of Data Storage on Amazon Redshift by 50%.",
+      image: "/images/projects/images/jubilant_prod.png",
+      thumbnail: "/images/projects/thumbnail/jubilant_prod.png",
+      techStack: ["Cloud", "AWS", "AWS Glue", "Amazon S3", "AWS Lambda", "SQL", "Python", "Pyspark", "Redshift", "Power BI"],
+      category: "Completed",
+      company: "Polestar Solutions and Services",
+      clients: "Jubilant FoodWorks Limited",
+      start_date: "2019-06-01",
+      end_date: "2020-04-01",
+      link: "projects/maintain-and-optimize-the-production-pipelines"
+
     }
   ],
 
   testimonials: [
     {
       name: "Ivan Cheklin",
+      location: "Pennsylvania, USA",
       position: "BI Leader",
       company: "The Weather Comapany",
       text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
@@ -345,6 +315,7 @@ const portfolioData = {
     },
     {
       name: "Sylvia Ho",
+      location: "New York, USA",
       position: "Principal Data Scientist",
       company: "The Weather Comapany",
       text: "Working with Rishav was a game-changer for our data visualization projects. His innovative approach and attention to detail resulted in solutions that exceeded our expectations.",
@@ -353,6 +324,7 @@ const portfolioData = {
     {
       name: "Nishant Goel",
       position: "Senior Manager",
+      location: "Gurgaon, India",
       company: "Gartner India",
       text: "Rishav's technical leadership and cloud expertise transformed our infrastructure. He has a unique ability to align technology solutions with business objectives, driving significant value.",
       image: "/images/testimonial5.jpg"
@@ -360,12 +332,14 @@ const portfolioData = {
     {
       name: "Guneet Kaur",
       position: "Lead Data Engineer",
+      location: "Toronto, Canada",
       company: "Gartner India",
       text: "I've had the pleasure of collaborating with Rishav on several complex data engineering projects. His deep understanding of data architecture and cloud solutions helped us optimize our systems substantially.",
       image: "/images/testimonial4.jpg"
     },
     {
-      name: "Priyanka Bhambhurkar",
+      name: "Priyanka Bhamburkar",
+      location: "Pune, India",
       position: "Project Manager",
       company: "Bitwise Solutions Pvt Ltd",
       text: "Rishav quickly became an invaluable part of our team. His ability to understand complex requirements and translate them into efficient, scalable solutions is truly impressive. I highly recommend his work.",
@@ -373,6 +347,7 @@ const portfolioData = {
     },
     {
       name: "Garima Narang",
+      location: "Hyderabad, India",
       position: "Group Lead",
       company: "Novartis Healthcare Pvt Ltd",
       text: "Working with Rishav on our data migration project was exceptional. His technical expertise in Snowflake and pipeline optimization transformed our analytics capabilities. He's a collaborative team player who consistently delivers beyond expectations.",
@@ -380,6 +355,7 @@ const portfolioData = {
     },
     {
       name: "Salvatore Guglielmo",
+      location: "New Jersey, USA",
       position: "Assistant Director",
       company: "Novartis Inc",
       text: "Rishav's leadership during our data warehouse migration was outstanding. He demonstrated excellent problem-solving skills and technical depth while maintaining clear communication throughout. His work significantly improved our data processing efficiency and analytical capabilities.",

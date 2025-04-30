@@ -1,0 +1,43 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f7fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e4eff9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg-gradient)" />
+
+  <!-- Left side: On-premise Database Icon -->
+  <g transform="translate(200, 150)">
+    <!-- Database cylinder base -->
+    <ellipse cx="0" cy="50" rx="60" ry="20" fill="#b3c6d1" />
+    <!-- Database cylinder body -->
+    <path d="M-60,50 L-60,-30 C-60,-50 60,-50 60,-30 L60,50" fill="#d0deea" stroke="#b3c6d1" stroke-width="2" />
+    <!-- Database cylinder top -->
+    <ellipse cx="0" cy="-30" rx="60" ry="20" fill="#e0eaf0" stroke="#b3c6d1" stroke-width="2" />
+    <!-- Database lines -->
+    <path d="M-50,-20 C-50,-10 50,-10 50,-20" fill="none" stroke="#a4b8c4" stroke-width="1" />
+    <path d="M-50,-5 C-50,5 50,5 50,-5" fill="none" stroke="#a4b8c4" stroke-width="1" />
+    <path d="M-50,10 C-50,20 50,20 50,10" fill="none" stroke="#a4b8c4" stroke-width="1" />
+    <!-- Label -->
+    <text x="0" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">On-premise</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(400, 150)">
+    <path d="M-50,0 L50,0 M30,-20 L50,0 L30,20" stroke="#0062cc" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Right side: AWS Logo (using the downloaded image) -->
+  <g transform="translate(520, 150)">
+    <!-- AWS Logo image reference - updated with relative path -->
+    <image href="./aws_logo.png" x="-80" y="-80" height="160" width="160" />
+    
+    <!-- Label -->
+    <text x="0" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">AWS Cloud</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#0062cc">Migration from On-premise to AWS Infrastructure</text>
+</svg>

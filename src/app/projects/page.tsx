@@ -35,40 +35,50 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
-              <div className="h-48 relative">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-2 py-1">
-                  {project.category}
+            <div 
+              key={index} 
+              className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow"
+            >
+              <Link href={`/projects/${encodeURIComponent(project.title.replace(/\s+/g, '-').toLowerCase())}`}>
+                <div className="relative" style={{paddingTop: '66.67%'}}> {/* 3:2 aspect ratio */}
+                  <Image
+                    src={project.thumbnail || project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-2 py-1">
+                    {project.category}
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className="p-6 flex-grow">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <p className="text-gray-600 mb-4">{project.short_description || project.description}</p>
               </div>
               <div className="px-6 pb-4">
                 <div className="mb-4">
                   <h4 className="text-sm font-semibold text-gray-500 mb-2">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech, i) => (
+                    {project.techStack.slice(0, 4).map((tech, i) => (
                       <span key={i} className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">
                         {tech}
                       </span>
                     ))}
+                    {project.techStack.length > 4 && (
+                      <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">
+                        +{project.techStack.length - 4} more
+                      </span>
+                    )}
                   </div>
                 </div>
-                <a 
-                  href={project.link} 
+                <Link 
+                  href={`/projects/${encodeURIComponent(project.title.replace(/\s+/g, '-').toLowerCase())}`}
                   className="inline-block text-blue-600 font-medium hover:underline"
                 >
                   View Project Details →
-                </a>
+                </Link>
               </div>
             </div>
           ))}
