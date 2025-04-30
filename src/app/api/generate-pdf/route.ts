@@ -9,22 +9,42 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get('type') || 'cv'; // Default to CV if not specified
   
+  let browser;
   try {
-    // Launch Puppeteer
-    const browser = await puppeteer.launch({ 
-      headless: true,
-      // Add args to help with potential issues in deployment environments
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    console.log('Starting PDF generation process...');
+
+    // Enhanced browser launch configuration
+    browser = await puppeteer.launch({ 
+      headless: true,  // Use boolean true instead of 'new' string
+      args: [
+        '--no-sandbox', 
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu'
+      ]
     });
+    
+    console.log('Browser launched successfully');
     const page = await browser.newPage();
     
+    // Set viewport for better rendering
+    await page.setViewport({
+      width: 1200,
+      height: 1600,
+      deviceScaleFactor: 2
+    });
+    
     // Generate HTML content based on type
+    console.log(`Generating ${type} HTML content...`);
     const html = type === 'resume' 
       ? generateDetailedResumeHTML(portfolioData)
       : generateOnePageCVHTML(portfolioData);
     
-    // Set HTML content
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+    // Set HTML content with increased timeout
+    await page.setContent(html, { 
+      waitUntil: ['load', 'networkidle0'],
+      timeout: 30000
+    });
     
     // Define file paths
     const fileName = type === 'resume' ? 'Rishav_Chatterjee_Resume.pdf' : 'Rishav_Chatterjee_CV.pdf';
@@ -33,16 +53,20 @@ export async function GET(request: NextRequest) {
     
     // Create documents directory if it doesn't exist
     if (!fs.existsSync(publicDir)) {
+      console.log('Creating documents directory...');
       fs.mkdirSync(publicDir, { recursive: true });
     }
     
-    // Generate PDF with reduced margins for CV
+    console.log(`Generating PDF: ${fileName}`);
+    
+    // Generate PDF with appropriate settings based on type
     if (type === 'cv') {
       await page.pdf({
         path: filePath,
         format: 'A4',
         margin: { top: '0.5cm', right: '0.5cm', bottom: '0.5cm', left: '0.5cm' },
-        printBackground: true
+        printBackground: true,
+        timeout: 60000 // Increased timeout for PDF generation
       });
     } else {
       // Standard margins for detailed resume
@@ -50,11 +74,15 @@ export async function GET(request: NextRequest) {
         path: filePath,
         format: 'A4',
         margin: { top: '1cm', right: '1cm', bottom: '1cm', left: '1cm' },
-        printBackground: true
+        printBackground: true,
+        timeout: 60000 // Increased timeout for PDF generation
       });
     }
     
+    console.log('PDF generated successfully');
+    
     await browser.close();
+    browser = null;
     
     return NextResponse.json({ 
       success: true, 
@@ -62,10 +90,25 @@ export async function GET(request: NextRequest) {
       fileName,
       path: `/documents/${fileName}`
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('PDF generation error:', error);
+    
+    // Ensure browser is closed if an error occurs
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        console.error('Error closing browser:', closeError);
+      }
+    }
+    
+    // Properly handle the unknown error type
+    const errorMessage = error instanceof Error 
+      ? error.message 
+      : 'Unknown error';
+    
     return NextResponse.json(
-      { success: false, error: 'Failed to generate PDF' },
+      { success: false, error: `Failed to generate PDF: ${errorMessage}` },
       { status: 500 }
     );
   }

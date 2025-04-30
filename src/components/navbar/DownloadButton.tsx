@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 // Main download button component with both desktop and mobile versions
 const DownloadButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -26,27 +28,79 @@ const DownloadButton = () => {
   const handleDownload = async (type: 'cv' | 'resume') => {
     try {
       setIsLoading(type);
+      setError(null);
       
-      // Call the API to generate the PDF
-      const response = await fetch(`/api/generate-pdf?type=${type}`);
-      const data = await response.json();
+      // Call the API to generate the PDF with a timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60-second timeout
+
+      // Try to fetch a fresh copy first
+      const apiResponse = await fetch(`/api/generate-pdf?type=${type}`, { 
+        signal: controller.signal
+      }).catch(err => {
+        if (err.name === 'AbortError') {
+          throw new Error('PDF generation timed out. Please try again later.');
+        }
+        throw err;
+      });
+      
+      clearTimeout(timeoutId);
+      
+      if (!apiResponse.ok) {
+        throw new Error(`PDF generation failed: ${apiResponse.statusText}`);
+      }
+      
+      const data = await apiResponse.json();
       
       if (!data.success) {
         throw new Error(data.error || 'Failed to generate PDF');
       }
       
-      // Trigger the download
+      // Try to use the generated PDF
+      const pdfPath = data.path;
+      console.log('PDF generated successfully at:', pdfPath);
+      
+      // Use a direct download from the public folder
       const link = document.createElement('a');
-      link.href = data.path;
+      link.href = pdfPath;
       link.download = data.fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
+      toast.success('PDF downloaded successfully!');
       setIsOpen(false);
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF. Please try again later.');
+    } catch (error: unknown) {
+      console.error('Error generating/downloading PDF:', error);
+      // Type-safe error handling
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : 'Failed to generate PDF';
+      setError(errorMessage);
+      
+      // Try using pre-generated PDFs if available
+      const fallbackPath = `/documents/${type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf'}`;
+      
+      try {
+        // Test if fallback PDF exists
+        const fallbackResponse = await fetch(fallbackPath, { method: 'HEAD' });
+        
+        if (fallbackResponse.ok) {
+          toast.error('Could not generate a new PDF, using pre-generated version instead.');
+          
+          // Use pre-generated PDF
+          const link = document.createElement('a');
+          link.href = fallbackPath;
+          link.download = type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          toast.error('Failed to generate PDF. Please try again later.');
+        }
+      } catch (fallbackError) {
+        toast.error('Failed to generate PDF. Please try again later.');
+      }
     } finally {
       setIsLoading(null);
     }
@@ -60,7 +114,7 @@ const DownloadButton = () => {
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span>Download</span>
+        <span>Download CV</span>
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
         </svg>
@@ -113,6 +167,11 @@ const DownloadButton = () => {
               </>
             )}
           </button>
+          {error && (
+            <div className="px-4 py-2 text-sm text-red-600 border-t border-gray-100">
+              {error}
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -128,15 +187,32 @@ export const MobileDownloadLinks = ({ onClick }: { onClick: () => void }) => {
     try {
       setIsLoading(type);
       
-      // Call the API to generate the PDF
-      const response = await fetch(`/api/generate-pdf?type=${type}`);
-      const data = await response.json();
+      // Call the API to generate the PDF with a timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60-second timeout
+
+      const apiResponse = await fetch(`/api/generate-pdf?type=${type}`, { 
+        signal: controller.signal
+      }).catch(err => {
+        if (err.name === 'AbortError') {
+          throw new Error('PDF generation timed out. Please try again later.');
+        }
+        throw err;
+      });
+      
+      clearTimeout(timeoutId);
+      
+      if (!apiResponse.ok) {
+        throw new Error(`PDF generation failed: ${apiResponse.statusText}`);
+      }
+      
+      const data = await apiResponse.json();
       
       if (!data.success) {
         throw new Error(data.error || 'Failed to generate PDF');
       }
       
-      // Trigger the download
+      // Try to use the generated PDF
       const link = document.createElement('a');
       link.href = data.path;
       link.download = data.fileName;
@@ -144,10 +220,34 @@ export const MobileDownloadLinks = ({ onClick }: { onClick: () => void }) => {
       link.click();
       document.body.removeChild(link);
       
+      toast.success('PDF downloaded successfully!');
       onClick(); // Close mobile menu
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF. Please try again later.');
+    } catch (error: unknown) {
+      console.error('Error generating/downloading PDF:', error);
+      
+      // Try using pre-generated PDFs if available
+      const fallbackPath = `/documents/${type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf'}`;
+      
+      try {
+        // Test if fallback PDF exists
+        const fallbackResponse = await fetch(fallbackPath, { method: 'HEAD' });
+        
+        if (fallbackResponse.ok) {
+          toast.error('Could not generate a new PDF, using pre-generated version instead.');
+          
+          // Use pre-generated PDF
+          const link = document.createElement('a');
+          link.href = fallbackPath;
+          link.download = type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          toast.error('Failed to generate PDF. Please try again later.');
+        }
+      } catch (fallbackError) {
+        toast.error('Failed to generate PDF. Please try again later.');
+      }
     } finally {
       setIsLoading(null);
     }

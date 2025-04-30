@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import ContactSidebar from "@/components/ui/ContactSidebar";
 import Script from "next/script";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,6 +66,23 @@ export default function RootLayout({
           <Navbar />
           <ContactSidebar />
           {children}
+          <Toaster position="bottom-right" toastOptions={{
+            duration: 5000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+            success: {
+              style: {
+                background: '#22c55e',
+              },
+            },
+            error: {
+              style: {
+                background: '#ef4444',
+              },
+            }
+          }} />
         </HydrationErrorSuppressor>
       </body>
     </html>
