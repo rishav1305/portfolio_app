@@ -30,12 +30,11 @@ function calculateDuration(startDate: string, endDate: string): string {
   }
 }
 
-// Use proper typing for Next.js 15 page components
-export default function ProjectDetails({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type Params = {
+  slug: string;
+}
+
+export default async function ProjectDetails({ params }: { params: Params }) {
   // Find the project by slug
   const project = portfolioData.projects.find(
     p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(params.slug)
