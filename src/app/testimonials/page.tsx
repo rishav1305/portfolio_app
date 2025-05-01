@@ -54,7 +54,15 @@ export default function Testimonials() {
                     <div className="ml-6">
                       <h3 className="font-bold text-2xl text-gray-900">{testimonial.name}</h3>
                       <p className="text-gray-600">{testimonial.position}</p>
-                      <p className="text-blue-600 font-medium">{testimonial.company}</p>
+                      <div className="flex items-center">
+                        <p className="text-blue-600 font-medium">{testimonial.company}</p>
+                        {testimonial.location && (
+                          <p className="text-gray-500 ml-2">
+                            <span className="mx-1">•</span>
+                            {testimonial.location}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div className="text-blue-200 hidden md:block">

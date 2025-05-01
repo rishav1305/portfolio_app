@@ -258,6 +258,19 @@ const portfolioData = {
 
   projects: [
     {
+      title: "AI-Powered Portfolio Website",
+      short_description: "Developed a modern, responsive portfolio website entirely using GitHub Copilot - Claude 3.7 Sonnet, demonstrating the power of AI pair programming.",
+      description: "Created a Next.js portfolio website featuring responsive design, dynamic content management, interactive visualizations, and SEO optimization. Used GitHub Copilot - Claude 3.7 Sonnet for the entire development process, leveraging prompt engineering to build components, implement features, and solve technical challenges.",
+      image: "/images/projects/thumbnail/portfolio_app.png",
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "GitHub Copilot", "Claude AI", "Vercel", "Responsive Design"],
+      category: "Completed",
+      company: "Personal Project",
+      start_date: "2025-04-21",
+      end_date: "2025-05-01",
+      link: "projects/portfolio-app-with-ai-assistance"
+    },
+    {
       title: "Migration from On-premise to AWS Infra",
       short_description: "This project aimed at migrating the existing on-premises system to Amazon Web Services and generate Power BI reports for Sales and HR by extracting Parquet files.",
       description: "This project aimed at migrating the existing on-premises system to Amazon Web Services and generate Power BI reports for Sales and HR by extracting Parquet files from Amazon S3 and creating a warehouse in Amazon Redshift while processing the data in AWS Glue using Pyspark.",
@@ -270,7 +283,6 @@ const portfolioData = {
       start_date: "2018-09-01",
       end_date: "2019-03-01",
       link: "projects/migration-from-on-premise-to-aws-infra"
-
     },
     {
       title: "Data Wrangling for Prediction Model",
@@ -285,7 +297,6 @@ const portfolioData = {
       start_date: "2019-03-01",
       end_date: "2019-06-01",
       link: "projects/data-wrangling-for-prediction-model"
-
     },
     {
       title: "Maintain and optimize the production pipelines",
@@ -300,7 +311,6 @@ const portfolioData = {
       start_date: "2019-06-01",
       end_date: "2020-04-01",
       link: "projects/maintain-and-optimize-the-production-pipelines"
-
     }
   ],
 

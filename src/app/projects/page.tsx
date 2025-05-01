@@ -39,7 +39,7 @@ export default function Projects() {
               key={index} 
               className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow"
             >
-              <Link href={`/projects/${encodeURIComponent(project.title.replace(/\s+/g, '-').toLowerCase())}`}>
+              <Link href={`/${project.link}`}>
                 <div className="relative" style={{paddingTop: '66.67%'}}> {/* 3:2 aspect ratio */}
                   <Image
                     src={project.thumbnail || project.image}
@@ -74,7 +74,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <Link 
-                  href={`/projects/${encodeURIComponent(project.title.replace(/\s+/g, '-').toLowerCase())}`}
+                  href={`/${project.link}`}
                   className="inline-block text-blue-600 font-medium hover:underline"
                 >
                   View Project Details →

@@ -11,6 +11,7 @@ const formattedName = name.replace(/\s+/g, '_');
 // Main download button component with both desktop and mobile versions
 const DownloadButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -28,6 +29,15 @@ const DownloadButton = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Handle mouse enter/leave for hover effects
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   // Function to generate PDF before download
   const handleDownload = async (type: 'cv' | 'resume') => {
@@ -130,22 +140,34 @@ const DownloadButton = () => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1 text-sm font-medium uppercase transition-colors duration-200 text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md"
-        aria-expanded={isOpen}
+    <div 
+      className="relative" 
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        onClick={toggleDropdown}
+        className="flex items-center space-x-1 text-sm font-medium uppercase transition-colors duration-200 text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md cursor-pointer"
         aria-haspopup="true"
       >
         <span>Download CV</span>
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg 
+          className={`w-4 h-4 transition-transform ${(isOpen || isHovered) ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
         </svg>
-      </button>
+      </div>
 
       {/* Dropdown menu */}
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+      {(isOpen || isHovered) && (
+        <div 
+          className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100"
+        >
           <button
             onClick={() => handleDownload('resume')}
             disabled={isLoading !== null}

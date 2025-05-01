@@ -34,8 +34,17 @@ function calculateDuration(startDate: string, endDate: string): string {
 export default function ProjectDetails({ params }: any) {
   // Find the project by slug
   const slug = params.slug || '';
+  
+  // Try to find the project by checking both title-based slug and the link path
   const project = portfolioData.projects.find(
-    p => p.title.replace(/\s+/g, '-').toLowerCase() === decodeURIComponent(slug)
+    p => {
+      // Check if slug matches the title-based slug
+      const titleSlug = p.title.replace(/\s+/g, '-').toLowerCase();
+      // Check if slug matches the link path (extract the last part of the path)
+      const linkSlug = p.link.split('/').pop() || '';
+      
+      return titleSlug === decodeURIComponent(slug) || linkSlug === decodeURIComponent(slug);
+    }
   );
   
   // If project not found, show 404

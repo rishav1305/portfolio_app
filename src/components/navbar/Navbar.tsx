@@ -54,8 +54,8 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${
-        scrolled || isOpen ? 'bg-white shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 bg-white ${
+        scrolled || isOpen ? 'shadow-lg' : ''
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
@@ -92,18 +92,17 @@ const Navbar = () => {
           <NavLink href="/testimonials" isActive={pathname === '/testimonials'}>Testimonials</NavLink>
           
           {/* Portfolio Dropdown */}
-          <div className="relative" ref={portfolioDropdownRef}>
-            <button
-              className={`text-sm font-medium uppercase transition-colors duration-200 flex items-center ${
+          <div className="relative group" ref={portfolioDropdownRef}>
+            <div
+              className={`text-sm font-medium uppercase transition-colors duration-200 flex items-center cursor-pointer ${
                 isInPortfolioSection
                   ? 'text-blue-600 border-b-2 border-blue-600' 
                   : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
               }`}
-              onClick={() => setPortfolioDropdownOpen(!portfolioDropdownOpen)}
             >
               Portfolio
               <svg 
-                className={`ml-1 w-4 h-4 transition-transform ${portfolioDropdownOpen ? 'rotate-180' : ''}`} 
+                className={`ml-1 w-4 h-4 transition-transform group-hover:rotate-180`} 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24" 
@@ -111,40 +110,38 @@ const Navbar = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
-            </button>
+            </div>
             
-            {portfolioDropdownOpen && (
-              <div className="absolute mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
-                <DropdownLink 
-                  href="/experience" 
-                  isActive={pathname === '/experience'} 
-                  onClick={() => setPortfolioDropdownOpen(false)}
-                >
-                  Experience
-                </DropdownLink>
-                <DropdownLink 
-                  href="/tech-skills" 
-                  isActive={pathname === '/tech-skills'} 
-                  onClick={() => setPortfolioDropdownOpen(false)}
-                >
-                  Skills
-                </DropdownLink>
-                <DropdownLink 
-                  href="/projects" 
-                  isActive={pathname === '/projects'} 
-                  onClick={() => setPortfolioDropdownOpen(false)}
-                >
-                  Projects
-                </DropdownLink>
-                <DropdownLink 
-                  href="/timeline" 
-                  isActive={pathname === '/timeline'} 
-                  onClick={() => setPortfolioDropdownOpen(false)}
-                >
-                  Timeline
-                </DropdownLink>
-              </div>
-            )}
+            <div className="absolute mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100 invisible group-hover:visible transition-all duration-200 opacity-0 group-hover:opacity-100">
+              <DropdownLink 
+                href="/experience" 
+                isActive={pathname === '/experience'} 
+                onClick={() => {}}
+              >
+                Experience
+              </DropdownLink>
+              <DropdownLink 
+                href="/tech-skills" 
+                isActive={pathname === '/tech-skills'} 
+                onClick={() => {}}
+              >
+                Skills
+              </DropdownLink>
+              <DropdownLink 
+                href="/projects" 
+                isActive={pathname === '/projects'} 
+                onClick={() => {}}
+              >
+                Projects
+              </DropdownLink>
+              <DropdownLink 
+                href="/timeline" 
+                isActive={pathname === '/timeline'} 
+                onClick={() => {}}
+              >
+                Timeline
+              </DropdownLink>
+            </div>
           </div>
           
           <ExternalNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalNavLink>
