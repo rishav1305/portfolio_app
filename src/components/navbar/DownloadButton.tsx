@@ -2,6 +2,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import portfolioData from '../../data/portfolioData';
+
+// Get the name from portfolioData for use in filenames
+const { name } = portfolioData.personalInfo;
+const formattedName = name.replace(/\s+/g, '_');
 
 // Main download button component with both desktop and mobile versions
 const DownloadButton = () => {
@@ -30,12 +35,15 @@ const DownloadButton = () => {
       setIsLoading(type);
       setError(null);
       
+      const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
+      const fileName = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}_${currentDate}.pdf`;
+      
       // Call the API to generate the PDF with a timeout
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60-second timeout
 
       // Try to fetch a fresh copy first
-      const apiResponse = await fetch(`/api/generate-pdf?type=${type}`, { 
+      const apiResponse = await fetch(`/api/generate-pdf?type=${type}&name=${encodeURIComponent(name)}`, { 
         signal: controller.signal
       }).catch(err => {
         if (err.name === 'AbortError') {
@@ -63,12 +71,12 @@ const DownloadButton = () => {
       // Use a direct download from the public folder
       const link = document.createElement('a');
       link.href = pdfPath;
-      link.download = data.fileName;
+      link.download = data.fileName || fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      toast.success('PDF downloaded successfully!');
+      toast.success(`${type === 'cv' ? 'CV' : 'Resume'} downloaded successfully!`);
       setIsOpen(false);
     } catch (error: unknown) {
       console.error('Error generating/downloading PDF:', error);
@@ -79,7 +87,7 @@ const DownloadButton = () => {
       setError(errorMessage);
       
       // Try using pre-generated PDFs if available
-      const fallbackPath = `/documents/${type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf'}`;
+      const fallbackPath = `/documents/${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
       
       try {
         // Test if fallback PDF exists
@@ -91,12 +99,27 @@ const DownloadButton = () => {
           // Use pre-generated PDF
           const link = document.createElement('a');
           link.href = fallbackPath;
-          link.download = type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf';
+          link.download = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
         } else {
-          toast.error('Failed to generate PDF. Please try again later.');
+          // Try alternative naming format for legacy files
+          const legacyPath = `/documents/${formattedName.split('_').join('_')}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
+          const legacyResponse = await fetch(legacyPath, { method: 'HEAD' });
+          
+          if (legacyResponse.ok) {
+            toast.error('Could not generate a new PDF, using pre-generated version instead.');
+            
+            const link = document.createElement('a');
+            link.href = legacyPath;
+            link.download = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            toast.error('Failed to generate PDF. Please try again later.');
+          }
         }
       } catch (fallbackError) {
         toast.error('Failed to generate PDF. Please try again later.');
@@ -187,11 +210,14 @@ export const MobileDownloadLinks = ({ onClick }: { onClick: () => void }) => {
     try {
       setIsLoading(type);
       
+      const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
+      const fileName = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}_${currentDate}.pdf`;
+      
       // Call the API to generate the PDF with a timeout
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60-second timeout
 
-      const apiResponse = await fetch(`/api/generate-pdf?type=${type}`, { 
+      const apiResponse = await fetch(`/api/generate-pdf?type=${type}&name=${encodeURIComponent(name)}`, { 
         signal: controller.signal
       }).catch(err => {
         if (err.name === 'AbortError') {
@@ -215,18 +241,18 @@ export const MobileDownloadLinks = ({ onClick }: { onClick: () => void }) => {
       // Try to use the generated PDF
       const link = document.createElement('a');
       link.href = data.path;
-      link.download = data.fileName;
+      link.download = data.fileName || fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      toast.success('PDF downloaded successfully!');
+      toast.success(`${type === 'cv' ? 'CV' : 'Resume'} downloaded successfully!`);
       onClick(); // Close mobile menu
     } catch (error: unknown) {
       console.error('Error generating/downloading PDF:', error);
       
       // Try using pre-generated PDFs if available
-      const fallbackPath = `/documents/${type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf'}`;
+      const fallbackPath = `/documents/${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
       
       try {
         // Test if fallback PDF exists
@@ -238,12 +264,27 @@ export const MobileDownloadLinks = ({ onClick }: { onClick: () => void }) => {
           // Use pre-generated PDF
           const link = document.createElement('a');
           link.href = fallbackPath;
-          link.download = type === 'cv' ? 'Rishav_Chatterjee_CV.pdf' : 'Rishav_Chatterjee_Resume.pdf';
+          link.download = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
         } else {
-          toast.error('Failed to generate PDF. Please try again later.');
+          // Try alternative naming format for legacy files
+          const legacyPath = `/documents/${formattedName.split('_').join('_')}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
+          const legacyResponse = await fetch(legacyPath, { method: 'HEAD' });
+          
+          if (legacyResponse.ok) {
+            toast.error('Could not generate a new PDF, using pre-generated version instead.');
+            
+            const link = document.createElement('a');
+            link.href = legacyPath;
+            link.download = `${formattedName}_${type === 'cv' ? 'CV' : 'Resume'}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            toast.error('Failed to generate PDF. Please try again later.');
+          }
         }
       } catch (fallbackError) {
         toast.error('Failed to generate PDF. Please try again later.');

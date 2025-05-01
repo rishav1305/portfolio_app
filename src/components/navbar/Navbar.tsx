@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavbarName from './NavbarName';
@@ -11,11 +11,17 @@ const Navbar = () => {
   const { personalInfo } = portfolioData;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const portfolioDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Check if current page is in the portfolio section
+  const isInPortfolioSection = ['/experience', '/tech-skills', '/projects', '/timeline'].includes(pathname);
 
   // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
+    setPortfolioDropdownOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -25,6 +31,20 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close portfolio dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (portfolioDropdownRef.current && !portfolioDropdownRef.current.contains(event.target as Node)) {
+        setPortfolioDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   // Function to close the mobile menu
@@ -41,7 +61,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <Link href="/" onClick={closeMenu}>
-            <NavbarName name={personalInfo.name} />
+            <NavbarName name={personalInfo.name} isScrolled={scrolled} />
           </Link>
         </div>
         
@@ -66,14 +86,67 @@ const Navbar = () => {
         </button>
         
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-6">
           <NavLink href="/" isActive={pathname === '/'}>Home</NavLink>
           <NavLink href="/about" isActive={pathname === '/about'}>About</NavLink>
           <NavLink href="/testimonials" isActive={pathname === '/testimonials'}>Testimonials</NavLink>
-          <NavLink href="/experience" isActive={pathname === '/experience'}>Experience</NavLink>
-          <NavLink href="/tech-skills" isActive={pathname === '/tech-skills'}>Skills</NavLink>
-          <NavLink href="/projects" isActive={pathname === '/projects'}>Projects</NavLink>
-          <NavLink href="/timeline" isActive={pathname === '/timeline'}>Timeline</NavLink>
+          
+          {/* Portfolio Dropdown */}
+          <div className="relative" ref={portfolioDropdownRef}>
+            <button
+              className={`text-sm font-medium uppercase transition-colors duration-200 flex items-center ${
+                isInPortfolioSection
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
+              }`}
+              onClick={() => setPortfolioDropdownOpen(!portfolioDropdownOpen)}
+            >
+              Portfolio
+              <svg 
+                className={`ml-1 w-4 h-4 transition-transform ${portfolioDropdownOpen ? 'rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            {portfolioDropdownOpen && (
+              <div className="absolute mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+                <DropdownLink 
+                  href="/experience" 
+                  isActive={pathname === '/experience'} 
+                  onClick={() => setPortfolioDropdownOpen(false)}
+                >
+                  Experience
+                </DropdownLink>
+                <DropdownLink 
+                  href="/tech-skills" 
+                  isActive={pathname === '/tech-skills'} 
+                  onClick={() => setPortfolioDropdownOpen(false)}
+                >
+                  Skills
+                </DropdownLink>
+                <DropdownLink 
+                  href="/projects" 
+                  isActive={pathname === '/projects'} 
+                  onClick={() => setPortfolioDropdownOpen(false)}
+                >
+                  Projects
+                </DropdownLink>
+                <DropdownLink 
+                  href="/timeline" 
+                  isActive={pathname === '/timeline'} 
+                  onClick={() => setPortfolioDropdownOpen(false)}
+                >
+                  Timeline
+                </DropdownLink>
+              </div>
+            )}
+          </div>
+          
           <ExternalNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalNavLink>
           <NavLink href="/contact" isActive={pathname === '/contact'}>Contact</NavLink>
           <DownloadButton />
@@ -86,10 +159,18 @@ const Navbar = () => {
           <MobileNavLink href="/" isActive={pathname === '/'} onClick={closeMenu}>Home</MobileNavLink>
           <MobileNavLink href="/about" isActive={pathname === '/about'} onClick={closeMenu}>About</MobileNavLink>
           <MobileNavLink href="/testimonials" isActive={pathname === '/testimonials'} onClick={closeMenu}>Testimonials</MobileNavLink>
-          <MobileNavLink href="/experience" isActive={pathname === '/experience'} onClick={closeMenu}>Experience</MobileNavLink>
-          <MobileNavLink href="/tech-skills" isActive={pathname === '/tech-skills'} onClick={closeMenu}>Skills</MobileNavLink>
-          <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Projects</MobileNavLink>
-          <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
+          
+          {/* Portfolio Section Header */}
+          <div className="px-4 py-2 text-sm font-bold text-gray-500 uppercase">Portfolio</div>
+          
+          {/* Portfolio Links (indented) */}
+          <div className="pl-4">
+            <MobileNavLink href="/experience" isActive={pathname === '/experience'} onClick={closeMenu}>Experience</MobileNavLink>
+            <MobileNavLink href="/tech-skills" isActive={pathname === '/tech-skills'} onClick={closeMenu}>Skills</MobileNavLink>
+            <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Projects</MobileNavLink>
+            <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
+          </div>
+          
           <ExternalMobileNavLink href={personalInfo.socialMedia.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
           <MobileNavLink href="/contact" isActive={pathname === '/contact'} onClick={closeMenu}>Contact</MobileNavLink>
           <MobileDownloadLinks onClick={closeMenu} />
@@ -108,6 +189,33 @@ const NavLink = ({ href, children, isActive }: { href: string; children: React.R
         isActive 
           ? 'text-blue-600 border-b-2 border-blue-600' 
           : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
+      }`}
+    >
+      {children}
+    </Link>
+  );
+};
+
+// Dropdown link for desktop portfolio menu
+const DropdownLink = ({ 
+  href, 
+  children, 
+  isActive,
+  onClick
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  isActive: boolean;
+  onClick: () => void;
+}) => {
+  return (
+    <Link 
+      href={href} 
+      onClick={onClick}
+      className={`block px-4 py-2 text-sm ${
+        isActive 
+          ? 'text-blue-600 bg-blue-50' 
+          : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
       }`}
     >
       {children}

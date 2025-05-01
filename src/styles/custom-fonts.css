@@ -9,6 +9,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap'); /* For Braggadocio alternative */
 @import url('https://fonts.cdnfonts.com/css/braggadocio');
 @import url('https://db.onlinewebfonts.com/c/955ae876a7acdcec19eb9ea5e48ae554?family=Braggadocio+W01');
+
+/* Explicit font-face declaration for Braggadocio - helps browsers find it */
+@font-face {
+  font-family: 'Braggadocio W01';
+  src: url('https://db.onlinewebfonts.com/t/955ae876a7acdcec19eb9ea5e48ae554.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/955ae876a7acdcec19eb9ea5e48ae554.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/955ae876a7acdcec19eb9ea5e48ae554.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Classes with fallbacks for better compatibility */
 .font-desdemona {
   font-family: 'Cinzel Decorative', 'Times New Roman', serif;
@@ -50,7 +62,7 @@
   font-weight: normal;
 }
 .font-braggadocio {
-  font-family: 'Braggadocio W01', 'Courier New', sans-serif;
+  font-family: 'Braggadocio W01', 'Impact', 'Arial Black', sans-serif !important;
   letter-spacing: 1px;
-  font-weight: bold;
+  font-weight: normal;
 }

@@ -7,6 +7,7 @@ import ContactSidebar from "@/components/ui/ContactSidebar";
 import Script from "next/script";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 import { Toaster } from "react-hot-toast";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,6 +84,7 @@ export default function RootLayout({
               },
             }
           }} />
+          <SpeedInsights />
         </HydrationErrorSuppressor>
       </body>
     </html>

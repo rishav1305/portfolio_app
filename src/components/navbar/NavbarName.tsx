@@ -29,9 +29,12 @@ export default function NavbarName({ name, isScrolled = false, className = "" }:
   }, []);
   
   return (
-    <div className={`relative block text-xl md:text-2xl font-braggadocio tracking-wide overflow-hidden ${
-      isScrolled ? 'text-white' : ''
-    } ${className}`}>
+    <div className={`relative block text-2xl md:text-3xl font-braggadocio tracking-wide overflow-hidden ${className}`}
+    style={{
+      fontFamily: "'Braggadocio W01', 'Braggadocio', 'Impact', 'Arial Black', sans-serif",
+      fontSize: "200%",
+      color: "#000000" // Forcing black color regardless of scroll state
+    }}>
       <span className="relative z-10">{name}</span>
       
       {/* Diagonal line overlay - only render with animation when client-side */}

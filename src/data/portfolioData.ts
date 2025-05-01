@@ -78,7 +78,7 @@ export type Testimonial = {
 // The main data object
 const portfolioData = {
   personalInfo: {
-    name: "Rishav Chatterjee",
+    name: "RISHAV",
     title: "Technology Leader",
     email: "rishavchatterjee2024@gmail.com",
     shortBio: "I help companies turn complex datasets into clear, actionable insights through advanced data modeling and visualization.",

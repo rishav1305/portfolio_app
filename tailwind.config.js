@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
+        braggadocio: ['Braggadocio W01', 'Braggadocio', 'Impact', 'Arial Black', 'sans-serif'],
       },
     },
   },
