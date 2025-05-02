@@ -28,6 +28,15 @@ export default function NavbarName({ name, isScrolled = false, className = "" }:
     return () => clearInterval(interval);
   }, []);
   
+  // Get first name only (RISHAV)
+  const firstName = name.split(' ')[0];
+  const lastName = name.split(' ').slice(1).join(' ');
+  
+  // Split the first name to style the "SH" differently
+  const firstPart = firstName.substring(0, 2); // "RI"
+  const highlightPart = firstName.substring(2, 4); // "SH"
+  const lastPart = firstName.substring(4); // "AV"
+  
   return (
     <div className={`relative block text-2xl md:text-3xl font-braggadocio tracking-wide overflow-hidden ${className}`}
     style={{
@@ -35,7 +44,21 @@ export default function NavbarName({ name, isScrolled = false, className = "" }:
       fontSize: "200%",
       color: "#000000" // Forcing black color regardless of scroll state
     }}>
-      <span className="relative z-10">{name}</span>
+      {/* Render the name with specific part highlighted */}
+      <span className="relative z-10">
+        <span style={{ color: "#000000" }}>{firstPart}</span>
+        <span 
+          className="relative" 
+          style={{ 
+            color: "#2a4ad7", // Main blue color
+            fontWeight: "bold" 
+          }}
+        >
+          {highlightPart}
+        </span>
+        <span style={{ color: "#000000" }}>{lastPart}</span>
+        {lastName ? <span style={{ color: "#000000" }}> {lastName}</span> : null}
+      </span>
       
       {/* Diagonal line overlay - only render with animation when client-side */}
       {isMounted && (
