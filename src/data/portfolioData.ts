@@ -264,7 +264,7 @@ const portfolioData = {
       image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "GitHub Copilot", "Claude AI", "Vercel", "Responsive Design"],
-      category: "Completed",
+      category: "Ongoing",
       company: "Personal Project",
       start_date: "2025-04-21",
       end_date: "2025-05-01",

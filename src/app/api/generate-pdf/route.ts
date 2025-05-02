@@ -8,6 +8,7 @@ import fs from 'fs';
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get('type') || 'cv'; // Default to CV if not specified
+  const requestedName = searchParams.get('name') || portfolioData.personalInfo.name;
   
   let browser;
   try {
@@ -15,12 +16,13 @@ export async function GET(request: NextRequest) {
 
     // Enhanced browser launch configuration
     browser = await puppeteer.launch({ 
-      headless: true,  // Use boolean true instead of 'new' string
+      headless: true,  // Use boolean true for older versions of Puppeteer
       args: [
         '--no-sandbox', 
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--disable-gpu'
+        '--disable-gpu',
+        '--font-render-hinting=none' // Improve font rendering
       ]
     });
     
@@ -47,7 +49,8 @@ export async function GET(request: NextRequest) {
     });
     
     // Define file paths
-    const fileName = type === 'resume' ? 'Rishav_Chatterjee_Resume.pdf' : 'Rishav_Chatterjee_CV.pdf';
+    const formattedName = requestedName.replace(/\s+/g, '_');
+    const fileName = type === 'resume' ? `${formattedName}_Resume.pdf` : `${formattedName}_CV.pdf`;
     const publicDir = path.join(process.cwd(), 'public', 'documents');
     const filePath = path.join(publicDir, fileName);
     

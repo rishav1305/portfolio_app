@@ -3,6 +3,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import portfolioData from "@/data/portfolioData";
 
+// Helper function to get category badge color
+const getCategoryBadgeColor = (category: string) => {
+  switch (category) {
+    case 'Completed':
+      return 'bg-green-600';
+    case 'Ongoing':
+      return 'bg-yellow-500';
+    default:
+      return 'bg-blue-600';
+  }
+};
+
 export default function Projects() {
   const { personalInfo, projects } = portfolioData;
   const categories = [...new Set(projects.map(project => project.category))];
@@ -48,7 +60,7 @@ export default function Projects() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-2 py-1">
+                  <div className={`absolute top-0 right-0 ${getCategoryBadgeColor(project.category)} text-white text-xs font-bold px-2 py-1`}>
                     {project.category}
                   </div>
                 </div>
