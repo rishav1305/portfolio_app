@@ -267,7 +267,7 @@ const portfolioData = {
       category: "Ongoing",
       company: "Personal Project",
       start_date: "2025-04-21",
-      end_date: "2025-05-01",
+      end_date: "",
       link: "projects/portfolio-app-with-ai-assistance"
     },
     {
