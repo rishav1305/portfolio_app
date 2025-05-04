@@ -258,6 +258,19 @@ const portfolioData = {
 
   projects: [
     {
+      title: "Automated DSA Questions Tracker",
+      short_description: "A Python tool that automates tracking and practicing data structure and algorithm problems from NeetCode 150.",
+      description: "Built an automation tool that helps track progress through NeetCode 150 DSA problems. The system automatically fetches questions, organizes solutions by category and difficulty, generates solution templates, validates implementations, and maintains a Git repository of solutions. Features include progress tracking, problem categorization, and automated testing.",
+      image: "/images/projects/thumbnail/portfolio_app.png", 
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Python", "Jupyter Notebook", "Git", "Data Structures", "Algorithms", "Automation", "Web Scraping"],
+      category: "Ongoing",
+      company: "Personal Project",
+      start_date: "2025-04-01",
+      end_date: "",
+      link: "projects/automated-dsa-questions-tracker"
+    },
+    {
       title: "AI-Powered Portfolio Website",
       short_description: "Developed a modern, responsive portfolio website entirely using GitHub Copilot - Claude 3.7 Sonnet, demonstrating the power of AI pair programming.",
       description: "Created a Next.js portfolio website featuring responsive design, dynamic content management, interactive visualizations, and SEO optimization. Used GitHub Copilot - Claude 3.7 Sonnet for the entire development process, leveraging prompt engineering to build components, implement features, and solve technical challenges.",
