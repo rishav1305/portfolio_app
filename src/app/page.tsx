@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons";
-import portfolioData, { getYearsOfExperience, getAverageSkillRatings } from "@/data/portfolioData";
+import portfolioData, { getYearsOfExperience, getAverageSkillRatings, WorkExperience } from "@/data/portfolioData";
 import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 
 export default function Home() {
@@ -174,7 +174,7 @@ export default function Home() {
           {/* Freelance Experience - Mobile-friendly card layout */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-6 border-b pb-2">
-              <span className="text-blue-600">Freelance</span> Consulting Experience
+              Freelance Experience
             </h3>
             <p className="text-gray-700 mb-6">
               As an independent freelancer and data consultant, I provide specialized expertise and flexible solutions tailored to each client's unique needs. My freelancing practice combines enterprise-level quality with the agility of independent work, offering freelance data engineering, visualization, and analytics services to clients worldwide. I take pride in delivering high-quality freelance solutions that match or exceed the standards of large consultancies.
@@ -203,11 +203,11 @@ export default function Home() {
                         </ul>
                       </div>
                       
-                      {job.clients && job.clients.length > 0 && (
+                      {((job as WorkExperience).clients && (job as WorkExperience).clients!.length > 0) && (
                         <div className="mt-4">
                           <p className="font-medium text-gray-700 mb-2">Clients:</p>
                           <ul className="list-disc pl-5 space-y-2">
-                            {job.clients.map((client, i) => (
+                            {(job as WorkExperience).clients!.map((client, i) => (
                               <li key={i} className="text-gray-700">
                                 <span className="font-medium">{client.name}</span>
                               </li>

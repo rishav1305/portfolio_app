@@ -1,5 +1,5 @@
 import React from 'react';
-import portfolioData from "@/data/portfolioData";
+import portfolioData, { WorkExperience } from "@/data/portfolioData";
 
 export default function Experience() {
   const { professionalExperience, freelanceExperience, education } = portfolioData;
@@ -32,22 +32,22 @@ export default function Experience() {
                 </ul>
               </div>
               
-              {job.details && job.details.length > 0 && (
+              {((job as WorkExperience).details && (job as WorkExperience).details!.length > 0) && (
                 <div className="mb-6">
                   <h4 className="text-lg font-semibold mb-2 text-gray-800">Role Details</h4>
                   <ul className="list-disc pl-5 space-y-2">
-                    {job.details.map((detail, i) => (
+                    {(job as WorkExperience).details!.map((detail, i) => (
                       <li key={i} className="text-gray-700">{detail}</li>
                     ))}
                   </ul>
                 </div>
               )}
               
-              {job.clients && job.clients.length > 0 && (
+              {((job as WorkExperience).clients && (job as WorkExperience).clients!.length > 0) && (
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-gray-800">Client Projects</h4>
                   <div className="space-y-4">
-                    {job.clients.map((client, i) => (
+                    {(job as WorkExperience).clients!.map((client, i) => (
                       <div key={i} className="bg-gray-50 p-4 rounded-md">
                         <h5 className="font-medium text-gray-800">{client.name}</h5>
                         <p className="text-gray-700 mt-1">{client.description}</p>
@@ -95,22 +95,22 @@ export default function Experience() {
                 </ul>
               </div>
               
-              {job.details && job.details.length > 0 && (
+              {((job as WorkExperience).details && (job as WorkExperience).details!.length > 0) && (
                 <div className="mb-6">
                   <h4 className="text-lg font-semibold mb-2 text-gray-800">Role Details</h4>
                   <ul className="list-disc pl-5 space-y-2">
-                    {job.details.map((detail, i) => (
+                    {(job as WorkExperience).details!.map((detail, i) => (
                       <li key={i} className="text-gray-700">{detail}</li>
                     ))}
                   </ul>
                 </div>
               )}
               
-              {job.clients && job.clients.length > 0 && (
+              {((job as WorkExperience).clients && (job as WorkExperience).clients!.length > 0) && (
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-gray-800">Client Projects</h4>
                   <div className="space-y-4">
-                    {job.clients.map((client, i) => (
+                    {(job as WorkExperience).clients!.map((client, i) => (
                       <div key={i} className="bg-gray-50 p-4 rounded-md">
                         <h5 className="font-medium text-gray-800">{client.name}</h5>
                         <p className="text-gray-700 mt-1">{client.description}</p>
