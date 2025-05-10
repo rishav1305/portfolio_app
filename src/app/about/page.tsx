@@ -3,7 +3,7 @@ import Link from 'next/link';
 import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
 
 export default function About() {
-  const { personalInfo, experience, education } = portfolioData;
+  const { personalInfo, professionalExperience, freelanceExperience, education } = portfolioData;
   const yearsOfExperience = getYearsOfExperience();
   
   return (
@@ -126,8 +126,8 @@ export default function About() {
             <div className="md:hidden absolute left-6 h-full w-1 bg-blue-200"></div>
             
             <div className="space-y-8">
-              {/* Work Experience */}
-              {experience.map((job, index) => (
+              {/* Work Experience - Combine both professional and freelance experiences */}
+              {[...professionalExperience, ...freelanceExperience].map((job, index) => (
                 <div key={`work-${index}`} className={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
                   {/* Timeline point - positioned differently on mobile */}
                   <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"></div>
@@ -158,12 +158,12 @@ export default function About() {
               
               {/* Education */}
               {education.map((edu, index) => (
-                <div key={`edu-${index}`} className={`relative flex items-start ${(index + experience.length) % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
+                <div key={`edu-${index}`} className={`relative flex items-start ${(index + professionalExperience.length + freelanceExperience.length) % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
                   {/* Timeline point - positioned differently on mobile */}
                   <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-green-600 border-4 border-white z-10"></div>
                   
                   {/* Content box */}
-                  <div className={`w-full md:w-5/12 ${(index + experience.length) % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
+                  <div className={`w-full md:w-5/12 ${(index + professionalExperience.length + freelanceExperience.length) % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
                     <div className="bg-white p-6 rounded-lg shadow-lg">
                       <div className="bg-green-100 text-green-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">
                         Education

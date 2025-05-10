@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rishav Chatterjee | Data - Science - Viz",
-  description: "Personal portfolio of Rishav Chatterjee, specializing in data engineering and visualization",
+  title: "Rishav Chatterjee | Data Consultant & Freelance Specialist",
+  description: "Personal portfolio of Rishav Chatterjee, freelance data consultant specializing in data engineering, visualization, and analytics solutions for businesses worldwide",
 };
 
 // Force light mode styles

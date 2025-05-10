@@ -29,7 +29,7 @@ const testimonials = [
   {
     name: "Priyanka Bhambhurkar",
     position: "Project Manager",
-    company: "Bitwise Solutions Pvt Ltd"
+    company: "Freelance Client"
   },
   {
     name: "Garima Narang",

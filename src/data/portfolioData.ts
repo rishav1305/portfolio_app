@@ -16,6 +16,7 @@ export type WorkExperience = {
   company: string;
   role: string;
   achievements: string[];
+  experienceType: 'professional' | 'freelance';
   tags?: string[];
   details?: string[];
   clients?: {
@@ -79,13 +80,13 @@ export type Testimonial = {
 const portfolioData = {
   personalInfo: {
     name: "RISHAV",
-    title: "Technology Leader",
+    title: "Technology Leader & Freelance Data Consultant",
     email: "rishavchatterjee2024@gmail.com",
-    shortBio: "I help companies turn complex datasets into clear, actionable insights through advanced data modeling and visualization.",
+    shortBio: "As a freelance data expert, I help companies turn complex datasets into clear, actionable insights through advanced data modeling and visualization.",
     longBio: [
       "I specialize in building scalable data architectures using modern cloud platforms like AWS and Azure, and I'm highly proficient in tools like Python, SQL, Spark, and various BI tools including Tableau CRM, Qlik Sense, Power BI, and Preset. From streamlining programmatic pipelines and integrating enterprise systems like NetSuite and Salesforce, to delivering mission-critical dashboards for C-level executives—I've consistently aligned data solutions with business strategy.",
       "To stay ahead in today's fast-paced environment, I actively integrate AI into my workflow. I leverage tools like GitHub Copilot, Claude, and ChatGPT for code assistance, debugging, and technical documentation. I'm also developing AI agents using Ollama and Autogen frameworks to automate and scale analytical tasks.",
-      "With experience across top firms, I build scalable, interactive dashboards and analytics solutions—leveraging AI tools to boost productivity and drive smarter, data-informed decisions."
+      "With experience as both a freelance consultant and across top firms, I build scalable, interactive dashboards and analytics solutions—leveraging AI tools to boost productivity and drive smarter, data-informed decisions. My freelance practice specializes in providing enterprise-grade data solutions with the flexibility and personalized approach of an independent professional."
     ],
     location: "Delhi",
     yearsExperienceStartYear: 2018,
@@ -102,14 +103,15 @@ const portfolioData = {
     }
   },
   
-  experience: [
+  freelanceExperience: [
     {
-      period: "Dec 2022 - Present",
-      startDate: "2022-12-01",
+      period: "Feb 2023 - Present",
+      startDate: "2023-02-13",
       endDate: null,
-      location: "Pune, Maharashtra",
-      company: "Bitwise Solutions Pvt Ltd",
+      location: "Pennsylvania, USA",
+      company: "The Weather Company",
       role: "Technology Lead",
+      experienceType: "freelance",
       achievements: [
         "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
         "Optimized Programmatic Advertisers pipeline, reducing processing time by 60%",
@@ -126,7 +128,10 @@ const portfolioData = {
         "Technical Innovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance"
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration"]
-    },
+    }
+  ],
+  
+  professionalExperience: [
     {
       period: "May 2020 - Dec 2022",
       startDate: "2020-05-01",
@@ -134,6 +139,7 @@ const portfolioData = {
       location: "Hyderabad, Telangana",
       company: "Novartis Healthcare Pvt Ltd",
       role: "Senior Data Engineer",
+      experienceType: "professional",
       achievements: [
         "Migrated from HIVE to Snowflake, increasing pipeline performance by 60%",
         "Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by 40%",
@@ -149,6 +155,7 @@ const portfolioData = {
       location: "Noida, Uttar Pradesh",
       company: "Polestar Solutions and Services",
       role: "Data Engineer",
+      experienceType: "professional",
       achievements: [
         "Worked with Jubilant FoodWorks to reduce production pipeline execution time by 66%",
         "Migrated IndiaMART's on-premises system to AWS",
@@ -263,7 +270,7 @@ const portfolioData = {
       description: "Built an automation tool that helps track progress through NeetCode 150 DSA problems. The system automatically fetches questions, organizes solutions by category and difficulty, generates solution templates, validates implementations, and maintains a Git repository of solutions. Features include progress tracking, problem categorization, and automated testing.",
       image: "/images/projects/thumbnail/portfolio_app.png", 
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
-      techStack: ["Python", "Jupyter Notebook", "Git", "Data Structures", "Algorithms", "Automation", "Web Scraping"],
+      techStack: ["Python", "Jupyter Notebook", "Git", "Data Structures", "Algorithms", "Automation", "Web Scraping", "AI", "Artificial Intelligence"],
       category: "Ongoing",
       company: "Personal Project",
       start_date: "2025-04-01",
@@ -276,7 +283,7 @@ const portfolioData = {
       description: "Created a Next.js portfolio website featuring responsive design, dynamic content management, interactive visualizations, and SEO optimization. Used GitHub Copilot - Claude 3.7 Sonnet for the entire development process, leveraging prompt engineering to build components, implement features, and solve technical challenges.",
       image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "GitHub Copilot", "Claude AI", "Vercel", "Responsive Design"],
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "GitHub Copilot", "Claude AI", "Vercel", "Responsive Design", "Artificial Intelligence", "AI", "Web Development"],
       category: "Ongoing",
       company: "Personal Project",
       start_date: "2025-04-21",
@@ -332,7 +339,7 @@ const portfolioData = {
       name: "Ivan Cheklin",
       location: "Pennsylvania, USA",
       position: "BI Leader",
-      company: "The Weather Comapany",
+      company: "The Weather Company",
       text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
       image: "/images/testimonial1.jpg"
     },
@@ -340,33 +347,9 @@ const portfolioData = {
       name: "Sylvia Ho",
       location: "New York, USA",
       position: "Principal Data Scientist",
-      company: "The Weather Comapany",
+      company: "The Weather Company",
       text: "Working with Rishav was a game-changer for our data visualization projects. His innovative approach and attention to detail resulted in solutions that exceeded our expectations.",
       image: "/images/testimonial2.jpg"
-    },
-    {
-      name: "Nishant Goel",
-      position: "Senior Manager",
-      location: "Gurgaon, India",
-      company: "Gartner India",
-      text: "Rishav's technical leadership and cloud expertise transformed our infrastructure. He has a unique ability to align technology solutions with business objectives, driving significant value.",
-      image: "/images/testimonial5.jpg"
-    },
-    {
-      name: "Guneet Kaur",
-      position: "Lead Data Engineer",
-      location: "Toronto, Canada",
-      company: "Gartner India",
-      text: "I've had the pleasure of collaborating with Rishav on several complex data engineering projects. His deep understanding of data architecture and cloud solutions helped us optimize our systems substantially.",
-      image: "/images/testimonial4.jpg"
-    },
-    {
-      name: "Priyanka Bhamburkar",
-      location: "Pune, India",
-      position: "Project Manager",
-      company: "Bitwise Solutions Pvt Ltd",
-      text: "Rishav quickly became an invaluable part of our team. His ability to understand complex requirements and translate them into efficient, scalable solutions is truly impressive. I highly recommend his work.",
-      image: "/images/testimonial3.jpg"
     },
     {
       name: "Garima Narang",
@@ -408,5 +391,12 @@ export const getYearsOfExperience = () => {
   const currentYear = new Date().getFullYear();
   return currentYear - portfolioData.personalInfo.yearsExperienceStartYear;
 };
+
+// Create a combined experience array for backward compatibility
+Object.defineProperty(portfolioData, 'experience', {
+  get: function() {
+    return [...this.professionalExperience, ...this.freelanceExperience];
+  }
+});
 
 export default portfolioData;

@@ -10,7 +10,7 @@ import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 export default function Home() {
   const yearsOfExperience = getYearsOfExperience();
   const skillCategories = getAverageSkillRatings();
-  const { personalInfo, experience, education } = portfolioData;
+  const { personalInfo, professionalExperience, freelanceExperience, education } = portfolioData;
   
   // Function to render stars based on skill level with more precise .00, .25, .50, and .75 increments
   // Also colors stars green for ratings >= 4, yellow for others
@@ -171,11 +171,61 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
           
+          {/* Freelance Experience - Mobile-friendly card layout */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-6 border-b pb-2">
+              <span className="text-blue-600">Freelance</span> Consulting Experience
+            </h3>
+            <p className="text-gray-700 mb-6">
+              As an independent freelancer and data consultant, I provide specialized expertise and flexible solutions tailored to each client's unique needs. My freelancing practice combines enterprise-level quality with the agility of independent work, offering freelance data engineering, visualization, and analytics services to clients worldwide. I take pride in delivering high-quality freelance solutions that match or exceed the standards of large consultancies.
+            </p>
+            <div className="space-y-6">
+              {freelanceExperience.map((job, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div className="p-6">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div className="mb-4 md:mb-0">
+                          <h4 className="text-xl font-bold text-gray-800">{job.role}</h4>
+                          <p className="text-blue-600 font-medium">{job.company}</p>
+                        </div>
+                        <div className="text-gray-600">
+                          <p className="font-semibold">{job.period}</p>
+                          <p>{job.location}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-4">
+                        <p className="font-medium text-gray-700 mb-2">Key Achievements:</p>
+                        <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                          {job.achievements.map((achievement, i) => (
+                            <li key={i}>{achievement}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {job.clients && job.clients.length > 0 && (
+                        <div className="mt-4">
+                          <p className="font-medium text-gray-700 mb-2">Clients:</p>
+                          <ul className="list-disc pl-5 space-y-2">
+                            {job.clients.map((client, i) => (
+                              <li key={i} className="text-gray-700">
+                                <span className="font-medium">{client.name}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          
           {/* Professional Experience - Mobile-friendly card layout */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-6 border-b pb-2">Professional Experience</h3>
             <div className="space-y-6">
-              {experience.map((job, index) => (
+              {professionalExperience.map((job, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
                   <div className="p-6">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
@@ -253,7 +303,7 @@ export default function Home() {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">Technical Skills</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              My expertise spans data engineering, analytics, cloud services, and project management
+              My expertise spans data engineering, analytics, cloud services, and project management - skills I've refined both in corporate settings and as a freelance data consultant
             </p>
           </div>
           
@@ -379,8 +429,8 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">CONTACT</h2>
           <p className="text-lg text-gray-700 mb-10">
-            Feel free to contact me for any question. For open source projects, please open an issue or pull request on 
-            Github. Otherwise, send me an email at 
+            Looking for freelance data consulting services? Feel free to contact me about your project needs or any questions. For open source projects, please open an issue or pull request on 
+            Github. For freelance inquiries or collaborations, send me an email at 
             <a href={`mailto:${personalInfo.email}`} className="text-blue-600 ml-1">
               {personalInfo.email}
             </a>.

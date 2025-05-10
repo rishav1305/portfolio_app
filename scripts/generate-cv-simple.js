@@ -37,8 +37,8 @@ async function generatePDF() {
         period: "Dec 2022 - Present",
         startDate: "2022-12-01",
         endDate: null,
-        location: "Pune, Maharashtra",
-        company: "Bitwise Solutions Pvt Ltd",
+        location: "Pennsylvania, USA",
+        company: "The Weather Company",
         role: "Technology Lead",
         achievements: [
           "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
@@ -47,6 +47,21 @@ async function generatePDF() {
           "Led migration from Qlik Sense to Python for Datorama nPrinting"
         ],
         tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership"]
+      },
+      {
+        period: "Dec 2022 - Present",
+        startDate: "2022-12-01",
+        endDate: null,
+        location: "Remote",
+        company: "Freelance",
+        role: "Technology Consultant",
+        achievements: [
+          "Provided expert consulting services for data engineering and analytics solutions",
+          "Developed custom data pipelines for Bitwise Solutions Pvt Ltd",
+          "Optimized existing data systems to improve performance and reduce costs",
+          "Created comprehensive analytics dashboards for business insights"
+        ],
+        tags: ["Consulting", "Data Engineering", "Analytics", "Cloud Solutions"]
       },
       {
         period: "May 2020 - Dec 2022",
