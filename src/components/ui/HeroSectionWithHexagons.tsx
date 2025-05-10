@@ -1,16 +1,6 @@
 'use client';
 
-import Link fr             <p className="text-xl md:text-2xl mb-10 text-black max-w-3xl">
-          👋 Hi! I'm a <span className="font-bold">Technology Leader & Freelance Data Consultant</span> with expertise in engineering scalable and consistent{" "}
-          <span className="font-bold text-blue-600">cloud based solutions</span>. 
-          I've collaborated with top-tier organizations and freelance clients, delivering impactful products and independent consulting services. I leverage{" "}
-          <span className="font-bold">AI to boost productivity</span> and drive innovation as both a freelancer and tech leader. I design scalable, cloud-based data solutions that align tech with business goals.
-        </p>className="text-xl md:text-2xl mb-10 text-black max-w-3xl">
-          👋 Hi! I'm a <span className="font-bold">Technology Leader & Freelance Data Consultant</span> with expertise in engineering scalable and consistent{" "}
-          <span className="font-bold text-blue-600">cloud based solutions</span>. 
-          I've collaborated with top-tier organizations and freelance clients, delivering impactful products and independent consulting services. I leverage{" "}
-          <span className="font-bold">AI to boost productivity</span> and drive innovation. I design scalable, cloud-based data solutions that align tech with business goals, both as a professional and freelance data specialist.
-        </p>xt/link";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 
 // Import HexagonBackground with no SSR - this is allowed in client components
