@@ -1,0 +1,23 @@
+{
+  "name": "Rishav Chatterjee - Data Consultant Portfolio",
+  "short_name": "Rishav Portfolio",
+  "description": "Professional portfolio of Rishav Chatterjee, a freelance data consultant specializing in data engineering, visualization, and cloud solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

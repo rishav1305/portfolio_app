@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Rishav Chatterjee - Data Consultant Portfolio</title>
+  <link>https://rishavchatterjee.com</link>
+  <description>Experienced freelance data consultant specializing in cloud solutions and data engineering</description>
+  <language>en-us</language>
+  <lastBuildDate>Sun, 11 May 2025 12:00:00 GMT</lastBuildDate>
+  <atom:link href="https://rishavchatterjee.com/rss/feed.xml" rel="self" type="application/rss+xml" />
+  
+  <item>
+    <title>Portfolio App with AI Assistance</title>
+    <link>https://rishavchatterjee.com/projects/portfolio-app-with-ai-assistance</link>
+    <guid>https://rishavchatterjee.com/projects/portfolio-app-with-ai-assistance</guid>
+    <pubDate>Sun, 11 May 2025 10:00:00 GMT</pubDate>
+    <description>Created a modern portfolio application using Next.js, Tailwind CSS, and structured data for SEO optimization.</description>
+    <category>Web Development</category>
+  </item>
+  
+  <item>
+    <title>Migration from On-Premise to AWS Infrastructure</title>
+    <link>https://rishavchatterjee.com/projects/migration-from-on-premise-to-aws-infra</link>
+    <guid>https://rishavchatterjee.com/projects/migration-from-on-premise-to-aws-infra</guid>
+    <pubDate>Sun, 05 May 2025 10:00:00 GMT</pubDate>
+    <description>Led a comprehensive migration from on-premise systems to a scalable AWS infrastructure for a large enterprise client.</description>
+    <category>Cloud Infrastructure</category>
+  </item>
+  
+  <item>
+    <title>Maintain and Optimize the Production Pipelines</title>
+    <link>https://rishavchatterjee.com/projects/maintain-and-optimize-the-production-pipelines</link>
+    <guid>https://rishavchatterjee.com/projects/maintain-and-optimize-the-production-pipelines</guid>
+    <pubDate>Sun, 01 May 2025 10:00:00 GMT</pubDate>
+    <description>Implemented performance optimizations for data pipeline processes, reducing processing time by 40%.</description>
+    <category>Data Engineering</category>
+  </item>
+  
+  <item>
+    <title>Data Wrangling for Prediction Model</title>
+    <link>https://rishavchatterjee.com/projects/data-wrangling-for-prediction-model</link>
+    <guid>https://rishavchatterjee.com/projects/data-wrangling-for-prediction-model</guid>
+    <pubDate>Sun, 25 Apr 2025 10:00:00 GMT</pubDate>
+    <description>Prepared and processed complex datasets for machine learning prediction models focused on customer behavior analysis.</description>
+    <category>Data Science</category>
+  </item>
+  
+  <item>
+    <title>Automated DSA Questions Tracker</title>
+    <link>https://rishavchatterjee.com/projects/automated-dsa-questions-tracker</link>
+    <guid>https://rishavchatterjee.com/projects/automated-dsa-questions-tracker</guid>
+    <pubDate>Sun, 18 Apr 2025 10:00:00 GMT</pubDate>
+    <description>Developed an automated system to track and organize data structures and algorithms practice questions.</description>
+    <category>Software Development</category>
+  </item>
+</channel>
+</rss>

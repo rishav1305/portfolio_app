@@ -74,11 +74,13 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
   }, [isHovering, testimonials.length]);
   
   return (
-    <div 
+    <section 
       className="relative overflow-hidden py-8 px-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       ref={containerRef}
+      aria-roledescription="carousel"
+      aria-label="Client testimonials"
     >
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-32 h-32 -mt-12 -mr-16 bg-blue-200 rounded-full opacity-20"></div>
@@ -119,6 +121,8 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
         transition={{
           x: { type: "spring", stiffness: 100, damping: 20 }
         }}
+        role="region"
+        aria-live="polite"
       >
         {allTestimonials.map((testimonial, index) => (
           <motion.div 
@@ -131,15 +135,21 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <div className="bg-white p-6 rounded-lg shadow-lg h-full flex flex-col border border-blue-100">
+            <article 
+              className="bg-white p-6 rounded-lg shadow-lg h-full flex flex-col border border-blue-100"
+              aria-labelledby={`testimonial-${index}-name`}
+              itemScope
+              itemType="https://schema.org/Review"
+            >
               <div className="mb-6 flex items-start justify-between">
                 <div className="flex items-start">
                   <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 mr-4 shadow-md border-2 border-blue-200">
                     {testimonial.image ? (
                       <img 
                         src={testimonial.image} 
-                        alt={testimonial.name}
+                        alt={`${testimonial.name}, ${testimonial.position} at ${testimonial.company}`}
                         className="w-full h-full object-cover"
+                        loading={index > getVisibleCount() ? "lazy" : "eager"}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl font-bold">
@@ -148,24 +158,26 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
                     )}
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">{testimonial.name}</h3>
-                    <p className="text-sm text-gray-600">{testimonial.position}</p>
-                    <p className="text-sm text-blue-600 font-medium">{testimonial.company}</p>
+                    <h3 id={`testimonial-${index}-name`} className="font-bold text-lg text-gray-900" itemProp="author">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-600" itemProp="jobTitle">{testimonial.position}</p>
+                    <p className="text-sm text-blue-600 font-medium" itemProp="affiliation">{testimonial.company}</p>
                   </div>
                 </div>
-                <div className="text-blue-300">
+                <div className="text-blue-300" aria-hidden="true">
                   <QuoteIcon />
                 </div>
               </div>
               
               <div className="flex-grow">
-                <p className="text-gray-700 italic leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-gray-700 italic leading-relaxed" itemProp="reviewBody">"{testimonial.text}"</p>
               </div>
               
               <div className="mt-6 flex justify-between items-center">
-                <div className="flex text-yellow-500">
+                <div className="flex text-yellow-500" aria-label="5 out of 5 stars" itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+                  <meta itemProp="ratingValue" content="5" />
+                  <meta itemProp="bestRating" content="5" />
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   ))}
@@ -173,7 +185,7 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
                 
                 <div className="text-xs text-gray-500 font-medium tracking-wider">VERIFIED CLIENT</div>
               </div>
-            </div>
+            </article>
           </motion.div>
         ))}
       </motion.div>
@@ -191,6 +203,6 @@ export default function AutoScrollTestimonials({ testimonials }: AutoScrollTesti
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
