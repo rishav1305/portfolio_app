@@ -1,5 +1,6 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function Contact() {
   const { personalInfo } = portfolioData;
@@ -7,6 +8,9 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ contact: 'Contact Me' }} />
+        </div>
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Me</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">

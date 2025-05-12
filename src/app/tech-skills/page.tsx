@@ -1,6 +1,7 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
 import Image from 'next/image';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function TechSkills() {
   const { skills } = portfolioData;
@@ -71,6 +72,9 @@ export default function TechSkills() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ "tech-skills": "Technical Skills" }} />
+        </div>
         <h1 className="text-3xl font-bold text-center mb-3 text-gray-800">Technical Skills</h1>
         <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
           A comprehensive breakdown of my technical proficiencies across various domains including programming languages, data tools, cloud platforms, and project management.

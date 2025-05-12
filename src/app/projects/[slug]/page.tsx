@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import portfolioData from "@/data/portfolioData";
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 // Helper function to format date as Month Year
 function formatMonthYear(dateString: string): string {
@@ -62,25 +63,10 @@ export default function ProjectDetails({ params }: any) {
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb Navigation */}
         <div className="mb-8">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2">
-              <li>
-                <Link href="/" className="text-gray-500 hover:text-gray-700">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-500 mx-2">/</span>
-                <Link href="/projects" className="text-gray-500 hover:text-gray-700">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-500 mx-2">/</span>
-                <span className="text-gray-900 font-medium">{project.title}</span>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb overrides={{ 
+            projects: 'Projects', 
+            [params.slug]: project.title 
+          }} />
         </div>
 
         {/* Project Header with solid background */}

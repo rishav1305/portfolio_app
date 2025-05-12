@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function About() {
   const { personalInfo, professionalExperience, freelanceExperience, education } = portfolioData;
@@ -26,6 +27,9 @@ export default function About() {
 
       {/* Content */}
       <div className="container mx-auto px-4 py-24 max-w-5xl">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ about: 'About Me' }} />
+        </div>
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">{personalInfo.name}</h1>
           <p className="text-xl text-blue-600">{personalInfo.title}</p>

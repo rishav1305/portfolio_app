@@ -1,6 +1,7 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
 import ProjectImage from '@/components/ui/ProjectImage';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 // Define interface for project timeline events
 interface ProjectTimelineEvent {
@@ -47,6 +48,9 @@ export default function Timeline() {
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ timeline: 'Project Timeline' }} />
+        </div>
         <h1 className="text-4xl font-bold text-center mb-16 text-gray-800">Project Timeline</h1>
         
         <div className="relative py-8">

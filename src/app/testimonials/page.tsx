@@ -1,5 +1,6 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function Testimonials() {
   // Create testimonial data structure - we'll update the data file later
@@ -31,6 +32,7 @@ export default function Testimonials() {
     <div className="min-h-screen pt-20">
       <section className="py-16 px-6 md:px-20">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumb />
           <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Client Testimonials</h1>
           
           <div className="space-y-8">

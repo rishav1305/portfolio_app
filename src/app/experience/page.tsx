@@ -1,5 +1,6 @@
 import React from 'react';
 import portfolioData, { WorkExperience } from "@/data/portfolioData";
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function Experience() {
   const { professionalExperience, freelanceExperience, education } = portfolioData;
@@ -7,6 +8,9 @@ export default function Experience() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ experience: 'Work Experience' }} />
+        </div>
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Freelance Experience</h1>
         
         <div className="space-y-12 mb-16">

@@ -2,6 +2,7 @@ import React from 'react';
 import { getMediumPosts } from '@/lib/utils/medium-feed';
 import { formatDistanceToNow } from 'date-fns';
 import MediumPostImage from '@/components/ui/MediumPostImage';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 // Make the page component async
 export default async function BlogPage() {
@@ -13,6 +14,9 @@ export default async function BlogPage() {
       {/* Hero Section with padding for navbar */}
       <section className="pt-32 pb-20 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <Breadcrumb overrides={{ blog: 'Blog Posts' }} />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog</h1>
           <div className="w-20 h-1 bg-blue-500 mb-10"></div>
         </div>
