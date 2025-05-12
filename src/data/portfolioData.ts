@@ -265,6 +265,19 @@ const portfolioData = {
 
   projects: [
     {
+      title: "Profile Builder with Local LLM",
+      short_description: "An AI-powered tool that automatically fills professional profiles across remote work platforms using portfolio data and local LLM models.",
+      description: "Built an AI agent that extracts information from your portfolio and uses local Ollama LLM models to generate optimized professional profiles for platforms like Upwork, LinkedIn, and other job boards. The tool features data extraction from portfolios, platform-specific content generation, and automated profile creation, all while keeping your data private by using local AI models.",
+      image: "/images/projects/thumbnail/profile_builder.png", 
+      thumbnail: "/images/projects/thumbnail/profile_builder.png",
+      techStack: ["Python", "Flask", "Docker", "Ollama", "LLM", "deepseek-r1", "Web Automation", "AI", "Artificial Intelligence", "BeautifulSoup"],
+      category: "Ongoing",
+      company: "Personal Project",
+      start_date: "2025-04-15",
+      end_date: "",
+      link: "projects/profile-builder"
+    },
+    {
       title: "Automated DSA Questions Tracker",
       short_description: "A Python tool that automates tracking and practicing data structure and algorithm problems from NeetCode 150.",
       description: "Built an automation tool that helps track progress through NeetCode 150 DSA problems. The system automatically fetches questions, organizes solutions by category and difficulty, generates solution templates, validates implementations, and maintains a Git repository of solutions. Features include progress tracking, problem categorization, and automated testing.",
