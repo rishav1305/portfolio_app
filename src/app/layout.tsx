@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../styles/custom-fonts.css"; 
@@ -53,11 +53,6 @@ export const metadata: Metadata = {
     address: true,
     telephone: true,
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   openGraph: {
     title: "Rishav Chatterjee | Technology Leader & Freelance Data Consultant",
     description: "Expert in scalable data solutions that align technology with business goals. Specializing in AWS, Python, SQL, and data visualization.",
@@ -104,6 +99,13 @@ export const metadata: Metadata = {
   },
 };
 
+// Define viewport configuration separately as per Next.js guidelines
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 // Force light mode styles
 const forceLightModeStyles = `
   :root {
@@ -140,6 +142,7 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{ __html: forceLightModeStyles }} />
         
         {/* Essential SEO link tags */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/images/icon-180x180.png" />
         <link rel="manifest" href="/manifest.json" />

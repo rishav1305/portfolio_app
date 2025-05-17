@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled R Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        #canvas {
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #2a4ad7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Styled 'R' Favicon Generator</h1>
+    
+    <div class="controls">
+        <button id="generateBtn">Generate Favicon</button>
+        <button id="downloadBtn">Download favicon.ico</button>
+    </div>
+    
+    <canvas id="canvas" width="64" height="64"></canvas>
+    
+    <div id="preview">
+        <p>Favicon Preview (16x16):</p>
+        <canvas id="preview16" width="16" height="16"></canvas>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const preview = document.getElementById('preview16');
+        const previewCtx = preview.getContext('2d');
+        
+        // Function to draw the R
+        function drawR() {
+            // Clear canvas
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw the R
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 48px Arial Black, Impact, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('R', canvas.width / 2, canvas.height / 2);
+            
+            // Draw the preview
+            previewCtx.clearRect(0, 0, 16, 16);
+            previewCtx.drawImage(canvas, 0, 0, 16, 16);
+        }
+        
+        // Generate the favicon when the page loads
+        window.onload = drawR;
+        
+        // Generate button click handler
+        document.getElementById('generateBtn').addEventListener('click', drawR);
+        
+        // Download button click handler
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // Create a link element
+            const link = document.createElement('a');
+            
+            // Convert canvas to blob
+            canvas.toBlob(function(blob) {
+                // Create a URL for the blob
+                const url = URL.createObjectURL(blob);
+                
+                // Set link properties
+                link.href = url;
+                link.download = 'favicon.png'; // Download as PNG since browsers can't create ICO files
+                
+                // Append to body, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up the URL
+                URL.revokeObjectURL(url);
+            });
+            
+            alert('Downloaded as PNG. Convert to ICO using an online converter.');
+        });
+    </script>
+</body>
+</html>

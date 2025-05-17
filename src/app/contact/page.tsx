@@ -1,9 +1,48 @@
+"use client";
+
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function Contact() {
   const { personalInfo } = portfolioData;
+
+  const [submitStatus, setSubmitStatus] = React.useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    
+    // Optional: Log the contact attempt via the API
+    await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, message }),
+    }).catch(err => console.error('API error:', err));
+    
+    // Prepare email content
+    const subject = `Contact from Portfolio - ${name || 'User'}`;
+    const body = `Message:\n${message}\n\nFrom: ${name ? name + ' ' : ''}(${email})`;
+    
+    // Open the user's mail client
+    window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Reset form
+    event.currentTarget.reset();
+    setSubmitStatus({
+      type: 'success',
+      message: 'Opening your email client...',
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 py-12 px-4 sm:px-6 lg:px-8">
@@ -22,25 +61,46 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="bg-white shadow-lg rounded-lg p-8">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-6">
+                <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Your name"
+                />
+              </div>
               <div className="mb-6">
                 <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your email"
+                  required
                 />
               </div>
               <div className="mb-6">
                 <label htmlFor="message" className="block text-gray-700 mb-2">Message</label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={6}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your message"
+                  required
                 ></textarea>
               </div>
+              
+              {submitStatus.type === 'success' && (
+                <div className="mb-6 p-3 rounded-md bg-green-100 text-green-800">
+                  {submitStatus.message}
+                </div>
+              )}
+              
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors"

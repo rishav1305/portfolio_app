@@ -20,6 +20,15 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Email Configuration
+
+This project uses SendGrid for sending emails from the contact form. To set it up:
+
+1. Create a SendGrid account and obtain an API key
+2. Verify your sender email address in SendGrid
+3. Copy `.env.example` to `.env.local` and add your SendGrid API key and verified sender email
+4. Uncomment the email sending code in `/src/app/api/contact/route.ts`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

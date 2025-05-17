@@ -81,7 +81,7 @@ const portfolioData = {
   personalInfo: {
     name: "RISHAV",
     title: "Technology Leader & Freelance Data Consultant",
-    email: "rishavchatterjee2024@gmail.com",
+    email: "chatterjeerishav96@gmail.com", // Updated to a valid email format
     shortBio: "As an independent freelancer and data expert, I provide specialized proficiency and flexible solutions tailored to each client's unique needs. My freelancing practice combines enterprise-level quality with the agility of independent work, offering freelance data engineering, visualization, and analytics services to clients worldwide. I take pride in delivering high-quality freelance solutions that match or exceed the standards of large consultancies.",
     longBio: [
       "I specialize in building scalable data architectures using modern cloud platforms like AWS and Azure, and I'm highly proficient in tools like Python, SQL, Spark, and various BI tools including Tableau CRM, Qlik Sense, Power BI, and Preset. From streamlining programmatic pipelines and integrating enterprise systems like NetSuite and Salesforce, to delivering mission-critical dashboards for C-level executives—I've consistently aligned data solutions with business strategy.",

@@ -130,57 +130,93 @@ export default function About() {
             <div className="md:hidden absolute left-6 h-full w-1 bg-blue-200"></div>
             
             <div className="space-y-8">
-              {/* Work Experience - Combine both professional and freelance experiences */}
-              {[...professionalExperience, ...freelanceExperience].map((job, index) => (
-                <div key={`work-${index}`} className={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
+              {/* Combined and sorted timeline */}
+              {[
+                // Work experiences with date conversion for sorting
+                ...professionalExperience.map(job => ({
+                  ...job,
+                  type: 'work',
+                  sortDate: new Date(job.startDate),
+                  displayData: {
+                    title: job.company,
+                    subtitle: job.role,
+                    period: job.period,
+                    location: job.location,
+                    badgeText: 'Work Experience',
+                    badgeColor: 'blue'
+                  }
+                })),
+                ...freelanceExperience.map(job => ({
+                  ...job,
+                  type: 'freelance',
+                  sortDate: new Date(job.startDate),
+                  displayData: {
+                    title: job.company,
+                    subtitle: job.role,
+                    period: job.period,
+                    location: job.location,
+                    badgeText: 'Freelance Experience',
+                    badgeColor: 'purple'
+                  }
+                })),
+                // Education with date extraction for sorting
+                ...education.map(edu => {
+                  // Extract year from period (format: "Apr 2013 - Mar 2014")
+                  const startYear = parseInt(edu.period.split(' ').pop() || '0');
+                  return {
+                    ...edu,
+                    type: 'education',
+                    // Create a date object for sorting (Jan 1 of the start year)
+                    sortDate: new Date(startYear, 0, 1),
+                    displayData: {
+                      title: edu.institution,
+                      subtitle: edu.degree,
+                      period: edu.period,
+                      location: edu.location,
+                      badgeText: 'Education',
+                      badgeColor: 'green'
+                    }
+                  };
+                })
+              ]
+              // Sort by date in descending order (most recent first)
+              .sort((a, b) => b.sortDate.getTime() - a.sortDate.getTime())
+              .map((item, index) => (
+                <div key={`timeline-${index}`} className={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
                   {/* Timeline point - positioned differently on mobile */}
-                  <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"></div>
+                  <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"
+                       style={{ backgroundColor: 
+                        item.type === 'work' ? '#2563EB' : 
+                        item.type === 'freelance' ? '#8B5CF6' : 
+                        '#16A34A' }}></div>
                   
                   {/* Content box */}
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
                     <div className="bg-white p-6 rounded-lg shadow-lg">
-                      <div className="bg-blue-100 text-blue-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                        Work Experience
+                      <div 
+                        className={`bg-${item.displayData.badgeColor}-100 text-${item.displayData.badgeColor}-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2`}
+                        style={{ 
+                          backgroundColor: 
+                            item.type === 'work' ? '#DBEAFE' : 
+                            item.type === 'freelance' ? '#F3E8FF' : 
+                            '#DCFCE7',
+                          color: 
+                            item.type === 'work' ? '#1E40AF' : 
+                            item.type === 'freelance' ? '#7C3AED' : 
+                            '#166534'
+                        }}
+                      >
+                        {item.displayData.badgeText}
                       </div>
                       
                       <div className="mb-2">
-                        <h3 className="text-xl font-bold">{job.company}</h3>
-                        <p className="text-gray-600">{job.role}</p>
+                        <h3 className="text-xl font-bold">{item.displayData.title}</h3>
+                        <p className="text-gray-600">{item.displayData.subtitle}</p>
                       </div>
                       
                       <div className="text-sm text-gray-500">
-                        <p>{job.period}</p>
-                        <p>{job.location}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Empty space for opposite side - only on desktop */}
-                  <div className="hidden md:block w-5/12"></div>
-                </div>
-              ))}
-              
-              {/* Education */}
-              {education.map((edu, index) => (
-                <div key={`edu-${index}`} className={`relative flex items-start ${(index + professionalExperience.length + freelanceExperience.length) % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
-                  {/* Timeline point - positioned differently on mobile */}
-                  <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-green-600 border-4 border-white z-10"></div>
-                  
-                  {/* Content box */}
-                  <div className={`w-full md:w-5/12 ${(index + professionalExperience.length + freelanceExperience.length) % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
-                    <div className="bg-white p-6 rounded-lg shadow-lg">
-                      <div className="bg-green-100 text-green-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                        Education
-                      </div>
-                      
-                      <div className="mb-2">
-                        <h3 className="text-xl font-bold">{edu.institution}</h3>
-                        <p className="text-gray-600">{edu.degree}</p>
-                      </div>
-                      
-                      <div className="text-sm text-gray-500">
-                        <p>{edu.period}</p>
-                        <p>{edu.location}</p>
+                        <p>{item.displayData.period}</p>
+                        <p>{item.displayData.location}</p>
                       </div>
                     </div>
                   </div>
