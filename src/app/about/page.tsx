@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import DomainExpertise from '@/components/ui/DomainExpertise';
 
 export default function About() {
   const { personalInfo, professionalExperience, freelanceExperience, education } = portfolioData;
@@ -46,6 +47,12 @@ export default function About() {
                   {paragraph}
                 </p>
               ))}
+            </div>
+            
+            {/* Domain Expertise */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">Domain Expertise</h2>
+              <DomainExpertise compact={true} />
             </div>
           </div>
 

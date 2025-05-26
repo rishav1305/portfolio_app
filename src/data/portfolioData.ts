@@ -23,6 +23,7 @@ export type WorkExperience = {
     name: string;
     description: string;
   }[];
+  remoteWork?: boolean;
 };
 
 export type Education = {
@@ -100,7 +101,21 @@ const portfolioData = {
       linkedin: "https://www.linkedin.com/in/chatterjeerishav/",
       leetcode: "https://leetcode.com/u/rishav115/",
       medium: "https://medium.com/@chatterjeerishav96"
-    }
+    },
+    domainExpertise: [
+      "Sales",
+      "Procurement",
+      "Customer Feedback",
+      "Healthcare",
+      "Advertising",
+      "Supply Chain Management",
+      "E-commerce Analytics",
+      "Pharmaceutical Data Management",
+      "Healthcare Forecasting",
+      "Retail Operations",
+      "Cloud Infrastructure Migration",
+      "Remote Work"
+    ]
   },
   
   freelanceExperience: [
@@ -125,9 +140,15 @@ const portfolioData = {
         "Expanded Responsibilities: Took on additional roles and responsibilities due to team restructuring during multiple layoffs.",
         "Current Role: Leading multiple projects across B2B and B2C, including requirements gathering, task delegation and project management.",
         "Key Achievement: Successfully delivered enterprise-wide analytics platform accessed by 200+ stakeholders daily",
-        "Technical Innovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance"
+        "Technical Innovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance",
+        "Collaboration: Worked closely with Sylvia and Ivan on ad hoc requests and strategic initiatives",
+        "Executive Reporting: Built Google Sheets dashboard for CEO to track user behavior metrics",
+        "B2B Reporting: Launched comprehensive B2B reporting including Funnel Analysis, Forecasting, Renewal Metrics, and Attribution",
+        "Technical Growth: Advanced skills in Python (pandas, automation), SQL (advanced queries), Salesforce & Tableau CRM (QA, dashboards), Qlik Sense (debugging, dashboarding), AWS (Glue, EMR, Athena, QuickSight, Batch, S3, EC2), Airflow (DAG creation, recovery), and supporting tools like Jira, Confluence, Git Bash, Linux",
+        "Platforms: Gained expertise in Google Ads Manager, Cube.dev, Preset, Clickhouse, Growthbook, Amplitude, mParticle, Datorama"
       ],
-      tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration"]
+      tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
+      remoteWork: true
     }
   ],
   
@@ -144,9 +165,15 @@ const portfolioData = {
         "Migrated from HIVE to Snowflake, increasing pipeline performance by 60%",
         "Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by 40%",
         "Maintained 99.5% data accuracy with 9.5/10 stakeholder satisfaction",
-        "Led team of 3, collaborating with 15+ data vendors and 10+ brand leaders"
+        "Led team of 3, collaborating with 15+ data vendors and 10+ brand leaders",
+        "Led Data Integration for 15 brands and 50+ dosages from 20 vendors; processed over 100GB of structured and unstructured data",
+        "Developed sales and demand forecasting dashboards using custom models like the Elapsed Days Model and moving average method",
+        "Automated previously manual data ingestion pipelines, reducing processing time significantly",
+        "Currently automating National Demand Reports using Qlik, Alteryx, SQL, and Python",
+        "Built QA dashboards to monitor data quality and monthly sales projections for Oncology brands"
       ],
-      tags: ["Data Migration", "Process Automation", "Team Mentoring"]
+      tags: ["Data Migration", "Process Automation", "Team Mentoring", "Remote Work", "Healthcare Analytics", "Pharmaceutical Data"],
+      remoteWork: true
     },
     {
       period: "Jun 2018 - Apr 2020",
@@ -176,7 +203,8 @@ const portfolioData = {
           description: "In this project, the aim was to deliver automated workflows of the prediction model using Azure Databricks. Data needed to be extracted from Azure Blob Storage and Azure SQL Data Warehouse, then process the Parquet files are shared with DataRobot and finally the output is sent to the cube."
         }
       ],
-      tags: ["AWS Services", "Azure Databricks", "Data Pipeline Optimization"]
+      tags: ["AWS Services", "Azure Databricks", "Data Pipeline Optimization", "E-commerce Analytics", "Retail Operations"],
+      remoteWork: false
     }
   ],
   
@@ -264,6 +292,45 @@ const portfolioData = {
   },
 
   projects: [
+    {
+      title: "Data Integration Pipeline",
+      short_description: "Built scalable data integration pipelines for 15 pharmaceutical brands and 50+ dosages from 20 vendors processing over 100GB of data.",
+      description: "Led comprehensive data integration efforts for 15 pharmaceutical brands and 50+ dosages, processing over 100GB of structured and unstructured data from 20 vendors. Implemented robust cleansing and transformation pipelines to ensure data accuracy and consistency across all brand reporting. The solution enabled brand managers to access reliable, unified data for decision-making.",
+      image: "/images/projects/thumbnail/portfolio_app.png", 
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Python", "SQL", "Alteryx", "Qlik", "Snowflake", "Data Cleansing", "Data Integration", "ETL"],
+      category: "Completed",
+      company: "Novartis Healthcare Pvt Ltd",
+      start_date: "2020-06-01",
+      end_date: "2021-04-01",
+      link: "projects/data-integration-pipeline"
+    },
+    {
+      title: "Forecasting Dashboards",
+      short_description: "Developed sales and demand forecasting dashboards for Oncology brand leaders using custom models including Elapsed Days Model and moving average method.",
+      description: "Built comprehensive forecasting dashboards for Oncology brand leaders that incorporate custom analytical models like the Elapsed Days Model and moving average methods. These dashboards provide accurate monthly sales and demand projections, enabling strategic inventory management and sales planning. The solution has become a critical tool for executive decision-making.",
+      image: "/images/projects/thumbnail/portfolio_app.png", 
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Python", "Qlik", "SQL", "Statistical Modeling", "Forecasting", "Data Visualization", "Healthcare Analytics"],
+      category: "Completed",
+      company: "Novartis Healthcare Pvt Ltd",
+      start_date: "2021-05-01",
+      end_date: "2022-02-01",
+      link: "projects/forecasting-dashboards"
+    },
+    {
+      title: "Process Automation",
+      short_description: "Automated manual processes for data ingestion and report generation including National Demand Reports using modern data tools.",
+      description: "Led multiple automation initiatives to transform manual data ingestion and report generation processes into streamlined, automated workflows. Currently working on automating National Demand Reports using a combination of Qlik, Alteryx, SQL, and Python. These automation efforts have significantly reduced manual effort while increasing report frequency and accuracy for stakeholders.",
+      image: "/images/projects/thumbnail/portfolio_app.png", 
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Qlik", "Python", "Alteryx", "SQL", "Process Automation", "Workflow Optimization", "Report Generation"],
+      category: "Completed",
+      company: "Novartis Healthcare Pvt Ltd",
+      start_date: "2022-03-01",
+      end_date: "2022-12-01",
+      link: "projects/process-automation"
+    },
     {
       title: "Profile Builder with Local LLM",
       short_description: "An AI-powered tool that automatically fills professional profiles across remote work platforms using portfolio data and local LLM models.",

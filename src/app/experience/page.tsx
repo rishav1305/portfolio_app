@@ -1,6 +1,7 @@
 import React from 'react';
 import portfolioData, { WorkExperience } from "@/data/portfolioData";
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import ExperienceCardWithRemote from '@/components/ui/ExperienceCardWithRemote';
 
 export default function Experience() {
   const { professionalExperience, freelanceExperience, education } = portfolioData;
@@ -15,62 +16,7 @@ export default function Experience() {
         
         <div className="space-y-12 mb-16">
           {freelanceExperience.map((job, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900">{job.role}</h2>
-                  <h3 className="text-xl text-blue-600">{job.company}</h3>
-                </div>
-                <div className="mt-2 md:mt-0 text-gray-600">
-                  <p>{job.period}</p>
-                  <p>{job.location}</p>
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-2 text-gray-800">Key Achievements</h4>
-                <ul className="list-disc pl-5 space-y-2">
-                  {job.achievements.map((achievement, i) => (
-                    <li key={i} className="text-gray-700">{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              {((job as WorkExperience).details && (job as WorkExperience).details!.length > 0) && (
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Role Details</h4>
-                  <ul className="list-disc pl-5 space-y-2">
-                    {(job as WorkExperience).details!.map((detail, i) => (
-                      <li key={i} className="text-gray-700">{detail}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              
-              {((job as WorkExperience).clients && (job as WorkExperience).clients!.length > 0) && (
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Client Projects</h4>
-                  <div className="space-y-4">
-                    {(job as WorkExperience).clients!.map((client, i) => (
-                      <div key={i} className="bg-gray-50 p-4 rounded-md">
-                        <h5 className="font-medium text-gray-800">{client.name}</h5>
-                        <p className="text-gray-700 mt-1">{client.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {job.tags && job.tags.length > 0 && (
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {job.tags.map((tag, i) => (
-                    <span key={i} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ExperienceCardWithRemote key={index} job={job as WorkExperience} />
           ))}
         </div>
 
@@ -78,62 +24,7 @@ export default function Experience() {
         
         <div className="space-y-12 mb-16">
           {professionalExperience.map((job, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900">{job.role}</h2>
-                  <h3 className="text-xl text-blue-600">{job.company}</h3>
-                </div>
-                <div className="mt-2 md:mt-0 text-gray-600">
-                  <p>{job.period}</p>
-                  <p>{job.location}</p>
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-2 text-gray-800">Key Achievements</h4>
-                <ul className="list-disc pl-5 space-y-2">
-                  {job.achievements.map((achievement, i) => (
-                    <li key={i} className="text-gray-700">{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              {((job as WorkExperience).details && (job as WorkExperience).details!.length > 0) && (
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Role Details</h4>
-                  <ul className="list-disc pl-5 space-y-2">
-                    {(job as WorkExperience).details!.map((detail, i) => (
-                      <li key={i} className="text-gray-700">{detail}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              
-              {((job as WorkExperience).clients && (job as WorkExperience).clients!.length > 0) && (
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Client Projects</h4>
-                  <div className="space-y-4">
-                    {(job as WorkExperience).clients!.map((client, i) => (
-                      <div key={i} className="bg-gray-50 p-4 rounded-md">
-                        <h5 className="font-medium text-gray-800">{client.name}</h5>
-                        <p className="text-gray-700 mt-1">{client.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {job.tags && job.tags.length > 0 && (
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {job.tags.map((tag, i) => (
-                    <span key={i} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ExperienceCardWithRemote key={index} job={job as WorkExperience} />
           ))}
         </div>
         
