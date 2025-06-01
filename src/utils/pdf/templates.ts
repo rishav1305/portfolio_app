@@ -20,12 +20,12 @@ export function generateOnePageCVHTML(portfolioData: any) {
         /* Base styles with reduced margins and tighter spacing */
         body {
           font-family: 'Arial', sans-serif;
-          line-height: 1.3; /* Slightly tighter for CV */
+          line-height: 1.4; /* Original line-height */
           color: #333;
           margin: 0;
-          padding: 0.25in; /* Standard margin */
-          max-width: 8.5in;
-          font-size: 10pt; /* Base font size for CV */
+          padding: 15px; /* Reverted to px */
+          max-width: 8.5in; /* Keep this for page size constraint */
+          font-size: 12px; /* Base font size similar to original p,ul */
         }
         * {
           box-sizing: border-box;
@@ -34,155 +34,155 @@ export function generateOnePageCVHTML(portfolioData: any) {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          border-bottom: 1.5px solid #2563eb; /* Slightly thicker border */
-          padding-bottom: 0.2in;
-          margin-bottom: 0.2in;
+          border-bottom: 1px solid #2563eb; /* Original border */
+          padding-bottom: 10px; /* Reverted */
+          margin-bottom: 15px; /* Reverted */
         }
         h1 {
           margin: 0;
           color: #2563eb;
-          font-size: 20pt; /* Adjusted for 10pt base */
+          font-size: 24px; /* Slightly larger than original 22px */
         }
         h2 {
           color: #2563eb;
-          font-size: 14pt; /* Adjusted */
-          margin: 0.2in 0 0.1in 0;
+          font-size: 16px; /* Slightly larger than original 15px */
+          margin: 15px 0 8px 0; /* Adjusted */
           border-bottom: 1px solid #e2e8f0;
-          padding-bottom: 0.05in;
+          padding-bottom: 4px; /* Adjusted */
           text-transform: uppercase;
         }
         h3 {
-          font-size: 11pt; /* Adjusted */
-          margin: 0.15in 0 0.05in 0;
+          font-size: 14px; /* Original */
+          margin: 12px 0 5px 0; /* Adjusted */
           color: #333;
         }
         p, ul {
-          margin: 0 0 0.1in 0;
-          font-size: 10pt; /* Base size */
+          margin: 0 0 8px 0; /* Adjusted */
+          font-size: 12px; /* Base */
         }
         ul {
-          padding-left: 1.2em; /* Standard indent for lists */
+          padding-left: 20px; /* Original-like indent */
         }
         li {
-          margin-bottom: 0.05in;
+          margin-bottom: 4px; /* Adjusted */
         }
         .contact-info {
           text-align: right;
-          font-size: 9pt; /* Slightly smaller for contact details */
-          line-height: 1.4;
+          font-size: 11px; /* Slightly smaller */
+          line-height: 1.4; /* Adjusted */
         }
         .section {
-          margin-bottom: 0.15in;
+          margin-bottom: 15px; /* Adjusted */
         }
         .job {
-          margin-bottom: 0.15in;
+          margin-bottom: 12px; /* Adjusted */
           position: relative;
         }
         .job-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 0.05in;
+          margin-bottom: 4px; /* Adjusted */
         }
         .period {
-          color: #555; /* Darker grey */
+          color: #666; /* Original */
           font-style: italic;
-          font-size: 9pt;
+          font-size: 11px; /* Adjusted */
           white-space: nowrap;
-          padding-left: 10px; /* Add some space between title and date */
+          padding-left: 10px; /* Reverted to px */
         }
         .company {
           font-weight: bold;
         }
         .skills-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
-          gap: 0.1in;
-          font-size: 9pt;
+          grid-template-columns: 1fr 1fr 1fr; /* Simplified grid */
+          gap: 10px; /* px gap */
+          font-size: 11px; /* Adjusted */
         }
         .skill-category {
-          margin-bottom: 0.1in;
+          margin-bottom: 8px; /* Adjusted */
         }
-        .skill-category h4 { /* Using h4 for skill category title for better semantics */
+        .skill-category h4 {
             font-weight: bold;
-            font-size: 10pt;
-            margin: 0 0 0.05in 0;
+            font-size: 12px; /* Base size for category title */
+            margin: 0 0 4px 0;
             color: #444;
         }
-        .skill-name { /* No longer needed if skills are listed */
+        .skill-name { 
         }
-        .skill-content { /* Skills listed directly */
-            padding-left: 0.5em;
+        .skill-content { 
+            padding-left: 5px; /* px */
         }
         .achievements {
-          padding-left: 1.2em; /* Standard indent */
-          margin: 0.05in 0;
-          list-style-type: disc; /* Explicit bullet points */
+          padding-left: 20px; /* px */
+          margin: 5px 0; /* px */
+          list-style-type: disc; 
         }
         .achievements li {
-          margin-bottom: 0.05in;
-          line-height: 1.3;
+          margin-bottom: 3px; /* px */
+          line-height: 1.4; /* Adjusted */
         }
         .projects, .education {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-          gap: 0.15in;
+          grid-template-columns: 1fr 1fr; /* Simplified grid */
+          gap: 12px; /* px */
         }
         .project, .edu-item {
-          margin-bottom: 0.1in;
+          margin-bottom: 8px; /* px */
         }
         .social-links {
-          margin-top: 0.1in;
-          font-size: 9pt;
+          margin-top: 5px; /* px */
+          font-size: 11px;
         }
         .social-link {
           color: #2563eb;
           text-decoration: none;
-          margin-right: 8px;
+          margin-right: 8px; /* px */
         }
         .project-title, .institution {
           font-weight: bold;
-          font-size: 10pt;
+          font-size: 12px; /* Base size */
         }
         .project-desc {
-          font-size: 9pt;
-          line-height: 1.3;
-          margin: 0.05in 0;
+          font-size: 11px;
+          line-height: 1.4; /* Adjusted */
+          margin: 3px 0; /* px */
         }
         .tech {
           font-style: italic;
-          font-size: 8.5pt;
+          font-size: 10px;
           color: #444;
         }
         .created-date {
           text-align: center;
-          font-size: 8pt;
+          font-size: 9px; /* Slightly larger than original 8px */
           color: #666;
-          margin-top: 5px;
+          margin-top: 10px; /* px */
         }
         /* Removed the current-role::before with the blue line */
         .featured-role {
-          margin-bottom: 14px;
+          margin-bottom: 14px; /* px */
         }
         .career-evolution {
-          margin-left: 15px;
-          padding-top: 2px;
-          font-size: 10px;
+          margin-left: 15px; /* px */
+          padding-top: 2px; /* px */
+          font-size: 10px; /* px */
           font-style: italic;
           color: #4b5563;
         }
         .tags {
           display: flex;
           flex-wrap: wrap;
-          margin-top: 3px;
-          margin-left: 15px;
-          gap: 4px;
+          margin-top: 3px; /* px */
+          margin-left: 15px; /* px */
+          gap: 4px; /* px */
         }
         .tag {
           background-color: #e5e7eb;
-          border-radius: 10px;
-          padding: 1px 6px;
-          font-size: 9px;
+          border-radius: 10px; /* px */
+          padding: 1px 6px; /* px */
+          font-size: 9px; /* px */
           white-space: nowrap;
         }
       </style>
@@ -191,8 +191,8 @@ export function generateOnePageCVHTML(portfolioData: any) {
       <div class="header">
         <div>
           <h1>${portfolioData.personalInfo.name}</h1>
-          <p style="font-size: 11pt; margin-top: 0.05in;">${portfolioData.personalInfo.title} — ${getYearsOfExperience()}+ Years of Experience</p>
-          <p style="font-size: 10pt;">${portfolioData.personalInfo.shortBio}</p>
+          <p style="font-size: 14px; margin-top: 5px;">${portfolioData.personalInfo.title} — ${getYearsOfExperience()}+ Years of Experience</p>
+          <p style="font-size: 13px;">${portfolioData.personalInfo.shortBio}</p>
         </div>
         <div class="contact-info">
           <p><strong>Email:</strong> ${portfolioData.personalInfo.email}</p>
@@ -328,158 +328,155 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       <style>
         body {
           font-family: 'Arial', sans-serif;
-          line-height: 1.5; /* Standard line height */
+          line-height: 1.6; /* Original */
           color: #333;
-          margin: 0 auto; /* Center page */
-          padding: 0.5in; /* Standard resume margin */
-          max-width: 8.5in;
-          font-size: 11pt; /* Base font size for resume */
+          margin: 0 auto; 
+          padding: 20px; /* Original */
+          max-width: 8.5in; /* Keep */
+          font-size: 14px; /* Original base for p,ul */
         }
         .header {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
-          border-bottom: 2px solid #2563eb;
-          padding-bottom: 0.3in;
-          margin-bottom: 0.3in;
+          align-items: flex-start; /* Added for consistency */
+          border-bottom: 2px solid #2563eb; /* Original */
+          padding-bottom: 15px; /* Original */
+          margin-bottom: 20px; /* Original */
         }
         h1 {
           margin: 0;
           color: #2563eb;
-          font-size: 24pt; /* Adjusted for 11pt base */
+          font-size: 28px; /* Original */
         }
         h2 {
           color: #2563eb;
-          font-size: 16pt; /* Adjusted */
-          margin: 0.3in 0 0.15in 0;
-          border-bottom: 1px solid #e2e8f0;
-          padding-bottom: 0.1in;
-          text-transform: uppercase;
+          font-size: 18px; /* Original */
+          margin: 20px 0 10px 0; /* Original */
+          border-bottom: 1px solid #e2e8f0; /* Original */
+          padding-bottom: 5px; /* Original */
+          text-transform: uppercase; /* Keep */
         }
-        h3 {
-          font-size: 12pt; /* Adjusted */
-          margin: 0.2in 0 0.1in 0;
-          color: #333;
+        h3 { /* For job titles, skill categories */
+          font-size: 16px; /* Original */
+          margin: 14px 0 8px 0; /* Original */
+          color: #333; /* Keep */
         }
         p, ul {
-          margin: 0 0 0.15in 0;
-          font-size: 11pt; /* Base size */
+          margin: 0 0 10px 0; /* Original */
+          font-size: 14px; /* Original */
         }
         ul {
-          padding-left: 1.5em; /* Standard indent */
+          padding-left: 20px; /* Original */
         }
         li {
-          margin-bottom: 0.08in;
+          margin-bottom: 5px; /* Original */
         }
         .contact-info {
           text-align: right;
-          font-size: 10pt; /* Slightly smaller */
-          line-height: 1.5;
+          font-size: 14px; /* Original */
+          line-height: 1.6; /* Keep */
         }
         .section {
-          margin-bottom: 0.25in;
+          margin-bottom: 20px; /* Original */
         }
         .job {
-          margin-bottom: 0.25in;
+          margin-bottom: 20px; /* Original */
         }
         .job-header {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 0.05in;
+          align-items: flex-start; /* Added for consistency */
+          margin-bottom: 5px; /* Adjusted from original implicit */
         }
         .period {
-          color: #555;
+          color: #666; /* Original */
           font-style: italic;
-          font-size: 10pt;
+          font-size: 14px; /* Original */
           white-space: nowrap;
-          padding-left: 15px;
+          padding-left: 15px; /* px */
         }
         .company {
           font-weight: bold;
         }
         .skills-container {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-          gap: 0.2in;
+          grid-template-columns: 1fr 1fr 1fr; /* Simplified grid */
+          gap: 20px; /* px */
         }
         .skill-category {
-          margin-bottom: 0.2in;
+          margin-bottom: 15px; /* Original */
         }
-        .skill-category h3 { /* Using h3 for skill category title */
-            font-size: 12pt;
-            margin: 0 0 0.1in 0;
-            color: #444;
-        }
+        /* .skill-category h3 is covered by general h3 */
         .skill-category ul {
-            list-style-type: disc; /* Explicit bullets */
-            padding-left: 1.2em;
+            list-style-type: disc; 
+            padding-left: 20px; /* px */
         }
         .skill-category li {
-            font-size: 10pt;
+            font-size: 13px; /* Slightly smaller for skill items */
+            margin-bottom: 4px;
         }
-        .skill-name { /* No longer needed if skills are listed in ul */
+        .skill-name { 
         }
         .achievements {
-          padding-left: 1.5em; /* Standard indent */
-          margin: 0.1in 0;
-          list-style-type: disc; /* Explicit bullet points */
+          padding-left: 20px; /* Original */
+          margin: 5px 0; /* Original */
+          list-style-type: disc; 
         }
         .achievements li {
-          margin-bottom: 0.08in;
+          margin-bottom: 5px; /* Original */
         }
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-          gap: 0.25in;
+          grid-template-columns: 1fr 1fr; /* Simplified grid */
+          gap: 20px; /* Original */
         }
         .project {
-          margin-bottom: 0.2in;
+          margin-bottom: 15px; /* Original */
         }
         .social-links {
-          margin-top: 0.15in;
+          margin-top: 8px; /* Original */
         }
         .social-link {
           color: #2563eb;
           text-decoration: none;
-          margin-right: 12px;
+          margin-right: 10px; /* Original */
         }
-        .project-title, .institution {
+        .project-title, .institution { /* .institution was not bolded before, making it so */
           font-weight: bold;
-          font-size: 12pt;
+          font-size: 16px; /* Match h3 */
         }
         .clients {
-          margin-top: 0.15in;
-          padding-left: 1.5em;
+          margin-top: 10px; /* Original */
+          padding-left: 20px; /* Original */
         }
         .client {
-          margin-bottom: 0.1in;
+          margin-bottom: 8px; /* Original */
         }
         .client-name {
           font-weight: bold;
         }
         .tag {
           display: inline-block;
-          background-color: #e9ecef; /* Lighter tag background */
-          color: #495057; /* Darker tag text */
-          padding: 3px 10px;
-          border-radius: 15px;
-          margin-right: 6px;
-          margin-bottom: 6px;
-          font-size: 9pt;
+          background-color: #e2e8f0; /* Original */
+          color: #333; /* Adjusted for better contrast if needed */
+          padding: 3px 10px; /* Adjusted */
+          border-radius: 12px; /* Original */
+          margin-right: 6px; /* Adjusted */
+          margin-bottom: 6px; /* Adjusted */
+          font-size: 12px; /* Original */
         }
         .tags {
-          margin-top: 0.1in;
+          margin-top: 8px; /* Original */
         }
         .bio {
-          margin-bottom: 0.25in;
-          font-size: 11pt;
+          margin-bottom: 20px; /* Original */
+          font-size: 14px; /* Original */
         }
         .created-date {
           text-align: center;
-          font-size: 9pt;
+          font-size: 12px; /* Original */
           color: #666;
-          margin-top: 40px;
+          margin-top: 40px; /* Original */
         }
       </style>
     </head>
@@ -487,8 +484,8 @@ export function generateDetailedResumeHTML(portfolioData: any) {
       <div class="header">
         <div>
           <h1>${portfolioData.personalInfo.name}</h1>
-          <p style="font-size: 12pt;">${portfolioData.personalInfo.title}</p>
-          <p style="font-size: 11pt;">${portfolioData.personalInfo.shortBio}</p>
+          <p style="font-size: 16px;">${portfolioData.personalInfo.title}</p>
+          <p style="font-size: 15px;">${portfolioData.personalInfo.shortBio}</p>
         </div>
         <div class="contact-info">
           <p><strong>Email:</strong> ${portfolioData.personalInfo.email}</p>
@@ -582,12 +579,12 @@ export function generateDetailedResumeHTML(portfolioData: any) {
           <div class="edu-item">
             <div class="job-header">
               <div>
-                <h3 style="font-size: 12pt; margin-bottom: 0.05in;">${edu.degree} in ${edu.focusArea}</h3>
-                <p class="institution" style="font-size: 11pt;">${edu.institution}</p>
+                <h3 style="font-size: 16px; margin-bottom: 4px;">${edu.degree} in ${edu.focusArea}</h3>
+                <p class="institution" style="font-size: 15px;">${edu.institution}</p>
               </div>
               <div class="period">${edu.period}</div>
             </div>
-            ${edu.description ? `<p style="font-size: 10pt; margin-top: 0.05in;">${edu.description}</p>` : ''}
+            ${edu.description ? `<p style="font-size: 13px; margin-top: 4px;">${edu.description}</p>` : ''}
           </div>
         `).join('')}
       </div>
