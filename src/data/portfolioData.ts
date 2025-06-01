@@ -154,6 +154,55 @@ const portfolioData = {
   
   professionalExperience: [
     {
+      period: "Dec 2022 - Present",
+      startDate: "2022-12-26",
+      endDate: null,
+      location: "Pune, Maharashtra",
+      company: "Bitwise Solution Pvt Ltd",
+      role: "Project Leader",
+      experienceType: "professional",
+      achievements: [
+        "Expertise in designing and developing micro services, REST APIs using python.",
+        "Rich work experience in Open Source frameworks like Apache Spark, Airflow and Flask framework.",
+        "Have good knowledge of AWS services i.e. Batch, Glue, Lambda, S3, Redshift, DynamoDB, and DMS.",
+        "Good experience in conducting proof-of-concept and developing prototypes.",
+        "Have working knowledge of JIRA, Azure DevOps for project management and collaboration.",
+        "Have knowledge of Docker.",
+        "Hands on experience with Python, SQL, HTML, Shell Script and JavaScript.",
+        "Used GITLAB, GITHub, Bitbucket as a code repository and versioning.",
+        "Good understanding of Algorithms, Data Structures and Design Patterns.",
+        "Working knowledge in Relational Database Systems like SQL Server and PostgreSql.",
+        "Work experience on Windows, Linux and UNIX environment.",
+        "Proficient with XML related technologies.",
+        "Implemented CI/CD through Jenkins.",
+        "Good analytical and programming capabilities coupled with excellent decision making skills.",
+        "Excellent team player and ability to perform well under pressure.",
+        "Good documentation skills and excellent technical, Communication and Interpersonal Skills with strong Client Interfacing Skills.",
+        "Conducting/Attending regular Conference Calls to gather requirements and preparing MOM for the activities.",
+        "Responsible for Analysis discussions with the end users, getting signoff, plan, lead, manage and execute a conversion process to move the existing lotus notes to development, UAT and Production deployment.",
+        "Implemented/developed policies and procedures, standards and best practice methods.",
+
+      ],
+      clients: [
+        {
+          name: "Gartner",
+          description: [
+            "Gartner SSC is a high visibility and critical project, the development for which was done years back, I am involved with managing the ever-increasing change requests and enhancements.",
+            "This project has many end users and consumers who validate the data regularly and reach out in case of any business logic updates or refinements are required.",
+            "There are several key players involved, including:",
+            "OneGSD Team: They consume the data to further share it with various product owners,",
+            "Sales Executives: The party who sold the services to the client and manages the account with regularly checks-ins with the client.,",
+            "Salesforce Team: This team enables the Sales Executives to monitor their tasks and achievements,",
+            "The pipelines are managed in Agile model in sprints and further the developments are tested and validated by the QA team and then we do the deployments.",
+            "Exposure to the complete development flow, in-depth understanding of the system, technical knowledge, immense work load and high work pressure, ability to identify areas which require optimization are some of the characteristic requirements of the project.",
+
+          ]
+        }
+      ],
+      tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
+      remoteWork: true
+    },
+    {
       period: "May 2020 - Dec 2022",
       startDate: "2020-05-01",
       endDate: "2022-12-31",

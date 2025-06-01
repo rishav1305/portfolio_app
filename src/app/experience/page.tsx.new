@@ -1,0 +1,61 @@
+import React from 'react';
+import portfolioData, { WorkExperience } from "@/data/portfolioData";
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import ExperienceCardWithRemote from '@/components/ui/ExperienceCardWithRemote';
+
+export default function Experience() {
+  const { professionalExperience, freelanceExperience, education } = portfolioData;
+  
+  return (
+    <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ experience: 'Work Experience' }} />
+        </div>
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Freelance Experience</h1>
+        
+        <div className="space-y-12 mb-16">
+          {freelanceExperience.map((job, index) => (
+            <ExperienceCardWithRemote key={index} job={job as WorkExperience} />
+          ))}
+        </div>
+
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Professional Experience</h1>
+        
+        <div className="space-y-12 mb-16">
+          {professionalExperience.map((job, index) => (
+            <ExperienceCardWithRemote key={index} job={job as WorkExperience} />
+          ))}
+        </div>
+        
+        {/* Education Section */}
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Education</h1>
+        
+        <div className="space-y-8 mb-12">
+          {education.map((edu, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">{edu.degree}</h2>
+                  <h3 className="text-xl text-blue-600">{edu.institution}</h3>
+                  <p className="text-lg text-gray-700 mt-1">{edu.focusArea}</p>
+                </div>
+                <div className="mt-2 md:mt-0 text-gray-600">
+                  <p>{edu.period}</p>
+                  <p>{edu.location}</p>
+                </div>
+              </div>
+              
+              {edu.description && (
+                <div className="mt-4">
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Description</h4>
+                  <p className="text-gray-700">{edu.description}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
