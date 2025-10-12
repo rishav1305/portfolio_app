@@ -28,10 +28,14 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
         </h1>
         <div className="w-20 h-1 bg-blue-500 mb-10"></div>
         <p className="text-xl md:text-2xl mb-10 text-black max-w-3xl">
-          👋 Hi! I'm a <span className="font-bold">Technology Leader</span> with expertise in engineering scalable and consistent{" "}
-          <span className="font-bold text-blue-600">cloud based solutions</span>. 
-          I’ve collaborated with top-tier organizations, delivering impactful products. I leverage{" "}
-          <span className="font-bold">AI to boost productivity</span> and drive innovation. I design scalable, cloud-based data solutions that align tech with business goals.
+          👋 Hi! I'm a <span className="font-bold text-blue-600">Project Lead</span> and{" "}
+          <span className="font-bold text-blue-600">Data Specialist</span> focused on engineering scalable,{" "}
+          <span className="font-bold text-black">AI-powered solutions</span> in the cloud. 
+          With a strong base in <span className="font-bold">data engineering</span> and{" "}
+          <span className="font-bold">business intelligence</span>, I've led projects in{" "}
+          <span className="font-bold text-blue-600">Agentic AI</span> — from{" "}
+          <span className="font-bold">LLM-based adaptive testing systems</span> to{" "}
+          <span className="font-bold text-black">conversational analytics</span> that make data-driven insights instantly accessible.
         </p>
         <div className="flex gap-6 flex-col sm:flex-row">
           <Link 

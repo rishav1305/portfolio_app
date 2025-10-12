@@ -81,13 +81,13 @@ export type Testimonial = {
 const portfolioData = {
   personalInfo: {
     name: "RISHAV",
-    title: "Technology Leader & Freelance Data Consultant",
+    title: "Project Lead and AI-Driven Data Specialist ",
     email: "chatterjeerishav96@gmail.com", // Updated to a valid email format
-    shortBio: "As an independent freelancer and data expert, I provide specialized proficiency and flexible solutions tailored to each client's unique needs. My freelancing practice combines enterprise-level quality with the agility of independent work, offering freelance data engineering, visualization, and analytics services to clients worldwide. I take pride in delivering high-quality freelance solutions that match or exceed the standards of large consultancies.",
+    shortBio: "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",
     longBio: [
-      "I specialize in building scalable data architectures using modern cloud platforms like AWS and Azure, and I'm highly proficient in tools like Python, SQL, Spark, and various BI tools including Tableau CRM, Qlik Sense, Power BI, and Preset. From streamlining programmatic pipelines and integrating enterprise systems like NetSuite and Salesforce, to delivering mission-critical dashboards for C-level executives—I've consistently aligned data solutions with business strategy.",
+      "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",
       "To stay ahead in today's fast-paced environment, I actively integrate AI into my workflow. I leverage tools like GitHub Copilot, Claude, and ChatGPT for code assistance, debugging, and technical documentation. I'm also developing AI agents using Ollama and Autogen frameworks to automate and scale analytical tasks.",
-      "With experience as both a freelance consultant and across top firms, I build scalable, interactive dashboards and analytics solutions—leveraging AI tools to boost productivity and drive smarter, data-informed decisions. My freelance practice specializes in providing enterprise-grade data solutions with the flexibility and personalized approach of an independent professional."
+      "I’ve delivered AI-driven frameworks—like LLM-based adaptive testing and conversational analytics systems—that redefine how teams interact with information. My goal is to bring the sophistication of enterprise systems and the creativity of AI innovation into every engagement."
     ],
     location: "Delhi",
     yearsExperienceStartYear: 2018,
@@ -125,7 +125,7 @@ const portfolioData = {
       endDate: null,
       location: "Pennsylvania, USA",
       company: "The Weather Company",
-      role: "Technology Lead",
+      role: "AI Tech Lead",
       experienceType: "freelance",
       achievements: [
         "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
