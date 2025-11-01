@@ -293,14 +293,8 @@ export default function DataQualityFrameworkProject() {
             
             <h3 className="text-xl font-bold mt-8 mb-3">1. API Development</h3>
             <p className="mb-4">
-              Built RESTful API endpoints using AWS API Gateway and Lambda functions:
+              Built RESTful API endpoints using AWS API Gateway and Lambda functions for core validation, rule management, automated testing, and health monitoring.
             </p>
-            <ul className="list-disc pl-6 space-y-2 mb-6">
-              <li><strong>/data-validation/invoke:</strong> Core validation engine that executes data quality checks</li>
-              <li><strong>/rule-management/invoke:</strong> Rule management interface for Google Sheets synchronization</li>
-              <li><strong>/qa-test/invoke:</strong> Comprehensive automated testing suite</li>
-              <li><strong>/health:</strong> Health check endpoint for monitoring</li>
-            </ul>
             
             <h3 className="text-xl font-bold mt-8 mb-3">2. Database Integration</h3>
             <p className="mb-4">
