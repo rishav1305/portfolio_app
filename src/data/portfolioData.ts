@@ -342,6 +342,19 @@ const portfolioData = {
 
   projects: [
     {
+      title: "Enterprise Data Quality Framework",
+      short_description: "Built a comprehensive serverless data quality validation platform on AWS with AI-powered rule generation, Google Sheets integration, and automated alerting.",
+      description: "Architected and developed an enterprise-grade data quality framework leveraging AWS Lambda, API Gateway, and serverless architecture. The platform provides automated data validation across PostgreSQL and Redshift databases with AI-powered rule generation using LLMs, bidirectional Google Sheets synchronization for collaborative rule management, and comprehensive alerting via email. Features include parallel processing for high-performance validation, custom SQL validation support, and extensive API documentation for seamless integration with CI/CD pipelines.",
+      image: "/images/projects/thumbnail/portfolio_app.png",
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Python", "AWS Lambda", "API Gateway", "PostgreSQL", "Redshift", "Google Sheets API", "LLM", "AI", "Serverless", "REST API", "CloudWatch", "S3", "Secrets Manager", "Docker", "CI/CD"],
+      category: "Ongoing",
+      company: "The Weather Company",
+      start_date: "2024-01-01",
+      end_date: "",
+      link: "projects/data-quality-framework"
+    },
+    {
       title: "Data Integration Pipeline",
       short_description: "Built scalable data integration pipelines for 15 pharmaceutical brands and 50+ dosages from 20 vendors processing over 100GB of data.",
       description: "Led comprehensive data integration efforts for 15 pharmaceutical brands and 50+ dosages, processing over 100GB of structured and unstructured data from 20 vendors. Implemented robust cleansing and transformation pipelines to ensure data accuracy and consistency across all brand reporting. The solution enabled brand managers to access reliable, unified data for decision-making.",
