@@ -342,6 +342,20 @@ const portfolioData = {
 
   projects: [
     {
+      title: "GOAT - Gartner's Own Agentic Tech",
+      short_description: "Conversational Agentic AI Assistant designed to support Gartner associates with quick access to client information, engagement data, and research materials.",
+      description: "Architected and developed a serverless conversational AI assistant for Gartner associates that streamlines client interactions and enhances productivity. The platform features client information retrieval with MCP/CI data, call and engagement transcript access, document search across Gartner's research repository, and AI-powered conversational interface. Built on AWS serverless architecture with API Gateway, Lambda functions, and integrated with Okta authentication. Includes comprehensive feedback system, session management, and multi-agent orchestration for complex queries.",
+      image: "/images/projects/thumbnail/portfolio_app.png",
+      thumbnail: "/images/projects/thumbnail/portfolio_app.png",
+      techStack: ["Python", "AWS Lambda", "API Gateway", "Serverless", "LLM", "AI", "Agentic AI", "PostgreSQL", "S3", "Okta", "REST API", "Multi-Agent System", "Conversational AI", "RAG", "Vector Database"],
+      category: "Ongoing",
+      company: "Bitwise Solution Pvt Ltd",
+      clients: "Gartner",
+      start_date: "2024-03-01",
+      end_date: "",
+      link: "projects/goat-agentic-ai"
+    },
+    {
       title: "Enterprise Data Quality Framework",
       short_description: "Built a comprehensive serverless data quality validation platform on AWS with AI-powered rule generation, Google Sheets integration, and automated alerting.",
       description: "Architected and developed an enterprise-grade data quality framework leveraging AWS Lambda, API Gateway, and serverless architecture. The platform provides automated data validation across PostgreSQL and Redshift databases with AI-powered rule generation using LLMs, bidirectional Google Sheets synchronization for collaborative rule management, and comprehensive alerting via email. Features include parallel processing for high-performance validation, custom SQL validation support, and extensive API documentation for seamless integration with CI/CD pipelines.",
