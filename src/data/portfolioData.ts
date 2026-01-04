@@ -152,10 +152,10 @@ const portfolioData = {
   skillRadarData: [
     { subject: 'Data Engineer', A: 95, fullMark: 100 },
     { subject: 'Cloud Architect', A: 85, fullMark: 100 },
-    { subject: 'AI/ML', A: 80, fullMark: 100 },
-    { subject: 'Leadership', A: 70, fullMark: 100 },
-    { subject: 'DevOps', A: 75, fullMark: 100 },
-    { subject: 'UI/UX', A: 70, fullMark: 100 },
+    { subject: 'AI Engineer', A: 90, fullMark: 100 },
+    { subject: 'Tech Lead', A: 80, fullMark: 100 },
+    { subject: 'DevOps Engineer', A: 75, fullMark: 100 },
+    { subject: "Data Scientist", A: 70, fullMark: 100 },
   ],
 
   // AI Chat Simulation Data
@@ -222,7 +222,7 @@ const portfolioData = {
       endDate: null,
       location: "Pennsylvania, USA",
       company: "IBM - TWC",
-      role: "AI Tech Lead",
+      role: "Lead AI Engineer",
       experienceType: "freelance" as const,
       achievements: [
         "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
@@ -309,7 +309,19 @@ const portfolioData = {
         }
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
-      remoteWork: true
+      remoteWork: true,
+      teamSize: 15,
+      managerialAchievements: [
+        "Led conversion process to move existing lotus notes to development, UAT and Production",
+        "Implemented policies, standards and best practice methods",
+        "Managed ever-increasing change requests and enhancements for high visibility project"
+      ],
+      technicalEnvironment: ["Python", "Apache Spark", "Airflow", "Flask", "AWS", "Docker", "SQL", "XML", "Jenkins"],
+      keyMetrics: [
+        { label: "Micro Services", value: "Designed & Developed" },
+        { label: "System Availability", value: "99.9%" },
+        { label: "Stakeholders", value: "200+" }
+      ]
     },
     {
       period: "May 2020 - Dec 2022",
@@ -331,7 +343,18 @@ const portfolioData = {
         "Built QA dashboards to monitor data quality and monthly sales projections for Oncology brands"
       ],
       tags: ["Data Migration", "Process Automation", "Team Mentoring", "Remote Work", "Healthcare Analytics", "Pharmaceutical Data"],
-      remoteWork: true
+      remoteWork: true,
+      teamSize: 3,
+      managerialAchievements: [
+        "Led team of 3, collaborating with 15+ data vendors and 10+ brand leaders",
+        "Led Data Integration for 15 brands and 50+ dosages"
+      ],
+      technicalEnvironment: ["Snowflake", "Apache Airflow", "Alteryx", "Qlik", "Python", "SQL"],
+      keyMetrics: [
+        { label: "Pipeline Performance", value: "+60%" },
+        { label: "System Speed", value: "+40%" },
+        { label: "Data Accuracy", value: "99.5%" }
+      ]
     },
     {
       period: "Jun 2018 - Apr 2020",
@@ -362,7 +385,18 @@ const portfolioData = {
         }
       ],
       tags: ["AWS Services", "Azure Databricks", "Data Pipeline Optimization", "E-commerce Analytics", "Retail Operations"],
-      remoteWork: false
+      remoteWork: false,
+      teamSize: 4,
+      managerialAchievements: [
+        "Successfully started cloud-based services as a new vertical for the organization",
+        "Delivered automated prediction model workflows"
+      ],
+      technicalEnvironment: ["AWS", "Azure Databricks", "Pyspark", "AWS Glue", "Redshift", "Power BI"],
+      keyMetrics: [
+        { label: "Execution Time", value: "-66%" },
+        { label: "Storage Cost", value: "-50%" },
+        { label: "Cloud Migration", value: "100%" }
+      ]
     }
   ],
 
@@ -394,6 +428,22 @@ const portfolioData = {
   ],
 
   skills: {
+    'Agentic AI': [
+      { name: 'LangGraph', level: 4 },
+      { name: 'LangChain', level: 4 },
+      { name: 'Ollama', level: 3 },
+    ],
+    'DevOps': [
+      { name: 'Git', level: 5 },
+      { name: 'Docker', level: 4 },
+      { name: 'Jenkins', level: 3 },
+      { name: 'Kubernetes', level: 3 },
+    ],
+    'AI Coding Agent': [
+      { name: 'Claude Code', level: 5 },
+      { name: 'Gemini CLI', level: 4 },
+      { name: 'Codex', level: 4 },
+    ],
     'Python': [
       { name: 'Pandas', level: 4.5 },
       { name: 'SQLAlchemy', level: 4.5 },
@@ -410,6 +460,7 @@ const portfolioData = {
     'ETL Tools': [
       { name: 'AWS Glue', level: 4 },
       { name: 'Azure Databricks', level: 4 },
+      { name: 'AWS Lambda', level: 4.5 },
       { name: 'AWS Batch', level: 4.5 },
       { name: 'Alteryx', level: 3.5 },
     ],
@@ -644,8 +695,8 @@ const portfolioData = {
     { id: '7', name: 'Jubilant FoodWorks', logo: '/images/brands/jubilant.png', color: '#E31837' },
     { id: '8', name: 'Dominos', logo: '/images/brands/dominos.png', color: '#006491' },
     { id: '9', name: 'Reckitt Benckiser', logo: '/images/brands/reckitt.svg', color: '#E70068' },
-    { id: '10', name: 'Dettol', logo: '/images/brands/dettol.svg', color: '#007A33' },
-    { id: '11', name: 'IndiaMart', logo: '/images/brands/indiamart.png', color: '#EF3E42' },
+    { id: '10', name: 'Dettol', logo: '/images/brands/dettol.png', color: '#007A33' },
+    { id: '11', name: 'IndiaMart', logo: '/images/brands/indiamart.webp', color: '#EF3E42' },
   ]
 };
 
