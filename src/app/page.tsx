@@ -22,7 +22,8 @@ const AIChatWidget = dynamic(() => import("@/components/ui/AIChatWidget"), { ssr
 export default function Home() {
   const yearsOfExperience = getYearsOfExperience();
   const skillCategories = getAverageSkillRatings();
-  const { personalInfo, experience, skillRadarData } = portfolioData;
+  const { personalInfo, professionalExperience, freelanceExperience, skillRadarData } = portfolioData;
+  const experience = [...professionalExperience, ...freelanceExperience];
 
   return (
     <div className="min-h-screen bg-white font-[family-name:var(--font-geist-sans)]">
