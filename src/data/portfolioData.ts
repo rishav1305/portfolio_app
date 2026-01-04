@@ -216,7 +216,7 @@ const portfolioData = {
       location: "Pennsylvania, USA",
       company: "The Weather Company",
       role: "AI Tech Lead",
-      experienceType: "freelance",
+      experienceType: "freelance" as const,
       achievements: [
         "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
         "Optimized Programmatic Advertisers pipeline, reducing processing time by 60%",
@@ -262,7 +262,7 @@ const portfolioData = {
       location: "Pune, Maharashtra",
       company: "Bitwise Solution Pvt Ltd",
       role: "Project Leader",
-      experienceType: "professional",
+      experienceType: "professional" as const,
       achievements: [
         "Expertise in designing and developing micro services, REST APIs using python.",
         "Rich work experience in Open Source frameworks like Apache Spark, Airflow and Flask framework.",
@@ -311,7 +311,7 @@ const portfolioData = {
       location: "Hyderabad, Telangana",
       company: "Novartis Healthcare Pvt Ltd",
       role: "Senior Data Engineer",
-      experienceType: "professional",
+      experienceType: "professional" as const,
       achievements: [
         "Migrated from HIVE to Snowflake, increasing pipeline performance by 60%",
         "Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by 40%",
@@ -333,7 +333,7 @@ const portfolioData = {
       location: "Noida, Uttar Pradesh",
       company: "Polestar Solutions and Services",
       role: "Data Engineer",
-      experienceType: "professional",
+      experienceType: "professional" as const,
       achievements: [
         "Worked with Jubilant FoodWorks to reduce production pipeline execution time by 66%",
         "Migrated IndiaMART's on-premises system to AWS",
