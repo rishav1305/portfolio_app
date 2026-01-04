@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "../styles/custom-fonts.css"; 
+import "../styles/custom-fonts.css";
 import Navbar from "@/components/navbar/Navbar";
 import ContactSidebar from "@/components/ui/ContactSidebar";
 import Script from "next/script";
@@ -133,20 +133,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth light" style={{colorScheme: 'light'}}>
+    <html lang="en" className="scroll-smooth light" style={{ colorScheme: 'light' }} suppressHydrationWarning={true}>
       <head>
         {/* Add these scripts for Vanta.js */}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" strategy="beforeInteractive" />
         <Script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js" strategy="beforeInteractive" />
         <Script src="/vantaInit.js" strategy="afterInteractive" />
         <style dangerouslySetInnerHTML={{ __html: forceLightModeStyles }} />
-        
+
         {/* Essential SEO link tags */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/images/icon-180x180.png" />
         <link rel="manifest" href="/manifest.json" />
-        
+
         {/* Preconnect to important third-party domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

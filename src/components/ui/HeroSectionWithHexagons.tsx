@@ -20,7 +20,7 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <HexagonBackground className="min-h-[90vh]" />
       </div>
-      
+
       <div className="relative z-10 py-32 px-6 md:px-20 flex flex-col items-center text-center max-w-6xl mx-auto min-h-[90vh] justify-center">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-black">
           <span className="block">RISHAV</span>
@@ -28,24 +28,21 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
         </h1>
         <div className="w-20 h-1 bg-blue-500 mb-10"></div>
         <p className="text-xl md:text-2xl mb-10 text-black max-w-3xl">
-          👋 Hi! I'm a <span className="font-bold text-blue-600">Project Lead</span> and{" "}
-          <span className="font-bold text-blue-600">Data Specialist</span> focused on engineering scalable,{" "}
-          <span className="font-bold text-black">AI-powered solutions</span> in the cloud. 
-          With a strong base in <span className="font-bold">data engineering</span> and{" "}
-          <span className="font-bold">business intelligence</span>, I've led projects in{" "}
-          <span className="font-bold text-blue-600">Agentic AI</span> — from{" "}
-          <span className="font-bold">LLM-based adaptive testing systems</span> to{" "}
-          <span className="font-bold text-black">conversational analytics</span> that make data-driven insights instantly accessible.
+          👋 Hi! I'm a <span className="font-bold text-blue-600">Tech Lead & AI Engineer</span> dedicated to building{" "}
+          <span className="font-bold text-black">autonomous, agentic systems</span>.
+          With a strong foundation in <span className="font-bold">Data Engineering</span> and <span className="font-bold">Technical Leadership</span>,
+          I bridge the gap between complex enterprise data and <span className="font-bold text-blue-600">cutting-edge GenAI solutions</span>.
+          I help organizations scale their data infrastructure and empower teams to innovate faster.
         </p>
         <div className="flex gap-6 flex-col sm:flex-row">
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             className="rounded-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 font-medium text-lg transition-colors"
           >
             CONTACT
           </Link>
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             className="rounded-full border border-black hover:bg-black hover:text-white text-black px-8 py-3 font-medium text-lg transition-colors"
           >
             PORTFOLIO

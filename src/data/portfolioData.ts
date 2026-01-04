@@ -24,6 +24,11 @@ export type WorkExperience = {
     description: string;
   }[];
   remoteWork?: boolean;
+  // New fields for Tech Lead / Manager roles
+  teamSize?: number;
+  managerialAchievements?: string[];
+  technicalEnvironment?: string[];
+  keyMetrics?: { label: string; value: string }[];
 };
 
 export type Education = {
@@ -77,6 +82,24 @@ export type Testimonial = {
   image?: string;
 };
 
+export type CaseStudy = {
+  id: string;
+  title: string;
+  role: string;
+  challenge: string;
+  solution: string;
+  impact: string;
+  metrics: { label: string; value: string }[];
+  techStack: string[];
+};
+
+export type ChatQuestion = {
+  id: string;
+  text: string;
+  response: string;
+};
+
+
 // The main data object
 const portfolioData = {
   personalInfo: {
@@ -117,7 +140,74 @@ const portfolioData = {
       "Remote Work"
     ]
   },
-  
+
+  // New data for Skills Radar Chart
+  skillRadarData: [
+    { subject: 'Data Engineering', A: 100, fullMark: 100 },
+    { subject: 'Cloud Arch', A: 90, fullMark: 100 },
+    { subject: 'AI/ML', A: 85, fullMark: 100 },
+    { subject: 'Leadership', A: 80, fullMark: 100 },
+    { subject: 'DevOps', A: 75, fullMark: 100 },
+    { subject: 'Frontend', A: 70, fullMark: 100 },
+  ],
+
+  // AI Chat Simulation Data
+  chatSimulation: [
+    {
+      id: "q1",
+      text: "What is Rishav's experience with large-scale data teams?",
+      response: "Rishav has led cross-functional teams of up to 8 engineers at The Weather Company and Novatis. He specializes in bridging the gap between Data Engineering and QA, reducing delivery times by 60% through better orchestration."
+    },
+    {
+      id: "q2",
+      text: "Can you tell me about a complex problem he solved?",
+      response: "At The Weather Company, he optimized a Programmatic Advertisers pipeline that was causing SLAs breaches. By re-architecting the flow using AWS Batch and improving the SQL logic, he reduced processing time by 60% and infrastructure costs by 30%."
+    },
+    {
+      id: "q3",
+      text: "What makes him an 'Agentic AI' engineer?",
+      response: "Beyond using LLMs for code, Rishav builds autonomous systems. He created 'GOAT' (Gartner's Own Agentic Tech), a serverless multi-agent system that helps associates retrieve complex client data instantly, replacing manual searches."
+    },
+    {
+      id: "q4",
+      text: "Is he open to freelance work?",
+      response: "Yes! Rishav specializes in high-impact freelance consulting for Enterprise Data Architecture and GenAI solutions. You can book a consultation directly through the 'Contact' section."
+    }
+  ],
+
+  // Strategic Case Studies
+  caseStudies: [
+    {
+      id: 'cs1',
+      title: 'Programmatic Ad Pipleline Optimization',
+      role: 'Tech Lead',
+      challenge: 'Legacy processing pipeline was taking 14+ hours, frequently missing internal SLAs and causing revenue attribution delays.',
+      solution: 'Re-architected the entire flow using AWS Batch for parallel processing and optimized Snowflake merge logic to reduce lock contention.',
+      impact: 'Reduced runtime to ~5 hours (60% improvement) and cut compute costs by 30% by moving off always-on instances.',
+      metrics: [
+        { label: 'Time Saved', value: '60%' },
+        { label: 'Cost Reduction', value: '30%' },
+        { label: 'SLA Adherence', value: '99.9%' }
+      ],
+      techStack: ['AWS Batch', 'Snowflake', 'Python', 'Docker']
+    },
+    {
+      id: 'cs2',
+      title: 'Enterprise Data Quality Framework',
+      role: 'Architect',
+      challenge: 'Manual data validation across 15+ brands led to silent failures and bad data entering executive dashboards.',
+      solution: 'Built a serverless validation framework (AWS Lambda) with AI-generated rules that syncs bidirectional with Google Sheets for non-tech users.',
+      impact: 'Eliminated manual QA time by 100% and caught 50+ critical data issues in the first month before they reached production.',
+      metrics: [
+        { label: 'Manual Effort', value: '-100%' },
+        { label: 'Coverage', value: '15 Brands' },
+        { label: 'Bad Data Prevention', value: '100%' }
+      ],
+      techStack: ['AWS Lambda', 'Google Sheets API', 'Slack Alerts', 'Python']
+    }
+  ],
+
+
   freelanceExperience: [
     {
       period: "Feb 2023 - Present",
@@ -148,10 +238,22 @@ const portfolioData = {
         "Platforms: Gained expertise in Google Ads Manager, Cube.dev, Preset, Clickhouse, Growthbook, Amplitude, mParticle, Datorama"
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
-      remoteWork: true
+      remoteWork: true,
+      teamSize: 8,
+      managerialAchievements: [
+        "Led a team of 8 engineers (Data & QA) in delivering enterprise-wide analytics platforms.",
+        "Managed stakeholder expectations and project roadmaps for B2B and B2C reporting initiatives.",
+        "Mentored junior developers in Python best practices and cloud architecture patterns."
+      ],
+      technicalEnvironment: ["Python", "AWS", "Snowflake", "Airflow", "Tableau CRM"],
+      keyMetrics: [
+        { label: "Revenue Increase", value: "25%" },
+        { label: "Processing Time Reduced", value: "60%" },
+        { label: "Infrastructure Cost Savings", value: "30%" }
+      ]
     }
   ],
-  
+
   professionalExperience: [
     {
       period: "Dec 2022 - Present",
@@ -256,7 +358,7 @@ const portfolioData = {
       remoteWork: false
     }
   ],
-  
+
   education: [
     {
       period: "Aug 2014 - May 2018",
@@ -283,7 +385,7 @@ const portfolioData = {
       description: "Completed foundational education with a strong academic record across all subjects. Actively participated in various extracurricular activities including sports, cultural events, and science exhibitions. Received recognition for academic performance and leadership skills in group projects and classroom activities."
     }
   ],
-  
+
   skills: {
     'Python': [
       { name: 'Pandas', level: 4.5 },
@@ -372,7 +474,7 @@ const portfolioData = {
       title: "Data Integration Pipeline",
       short_description: "Built scalable data integration pipelines for 15 pharmaceutical brands and 50+ dosages from 20 vendors processing over 100GB of data.",
       description: "Led comprehensive data integration efforts for 15 pharmaceutical brands and 50+ dosages, processing over 100GB of structured and unstructured data from 20 vendors. Implemented robust cleansing and transformation pipelines to ensure data accuracy and consistency across all brand reporting. The solution enabled brand managers to access reliable, unified data for decision-making.",
-      image: "/images/projects/thumbnail/portfolio_app.png", 
+      image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Python", "SQL", "Alteryx", "Qlik", "Snowflake", "Data Cleansing", "Data Integration", "ETL"],
       category: "Completed",
@@ -385,7 +487,7 @@ const portfolioData = {
       title: "Forecasting Dashboards",
       short_description: "Developed sales and demand forecasting dashboards for Oncology brand leaders using custom models including Elapsed Days Model and moving average method.",
       description: "Built comprehensive forecasting dashboards for Oncology brand leaders that incorporate custom analytical models like the Elapsed Days Model and moving average methods. These dashboards provide accurate monthly sales and demand projections, enabling strategic inventory management and sales planning. The solution has become a critical tool for executive decision-making.",
-      image: "/images/projects/thumbnail/portfolio_app.png", 
+      image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Python", "Qlik", "SQL", "Statistical Modeling", "Forecasting", "Data Visualization", "Healthcare Analytics"],
       category: "Completed",
@@ -398,7 +500,7 @@ const portfolioData = {
       title: "Process Automation",
       short_description: "Automated manual processes for data ingestion and report generation including National Demand Reports using modern data tools.",
       description: "Led multiple automation initiatives to transform manual data ingestion and report generation processes into streamlined, automated workflows. Currently working on automating National Demand Reports using a combination of Qlik, Alteryx, SQL, and Python. These automation efforts have significantly reduced manual effort while increasing report frequency and accuracy for stakeholders.",
-      image: "/images/projects/thumbnail/portfolio_app.png", 
+      image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Qlik", "Python", "Alteryx", "SQL", "Process Automation", "Workflow Optimization", "Report Generation"],
       category: "Completed",
@@ -411,7 +513,7 @@ const portfolioData = {
       title: "Profile Builder with Local LLM",
       short_description: "An AI-powered tool that automatically fills professional profiles across remote work platforms using portfolio data and local LLM models.",
       description: "Built an AI agent that extracts information from your portfolio and uses local Ollama LLM models to generate optimized professional profiles for platforms like Upwork, LinkedIn, and other job boards. The tool features data extraction from portfolios, platform-specific content generation, and automated profile creation, all while keeping your data private by using local AI models.",
-      image: "/images/projects/thumbnail/profile_builder.png", 
+      image: "/images/projects/thumbnail/profile_builder.png",
       thumbnail: "/images/projects/thumbnail/profile_builder.png",
       techStack: ["Python", "Flask", "Docker", "Ollama", "LLM", "deepseek-r1", "Web Automation", "AI", "Artificial Intelligence", "BeautifulSoup"],
       category: "Ongoing",
@@ -424,7 +526,7 @@ const portfolioData = {
       title: "Automated DSA Questions Tracker",
       short_description: "A Python tool that automates tracking and practicing data structure and algorithm problems from NeetCode 150.",
       description: "Built an automation tool that helps track progress through NeetCode 150 DSA problems. The system automatically fetches questions, organizes solutions by category and difficulty, generates solution templates, validates implementations, and maintains a Git repository of solutions. Features include progress tracking, problem categorization, and automated testing.",
-      image: "/images/projects/thumbnail/portfolio_app.png", 
+      image: "/images/projects/thumbnail/portfolio_app.png",
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Python", "Jupyter Notebook", "Git", "Data Structures", "Algorithms", "Automation", "Web Scraping", "AI", "Artificial Intelligence"],
       category: "Ongoing",
@@ -528,17 +630,17 @@ const portfolioData = {
 
 // Export helper functions separately so they can be called directly
 export const getAverageSkillRatings = () => {
-  const result: {[key: string]: number} = {};
-  
+  const result: { [key: string]: number } = {};
+
   Object.entries(portfolioData.skills).forEach(([category, skills]) => {
     const sum = skills.reduce((acc, skill) => acc + skill.level, 0);
     const average = sum / skills.length;
-    
+
     // Round to the nearest 0.25 increment
     const roundedAverage = Math.round(average * 4) / 4;
     result[category] = roundedAverage;
   });
-  
+
   return result;
 };
 
@@ -550,7 +652,7 @@ export const getYearsOfExperience = () => {
 
 // Create a combined experience array for backward compatibility
 Object.defineProperty(portfolioData, 'experience', {
-  get: function() {
+  get: function () {
     return [...this.professionalExperience, ...this.freelanceExperience];
   }
 });
