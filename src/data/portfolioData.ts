@@ -104,11 +104,11 @@ export type ChatQuestion = {
 const portfolioData = {
   personalInfo: {
     name: "RISHAV",
-    title: "Project Lead and AI-Driven Data Specialist ",
+    title: "Lead AI Engineer",
     email: "mail@rishavchatterjee.com",
-    shortBio: "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",
+    shortBio: "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
     longBio: [
-      "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",
+      "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
       "To stay ahead in today's fast-paced environment, I actively integrate AI into my workflow. I leverage tools like GitHub Copilot, Claude, and ChatGPT for code assistance, debugging, and technical documentation. I'm also developing AI agents using Ollama and Autogen frameworks to automate and scale analytical tasks.",
       "I’ve delivered AI-driven frameworks—like LLM-based adaptive testing and conversational analytics systems—that redefine how teams interact with information. My goal is to bring the sophistication of enterprise systems and the creativity of AI innovation into every engagement."
     ],

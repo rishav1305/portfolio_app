@@ -26,9 +26,9 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
           <span className="block">RISHAV</span>
           <span className="block text-gray-800">CHATTERJEE</span>
         </h1>
-        <div className="w-24 h-1.5 bg-blue-600 mb-12 rounded-full opacity-80"></div>
-        <p className="text-xl md:text-2xl mb-12 text-gray-700 max-w-2xl font-light leading-relaxed">
-          Hi! I&apos;m an <span className="font-semibold text-gray-900">AI Engineering Lead</span> focused on engineering <span className="font-medium text-blue-700">scalable, agentic solutions</span> in the cloud and on-premise. With a strong base in <span className="font-medium text-blue-700">data engineering</span> and <span className="font-medium text-blue-700">business intelligence</span>.
+        <div className="w-32 h-1.5 bg-blue-600 mb-12 rounded-full opacity-80"></div>
+        <p className="text-xl md:text-2xl mb-12 text-gray-700 max-w-4xl font-light leading-relaxed">
+          Hi! I&apos;m a <span className="font-semibold text-gray-900">Lead AI Engineer</span>, I specialize in architecting <span className="font-medium text-blue-700">scalable Agentic AI ecosystems</span> across cloud and on-premise environments. I bridge the gap between complex <span className="font-semibold text-gray-900">data engineering</span> and actionable <span className="font-semibold text-gray-900">business intelligence</span> to build <span className="font-medium text-blue-700">autonomous systems</span> that solve high-stakes enterprise challenges.
         </p>
         <div className="flex gap-6 flex-col sm:flex-row">
           <Link
@@ -41,7 +41,7 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
             href="/projects"
             className="rounded-full border border-black hover:bg-black hover:text-white text-black px-8 py-3 font-medium text-lg transition-colors"
           >
-            PORTFOLIO
+            PROJECTS
           </Link>
         </div>
       </div>
