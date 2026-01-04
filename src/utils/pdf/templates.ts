@@ -8,7 +8,7 @@ import { getYearsOfExperience } from '@/data/portfolioData';
 export function generateOnePageCVHTML(portfolioData: any) {
   // Select key skill categories - include more categories for better coverage
   const keySkillCategories = ['Python', 'SQL', 'Cloud Services', 'Data Warehouse', 'ETL Tools', 'Analytical Tools', 'Project Management', 'Soft Skills'];
-  
+
   return `
     <!DOCTYPE html>
     <html>
@@ -208,8 +208,8 @@ export function generateOnePageCVHTML(portfolioData: any) {
       
       <div class="section">
         <h2>Professional Experience</h2>
-        ${portfolioData.experience.map((job: WorkExperience, index: number) => 
-          index === 0 ? `
+        ${portfolioData.experience.map((job: WorkExperience, index: number) =>
+    index === 0 ? `
           <div class="job featured-role">
             <div class="job-header">
               <div>
@@ -253,13 +253,13 @@ export function generateOnePageCVHTML(portfolioData: any) {
             <div class="skill-category">
               <h4>${category}</h4>
               <div class="skill-content">
-              ${portfolioData.skills[category] 
-                ? portfolioData.skills[category]
-                  .sort((a: SkillRating, b: SkillRating) => b.level - a.level)
-                  .slice(0, 4) // Keep top 4 for CV
-                  .map((skill: SkillRating) => skill.name)
-                  .join(', ')
-                : 'N/A'}
+              ${portfolioData.skills[category]
+        ? portfolioData.skills[category]
+          .sort((a: SkillRating, b: SkillRating) => b.level - a.level)
+          .slice(0, 4) // Keep top 4 for CV
+          .map((skill: SkillRating) => skill.name)
+          .join(', ')
+        : 'N/A'}
               </div>
             </div>
           `).join('')}
@@ -526,10 +526,13 @@ export function generateDetailedResumeHTML(portfolioData: any) {
             ${job.clients ? `
               <div class="clients">
                 <p><strong>Key Clients:</strong></p>
-                ${job.clients.map((client: {name: string; description: string}) => `
+                ${job.clients.map((client: { name: string; description: string | string[] }) => `
                   <div class="client">
                     <p class="client-name">${client.name}</p>
-                    <p>${client.description}</p>
+                    ${Array.isArray(client.description)
+      ? `<ul class="achievements" style="margin-top:0">${client.description.map(d => `<li>${d}</li>`).join('')}</ul>`
+      : `<p>${client.description}</p>`
+    }
                   </div>
                 `).join('')}
               </div>
@@ -551,9 +554,9 @@ export function generateDetailedResumeHTML(portfolioData: any) {
               <h3>${category}</h3>
               <ul>
                 ${skills
-                  .sort((a: SkillRating, b: SkillRating) => b.level - a.level) // Keep sorting by level
-                  .map((skill: SkillRating) => `<li>${skill.name} (Rating: ${skill.level}/5)</li>`) // Optionally show rating
-                  .join('')}
+        .sort((a: SkillRating, b: SkillRating) => b.level - a.level) // Keep sorting by level
+        .map((skill: SkillRating) => `<li>${skill.name} (Rating: ${skill.level}/5)</li>`) // Optionally show rating
+        .join('')}
               </ul>
             </div>
           `).join('')}
