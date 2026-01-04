@@ -10,6 +10,7 @@ interface BreadcrumbProps {
   basePath?: string;
   excludePaths?: string[];
   overrides?: { [key: string]: string };
+  className?: string; // Added className prop
 }
 
 /**
@@ -20,20 +21,21 @@ export default function Breadcrumb({
   separator = '/',
   basePath = '',
   excludePaths = [],
-  overrides = {}
+  overrides = {},
+  className = '' // Deconstruct className
 }: BreadcrumbProps) {
   const pathname = usePathname();
   if (!pathname) return null;
-  
+
   // Remove trailing slash and basePath
-  let path = pathname.endsWith('/') && pathname !== '/' 
-    ? pathname.slice(0, -1) 
+  let path = pathname.endsWith('/') && pathname !== '/'
+    ? pathname.slice(0, -1)
     : pathname;
-    
+
   if (basePath && path.startsWith(basePath)) {
     path = path.slice(basePath.length);
   }
-  
+
   // Split path into segments
   const segments = path
     .split('/')
@@ -41,7 +43,7 @@ export default function Breadcrumb({
     .filter(segment => !excludePaths.includes(segment));
 
   if (segments.length === 0) return null;
-  
+
   // Build breadcrumb items
   const breadcrumbs = [
     { label: homeLabel, href: '/', current: pathname === '/' }
@@ -50,12 +52,12 @@ export default function Breadcrumb({
   let currentPath = '';
   segments.forEach((segment, i) => {
     currentPath += `/${segment}`;
-    
+
     // Human-readable label (replace hyphens with spaces and capitalize)
-    let label = overrides[segment] || 
+    let label = overrides[segment] ||
       segment.replace(/-/g, ' ')
         .replace(/\b\w/g, char => char.toUpperCase());
-    
+
     breadcrumbs.push({
       label,
       href: currentPath,
@@ -64,36 +66,36 @@ export default function Breadcrumb({
   });
 
   return (
-    <nav className="flex" aria-label="Breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
+    <nav className={`flex ${className}`} aria-label="Breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList">
       <ol className="inline-flex items-center space-x-1 md:space-x-2">
         {breadcrumbs.map((item, index) => (
-          <li 
+          <li
             key={index}
             className="inline-flex items-center"
-            itemScope 
-            itemType="https://schema.org/ListItem" 
+            itemScope
+            itemType="https://schema.org/ListItem"
             itemProp="itemListElement"
           >
             {index > 0 && (
-              <span className="mx-2 text-gray-400" aria-hidden="true">
+              <span className={`mx-2 ${className ? 'text-white/40' : 'text-gray-400'}`} aria-hidden="true">
                 {separator}
               </span>
             )}
-            
+
             <meta itemProp="position" content={`${index + 1}`} />
-            
+
             {item.current ? (
-              <span 
-                className="text-gray-700 font-medium"
+              <span
+                className={`${className ? 'text-white font-semibold' : 'text-gray-700 font-medium'}`}
                 aria-current="page"
                 itemProp="name"
               >
                 {item.label}
               </span>
             ) : (
-              <Link 
+              <Link
                 href={item.href}
-                className="text-blue-600 hover:text-blue-800 hover:underline"
+                className={`${className ? 'text-blue-200 hover:text-white' : 'text-blue-600 hover:text-blue-800'} hover:underline`}
                 itemProp="item"
               >
                 <span itemProp="name">{item.label}</span>

@@ -23,7 +23,7 @@ export default function Home() {
   const yearsOfExperience = getYearsOfExperience();
   const skillCategories = getAverageSkillRatings();
   const { personalInfo, professionalExperience, freelanceExperience, skillRadarData } = portfolioData;
-  const experience = [...professionalExperience, ...freelanceExperience];
+
 
   return (
     <div className="min-h-screen bg-white font-[family-name:var(--font-geist-sans)]">
@@ -162,7 +162,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience Section - Enhanced with Timeline */}
+      {/* Experience Section - Professional */}
       <section className="py-16 px-6 md:px-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -172,7 +172,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ExperienceTimeline experiences={[...portfolioData.professionalExperience, ...portfolioData.freelanceExperience]} />
+          <ExperienceTimeline experiences={portfolioData.professionalExperience} />
 
           <div className="text-center mt-12 hidden">
             <Link
@@ -185,6 +185,22 @@ export default function Home() {
               </svg>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Experience Section - Freelance */}
+      <section className="py-16 px-6 md:px-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-green-600 after:rounded-full">
+              Freelance Work
+            </h2>
+            <p className="text-lg text-gray-600 mt-6">
+              Enterprise-grade freelance solutions and consulting
+            </p>
+          </div>
+
+          <ExperienceTimeline experiences={portfolioData.freelanceExperience} />
         </div>
       </section>
 

@@ -5,129 +5,137 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function TechSkills() {
   const { skills } = portfolioData;
-  
-  // Function to render stars based on skill level
-  const renderStars = (level: number) => {
-    const stars: React.ReactNode[] = [];
-    const fullStars = Math.floor(level);
-    const hasHalfStar = level % 1 >= 0.3 && level % 1 <= 0.7;
-    
-    // Determine star color based on skill level
-    const starColor = level >= 4 ? "text-green-500" : "text-yellow-400";
-    
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <svg key={`full-${i}`} className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-      );
-    }
-    
-    // Add half star if needed
-    if (hasHalfStar) {
-      stars.push(
-        <svg key="half" className={`w-5 h-5 ${starColor}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id={`half-star-gradient-${level}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="50%" stopColor="currentColor" />
-              <stop offset="50%" stopColor="#e5e7eb" />
-            </linearGradient>
-          </defs>
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill={`url(#half-star-gradient-${level})`}></path>
-        </svg>
-      );
-    }
-    
-    // Add empty stars
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <svg key={`empty-${i}`} className="w-5 h-5 text-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-      );
-    }
-    
-    return stars;
+
+  // Calculate percentage for progress bar
+  const getPercentage = (level: number) => {
+    return Math.min(100, Math.max(0, (level / 5) * 100));
   };
 
-  // Function to get background color based on category
-  const getCategoryColor = (category: string) => {
-    const colorMap: {[key: string]: string} = {
-      'Python': 'bg-blue-50',
-      'SQL': 'bg-green-50',
-      'ETL Tools': 'bg-yellow-50',
-      'Analytical Tools': 'bg-purple-50',
-      'Big Data Tools': 'bg-red-50',
-      'Cloud Services': 'bg-indigo-50',
-      'Data Warehouse': 'bg-pink-50',
-      'Project Management': 'bg-orange-50',
-      'Soft Skills': 'bg-teal-50'
-    };
-    
-    return colorMap[category] || 'bg-gray-50';
+  // Function to get color based on proficiency level
+  const getLevelColor = (level: number) => {
+    if (level >= 4.5) return "from-emerald-400 to-teal-500 shadow-emerald-500/50";
+    if (level >= 4) return "from-blue-400 to-indigo-500 shadow-blue-500/50";
+    if (level >= 3) return "from-violet-400 to-purple-500 shadow-violet-500/50";
+    return "from-amber-400 to-orange-500 shadow-amber-500/50";
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-6">
-          <Breadcrumb overrides={{ "tech-skills": "Technical Skills" }} />
-        </div>
-        <h1 className="text-3xl font-bold text-center mb-3 text-gray-800">Technical Skills</h1>
-        <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
-          A comprehensive breakdown of my technical proficiencies across various domains including programming languages, data tools, cloud platforms, and project management.
-        </p>
+    <div className="min-h-screen relative overflow-hidden bg-slate-900 pt-24 py-8 px-4 sm:px-6 lg:px-8">
+      {/* Animated Background Gradients */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/30 rounded-full blur-[120px] animate-blob mix-blend-screen pointer-events-none"></div>
+      <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] bg-purple-600/30 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen pointer-events-none"></div>
+      <div className="absolute bottom-[-20%] left-[20%] w-[50%] h-[50%] bg-indigo-600/30 rounded-full blur-[120px] animate-blob animation-delay-4000 mix-blend-screen pointer-events-none"></div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-6">
+          <Breadcrumb overrides={{ "tech-skills": "Technical Skills" }} className="text-white/80 hover:text-white" />
+        </div>
+
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-purple-200 drop-shadow-sm">
+            Technical Proficiency
+          </h1>
+          <p className="text-lg text-blue-100/80 max-w-3xl mx-auto font-light leading-relaxed">
+            A comprehensive breakdown of my technical capabilities.
+            <span className="block mt-2 text-sm text-blue-200/60 uppercase tracking-widest font-semibold">
+              Live Data • Automated Analysis
+            </span>
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, skillsList]) => (
-            <div key={category} className={`p-4 rounded-lg shadow-lg ${getCategoryColor(category)}`}>
-              <h2 className="text-xl font-bold mb-3 border-b pb-1">{category}</h2>
-              
-              <div className="space-y-2">
-                {/* Sort skills by level in descending order */}
+            <div
+              key={category}
+              className="group relative p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl pointer-events-none"></div>
+
+              <h2 className="text-xl font-bold mb-6 text-white border-b border-white/10 pb-4 flex items-center justify-between">
+                {category}
+                <span className="text-xs font-normal px-2 py-1 rounded-full bg-white/10 text-blue-200 border border-white/5">
+                  {skillsList.length} items
+                </span>
+              </h2>
+
+              <div className="space-y-5">
                 {[...skillsList]
                   .sort((a, b) => b.level - a.level)
                   .map((skill, index) => (
-                    <div key={index} className="bg-white p-2 rounded-md shadow-sm flex justify-between items-center">
-                      <h3 className={`text-base font-medium ${skill.level >= 4 ? 'text-gray-900' : 'text-gray-700'}`}>
-                        {skill.name}
-                      </h3>
-                      <div className="flex">
-                        {renderStars(skill.level)}
+                    <div key={index} className="relative">
+                      <div className="flex justify-between items-end mb-1">
+                        <h3 className="text-sm font-medium text-blue-50">
+                          {skill.name}
+                        </h3>
+                        <span className="text-xs font-mono text-blue-300/80">
+                          {skill.level} / 5
+                        </span>
                       </div>
+
+                      {/* Modern Progress Bar */}
+                      <div className="h-2 w-full bg-slate-700/50 rounded-full overflow-hidden backdrop-blur-sm shadow-inner">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${getLevelColor(skill.level)} shadow-lg transform origin-left transition-transform duration-1000 ease-out`}
+                          style={{ width: `${getPercentage(skill.level)}%` }}
+                        ></div>
+                      </div>
+
+                      {/* Interaction: Glow on hover */}
+                      <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/0 via-white/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-xl"></div>
                     </div>
-                ))}
+                  ))}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-white rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center">How I Rate My Skills</h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="w-full md:w-1/2">
-              <p className="text-gray-700 mb-4">
-                I rate my proficiency on a scale of 1-5 stars:
+        {/* Legend Section */}
+        <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-md border border-white/10 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="w-full md:w-1/2 space-y-6">
+              <h2 className="text-3xl font-bold text-white">Proficiency Matrix</h2>
+              <p className="text-blue-200/80 leading-relaxed">
+                My skills are rated on a capability scale derived from practical experience and project delivery.
+                This automated index reflects current operational readiness.
               </p>
-              <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                <li><span className="font-semibold text-green-600">5 stars</span>: Expert level - I can solve complex problems, mentor others, and have in-depth knowledge</li>
-                <li><span className="font-semibold text-green-600">4 stars</span>: Advanced - I'm very comfortable with this tool/language and use it regularly</li>
-                <li><span className="font-semibold text-yellow-600">3 stars</span>: Intermediate - I have solid working knowledge and experience</li>
-                <li><span className="font-semibold text-yellow-600">2 stars</span>: Basic proficiency - I understand fundamentals and can work with supervision</li>
-                <li><span className="font-semibold text-yellow-600">1 star</span>: Beginner - I have limited exposure but understand basic concepts</li>
-              </ul>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-24 h-2 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shadow-lg shadow-emerald-500/30"></div>
+                  <div>
+                    <span className="text-emerald-300 font-bold text-sm block">Expert (5.0)</span>
+                    <span className="text-slate-400 text-xs">Architect level, deep internal knowledge</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 h-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 shadow-lg shadow-blue-500/30"></div>
+                  <div>
+                    <span className="text-blue-300 font-bold text-sm block">Advanced (4.0)</span>
+                    <span className="text-slate-400 text-xs">Production ready, highly proficient</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 h-2 rounded-full bg-gradient-to-r from-violet-400 to-purple-500 shadow-lg shadow-violet-500/30"></div>
+                  <div>
+                    <span className="text-violet-300 font-bold text-sm block">Intermediate (3.0)</span>
+                    <span className="text-slate-400 text-xs">Working knowledge, can execute tasks</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="w-full md:w-1/2 mt-6 md:mt-0 flex justify-center">
-              <div className="relative w-full max-w-md aspect-square">
-                <Image 
-                  src="/images/Skills Ratings.png"
-                  alt="Skills Rating System"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain"
-                />
+
+            <div className="w-full md:w-1/2 flex justify-center">
+              <div className="relative w-full max-w-sm aspect-square p-2 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full border border-white/10 animate-pulse-slow">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center space-y-2 backdrop-blur-sm p-6 rounded-2xl bg-slate-900/40 border border-white/5 shadow-2xl">
+                    <div className="text-5xl font-bold text-white tracking-tighter">100+</div>
+                    <div className="text-blue-300 font-mono text-sm tracking-widest uppercase">Technologies</div>
+                    <div className="h-1 w-20 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                  </div>
+                </div>
+                {/* Decorative orbits */}
+                <div className="absolute inset-0 border border-blue-500/20 rounded-full animate-spin-slow"></div>
+                <div className="absolute inset-4 border border-purple-500/20 rounded-full animate-spin-reverse-slower"></div>
               </div>
             </div>
           </div>

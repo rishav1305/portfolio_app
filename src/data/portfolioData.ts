@@ -21,7 +21,7 @@ export type WorkExperience = {
   details?: string[];
   clients?: {
     name: string;
-    description: string;
+    description: string | string[];
   }[];
   remoteWork?: boolean;
   // New fields for Tech Lead / Manager roles
@@ -156,12 +156,12 @@ const portfolioData = {
     {
       id: "q1",
       text: "What is Rishav's experience with large-scale data teams?",
-      response: "Rishav has led cross-functional teams of up to 8 engineers at The Weather Company and Novatis. He specializes in bridging the gap between Data Engineering and QA, reducing delivery times by 60% through better orchestration."
+      response: "Rishav has led cross-functional teams of up to 8 engineers at IBM - TWC and Novatis. He specializes in bridging the gap between Data Engineering and QA, reducing delivery times by 60% through better orchestration."
     },
     {
       id: "q2",
       text: "Can you tell me about a complex problem he solved?",
-      response: "At The Weather Company, he optimized a Programmatic Advertisers pipeline that was causing SLAs breaches. By re-architecting the flow using AWS Batch and improving the SQL logic, he reduced processing time by 60% and infrastructure costs by 30%."
+      response: "At IBM - TWC, he optimized a Programmatic Advertisers pipeline that was causing SLAs breaches. By re-architecting the flow using AWS Batch and improving the SQL logic, he reduced processing time by 60% and infrastructure costs by 30%."
     },
     {
       id: "q3",
@@ -214,7 +214,7 @@ const portfolioData = {
       startDate: "2023-02-13",
       endDate: null,
       location: "Pennsylvania, USA",
-      company: "The Weather Company",
+      company: "IBM - TWC",
       role: "AI Tech Lead",
       experienceType: "freelance" as const,
       achievements: [
@@ -465,7 +465,7 @@ const portfolioData = {
       thumbnail: "/images/projects/thumbnail/portfolio_app.png",
       techStack: ["Python", "AWS Lambda", "API Gateway", "PostgreSQL", "Redshift", "Google Sheets API", "LLM", "AI", "Serverless", "REST API", "CloudWatch", "S3", "Secrets Manager", "Docker", "CI/CD"],
       category: "Ongoing",
-      company: "The Weather Company",
+      company: "IBM - TWC",
       start_date: "2024-01-01",
       end_date: "",
       link: "projects/data-quality-framework"
@@ -597,7 +597,7 @@ const portfolioData = {
       name: "Ivan Cheklin",
       location: "Pennsylvania, USA",
       position: "BI Leader",
-      company: "The Weather Company",
+      company: "IBM - TWC",
       text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
       image: "/images/testimonial1.jpg"
     },
@@ -605,7 +605,7 @@ const portfolioData = {
       name: "Sylvia Ho",
       location: "New York, USA",
       position: "Principal Data Scientist",
-      company: "The Weather Company",
+      company: "IBM - TWC",
       text: "Working with Rishav was a game-changer for our data visualization projects. His innovative approach and attention to detail resulted in solutions that exceeded our expectations.",
       image: "/images/testimonial2.jpg"
     },

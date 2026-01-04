@@ -28,7 +28,7 @@ const ExperienceCardWithRemote: React.FC<ExperienceCardWithRemoteProps> = ({ job
           <p>{job.location}</p>
         </div>
       </div>
-      
+
       <div className="mb-6">
         <h4 className="text-lg font-semibold mb-2 text-gray-800">Key Achievements</h4>
         <ul className="list-disc pl-5 space-y-2">
@@ -37,7 +37,7 @@ const ExperienceCardWithRemote: React.FC<ExperienceCardWithRemoteProps> = ({ job
           ))}
         </ul>
       </div>
-      
+
       {(job.details && job.details.length > 0) && (
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2 text-gray-800">Role Details</h4>
@@ -48,7 +48,7 @@ const ExperienceCardWithRemote: React.FC<ExperienceCardWithRemoteProps> = ({ job
           </ul>
         </div>
       )}
-      
+
       {(job.clients && job.clients.length > 0) && (
         <div>
           <h4 className="text-lg font-semibold mb-2 text-gray-800">Client Projects</h4>
@@ -56,13 +56,21 @@ const ExperienceCardWithRemote: React.FC<ExperienceCardWithRemoteProps> = ({ job
             {job.clients.map((client, i) => (
               <div key={i} className="bg-gray-50 p-4 rounded-md">
                 <h5 className="font-medium text-gray-800">{client.name}</h5>
-                <p className="text-gray-700 mt-1">{client.description}</p>
+                {Array.isArray(client.description) ? (
+                  <ul className="list-disc pl-5 mt-1 space-y-1">
+                    {client.description.map((desc, j) => (
+                      <li key={j} className="text-gray-700 text-sm">{desc}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-700 mt-1">{client.description}</p>
+                )}
               </div>
             ))}
           </div>
         </div>
       )}
-      
+
       {job.tags && job.tags.length > 0 && (
         <div className="mt-6 flex flex-wrap gap-2">
           {job.tags.map((tag, i) => (
