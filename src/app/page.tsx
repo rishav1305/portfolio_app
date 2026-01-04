@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons";
+import BrandMarquee from "@/components/ui/BrandMarquee";
 import portfolioData, { getYearsOfExperience, getAverageSkillRatings } from "@/data/portfolioData";
 import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 import ContactLink from "@/components/ui/ContactLink";
@@ -29,6 +30,11 @@ export default function Home() {
     <div className="min-h-screen bg-white font-[family-name:var(--font-geist-sans)]">
       {/* Hero Section */}
       <HeroSectionWithHexagons />
+
+      {/* Brands Section - Full Width Marquee */}
+      <section className="bg-slate-50">
+        <BrandMarquee />
+      </section>
 
       {/* About Section with Profile Image */}
       <section

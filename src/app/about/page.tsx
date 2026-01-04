@@ -42,7 +42,7 @@ export default function About() {
             <h2 className="text-2xl font-bold mb-6 text-gray-800">About Me</h2>
             <div className="space-y-4">
               {personalInfo.longBio.map((paragraph, index) => (
-                <p key={index} className="text-gray-700">
+                <p key={index} className="text-gray-700 text-[17px] text-justify leading-relaxed">
                   {paragraph}
                 </p>
               ))}
@@ -119,17 +119,14 @@ export default function About() {
         </div>
 
         {/* Timeline Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">My Journey</h2>
+        <div className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-gray-800 text-center">My Journey</h2>
 
           <div className="relative">
-            {/* Vertical line - visible only on larger screens */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+            {/* Vertical line - simplified to always be on the left */}
+            <div className="absolute left-4 md:left-4 top-0 h-full w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-indigo-400"></div>
 
-            {/* Vertical line for mobile - positioned on left side */}
-            <div className="md:hidden absolute left-6 h-full w-1 bg-blue-200"></div>
-
-            <div className="space-y-8">
+            <div className="space-y-12">
               {/* Combined and sorted timeline */}
               {[
                 // Work experiences with date conversion for sorting
@@ -182,49 +179,53 @@ export default function About() {
                 // Sort by date in descending order (most recent first)
                 .sort((a, b) => b.sortDate.getTime() - a.sortDate.getTime())
                 .map((item, index) => (
-                  <div key={`timeline-${index}`} className={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col pl-16 md:pl-0`}>
-                    {/* Timeline point - positioned differently on mobile */}
-                    <div className="md:absolute absolute left-6 md:left-1/2 top-0 md:top-auto transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 border-4 border-white z-10"
-                      style={{
-                        backgroundColor:
-                          item.type === 'work' ? '#2563EB' :
-                            item.type === 'freelance' ? '#8B5CF6' :
-                              '#16A34A'
-                      }}></div>
+                  <div key={`timeline-${index}`} className="relative pl-12 md:pl-16">
 
-                    {/* Content box */}
-                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} text-left`}>
-                      <div className="bg-white p-6 rounded-lg shadow-lg">
-                        <div
-                          className={`bg-${item.displayData.badgeColor}-100 text-${item.displayData.badgeColor}-800 inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2`}
-                          style={{
-                            backgroundColor:
-                              item.type === 'work' ? '#DBEAFE' :
-                                item.type === 'freelance' ? '#F3E8FF' :
-                                  '#DCFCE7',
-                            color:
-                              item.type === 'work' ? '#1E40AF' :
-                                item.type === 'freelance' ? '#7C3AED' :
-                                  '#166534'
-                          }}
-                        >
-                          {item.displayData.badgeText}
-                        </div>
-
-                        <div className="mb-2">
-                          <h3 className="text-xl font-bold">{item.displayData.title}</h3>
-                          <p className="text-gray-600">{item.displayData.subtitle}</p>
-                        </div>
-
-                        <div className="text-sm text-gray-500">
-                          <p>{item.displayData.period}</p>
-                          <p>{item.displayData.location}</p>
-                        </div>
-                      </div>
+                    <div className="absolute left-0 md:left-0 top-1.5 w-8 h-8 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center z-10 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                      <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${item.type === 'work' ? 'from-blue-500 to-blue-600' :
+                        item.type === 'freelance' ? 'from-purple-500 to-purple-600' :
+                          'from-emerald-400 to-emerald-600'
+                        } shadow-sm group-hover:ring-2 ring-offset-2 ring-opacity-50 ${item.type === 'work' ? 'ring-blue-200' :
+                          item.type === 'freelance' ? 'ring-purple-200' :
+                            'ring-emerald-200'
+                        } transition-all duration-300`}></div>
                     </div>
 
-                    {/* Empty space for opposite side - only on desktop */}
-                    <div className="hidden md:block w-5/12"></div>
+
+                    {/* Content box - Glassmorphic feel with hover lift */}
+                    <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 relative overflow-hidden group">
+                      {/* Subtle gradient overlay on hover */}
+                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-r ${item.type === 'work' ? 'from-blue-400 to-transparent' :
+                        item.type === 'freelance' ? 'from-purple-400 to-transparent' :
+                          'from-emerald-400 to-transparent'
+                        } transition-opacity duration-300 pointer-events-none`}></div>
+
+                      <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2 relative z-10">
+                        <h3 className={`text-xl font-bold text-gray-800 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r ${item.type === 'work' ? 'from-blue-700 to-blue-500' :
+                          item.type === 'freelance' ? 'from-purple-700 to-purple-500' :
+                            'from-emerald-700 to-emerald-500'
+                          } transition-all duration-300`}>{item.displayData.subtitle}</h3>
+                        <span className="text-sm text-gray-500 font-medium font-mono bg-gray-50 px-2 py-0.5 rounded-md mt-1 md:mt-0 inline-block">{item.displayData.period}</span>
+                      </div>
+
+                      <div className="flex flex-col md:flex-row md:items-center md:gap-3 mb-3 relative z-10">
+                        <span className="text-lg text-gray-700 font-medium flex items-center gap-2">
+                          {item.displayData.title}
+                        </span>
+                        <span className="hidden md:block text-gray-300">•</span>
+                        <span className="text-sm text-gray-500 italic">{item.displayData.location}</span>
+                      </div>
+
+                      <div className="relative z-10">
+                        <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+                          ${item.type === 'work' ? 'bg-blue-50 text-blue-700 border border-blue-100' :
+                            item.type === 'freelance' ? 'bg-purple-50 text-purple-700 border border-purple-100' :
+                              'bg-emerald-50 text-emerald-700 border border-emerald-100'
+                          }`}>
+                          {item.displayData.badgeText}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))}
             </div>

@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+     
+            
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.polestaranalytics.com/favicon.png">
+<link rel="stylesheet" href="https://www.polestaranalytics.com/assets/css/polestar.min.css">
+<link rel="stylesheet" href="https://www.polestaranalytics.com/assets/css/header-footer.css">
+<!-- Google tag (gtag.js) --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PC1G3GEWB"></script>
+<script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-9PC1G3GEWB');
+</script>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="YUajjz8qvM9ifxuSvJA8kA" async></script>
+
+    <link rel="stylesheet" href="https://www.polestaranalytics.com/assets/css/contact-us.css">
+    <meta http-equiv="refresh" content="2;url=https://www.polestaranalytics.com">
+    <title>Oops! Something went wrong Please refresh the page & try again shortly</title>
+    <meta name="description" content="We're sorry, but an error has occurred. Our team is working to resolve the issue. Please try again later or can contact us if you need immediate assistance">
+    <link rel="canonical" href="https://www.polestaranalytics.com/error">
+</head>
+<body>
+    <link rel="stylesheet" href="https://use.typekit.net/yug7hch.css">
+<script>(function(l) {if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])}; window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(window.lintrk);</script>
+<noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=5543849&fmt=gif"></noscript>
+<div id="myOverlay" class="overlay">
+   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>
+   <div class="overlay-content">
+      <form method="POST">
+         <input type="text" placeholder="Type to search..." name="search" id="input" autocomplete="off" class="s-input">
+         <ul class="serach" id="serach"></ul>
+      </form>
+   </div>
+</div>
+<div style="background:#2249ff; padding:5px 20px; text-align: center; color:#fff;">Our new chapter begins now at <b>polestaranalytics.com</b> | Data to outcomes, Simplified!!</div>
+<header>
+<nav class="navbar navbar-expand-lg">
+   <div class="container">
+      <a href="https://www.polestaranalytics.com" class="navbar-brand"><img alt="Polestar Analytics" height="32" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/logo.svg" width="129"></a>
+      <div class="mobsearch" role="button" aria-label="Search" onclick="openSearch()"><i class="bi bi-search"></i></div>
+      <button aria-controls="navbarExampleOnHover" aria-expanded="false" aria-label="Toggle navigation" class="collapsed navbar-toggler" data-bs-target="#navbarExampleOnHover" data-bs-toggle="collapse" type="button">
+         <span class="navbar-toggler-default"><i class="bi-list"></i></span> 
+         <span class="navbar-toggler-toggled"><i class="bi-x"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExampleOnHover">
+         <ul class="ms-auto navbar-nav">
+            <li class="nav-item dropdown has-megamenu">
+               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Solutions</a>
+               <div class="dropdown-menu megamenu indu solu solcls" role="menu">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <div class="prompt"><a href="https://www.polestaranalytics.com/solutions/1platform"><img alt="Unify Enterprise Intelligence" height="249" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/1platform-icon-thum.jpeg" width="249"><span class="d-block">Unify Enterprise Intelligence <i class="bi bi-arrow-right"></i></span></a></div>
+                           </div>
+                        </div>
+                        <div class="col-lg-9">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li class="mobrgm"><a href="https://www.polestaranalytics.com/solutions/1platform"><span class="d-block">1Platform <small>New</small></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/agenthood-ai"><img alt="Agenthood AI" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/agenthood-ai-menu-icon.png" width="280"><span class="d-block">Agenthood AI <i class="bi bi-arrow-right"></i></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/genai-insights"><img alt="P. AI - Polestar + AI" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/GenAI-Insights-menu-icon.png" width="280"><span class="d-block">P. AI - Polestar + AI <i class="bi bi-arrow-right"></i></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/data-nexus"><img alt="Data Nexus" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/data-nexus-menu-icon.png" width="280"><span class="d-block">Data Nexus <i class="bi bi-arrow-right"></i></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/revenue-growth-management"><img alt="RGM Suite" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/RGM-suite-menu-icon.png" width="280"><span class="d-block">RGM Suite <i class="bi bi-arrow-right"></i></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/supply-chain-control-tower"><img alt="Supply Chain Control Tower" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Supply-Chain-Control-Tower-menu-icon.png" width="280"><span class="d-block">Supply Chain Control Tower <i class="bi bi-arrow-right"></i></span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/solutions/anaplan-integration-utility"><img alt="Wormhole" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Wormhole-menu-icon.png" width="280"><span class="d-block">Wormhole <i class="bi bi-arrow-right"></i></span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown has-megamenu">
+               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
+               <div class="dropdown-menu megamenu servmenu" role="menu">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-6">
+                           <div class="col-megamenu">
+                              <div class="menutitle">Polestar Analytics Differentiators</div>
+                              <ul class="list-unstyled">
+                                 <li><small>New</small><a href="https://www.polestaranalytics.com/services/agentic-ai">Agentic AI <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/data-analytics">Data Analytics <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/generative-ai">Generative AI <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/data-science">Data Science <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/data-engineering">Data Engineering <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/enterprise-planning">Enterprise Planning <i class="bi bi-arrow-right"></i></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-6">
+                           <div class="col-megamenu">
+                              <div class="menutitle">Domain Expertise</div>
+                              <ul class="list-unstyled">
+                                 <li><a href="https://www.polestaranalytics.com/services/global-capability-center">Global Capability Centre <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/financial-analytics">Financial Excellence <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/procurement-analytics">Procurement Insights Practice <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/sales-marketing-performance">Sales & Marketing Hub <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/supply-chain-analytics">Supply Chain Intelligence <i class="bi bi-arrow-right"></i></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/services/environmental-social-governance">ESG Spotlight <i class="bi bi-arrow-right"></i></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="menuin">
+                     <div class="container">
+                        <div class="row">
+                                                      <div class="col-lg-6">
+                              <div class="d-flex flex-row">
+                                 <img alt="Ebook" height="80" loading="lazy" src="https://www.polestaranalytics.com/blogcms/uploads/agentic-ai-use-cases-various-industries.jpg" width="72">
+                                 <div class="p-2">
+                                    <div class="d-flex flex-column">
+                                       <div class="small">eBook</div>
+                                       <div class="menuintitle"><a href="https://www.polestaranalytics.com/ebook/agentic-ai-use-cases-in-industries" target="_blank">Agentic AI - Types, Use Cases, and Workflows</a></div>
+                                    </div>
+                                 </div>
+                                 <div class="downloadicon"><a href="https://www.polestaranalytics.com/ebook/agentic-ai-use-cases-in-industries" target="_blank"><i class="bi bi-cloud-download"></i></a></div>
+                              </div>
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="d-flex flex-row">
+                                 <img alt="Ebook" height="80" loading="lazy" src="https://www.polestaranalytics.com/blogcms/uploads/agentic-ai-implementation-guide-banner.png" width="72">
+                                 <div class="p-2">
+                                    <div class="d-flex flex-column">
+                                       <div class="small">eBook</div>
+                                       <div class="menuintitle"><a href="https://www.polestaranalytics.com/ebook/agentic-ai-implementation-guide" target="_blank">AI Leaders Playbook: The Agentic AI Implementation Guide</a></div>
+                                    </div>
+                                 </div>
+                                 <div class="downloadicon"><a href="https://www.polestaranalytics.com/ebook/agentic-ai-implementation-guide" target="_blank"><i class="bi bi-cloud-download"></i></a></div>
+                              </div>
+                           </div>
+                                                   </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown has-megamenu">
+               <a href="https://www.polestaranalytics.com/industry" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">Industries</a>
+               <div class="dropdown-menu megamenu indu" role="menu">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <div class="menutitle"><a href="https://www.polestaranalytics.com/industry/cpg">CPG & Retail</a></div>
+                              <ul class="list-unstyled">
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/cpg/consumer-durables">Consumer Durables <i class="bi bi-arrow-right"></i></a>
+                                    <p>Empowering decisions, driving success with growth, & optimization</p>
+                                </li>
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/cpg/alcoholic-beverages">Alcoholic Beverages <i class="bi bi-arrow-right"></i></a>
+                                    <p>Uncork the data behind your favorite tipples</p>
+                                </li>
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/cpg/fmcg">FMCG <i class="bi bi-arrow-right"></i></a>
+                                    <p>Achieve a deeper understanding of customer data & get valuable insights</p>
+                                </li>
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/retail">Retail & QSR <i class="bi bi-arrow-right"></i></a>
+                                    <p>Maximize profits and customer satisfaction with measurable solutions</p>
+                                </li>
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/cpg/food-and-beverages">Food & Beverages <i class="bi bi-arrow-right"></i></a>
+                                    <p>Unlock the flavor of success with real-time insights</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <div class="menutitle"><a href="https://www.polestaranalytics.com/industry/manufacturing">Manufacturing</a></div>
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/manufacturing/pharmaceutical">Pharmaceuticals <i class="bi bi-arrow-right"></i></a>
+                                    <p>Data-driven insights to improve the overall quality of care</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/manufacturing/chemical">Chemical <i class="bi bi-arrow-right"></i></a>
+                                    <p>Actionable data in the hands of the operational experts</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/manufacturing/automotive">Automotive <i class="bi bi-arrow-right"></i></a>
+                                    <p>Rev up data-driven decisions for a smoother road ahead</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/manufacturing/building-materials">Building Material <i class="bi bi-arrow-right"></i></a>
+                                    <p>Blueprint to smarter data-driven construction decisions</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/manufacturing/medical-devices">Medical Devices <i class="bi bi-arrow-right"></i></a>
+                                    <p>Cutting-edge IT solutions and analytics tailored for medical devices</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <div class="menutitle">Others</div>
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/technology-and-software">Technology & Software <i class="bi bi-arrow-right"></i></a>
+                                    <p>Optimize your Tech operations and expedite growth</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/senior-housing">Senior Housing <i class="bi bi-arrow-right"></i></a>
+                                    <p>Smart senior living decisions supported by near real-time data</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/real-estate">Real Estate <i class="bi bi-arrow-right"></i></a>
+                                    <p>Unlock valuable real estate insights at your fingertips</p>
+                                </li>
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/industry/banking-financial-services-and-insurance">BFSI <i class="bi bi-arrow-right"></i></a>
+                                    <p>Unleashing the value of operations data with accurate insights</p>
+                                </li>
+                                <li>
+                                    <a href="https://www.polestaranalytics.com/industry/private-equity">Private Equity <i class="bi bi-arrow-right"></i></a>
+                                    <p>Plan your scenarios confidently with AI-enabled PE solutions</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                                <div class="prompt">
+                                    <a href="https://www.polestaranalytics.com/case-study/how-quick-quack-car-wash-leveraged-ml-in-anaplan">
+                                        <img alt="How Quick Quack Car Wash leveraged ML In Anaplan for Financial Planning" height="322" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Financial-Planning-img.png" width="276">
+                                        <span class="d-block">How Quick Quack Car Wash leveraged ML In Anaplan for Financial Planning (FP&A) <i class="bi bi-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown has-megamenu">
+               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Insights</a>
+               <div class="dropdown-menu megamenu indu solu insig" role="menu">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-7">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li><a href="https://www.polestaranalytics.com/blog"><img alt="Blogs" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Blogs-menu-icon.svg" width="80"><span class="d-block">Blogs</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/case-study"><img alt="Case Study" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Casestudy-menu-icon.svg" width="80"><span class="d-block">Case Study</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/ebook"><img alt="eBook" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Ebook-menu-icon.svg" width="80"><span class="d-block">eBook</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/datasheets"><img alt="Datasheet" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Datasheet-menu-icon.svg" width="80"><span class="d-block">Datasheet</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/webinar"><img alt="Webinar" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Webinar-menu-icon.svg" width="80"><span class="d-block">Webinar</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/whitepaper"><img alt="Whitepaper" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Whitepaper-menu-icon.svg" width="80"><span class="d-block">Whitepaper</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/glossary"><img alt="Glossary" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Glossary-menu-icon.svg" width="80"><span class="d-block">Glossary</span></a></li>
+                                 <li><a href="https://www.polestaranalytics.com/news-events"><img alt="News Events" height="60" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/news-events-menu-icon.svg" width="80"><span class="d-block">News</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class=col-lg-5>
+                           <div class="col-megamenu">
+                              <div class="prompt">
+                                 <div class="divtop">
+                                    <img alt="Blogs" height="167" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/marketing-mix-modeling-ebook-cta-banner-image.png" width="475">
+                                    <div class="blog-memu-text">
+                                       <div class="menudate">eBook</div>
+                                       <div class="menutagtitle"><a href="https://www.polestaranalytics.com/ebook/ai-and-analytics-marketing-mix-model-for-higher-marketing-roi">Transformative Potential of Generative AI Survey</a></div>
+                                       <div class="menutag">
+                                          <ul>
+                                             <li>Generative AI</li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="divbottom">
+                                    <div class="divleft"><img alt="Blog" height="167" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/gartner-top-10-technology-trends-for-2025-new-frontiers-of-ai.jpg" width="240"></div>
+                                    <div class="blog-memu-text">
+                                       <div class="menudate">Blog</div>
+                                       <div class="menutagtitle"><a href="https://www.polestaranalytics.com/blog/gartners-top-10-technology-trends-for-2025">Gartner's Top 10 Technology Trends for 2025- New frontiers of AI</a></div>
+                                       <div class="menutag">
+                                          <ul>
+                                             <li>Data Science</li>
+                                             <li>|</li>
+                                             <li>AI</li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown has-megamenu">
+               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Partnerships</a>
+               <div class="dropdown-menu megamenu indu solu partn" role="menu">
+                  <div class="col-megamenu">
+                     <ul class="list-unstyled">
+                        <li><a href="https://www.polestaranalytics.com/partners/microsoft"><img alt="Microsoft" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Microsoft-menu-icon.png" width="280"><span class="d-block">Microsoft</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/anaplan"><img alt="Anaplan" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Anaplan-menu-icon.png" width="280"><span class="d-block">Anaplan</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/aws"><img alt="AWS" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/AWS-menu-icon.png" width="280"><span class="d-block">AWS</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/qlik"><img alt="Qlik" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Qlik-menu-icon.png" width="280"><span class="d-block">Qlik</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/google-cloud"><img alt="GCP" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/GCP-menu-icon.png" width="280"><span class="d-block">GCP</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/snowflake"><img alt="Snowflake" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Snowflake-menu-icon.png" width="280"><span class="d-block">Snowflake</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/databricks"><img alt="Databricks" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/Databricks-menu-icon.png" width="280"><span class="d-block">Databricks</span></a></li>
+                        <li><a href="https://www.polestaranalytics.com/partners/pigment/planning-services"><img alt="Planning Services" height="120" loading="lazy" src="https://cdn.polestarllp.com/assets/menu/pigment-menu-icon.png" width="280"><span class="d-block">Pigment</span></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown has-megamenu">
+               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Who we are</a>
+               <div class="dropdown-menu megamenu indu whowe" role="menu">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/about-us">About Us <i class="bi bi-arrow-right"></i></a>
+                                    <p>Discover the driving force behind our innovative solutions and client-centric approach</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/partners">Partners <i class="bi bi-arrow-right"></i></a>
+                                    <p>Explore our network of strategic alliances driving innovation and excellence</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/career">Careers <i class="bi bi-arrow-right"></i></a>
+                                    <p>Be a part of dynamic and inclusive work culture</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="col-megamenu">
+                              <ul class="list-unstyled">
+                                 <li>
+                                    <a href="https://www.polestaranalytics.com/about-us/our-esg">ESG Initiatives <i class="bi bi-arrow-right"></i></a>
+                                    <p>Our Conscious Actions for Responsible Enterprise (CARE) program</p>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item"><a href="https://www.polestaranalytics.com/contact-us" class="nav-link">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" role="button" aria-label="Search" onclick=openSearch()><i class="bi bi-search"></i></a></li>
+         </ul>
+      </div>
+   </div>
+</nav>
+<script type="application/ld+json">
+{"@context":"http://schema.org",
+"@type":"ItemList",
+"itemListElement":
+[
+{"@type": "SiteNavigationElement",
+"position": 1,
+"name": "Data Engineering Services",
+"description": "Drive the generation and adoption of actionable insights with advanced data platforms, powered by our data engineering solutions and services.",
+"url":"https://www.polestaranalytics.com/services/data-engineering"
+},
+{"@type": "SiteNavigationElement",
+"position": 2,
+"name": "Power BI Services",
+"description": "With Power BI services and consulting experts make your data presentable, interactive, and transformative to drive informed, self-service, and superior decision-making",
+"url":"https://www.polestaranalytics.com/partners/microsoft/power-bi"
+},
+{"@type": "SiteNavigationElement",
+"position": 3,
+"name": "Data Analytics Insights",
+"description": "Read Latest blogs on the current data analytics trends, Business Intelligence Solutions, EPM expertise, Data Management, Thought leadership and much more.",
+"url":"https://www.polestaranalytics.com/blog"
+}
+]
+}</script>
+</header> 
+    <div class="contactcls commspace thank error">
+        <div class="container">
+            <h1>We're sorry! Seems like you have hit a roadblock!</h1>
+			<p>But don't worry. Start afresh by clicking on the home Icon or visit some of our popular pages below..</p>
+            <ul class="list-unstyled">
+                <li><a href="https://www.polestaranalytics.com"><i class="bi bi-house-door"></i></a></li>
+                <li><a href="https://www.polestaranalytics.com/career">Careers</a></li>
+                <li><a href="https://www.polestaranalytics.com/blog">Blogs</a></li>
+                <li><a href="https://www.polestaranalytics.com/case-study">Success Stories</a></li>
+                <li><a href="https://www.polestaranalytics.com/about-us">About Us</a></li>
+            </ul>
+			<h3>Happy Browsing!</h3>
+        </div>
+    </div>
+    <footer>
+      <div class="foottop commspace">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4">
+                      <div class="headingmain">Bridging the Gap from AI to Value</div>
+                  </div>
+                  <div class="col-lg-8">
+                      <ul class="list-unstyled">
+                          <li><a href="https://www.polestaranalytics.com/solutions/1platform">1Platform</a></li>
+                          <li><a href="https://www.polestaranalytics.com/services/ai-analytics">Analytics & AI</a></li>
+                          <li><a href="https://www.polestaranalytics.com/services/data-engineering">Data Engineering</a></li>
+                          <li><a href="https://www.polestaranalytics.com/solutions/revenue-growth-management">RGM Suite</a></li>
+                          <li><a href="https://www.polestaranalytics.com/services/generative-ai">Generative AI</a></li>
+                      </ul>
+                      <ul class="list-unstyled">
+                          <li><a href="https://www.polestaranalytics.com/industry/cpg">CPG</a></li>
+                          <li><a href="https://www.polestaranalytics.com/industry/retail">Retail</a></li>
+                          <li><a href="https://www.polestaranalytics.com/industry/cpg/alcoholic-beverages">Alcoholic Beverages</a></li>
+                          <li><a href="https://www.polestaranalytics.com/industry/manufacturing">Manufacturing</a></li>
+                          <li><a href="https://www.polestaranalytics.com/industry/manufacturing/pharmaceutical">Pharmaceuticals</a></li>
+                      </ul>
+                      <ul class="list-unstyled">
+                          <li><a href="https://www.polestaranalytics.com/about-us">About Us</a></li>
+                          <li><a href="https://www.polestaranalytics.com/blog">Blogs</a></li>
+                          <li><a href="https://www.polestaranalytics.com/case-study">Success Stories</a></li>
+                          <li><a href="https://www.polestaranalytics.com/career">Careers</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="footbottom">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                      <div class="footlogo"><a href="https://www.polestaranalytics.com"><img src="https://cdn.polestarllp.com/assets/menu/logo.svg" width="129" height="32" alt="Polestar Analytics" loading="lazy"></a></div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                      <ul class="list-unstyled mb-0">
+                          <li>Follow us on</li>
+                          <li>
+                              <a href="https://www.linkedin.com/company/polestar-analytics" target="_blank">
+                                  <img src="https://cdn.polestarllp.com/assets/menu/LinkedIn.svg" alt="LinkedIn" height="28"  width="28" loading="lazy"> 
+                              </a>
+                          </li>
+                          <li>
+                              <a href="https://twitter.com/PolestarLLP" target="_blank">
+                                  <img src="https://cdn.polestarllp.com/assets/menu/XTwitter.svg" alt="Twitter" height="28" width="28" loading="lazy">
+                              </a>
+                          </li>
+                          <li>
+                              <a href="https://www.youtube.com/@PolestarAnalytics" target="_blank">
+                                  <img src="https://cdn.polestarllp.com/assets/menu/Youtube.svg" alt="Youtube" height="28" width="28" loading="lazy">
+                              </a>
+                          </li>
+                          <li>
+                              <a href="https://www.instagram.com/polestaranalytics" target="_blank">
+                                  <img src="https://cdn.polestarllp.com/assets/menu/Instagram.svg" alt="Instagram" height="28"  width="28" loading="lazy">
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <hr>
+      <div class="copyright">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-9 col-md-6">
+                      <p>&copy; 2025 Polestar Analytics, a brand of Polestar Solutions & Services (India) and Polestar Insights (US). All rights reserved.</p>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <ul class="list-unstyled">
+                          <li><a href="https://www.dmca.com/Protection/Status.aspx?ID=4280f732-be11-4a58-96bd-f4a826f0979a&refurl=https://www.polestarllp.com/" target="_blank">DMCA Protected</a></li>
+                          <li><a href="https://www.polestaranalytics.com/privacy-policy" target="_blank">Privacy Policy</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+</footer> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://www.polestaranalytics.com/assets/js/polestar.min.js"></script>
+<script src="https://www.polestaranalytics.com/assets/js/common.js"></script>
+<script> $(document).ready(function() {
+function n() {
+    var n = $("#input").val();
+    "" == n && $("#serach").css("display", "none"), $.post("https://www.polestaranalytics.com/Api/auto_complet.php", {
+        s: n
+    }, function(n, c) {
+        "not found" != n && ($("#serach").css("display", "block"), $("#serach").html(n))
+    })
+}
+$("#input").on("input", n), $("myOverlay").on("click", () => {
+    $("#serach").css("display", "none")
+}), $("#input").on("click", n)
+}); 
+</script>
+<script id="hs-script-loader" defer src="//js-na1.hs-scripts.com/24246701.js"></script>
+<script>window[(function(_3Gp,_VF){var _VK='';for(var _a0=0;_a0<_3Gp.length;_a0++){_VK==_VK;var _97=_3Gp[_a0].charCodeAt();_97-=_VF;_97+=61;_97%=94;_97!=_a0;_VF>2;_97+=33;_VK+=String.fromCharCode(_97)}return _VK})(atob('Xk1UdnNuaWd4T2l9'), 4)] = '59d6bab7331680385689';     var zi = document.createElement('script');     (zi.type = 'text/javascript'),     (zi.async = true),     (zi.src = (function(_mjy,_av){var _JX='';for(var _rV=0;_rV<_mjy.length;_rV++){_JX==_JX;var _1u=_mjy[_rV].charCodeAt();_1u-=_av;_1u+=61;_1u%=94;_1u+=33;_1u!=_rV;_av>4;_JX+=String.fromCharCode(_1u)}return _JX})(atob('OEREQENoXV06Q1xKOVtDM0I5QERDXDM/PV1KOVtEMTdcOkM='), 46)),     document.readyState === 'complete'?document.body.appendChild(zi):     window.addEventListener('load', function(){ document.body.appendChild(zi) });</script>
+<script>_linkedin_partner_id = "5543849"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+<script>(function(l) {if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])}; window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(window.lintrk);</script>
+<noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=5543849&fmt=gif"></noscript>
+<script defer>!function () {var reb2b = window.reb2b = window.reb2b || [];if (reb2b.invoked) return;reb2b.invoked = true;reb2b.methods = ["identify", "collect"];reb2b.factory = function (method) {return function () {var args = Array.prototype.slice.call(arguments);args.unshift(method);reb2b.push(args);return reb2b;};};for (var i = 0; i < reb2b.methods.length; i++) {var key = reb2b.methods[i];reb2b[key] = reb2b.factory(key);}reb2b.load = function (key) {var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/reb2b.js.gz";var first = document.getElementsByTagName("script")[0];first.parentNode.insertBefore(script, first);};reb2b.SNIPPET_VERSION = "1.0.1";reb2b.load("5NRP9HGGQVO1");}();</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "j8r43su5ls");
+</script>
+ 
+</body>
+</html>
+
+
+

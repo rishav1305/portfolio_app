@@ -99,6 +99,13 @@ export type ChatQuestion = {
   response: string;
 };
 
+export type Brand = {
+  id: string;
+  name: string;
+  logo: string; // Path to logo image or text fallback
+  color?: string; // Brand color for hover effects
+};
+
 
 // The main data object
 const portfolioData = {
@@ -109,8 +116,8 @@ const portfolioData = {
     shortBio: "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
     longBio: [
       "I am a Lead AI Engineer, dedicated to engineering multi-agent frameworks and scalable AI solutions. By leveraging a deep foundation in data architecture and BI, I transform raw data into intelligent, self-correcting agents deployed seamlessly in cloud and hybrid infrastructures.",
-      "To stay ahead in today's fast-paced environment, I actively integrate AI into my workflow. I leverage tools like GitHub Copilot, Claude, and ChatGPT for code assistance, debugging, and technical documentation. I'm also developing AI agents using Ollama and Autogen frameworks to automate and scale analytical tasks.",
-      "I’ve delivered AI-driven frameworks—like LLM-based adaptive testing and conversational analytics systems—that redefine how teams interact with information. My goal is to bring the sophistication of enterprise systems and the creativity of AI innovation into every engagement."
+      "To thrive in today’s fast-paced landscape, I treat AI as a core component of my delivery process. Beyond leveraging Copilot, Claude, Gemini, and ChatGPT for accelerated development and debugging, I specialize in orchestrating autonomous agents using LangGraph, Ollama and AutoGen. These frameworks allow me to automate complex analytical workflows and scale intelligence across the enterprise.",
+      "My track record includes delivering high-impact AI frameworks—such as LLM-based adaptive testing and conversational analytics systems—that fundamentally transform how teams engage with data. I am driven to merge the structural rigor of enterprise systems with the frontier of AI innovation to deliver scalable, future-ready solutions."
     ],
     location: "Delhi",
     yearsExperienceStartYear: 2018,
@@ -625,6 +632,20 @@ const portfolioData = {
       text: "Rishav's leadership during our data warehouse migration was outstanding. He demonstrated excellent problem-solving skills and technical depth while maintaining clear communication throughout. His work significantly improved our data processing efficiency and analytical capabilities.",
       image: "/images/testimonial7.jpg"
     }
+  ],
+
+  brands: [
+    { id: '1', name: 'The Weather Company', logo: '/images/brands/twc.svg', color: '#1B4B88' },
+    { id: '2', name: 'IBM', logo: '/images/brands/ibm.svg', color: '#006699' },
+    { id: '3', name: 'Bitwise', logo: '/images/brands/bitwise.jpg', color: '#6B2C91' },
+    { id: '4', name: 'Gartner', logo: '/images/brands/gartner.svg', color: '#002856' },
+    { id: '5', name: 'Novartis', logo: '/images/brands/novartis.svg', color: '#E86E25' },
+    { id: '6', name: 'Polestar', logo: '/images/brands/polestar.svg', color: '#000000' },
+    { id: '7', name: 'Jubilant FoodWorks', logo: '/images/brands/jubilant.png', color: '#E31837' },
+    { id: '8', name: 'Dominos', logo: '/images/brands/dominos.png', color: '#006491' },
+    { id: '9', name: 'Reckitt Benckiser', logo: '/images/brands/reckitt.svg', color: '#E70068' },
+    { id: '10', name: 'Dettol', logo: '/images/brands/dettol.svg', color: '#007A33' },
+    { id: '11', name: 'IndiaMart', logo: '/images/brands/indiamart.png', color: '#EF3E42' },
   ]
 };
 
