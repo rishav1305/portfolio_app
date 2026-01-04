@@ -11,6 +11,8 @@ import ContactLink from "@/components/ui/ContactLink";
 import DomainExpertise from "@/components/ui/DomainExpertise";
 import ExperienceTimeline from "@/components/ui/ExperienceTimeline";
 import ImpactMetricCard from "@/components/ui/ImpactMetricCard";
+import AboutStats from "@/components/ui/AboutStats";
+import EducationHighlight from "@/components/ui/EducationHighlight";
 
 // Dynamically import Recharts component to avoid SSR issues
 const SkillsRadar = dynamic(() => import("@/components/ui/SkillsRadar"), { ssr: false });
@@ -34,12 +36,12 @@ export default function Home() {
         aria-labelledby="about-heading"
       >
         <div
-          className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-center"
+          className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center"
           itemScope
           itemType="https://schema.org/Person"
           itemProp="mainEntity"
         >
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 relative">
+          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-white shadow-xl overflow-hidden flex-shrink-0 relative border-4 border-white ring-1 ring-gray-100">
             {/* Using the uploaded profile image */}
             <Image
               src="/images/profile.png"
@@ -74,6 +76,9 @@ export default function Home() {
                 </svg>
               </Link>
             </div>
+
+            {/* New Stats Row */}
+            <AboutStats />
           </div>
         </div>
       </section>
@@ -85,9 +90,9 @@ export default function Home() {
         aria-labelledby="skills-heading"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 id="skills-heading" className="text-3xl font-bold mb-4">Technical Proficiency</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 id="skills-heading" className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">Technical Proficiency</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               A holistic view of my expertise across Data Engineering, AI, and Leadership.
             </p>
           </div>
@@ -141,9 +146,9 @@ export default function Home() {
 
       <section className="py-16 px-6 md:px-20 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Key Strategic Wins</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">Key Strategic Wins</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               Transforming challenges into measurable business impact.
             </p>
           </div>
@@ -160,8 +165,8 @@ export default function Home() {
       <section className="py-16 px-6 md:px-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Professional Journey</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">Professional Journey</h2>
+            <p className="text-lg text-gray-600 mt-6">
               Delivering impact as a Tech Lead and Individual Contributor
             </p>
           </div>
@@ -189,9 +194,9 @@ export default function Home() {
         aria-labelledby="domain-expertise-heading"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 id="domain-expertise-heading" className="text-3xl font-bold mb-4">Domain Expertise</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 id="domain-expertise-heading" className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">Domain Expertise</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               Areas where I&apos;ve developed specialized knowledge and delivered impactful solutions
             </p>
           </div>
@@ -200,14 +205,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section className="py-16 px-6 md:px-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">
+              Education
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
+              Academic background and foundational knowledge.
+            </p>
+          </div>
+
+          <EducationHighlight education={portfolioData.education} />
+        </div>
+      </section>
+
       {/* Testimonials Section - Enhanced with AutoScrollTestimonials */}
       <section className="py-16 px-6 md:px-20 bg-gray-100">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800 relative inline-block">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">
               Client Testimonials
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-6">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               What clients and colleagues say about working with me
             </p>
           </div>

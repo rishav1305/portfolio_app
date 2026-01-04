@@ -10,7 +10,7 @@ export default function Testimonials() {
       position: "CEO, Tech Innovations",
       company: "Tech Innovations",
       text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
-      image: "/images/testimonial1.jpg" 
+      image: "/images/testimonial1.jpg"
     },
     {
       name: "Jane Smith",
@@ -34,7 +34,7 @@ export default function Testimonials() {
         <div className="max-w-4xl mx-auto">
           <Breadcrumb />
           <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Client Testimonials</h1>
-          
+
           <div className="space-y-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg flex flex-col border border-gray-100">
@@ -42,8 +42,8 @@ export default function Testimonials() {
                   <div className="flex items-center">
                     <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 border-2 border-blue-100 shadow-md">
                       {testimonial.image ? (
-                        <img 
-                          src={testimonial.image} 
+                        <img
+                          src={testimonial.image}
                           alt={testimonial.name}
                           className="w-full h-full object-cover"
                         />
@@ -69,15 +69,15 @@ export default function Testimonials() {
                   </div>
                   <div className="text-blue-200 hidden md:block">
                     <svg className="w-12 h-12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                      <path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"/>
+                      <path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z" />
                     </svg>
                   </div>
                 </div>
-                
+
                 <div className="my-6 pl-4 border-l-4 border-blue-100">
                   <p className="text-gray-700 italic text-lg leading-relaxed">"{testimonial.text}"</p>
                 </div>
-                
+
                 <div className="mt-4 flex justify-between items-center">
                   <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
@@ -91,13 +91,13 @@ export default function Testimonials() {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <p className="text-gray-700 max-w-2xl mx-auto mb-8">
               These are just a few of the clients I've had the pleasure of working with. I pride myself on building strong professional relationships and delivering results that exceed expectations.
             </p>
-            <a 
-              href="mailto:chatterjeerishav96@gmail.com" 
+            <a
+              href="mailto:mail@rishavchatterjee.com"
               className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
             >
               Request a Reference

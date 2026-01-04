@@ -3,9 +3,9 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-// Import HexagonBackground with no SSR - this is allowed in client components
-const HexagonBackground = dynamic(
-  () => import("@/components/ui/HexagonBackground"),
+// Import NetBackground with no SSR
+const BackgroundComponent = dynamic(
+  () => import("@/components/ui/NetBackground"),
   { ssr: false }
 );
 
@@ -18,21 +18,17 @@ const HeroSectionWithHexagons: React.FC<HeroSectionWithHexagonsProps> = () => {
     <section className="relative bg-gray-100 min-h-[90vh]">
       {/* Background container with explicit dimensions */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <HexagonBackground className="min-h-[90vh]" />
+        <BackgroundComponent className="min-h-[90vh]" />
       </div>
 
       <div className="relative z-10 py-32 px-6 md:px-20 flex flex-col items-center text-center max-w-6xl mx-auto min-h-[90vh] justify-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-black">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 text-black tracking-tight">
           <span className="block">RISHAV</span>
-          <span className="block">CHATTERJEE</span>
+          <span className="block text-gray-800">CHATTERJEE</span>
         </h1>
-        <div className="w-20 h-1 bg-blue-500 mb-10"></div>
-        <p className="text-xl md:text-2xl mb-10 text-black max-w-3xl">
-          👋 Hi! I'm a <span className="font-bold text-blue-600">Tech Lead & AI Engineer</span> dedicated to building{" "}
-          <span className="font-bold text-black">autonomous, agentic systems</span>.
-          With a strong foundation in <span className="font-bold">Data Engineering</span> and <span className="font-bold">Technical Leadership</span>,
-          I bridge the gap between complex enterprise data and <span className="font-bold text-blue-600">cutting-edge GenAI solutions</span>.
-          I help organizations scale their data infrastructure and empower teams to innovate faster.
+        <div className="w-24 h-1.5 bg-blue-600 mb-12 rounded-full opacity-80"></div>
+        <p className="text-xl md:text-2xl mb-12 text-gray-700 max-w-2xl font-light leading-relaxed">
+          Hi! I&apos;m an <span className="font-semibold text-gray-900">AI Engineering Lead</span> focused on engineering <span className="font-medium text-blue-700">scalable, agentic solutions</span> in the cloud and on-premise. With a strong base in <span className="font-medium text-blue-700">data engineering</span> and <span className="font-medium text-blue-700">business intelligence</span>.
         </p>
         <div className="flex gap-6 flex-col sm:flex-row">
           <Link

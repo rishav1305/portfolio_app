@@ -105,7 +105,7 @@ const portfolioData = {
   personalInfo: {
     name: "RISHAV",
     title: "Project Lead and AI-Driven Data Specialist ",
-    email: "chatterjeerishav96@gmail.com", // Updated to a valid email format
+    email: "mail@rishavchatterjee.com",
     shortBio: "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",
     longBio: [
       "I’m a Project Lead, Full Stack Developer, and Data Specialist providing enterprise-grade freelance solutions that merge technical excellence with adaptive intelligence. My practice combines deep experience in data engineering and BI with cutting-edge Agentic AI applications to help clients make smarter, faster decisions.",

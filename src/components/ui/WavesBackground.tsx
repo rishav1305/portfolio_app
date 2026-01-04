@@ -1,48 +1,24 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-interface WavesBackgroundProps {
-  children: React.ReactNode;
-}
-
-export default function WavesBackground({ children }: WavesBackgroundProps) {
+const WavesBackground = ({ className = '' }: { className?: string }) => {
   const vantaRef = useRef<HTMLDivElement>(null);
   const vantaEffect = useRef<any>(null);
 
   useEffect(() => {
-    // Load vanta.waves.min.js directly via script tag to ensure it's available
-    const loadVantaScript = () => {
-      return new Promise<void>((resolve, reject) => {
-        try {
-          const scriptExists = document.querySelector('script[src*="vanta.waves.min.js"]');
-          
-          if (scriptExists) {
-            resolve();
-            return;
-          }
-          
-          const script = document.createElement('script');
-          script.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js';
-          script.async = true;
-          script.onload = () => resolve();
-          script.onerror = (event) => reject(new Error(`Failed to load Vanta.js script: ${event}`));
-          document.body.appendChild(script);
-        } catch (error) {
-          reject(error);
-        }
-      });
-    };
+    // Dynamically import vanta to avoid SSR issues
+    const loadVanta = async () => {
+      if (!vantaRef.current) return;
 
-    const initVanta = async () => {
       try {
-        await loadVantaScript();
-        
-        if (!vantaEffect.current && vantaRef.current && (window as any).VANTA) {
-          vantaEffect.current = (window as any).VANTA.WAVES({
+        // @ts-ignore
+        const WAVES = (await import('vanta/dist/vanta.waves.min')).default;
+
+        if (!vantaEffect.current) {
+          vantaEffect.current = WAVES({
             el: vantaRef.current,
-            THREE: THREE,
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
@@ -50,35 +26,29 @@ export default function WavesBackground({ children }: WavesBackgroundProps) {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0x3A3CEB, // Blue color similar to yan-holtz.com
-            shininess: 60.00,
+            color: 0x1e40af, // Darker blue (blue-800) for better contrast
+            shininess: 50.00,
             waveHeight: 20.00,
-            waveSpeed: 0.50,
-            zoom: 0.65
+            waveSpeed: 1.0,
+            zoom: 1.0,
+            THREE: THREE // Pass the THREE instance
           });
         }
       } catch (error) {
-        console.error("Error initializing Vanta effect:", error);
-        // Continue without the background effect rather than breaking the app
+        console.error("Failed to load Vanta Waves:", error);
       }
     };
 
-    initVanta();
+    loadVanta();
 
     return () => {
-      if (vantaEffect.current) {
-        vantaEffect.current.destroy();
-        vantaEffect.current = null;
-      }
+      if (vantaEffect.current) vantaEffect.current.destroy();
     };
   }, []);
 
   return (
-    <div className="relative w-full">
-      <div ref={vantaRef} className="absolute inset-0 z-0 min-h-[100vh]" />
-      <div className="relative z-10">
-        {children}
-      </div>
-    </div>
+    <div ref={vantaRef} className={`w-full h-full ${className}`} style={{ position: 'absolute', inset: 0, zIndex: 0 }} />
   );
-}
+};
+
+export default WavesBackground;
