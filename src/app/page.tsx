@@ -111,22 +111,30 @@ export default function Home() {
                 My unique strength lies in the intersection of <strong>Traditional Data Engineering</strong> and <strong>Modern Agentic AI</strong>.
                 I don&apos;t just build pipelines; I architect intelligent systems that learn and adapt.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="p-4 bg-blue-50 rounded-lg">
-                  <div className="font-bold text-blue-700 text-lg">5+ Years</div>
-                  <div className="text-sm text-gray-600">Data Engineering</div>
+                  <div className="font-bold text-blue-700 text-lg">{yearsOfExperience}+ Years</div>
+                  <div className="text-sm text-gray-600">Data Engineer</div>
                 </div>
                 <div className="p-4 bg-purple-50 rounded-lg">
-                  <div className="font-bold text-purple-700 text-lg">Tech Lead</div>
-                  <div className="text-sm text-gray-600">Team Management</div>
+                  <div className="font-bold text-purple-700 text-lg">Led Team of 8</div>
+                  <div className="text-sm text-gray-600">Leadership</div>
                 </div>
                 <div className="p-4 bg-green-50 rounded-lg">
-                  <div className="font-bold text-green-700 text-lg">AI / LLM</div>
-                  <div className="text-sm text-gray-600">RAG & Agents</div>
+                  <div className="font-bold text-green-700 text-lg">GenAI Systems</div>
+                  <div className="text-sm text-gray-600">AI / ML</div>
+                </div>
+                <div className="p-4 bg-teal-50 rounded-lg">
+                  <div className="font-bold text-teal-700 text-lg">React & Next.js</div>
+                  <div className="text-sm text-gray-600">UI / UX</div>
                 </div>
                 <div className="p-4 bg-orange-50 rounded-lg">
-                  <div className="font-bold text-orange-700 text-lg">Cloud</div>
-                  <div className="text-sm text-gray-600">AWS & Azure</div>
+                  <div className="font-bold text-orange-700 text-lg">AWS & Azure</div>
+                  <div className="text-sm text-gray-600">Cloud Architect</div>
+                </div>
+                <div className="p-4 bg-rose-50 rounded-lg">
+                  <div className="font-bold text-rose-700 text-lg">Git & Docker</div>
+                  <div className="text-sm text-gray-600">DevOps</div>
                 </div>
               </div>
               <div className="pt-4">

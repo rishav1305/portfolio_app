@@ -15,22 +15,24 @@
 - Connect all work Github workspaces
 - Add more blogs and articles
 
+## Bio
+Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.
 
-Hi! I'm an AI Engineering Lead focused on engineering scalable, agentic solutions in the cloud and on-premise. With a strong base in data engineering and business intelligence.
-
-AI Engineering Lead
+## Clients
 The Weather Company
+IBM
+Bitwise
+Gartner
+Novartis
+Polestar
+Jubilant Foodworks
+Dominos
+Reckitt Benckiser
+Dettol
+IndiaMart
 
-Remote Work
-Feb 2023 - Present
+## AI Enablement
+With AI, I am able to 
+- Reduce delivery time by 50%
+- Reduce resources cost by 60%
 
-Pennsylvania, USA
-
-Key Achievements:
-
-Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more
-Optimized Programmatic Advertisers pipeline, reducing processing time by 60%
-Executed NetSuite invoice data integration with Salesforce
-Led migration from Qlik Sense to Python for Datorama nPrinting
-Implemented data-driven decision making across business units leading to 25% increase in revenue
-Architected cloud-based data solutions that reduced infrastructure costs by 30%

@@ -108,7 +108,7 @@ const portfolioData = {
     email: "mail@rishavchatterjee.com",
     shortBio: "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
     longBio: [
-      "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
+      "I am a Lead AI Engineer, dedicated to engineering multi-agent frameworks and scalable AI solutions. By leveraging a deep foundation in data architecture and BI, I transform raw data into intelligent, self-correcting agents deployed seamlessly in cloud and hybrid infrastructures.",
       "To stay ahead in today's fast-paced environment, I actively integrate AI into my workflow. I leverage tools like GitHub Copilot, Claude, and ChatGPT for code assistance, debugging, and technical documentation. I'm also developing AI agents using Ollama and Autogen frameworks to automate and scale analytical tasks.",
       "I’ve delivered AI-driven frameworks—like LLM-based adaptive testing and conversational analytics systems—that redefine how teams interact with information. My goal is to bring the sophistication of enterprise systems and the creativity of AI innovation into every engagement."
     ],
@@ -143,12 +143,12 @@ const portfolioData = {
 
   // New data for Skills Radar Chart
   skillRadarData: [
-    { subject: 'Data Engineering', A: 100, fullMark: 100 },
-    { subject: 'Cloud Arch', A: 90, fullMark: 100 },
-    { subject: 'AI/ML', A: 85, fullMark: 100 },
-    { subject: 'Leadership', A: 80, fullMark: 100 },
+    { subject: 'Data Engineer', A: 95, fullMark: 100 },
+    { subject: 'Cloud Architect', A: 85, fullMark: 100 },
+    { subject: 'AI/ML', A: 80, fullMark: 100 },
+    { subject: 'Leadership', A: 70, fullMark: 100 },
     { subject: 'DevOps', A: 75, fullMark: 100 },
-    { subject: 'Frontend', A: 70, fullMark: 100 },
+    { subject: 'UI/UX', A: 70, fullMark: 100 },
   ],
 
   // AI Chat Simulation Data
