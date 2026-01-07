@@ -186,7 +186,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ExperienceTimeline experiences={portfolioData.professionalExperience} />
+          <ExperienceTimeline experiences={portfolioData.professionalExperience} showClients={false} />
 
           <div className="text-center mt-12 hidden">
             <Link

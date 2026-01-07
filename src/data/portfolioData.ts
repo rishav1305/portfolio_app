@@ -27,6 +27,7 @@ export type WorkExperience = {
   // New fields for Tech Lead / Manager roles
   teamSize?: number;
   managerialAchievements?: string[];
+  aiEnablement?: string[];
   technicalEnvironment?: string[];
   keyMetrics?: { label: string; value: string }[];
 };
@@ -217,7 +218,28 @@ const portfolioData = {
 
   freelanceExperience: [
     {
-      period: "Feb 2023 - Present",
+      period: "Jun 2025",
+      startDate: "2025-06-01",
+      endDate: "2025-06-30",
+      location: "Remote",
+      company: "Green Space Energies",
+      role: "Web Developer",
+      experienceType: "freelance" as const,
+      achievements: [
+        "Developed and hosted the website greenspaceenergies.com"
+      ],
+      details: [
+        "Full-Stack Development: Designed and developed the complete website from scratch using modern web technologies.",
+        "Deployment & Hosting: Managed domain registration, DNS configuration, and hosting setup to ensure high availability.",
+        "Responsive Design: Implemented a mobile-first approach ensuring seamless experience across all devices.",
+        "Performance Optimization: Optimized assets and code for fast load times and better SEO rankings."
+      ],
+      tags: ["Web Development", "Hosting"],
+      remoteWork: true,
+      technicalEnvironment: ["HTML", "CSS", "JavaScript", "Hosting"]
+    },
+    {
+      period: "Feb 2023",
       startDate: "2023-02-13",
       endDate: null,
       location: "Pennsylvania, USA",
@@ -225,39 +247,68 @@ const portfolioData = {
       role: "Lead AI Engineer",
       experienceType: "freelance" as const,
       achievements: [
-        "Initiated B2B analytics reporting with key insights through Funnel Analysis, Forecasting, and more",
-        "Optimized Programmatic Advertisers pipeline, reducing processing time by 60%",
-        "Executed NetSuite invoice data integration with Salesforce",
-        "Led migration from Qlik Sense to Python for Datorama nPrinting",
-        "Implemented data-driven decision making across business units leading to 25% increase in revenue",
-        "Architected cloud-based data solutions that reduced infrastructure costs by 30%"
+        "Engineered an intelligent Data Quality Framework utilizing asynchronous AWS Lambda architecture. Integrated AI-driven anomaly detection to automate the identification and remediation of data integrity issues in real-time.",
+        "Architected a large-scale migration to dbt (Data Build Tool), modernizing the transformation layer. Achieved a 40% reduction in processing latency and a 30% decrease in infrastructure overhead through optimized modular modeling.",
+        "Spearheaded the enterprise-wide transition from Qlik Sense to Preset, enhancing self-service analytics accessibility while significantly reducing licensing expenditure.",
+        "Pioneered a unified B2B/B2C analytics engine, delivering high-fidelity insights through probabilistic forecasting, multi-touch marketing attribution, and cohort-based renewal metrics.",
+        "Systematized and refactored the Programmatic Advertising data pipeline, leveraging parallel processing to realize a 60% gain in computational efficiency.",
+        "Orchestrated a seamless ETL integration between NetSuite and Salesforce, ensuring bidirectional data consistency for critical financial invoicing and CRM workflows.",
+        "Decoupled legacy reporting by migrating Qlik Sense nPrinting logic to a Python-based framework, enabling greater flexibility, version control, and integration with modern AI workflows."
       ],
       details: [
         "Initial Role: Started as an individual contributor, leveraging my expertise in Python and SQL.",
         "Expanded Responsibilities: Took on additional roles and responsibilities due to team restructuring during multiple layoffs.",
-        "Current Role: Leading multiple projects across B2B and B2C, including requirements gathering, task delegation and project management.",
+        "Current Role: Leading multiple projects across B2B, B2C and various migrations, including requirements gathering, task delegation and project management.",
+        "Strategic Leadership: Orchestrated the adoption of Agentic AI workflows, transforming legacy data operations into autonomous, self-healing systems.",
+        "Mentorship: Mentored a cross-functional team of 8 (Dev, QA, DevOps) in cloud-native best practices and AI engineering principles.",
         "Key Achievement: Successfully delivered enterprise-wide analytics platform accessed by 200+ stakeholders daily",
-        "Technical Innovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance",
+        "Technical InSnovation: Pioneered implementation of ML algorithms for predictive analytics in advertisement performance",
         "Collaboration: Worked closely with Sylvia and Ivan on ad hoc requests and strategic initiatives",
-        "Executive Reporting: Built Google Sheets dashboard for CEO to track user behavior metrics",
+        "ExecutSive Reporting: Built Google Sheets dashboard for CEO to track user behavior metrics",
         "B2B Reporting: Launched comprehensive B2B reporting including Funnel Analysis, Forecasting, Renewal Metrics, and Attribution",
         "Technical Growth: Advanced skills in Python (pandas, automation), SQL (advanced queries), Salesforce & Tableau CRM (QA, dashboards), Qlik Sense (debugging, dashboarding), AWS (Glue, EMR, Athena, QuickSight, Batch, S3, EC2), Airflow (DAG creation, recovery), and supporting tools like Jira, Confluence, Git Bash, Linux",
-        "Platforms: Gained expertise in Google Ads Manager, Cube.dev, Preset, Clickhouse, Growthbook, Amplitude, mParticle, Datorama"
+
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
       remoteWork: true,
       teamSize: 8,
       managerialAchievements: [
-        "Led a team of 8 engineers (Data & QA) in delivering enterprise-wide analytics platforms.",
-        "Managed stakeholder expectations and project roadmaps for B2B and B2C reporting initiatives.",
-        "Mentored junior developers in Python best practices and cloud architecture patterns."
+        "Leading a team of 8 engineers (Dev, QA, DevOps) in delivering enterprise-wide analytics platforms.",
+        "Orchestrated the adoption of Agentic AI workflows, transforming legacy data operations.",
+        "Reduced ad-hoc reporting requests by 65% through GenAI-powered self-service tools."
       ],
-      technicalEnvironment: ["Python", "AWS", "Snowflake", "Airflow", "Tableau CRM"],
+      aiEnablement: [
+        "Orchestrated the adoption of Agentic AI workflows, transforming legacy data operations into autonomous, self-healing systems.",
+        "Engineered an intelligent Data Quality Framework with AI-driven anomaly detection to automate identification and remediation of data integrity issues.",
+        "Pioneered implementation of ML algorithms for predictive analytics in advertisement performance."
+      ],
+      technicalEnvironment: ["Agentic AI", "Python", "SQL", "AWS", "Airflow", "Tableau CRM", "Salesforce", "Qlik Sense", "Preset", "Jira", "Confluence", "Git Bash", "Linux", "Google Ads Manager"],
       keyMetrics: [
-        { label: "Revenue Increase", value: "25%" },
-        { label: "Processing Time Reduced", value: "60%" },
-        { label: "Infrastructure Cost Savings", value: "30%" }
+        { label: "AI Adoption", value: "+90%" },
+        { label: "Processing Time Reduced", value: "-60%" },
+        { label: "Infra Cost Savings", value: "-30%" }
       ]
+    },
+    {
+      period: "Dec 2019",
+      startDate: "2019-12-01",
+      endDate: "2019-12-31",
+      location: "Remote",
+      company: "Reventus Services",
+      role: "Web Developer",
+      experienceType: "freelance" as const,
+      achievements: [
+        "Developed the website reventus.in"
+      ],
+      details: [
+        "Requirement Analysis: Collaborated with the client to understand business needs and translate them into technical requirements.",
+        "UI/UX Implementation: Translated design mockups into responsive, pixel-perfect web pages.",
+        "Maintenance: Provided ongoing support and updates to ensure website security and stability.",
+        "Delivery: Successfully launched the platform within the stipulated timeline."
+      ],
+      tags: ["Web Development", "HTML/CSS"],
+      remoteWork: true,
+      technicalEnvironment: ["HTML", "CSS", "JavaScript"]
     }
   ],
 
@@ -266,8 +317,8 @@ const portfolioData = {
       period: "Dec 2022 - Present",
       startDate: "2022-12-26",
       endDate: null,
-      location: "Pune, Maharashtra",
-      company: "Bitwise Solution Pvt Ltd",
+      location: "Gurugram, Haryana",
+      company: "Gartner India (Bitwise)",
       role: "Project Leader",
       experienceType: "professional" as const,
       achievements: [
@@ -292,21 +343,17 @@ const portfolioData = {
         "Implemented/developed policies and procedures, standards and best practice methods.",
 
       ],
-      clients: [
-        {
-          name: "Gartner",
-          description: [
-            "Gartner SSC is a high visibility and critical project, the development for which was done years back, I am involved with managing the ever-increasing change requests and enhancements.",
-            "This project has many end users and consumers who validate the data regularly and reach out in case of any business logic updates or refinements are required.",
-            "There are several key players involved, including:",
-            "OneGSD Team: They consume the data to further share it with various product owners,",
-            "Sales Executives: The party who sold the services to the client and manages the account with regularly checks-ins with the client.,",
-            "Salesforce Team: This team enables the Sales Executives to monitor their tasks and achievements,",
-            "The pipelines are managed in Agile model in sprints and further the developments are tested and validated by the QA team and then we do the deployments.",
-            "Exposure to the complete development flow, in-depth understanding of the system, technical knowledge, immense work load and high work pressure, ability to identify areas which require optimization are some of the characteristic requirements of the project.",
 
-          ]
-        }
+      details: [
+        "Gartner SSC is a high visibility and critical project, the development for which was done years back, I am involved with managing the ever-increasing change requests and enhancements.",
+        "This project has many end users and consumers who validate the data regularly and reach out in case of any business logic updates or refinements are required.",
+        "There are several key players involved, including:",
+        "OneGSD Team: They consume the data to further share it with various product owners,",
+        "Sales Executives: The party who sold the services to the client and manages the account with regularly checks-ins with the client.,",
+        "Salesforce Team: This team enables the Sales Executives to monitor their tasks and achievements,",
+        "The pipelines are managed in Agile model in sprints and further the developments are tested and validated by the QA team and then we do the deployments.",
+        "Exposure to the complete development flow, in-depth understanding of the system, technical knowledge, immense work load and high work pressure, ability to identify areas which require optimization are some of the characteristic requirements of the project.",
+
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
       remoteWork: true,
@@ -315,6 +362,11 @@ const portfolioData = {
         "Led conversion process to move existing lotus notes to development, UAT and Production",
         "Implemented policies, standards and best practice methods",
         "Managed ever-increasing change requests and enhancements for high visibility project"
+      ],
+      aiEnablement: [
+        "Architected 'GOAT' (Gartner's Own Agentic Tech), a conversational Agentic AI assistant to streamline client interactions and enhance productivity.",
+        "Implemented RAG (Retrieval-Augmented Generation) pipelines for searching across Gartner's vast research repository.",
+        "Integrated Multi-Agent orchestration for complex query resolution and session management."
       ],
       technicalEnvironment: ["Python", "Apache Spark", "Airflow", "Flask", "AWS", "Docker", "SQL", "XML", "Jenkins"],
       keyMetrics: [
