@@ -14,6 +14,7 @@ import ExperienceTimeline from "@/components/ui/ExperienceTimeline";
 import ImpactMetricCard from "@/components/ui/ImpactMetricCard";
 import AboutStats from "@/components/ui/AboutStats";
 import EducationHighlight from "@/components/ui/EducationHighlight";
+import FreelanceGrid from "@/components/ui/FreelanceGrid";
 
 // Dynamically import Recharts component to avoid SSR issues
 const SkillsRadar = dynamic(() => import("@/components/ui/SkillsRadar"), { ssr: false });
@@ -214,7 +215,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ExperienceTimeline experiences={portfolioData.freelanceExperience} />
+          <FreelanceGrid experiences={portfolioData.freelanceExperience} />
         </div>
       </section>
 

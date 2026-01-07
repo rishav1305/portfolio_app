@@ -221,22 +221,23 @@ const portfolioData = {
       period: "Jun 2025",
       startDate: "2025-06-01",
       endDate: "2025-06-30",
-      location: "Remote",
+      location: "Delhi, India",
       company: "Green Space Energies",
       role: "Web Developer",
       experienceType: "freelance" as const,
+
       achievements: [
-        "Developed and hosted the website greenspaceenergies.com"
+        "Successfully architected and launched greenspaceenergies.com, providing the client with a professional, high-performance digital presence.",
+        "Engineered a zero-cost hosting strategy by leveraging Vercel's serverless infrastructure, meeting client budget constraints without sacrificing scalability."
       ],
       details: [
-        "Full-Stack Development: Designed and developed the complete website from scratch using modern web technologies.",
-        "Deployment & Hosting: Managed domain registration, DNS configuration, and hosting setup to ensure high availability.",
-        "Responsive Design: Implemented a mobile-first approach ensuring seamless experience across all devices.",
-        "Performance Optimization: Optimized assets and code for fast load times and better SEO rankings."
+        "AI-Accelerated Full-Stack Development: Developed the entire platform from scratch using Next.js, utilizing Cline and Claude 3.5 Sonnet to optimize the development lifecycle.",
+        "Infrastructure & Deployment: Orchestrated the complete production pipeline, including domain registration, DNS configuration, and automated CI/CD via Vercel.",
+        "Responsive Architecture: Implemented a mobile-first design philosophy to ensure a seamless and fluid user experience across all device ecosystems."
       ],
-      tags: ["Web Development", "Hosting"],
+      tags: ["Full-Stack Development", "AI-Driven Engineering", "Cloud Deployment"],
       remoteWork: true,
-      technicalEnvironment: ["HTML", "CSS", "JavaScript", "Hosting"]
+      technicalEnvironment: ["Next.js", "React", "Vercel", "Cline/Claude 3.5", "Tailwind CSS", "DNS Management"]
     },
     {
       period: "Feb 2023",
@@ -293,22 +294,22 @@ const portfolioData = {
       period: "Dec 2019",
       startDate: "2019-12-01",
       endDate: "2019-12-31",
-      location: "Remote",
+      location: "Delhi, India",
       company: "Reventus Services",
       role: "Web Developer",
       experienceType: "freelance" as const,
       achievements: [
-        "Developed the website reventus.in"
+        "Architechted and developed a scalable and responsive website for the client reventus.in",
+        "Sucessfully deployed and hosted the single page scrollable website on goDaddy"
       ],
       details: [
         "Requirement Analysis: Collaborated with the client to understand business needs and translate them into technical requirements.",
         "UI/UX Implementation: Translated design mockups into responsive, pixel-perfect web pages.",
-        "Maintenance: Provided ongoing support and updates to ensure website security and stability.",
         "Delivery: Successfully launched the platform within the stipulated timeline."
       ],
       tags: ["Web Development", "HTML/CSS"],
       remoteWork: true,
-      technicalEnvironment: ["HTML", "CSS", "JavaScript"]
+      technicalEnvironment: ["HTML", "CSS", "jQuery", "Bootstrap"]
     }
   ],
 
@@ -322,57 +323,57 @@ const portfolioData = {
       role: "Project Leader",
       experienceType: "professional" as const,
       achievements: [
-        "Expertise in designing and developing micro services, REST APIs using python.",
-        "Rich work experience in Open Source frameworks like Apache Spark, Airflow and Flask framework.",
-        "Have good knowledge of AWS services i.e. Batch, Glue, Lambda, S3, Redshift, DynamoDB, and DMS.",
-        "Good experience in conducting proof-of-concept and developing prototypes.",
-        "Have working knowledge of JIRA, Azure DevOps for project management and collaboration.",
-        "Have knowledge of Docker.",
-        "Hands on experience with Python, SQL, HTML, Shell Script and JavaScript.",
-        "Used GITLAB, GITHub, Bitbucket as a code repository and versioning.",
-        "Good understanding of Algorithms, Data Structures and Design Patterns.",
-        "Working knowledge in Relational Database Systems like SQL Server and PostgreSql.",
-        "Work experience on Windows, Linux and UNIX environment.",
-        "Proficient with XML related technologies.",
-        "Implemented CI/CD through Jenkins.",
-        "Good analytical and programming capabilities coupled with excellent decision making skills.",
-        "Excellent team player and ability to perform well under pressure.",
-        "Good documentation skills and excellent technical, Communication and Interpersonal Skills with strong Client Interfacing Skills.",
-        "Conducting/Attending regular Conference Calls to gather requirements and preparing MOM for the activities.",
-        "Responsible for Analysis discussions with the end users, getting signoff, plan, lead, manage and execute a conversion process to move the existing lotus notes to development, UAT and Production deployment.",
-        "Implemented/developed policies and procedures, standards and best practice methods.",
-
+        "Spearheaded the company-wide launch of GOAT (Gartner’s Own Agentic Tech), an enterprise-grade Agentic AI platform designed to automate internal productivity.",
+        "Re-architected the GOAT platform from AWS EKS to a serverless AWS Lambda framework, enabling high-availability scaling for up to 1,000 concurrent users.",
+        "Engineered an automated A/B testing and observability framework to benchmark LLM performance, system prompts, token consumption, and cost-efficiency.",
+        "Developed a centralized multi-agent ecosystem that empowers sales and service executives to resolve complex client queries through a unified conversational interface.",
+        "Optimized Unified AL pipelines to achieve a landmark 88% reduction in processing latency and a 60% decrease in total operational costs."
       ],
 
       details: [
-        "Gartner SSC is a high visibility and critical project, the development for which was done years back, I am involved with managing the ever-increasing change requests and enhancements.",
-        "This project has many end users and consumers who validate the data regularly and reach out in case of any business logic updates or refinements are required.",
-        "There are several key players involved, including:",
-        "OneGSD Team: They consume the data to further share it with various product owners,",
-        "Sales Executives: The party who sold the services to the client and manages the account with regularly checks-ins with the client.,",
-        "Salesforce Team: This team enables the Sales Executives to monitor their tasks and achievements,",
-        "The pipelines are managed in Agile model in sprints and further the developments are tested and validated by the QA team and then we do the deployments.",
-        "Exposure to the complete development flow, in-depth understanding of the system, technical knowledge, immense work load and high work pressure, ability to identify areas which require optimization are some of the characteristic requirements of the project.",
+        "Initiated tenure at Gartner within the Strategic Supply Chain (SSC) team, managing high-visibility, mission-critical data architectures.",
+        "Managed a legacy system with 7,000+ end users, navigating a high-pressure environment to implement complex business logic refinements and enhancements.",
+        "Led data pipeline evolution using an Agile/Sprint model, collaborating closely with QA teams to ensure zero-defect deployments for critical business updates.",
+        "Demonstrated technical leadership by identifying and optimizing system bottlenecks under immense workload and high-pressure delivery timelines.",
+        "Transitioned to the GOAT team as a Senior AI Developer to lead the technical evolution of Gartner's proprietary Agentic AI platform.",
+        "Built the foundational architecture for GOAT, transforming it from an initial Proof of Concept (PoC) to a production-ready enterprise solution.",
+        "Scaled the pilot platform from 50 initial users to an enterprise-wide deployment catering to over 5,000 active users.",
+        "Modernized the infrastructure stack from EKS to AWS Lambda to handle increased load while significantly reducing cloud overhead.",
+        "Currently overseeing a fleet of 20+ specialized AI Agents designed to streamline day-to-day operations for sales and service departments."
+      ],
 
+      managerialAchievements: [
+        "Directed a cross-functional team of 5 Data Engineers and 3 QA Testers to successfully deploy mission-critical pipeline enhancements.",
+        "Orchestrated the migration and modernization of legacy Lotus Notes data into modern Dev, UAT, and Production environments.",
+        "Established and implemented rigorous engineering policies, standards, and best-practice methods for AI and data development.",
+        "Strategically managed an ever-increasing roadmap of change requests and feature enhancements for high-visibility executive projects."
+      ],
+
+      aiEnablement: [
+        "Architected the 'GOAT' multi-agent framework to orchestrate complex query resolution and enhance executive productivity.",
+        "Implemented high-performance RAG (Retrieval-Augmented Generation) pipelines for semantic search across Gartner’s proprietary research repositories.",
+        "Integrated sophisticated multi-agent orchestration for advanced session management and context-aware interaction models."
       ],
       tags: ["Data Engineering", "Cloud Infrastructure", "Team Leadership", "Machine Learning", "Enterprise Integration", "Remote Work"],
       remoteWork: true,
       teamSize: 15,
-      managerialAchievements: [
-        "Led conversion process to move existing lotus notes to development, UAT and Production",
-        "Implemented policies, standards and best practice methods",
-        "Managed ever-increasing change requests and enhancements for high visibility project"
-      ],
-      aiEnablement: [
-        "Architected 'GOAT' (Gartner's Own Agentic Tech), a conversational Agentic AI assistant to streamline client interactions and enhance productivity.",
-        "Implemented RAG (Retrieval-Augmented Generation) pipelines for searching across Gartner's vast research repository.",
-        "Integrated Multi-Agent orchestration for complex query resolution and session management."
-      ],
-      technicalEnvironment: ["Python", "Apache Spark", "Airflow", "Flask", "AWS", "Docker", "SQL", "XML", "Jenkins"],
-      keyMetrics: [
-        { label: "Micro Services", value: "Designed & Developed" },
-        { label: "System Availability", value: "99.9%" },
-        { label: "Stakeholders", value: "200+" }
+      technicalEnvironment: [
+        "Python",
+        "Ollama",
+        "LangGraph",
+        "LangChain",
+        "AWS (Lambda, EKS, API Gateway, S3, IAM)",
+        "SQL",
+        "Apache Spark",
+        "Airflow",
+        "Docker",
+        "Jenkins (CI/CD)",
+        "LLM Observability",
+        "RESTful APIs"
+      ], keyMetrics: [
+        { label: "Users", value: "7000+" },
+        { label: "Processing Time", value: "-88%" },
+        { label: "Cost Saving", value: "60%" }
       ]
     },
     {
