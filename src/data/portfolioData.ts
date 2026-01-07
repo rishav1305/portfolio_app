@@ -285,9 +285,9 @@ const portfolioData = {
       ],
       technicalEnvironment: ["Agentic AI", "Python", "SQL", "AWS", "Airflow", "Tableau CRM", "Salesforce", "Qlik Sense", "Preset", "Jira", "Confluence", "Git Bash", "Linux", "Google Ads Manager"],
       keyMetrics: [
-        { label: "AI Adoption", value: "+90%" },
         { label: "Processing Time Reduced", value: "-60%" },
-        { label: "Infra Cost Savings", value: "-30%" }
+        { label: "Infra Cost Savings", value: "-30%" },
+        { label: "AI Adoption", value: "+90%" }
       ]
     },
     {

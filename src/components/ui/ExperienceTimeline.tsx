@@ -22,8 +22,11 @@ const ExperienceCard: React.FC<{ job: WorkExperience; showClients: boolean; inde
         (showClients && job.clients && job.clients.length > 0) ||
         (job.technicalEnvironment || job.tags);
 
+    // Generate specific ID for deep linking
+    const cardId = job.company.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
     return (
-        <div className="relative pl-0 md:pl-24 group">
+        <div id={cardId} className="relative pl-0 md:pl-24 group scroll-mt-24">
             {/* Timeline Dot with Pulse Effect */}
             <div className="hidden md:flex absolute left-8 top-8 w-5 h-5 -translate-x-1/2 items-center justify-center">
                 <div className="w-full h-full bg-white rounded-full border-4 border-blue-600 shadow-lg relative z-10 group-hover:border-purple-600 transition-colors duration-300"></div>
