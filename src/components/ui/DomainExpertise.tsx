@@ -30,7 +30,7 @@ const DomainExpertise: React.FC<DomainExpertiseProps> = ({ className = '', compa
   const marqueeItems = [...domainExpertise, ...domainExpertise, ...domainExpertise];
 
   return (
-    <div className={`${className} w-full overflow-hidden py-6 relative group`}>
+    <div className={`${className} w-full overflow-hidden relative group`}>
       <style>{`
         @keyframes domain-marquee {
           0% { transform: translateX(0); }
@@ -44,8 +44,6 @@ const DomainExpertise: React.FC<DomainExpertiseProps> = ({ className = '', compa
         }
       `}</style>
 
-      {/* Header */}
-      <h2 className="text-xl font-bold mb-6 text-gray-800 px-1">Domain Expertise</h2>
 
       {/* Gradient masks */}
       <div className="absolute left-0 top-14 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>

@@ -219,26 +219,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Domain Expertise Section */}
-      <section
-        className="py-16 px-6 md:px-20 bg-white"
-        id="domain-expertise-section"
-        aria-labelledby="domain-expertise-heading"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 id="domain-expertise-heading" className="text-3xl font-bold mb-4 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">Domain Expertise</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
-              Areas where I&apos;ve developed specialized knowledge and delivered impactful solutions
-            </p>
-          </div>
-
-          <DomainExpertise className="mb-8" />
-        </div>
-      </section>
-
       {/* Education Section */}
-      <section className="py-16 px-6 md:px-20 bg-gray-50">
+      <section className="py-16 px-6 md:px-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 text-gray-800 inline-block relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-blue-600 after:rounded-full">
@@ -250,6 +232,23 @@ export default function Home() {
           </div>
 
           <EducationHighlight education={portfolioData.education} />
+        </div>
+      </section>
+
+      {/* Domain Expertise Section */}
+      <section
+        className="py-16 px-6 md:px-20 bg-gray-50"
+        id="domain-expertise-section"
+        aria-labelledby="domain-expertise-heading"
+      >
+        <div className="w-full overflow-hidden relative">
+          <p className="text-center text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-12">
+            DOMAIN EXPERTISE
+          </p>
+
+
+
+          <DomainExpertise className="mb-8" />
         </div>
       </section>
 
