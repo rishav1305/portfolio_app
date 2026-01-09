@@ -107,6 +107,39 @@ export type Brand = {
   color?: string; // Brand color for hover effects
 };
 
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
+  iconName: string; // e.g., 'BrainCircuit', 'DatabaseZap', 'CloudCog'
+  skills: string[];
+};
+
+export type ServiceV2 = {
+  title: string;
+  description: string;
+  outcomes: string[];
+};
+
+export type ServiceV3 = {
+  title: string;
+  description: string;
+  priceRange: string;
+  timeline: string;
+  features: string[];
+};
+
+export type StatItem = {
+  label: string;
+  value: string;
+  icon?: string;
+};
+
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
 
 // The main data object
 const portfolioData = {
@@ -117,7 +150,7 @@ const portfolioData = {
     shortBio: "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
     longBio: [
       "I am a Lead AI Engineer, dedicated to engineering multi-agent frameworks and scalable AI solutions. By leveraging a deep foundation in data architecture and BI, I transform raw data into intelligent, self-correcting agents deployed seamlessly in cloud and hybrid infrastructures.",
-      "To thrive in today’s fast-paced landscape, I treat AI as a core component of my delivery process. Beyond leveraging Copilot, Claude, Gemini, and ChatGPT for accelerated development and debugging, I specialize in orchestrating autonomous agents using LangGraph, Ollama and AutoGen. These frameworks allow me to automate complex analytical workflows and scale intelligence across the enterprise.",
+      "To thrive in today's fast-paced landscape, I treat AI as a core component of my delivery process. Beyond leveraging Copilot, Claude, Gemini, and ChatGPT for accelerated development and debugging, I specialize in orchestrating autonomous agents using LangGraph, Ollama and AutoGen. These frameworks allow me to automate complex analytical workflows and scale intelligence across the enterprise.",
       "My track record includes delivering high-impact AI frameworks—such as LLM-based adaptive testing and conversational analytics systems—that fundamentally transform how teams engage with data. I am driven to merge the structural rigor of enterprise systems with the frontier of AI innovation to deliver scalable, future-ready solutions."
     ],
     location: "Delhi",
@@ -148,6 +181,31 @@ const portfolioData = {
       "Remote Work"
     ]
   },
+
+  // Service Pillars
+  services: [
+    {
+      id: "s1",
+      title: "Agentic AI Development",
+      description: "Building autonomous, self-correcting AI systems that solve complex enterprise workflows. I move beyond simple chatbots to architect multi-agent ecosystems that can reason, plan, and execute tasks.",
+      iconName: "Cpu", // Lucide icon name or path
+      skills: ["LangGraph", "AutoGen", "OpenAI/Claude API", "RAG Pipelines"]
+    },
+    {
+      id: "s2",
+      title: "Data Pipeline Optimization",
+      description: "Transforming sluggish, legacy ETL processes into high-performance, real-time data streams. I optimize for cost, latency, and reliability, ensuring your data is ready when you need it.",
+      iconName: "Database",
+      skills: ["Snowflake", "AWS Glue/Batch", "Airflow", "Python/SQL"]
+    },
+    {
+      id: "s3",
+      title: "Cloud Migration Strategy",
+      description: "Leading safe, efficient migrations from on-premise to cloud (AWS/Azure). I handle the architecture, security, and cost-modeling to ensure a seamless transition with zero downtime.",
+      iconName: "Cloud",
+      skills: ["AWS", "Azure", "Docker/Kubernetes", "Infrastructure as Code"]
+    }
+  ],
 
   // New data for Skills Radar Chart
   skillRadarData: [
@@ -209,11 +267,72 @@ const portfolioData = {
       metrics: [
         { label: 'Manual Effort', value: '-100%' },
         { label: 'Coverage', value: '15 Brands' },
-        { label: 'Bad Data Prevention', value: '100%' }
+        { label: 'Errors Caught', value: '50+' }
       ],
-      techStack: ['AWS Lambda', 'Google Sheets API', 'Slack Alerts', 'Python']
+      techStack: ['AWS Lambda', 'OpenAI', 'Google Sheets API', 'Python']
+    },
+    {
+      id: "cs4",
+      title: "Agentic AI Customer Support",
+      role: "Lead AI Engineer",
+      challenge: "Customer support agents were spending 40% of time searching for policy info across scattered PDFs and Notion docs.",
+      solution: "Deployed a RAG-based multi-agent system (LangGraph) that retrieves context and drafts responses, with a human-in-the-loop review step.",
+      impact: "Reduced average handling time (AHT) by 45% and improved first-contact resolution by 25%.",
+      metrics: [
+        { label: "AHT Reduction", value: "45%" },
+        { label: "Resolution Rate", value: "+25%" },
+        { label: "Docs Indexed", value: "10k+" }
+      ],
+      techStack: ["LangGraph", "Pinecone", "FastAPI", "React"]
     }
   ],
+
+  // V3 Specific Data
+  statsDashboard: [
+    { label: "Users Impacted", value: "7,000+" },
+    { label: "Cost Savings Delivered", value: "$2M+" },
+    { label: "Enterprise Clients", value: "15+" },
+    { label: "Client Satisfaction", value: "99.5%" }
+  ] as StatItem[],
+
+  servicesV3: [
+    {
+      title: "AI System Architecture",
+      description: "Custom Agentic AI solutions and LLM integration for enterprise workflows.",
+      priceRange: "$5k - $15k",
+      timeline: "4-8 weeks",
+      features: ["RAG Pipelines", "Multi-Agent Systems", "Custom Fine-tuning"]
+    },
+    {
+      title: "Data Pipeline Optimization",
+      description: "Modernize legacy ETLs to reduce latency and cloud costs.",
+      priceRange: "$3k - $10k",
+      timeline: "2-6 weeks",
+      features: ["Snowflake/Databricks", "Airflow Migration", "Cost Audit"]
+    },
+    {
+      title: "Enterprise Data Strategy",
+      description: "Consulting on data governance, stack selection, and team structure.",
+      priceRange: "$200/hr or Retainer",
+      timeline: "Ongoing",
+      features: ["Tech Stack Audit", "Hiring Support", "Roadmap Planning"]
+    }
+  ] as ServiceV3[],
+
+  faqs: [
+    {
+      question: "What is your typical engagement model?",
+      answer: "I work primarily on a project basis with fixed milestones. For ongoing advisory, I offer monthly retainer packages."
+    },
+    {
+      question: "Do you handle the entire development lifecycle?",
+      answer: "Yes, from architectural design and coding to deployment and CI/CD setup. I can also work with your existing team to hand off knowledge."
+    },
+    {
+      question: "What industries have you worked with?",
+      answer: "My core experience is in AdTech, Healthcare, Retail, and SaaS. However, data and AI principles apply universally."
+    }
+  ] as FAQItem[],
 
 
   freelanceExperience: [
@@ -313,6 +432,29 @@ const portfolioData = {
     }
   ],
 
+  servicesV2: [
+    {
+      title: "Data Engineering",
+      description: "Design and build scalable, reliable data pipelines that transform raw data into trusted, analytics-ready assets.",
+      outcomes: ["Faster reporting", "Cleaner data", "Reduced failures"]
+    },
+    {
+      title: "Cloud & Platform Engineering",
+      description: "Architect and optimize cloud-native data platforms on AWS and modern data stacks for performance, cost, and scale.",
+      outcomes: ["Lower cloud costs", "High availability", "Secure infrastructure"]
+    },
+    {
+      title: "Analytics & Dashboards",
+      description: "Build actionable dashboards and data models that turn complex datasets into clear, decision-ready insights.",
+      outcomes: ["Better decisions", "Real-time visibility", "Stakeholder alignment"]
+    },
+    {
+      title: "AI / ML & Automation",
+      description: "Develop intelligent automation and ML solutions to reduce manual work, detect patterns, and predict outcomes.",
+      outcomes: ["Time savings", "Predictive insights", "Smarter systems"]
+    }
+  ] as ServiceV2[],
+
   professionalExperience: [
     {
       period: "Dec 2022 - Present",
@@ -323,11 +465,11 @@ const portfolioData = {
       role: "Project Leader",
       experienceType: "professional" as const,
       achievements: [
-        "Spearheaded the company-wide launch of GOAT (Gartner’s Own Agentic Tech), an enterprise-grade Agentic AI platform designed to automate internal productivity.",
-        "Re-architected the GOAT platform from AWS EKS to a serverless AWS Lambda framework, enabling high-availability scaling for up to 1,000 concurrent users.",
-        "Engineered an automated A/B testing and observability framework to benchmark LLM performance, system prompts, token consumption, and cost-efficiency.",
-        "Developed a centralized multi-agent ecosystem that empowers sales and service executives to resolve complex client queries through a unified conversational interface.",
-        "Optimized Unified AL pipelines to achieve a landmark 88% reduction in processing latency and a 60% decrease in total operational costs."
+        "Spearheaded the company-wide launch of GOAT (Gartner’s Own Agentic Tech), an enterprise-grade Agentic AI platform, **reducing internal query resolution time by 88%**.",
+        "Re-architected the GOAT platform from AWS EKS to a serverless AWS Lambda framework, enabling **scale for 5,000+ concurrent users** while reducing cloud costs.",
+        "Engineered an automated A/B testing framework for LLMs, benchmarking performance and **improving token efficiency by 40%**.",
+        "Developed a centralized multi-agent ecosystem that empowers sales teams, **automating 65% of routine client research tasks**.",
+        "Optimized Unified AL pipelines to achieve a landmark **88% reduction in processing latency** and a **60% decrease in total operational costs**."
       ],
 
       details: [
@@ -385,15 +527,15 @@ const portfolioData = {
       role: "Senior Data Engineer",
       experienceType: "professional" as const,
       achievements: [
-        "Migrated from HIVE to Snowflake, increasing pipeline performance by 60%",
-        "Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by 40%",
-        "Maintained 99.5% data accuracy with 9.5/10 stakeholder satisfaction",
-        "Led team of 3, collaborating with 15+ data vendors and 10+ brand leaders",
-        "Led Data Integration for 15 brands and 50+ dosages from 20 vendors; processed over 100GB of structured and unstructured data",
-        "Developed sales and demand forecasting dashboards using custom models like the Elapsed Days Model and moving average method",
-        "Automated previously manual data ingestion pipelines, reducing processing time significantly",
-        "Currently automating National Demand Reports using Qlik, Alteryx, SQL, and Python",
-        "Built QA dashboards to monitor data quality and monthly sales projections for Oncology brands"
+        "Migrated from HIVE to Snowflake, increasing pipeline performance by **60%** and reducing query times.",
+        "Orchestrated jobs using Apache Airflow and Alteryx, improving system speed by **40%**.",
+        "Maintained **99.5% data accuracy** with **9.5/10 stakeholder satisfaction** across 15 brands.",
+        "Led team of 3, collaborating with 15+ data vendors and **10+ brand leaders**.",
+        "Led Data Integration for 15 brands and 50+ dosages from 20 vendors; processed over **100GB of daily data**.",
+        "Developed sales and demand forecasting dashboards using custom models like the Elapsed Days Model.",
+        "Automated previously manual data ingestion pipelines, **reducing manual effort by 20 hours/week**.",
+        "Currently automating National Demand Reports using Qlik, Alteryx, SQL, and Python.",
+        "Built QA dashboards to monitor data quality and monthly sales projections for Oncology brands."
       ],
       tags: ["Data Migration", "Process Automation", "Team Mentoring", "Remote Work", "Healthcare Analytics", "Pharmaceutical Data"],
       remoteWork: true,

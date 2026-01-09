@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavbarName from './NavbarName';
-import DownloadButton, { MobileDownloadLinks } from './DownloadButton';
 import portfolioData from '@/data/portfolioData';
 
 const Navbar = () => {
@@ -17,6 +16,8 @@ const Navbar = () => {
 
   // Check if current page is in the portfolio section
   const isInPortfolioSection = ['/experience', '/tech-skills', '/projects', '/timeline'].includes(pathname);
+
+  if (pathname === '/resume') return null;
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -53,10 +54,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 bg-white ${
-        scrolled || isOpen ? 'shadow-lg' : ''
-      }`}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 bg-white ${scrolled || isOpen ? 'shadow-lg' : ''
+        }`}
     >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-3">
@@ -64,17 +64,17 @@ const Navbar = () => {
             <NavbarName name={personalInfo.name} isScrolled={scrolled} />
           </Link>
         </div>
-        
+
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden focus:outline-none" 
+        <button
+          className="md:hidden focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <svg 
-            className="w-6 h-6 text-gray-600" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24" 
+          <svg
+            className="w-6 h-6 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
             {isOpen ? (
@@ -84,82 +84,80 @@ const Navbar = () => {
             )}
           </svg>
         </button>
-        
+
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           <NavLink href="/" isActive={pathname === '/'}>Home</NavLink>
           <NavLink href="/about" isActive={pathname === '/about'}>About</NavLink>
           <NavLink href="/testimonials" isActive={pathname === '/testimonials'}>Testimonials</NavLink>
-          
+
           {/* Portfolio Dropdown */}
           <div className="relative group" ref={portfolioDropdownRef}>
             <div
-              className={`text-sm font-medium uppercase transition-colors duration-200 flex items-center cursor-pointer ${
-                isInPortfolioSection
-                  ? 'text-blue-600 border-b-2 border-blue-600' 
-                  : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
-              }`}
+              className={`text-sm font-medium uppercase transition-colors duration-200 flex items-center cursor-pointer ${isInPortfolioSection
+                ? 'text-blue-600 border-b-2 border-blue-600'
+                : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
+                }`}
             >
               Portfolio
-              <svg 
-                className={`ml-1 w-4 h-4 transition-transform group-hover:rotate-180`} 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
+              <svg
+                className={`ml-1 w-4 h-4 transition-transform group-hover:rotate-180`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
-            
+
             <div className="absolute mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100 invisible group-hover:visible transition-all duration-200 opacity-0 group-hover:opacity-100">
-              <DropdownLink 
-                href="/experience" 
-                isActive={pathname === '/experience'} 
-                onClick={() => {}}
+              <DropdownLink
+                href="/experience"
+                isActive={pathname === '/experience'}
+                onClick={() => { }}
               >
                 Experience
               </DropdownLink>
-              <DropdownLink 
-                href="/tech-skills" 
-                isActive={pathname === '/tech-skills'} 
-                onClick={() => {}}
+              <DropdownLink
+                href="/tech-skills"
+                isActive={pathname === '/tech-skills'}
+                onClick={() => { }}
               >
                 Skills
               </DropdownLink>
-              <DropdownLink 
-                href="/projects" 
-                isActive={pathname === '/projects'} 
-                onClick={() => {}}
+              <DropdownLink
+                href="/projects"
+                isActive={pathname === '/projects'}
+                onClick={() => { }}
               >
                 Projects
               </DropdownLink>
-              <DropdownLink 
-                href="/timeline" 
-                isActive={pathname === '/timeline'} 
-                onClick={() => {}}
+              <DropdownLink
+                href="/timeline"
+                isActive={pathname === '/timeline'}
+                onClick={() => { }}
               >
                 Timeline
               </DropdownLink>
             </div>
           </div>
-          
+
           <ExternalNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalNavLink>
           <NavLink href="/contact" isActive={pathname === '/contact'}>Contact</NavLink>
-          <DownloadButton />
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} pt-4 pb-2 px-4`}>
         <div className="flex flex-col space-y-4">
           <MobileNavLink href="/" isActive={pathname === '/'} onClick={closeMenu}>Home</MobileNavLink>
           <MobileNavLink href="/about" isActive={pathname === '/about'} onClick={closeMenu}>About</MobileNavLink>
           <MobileNavLink href="/testimonials" isActive={pathname === '/testimonials'} onClick={closeMenu}>Testimonials</MobileNavLink>
-          
+
           {/* Portfolio Section Header */}
           <div className="px-4 py-2 text-sm font-bold text-gray-500 uppercase">Portfolio</div>
-          
+
           {/* Portfolio Links (indented) */}
           <div className="pl-4">
             <MobileNavLink href="/experience" isActive={pathname === '/experience'} onClick={closeMenu}>Experience</MobileNavLink>
@@ -167,10 +165,19 @@ const Navbar = () => {
             <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Projects</MobileNavLink>
             <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
           </div>
-          
+
           <ExternalMobileNavLink href={personalInfo.socialMedia.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
           <MobileNavLink href="/contact" isActive={pathname === '/contact'} onClick={closeMenu}>Contact</MobileNavLink>
-          <MobileDownloadLinks onClick={closeMenu} />
+          <div className="px-4 pt-2">
+            <Link
+              href="/contact"
+              onClick={closeMenu}
+              className="block w-full text-center py-3 px-4 text-base font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+            >
+              Book a Consult
+            </Link>
+          </div>
+
         </div>
       </div>
     </nav>
@@ -180,13 +187,12 @@ const Navbar = () => {
 // Desktop navigation link
 const NavLink = ({ href, children, isActive }: { href: string; children: React.ReactNode; isActive: boolean }) => {
   return (
-    <Link 
-      href={href} 
-      className={`text-sm font-medium uppercase transition-colors duration-200 ${
-        isActive 
-          ? 'text-blue-600 border-b-2 border-blue-600' 
-          : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
-      }`}
+    <Link
+      href={href}
+      className={`text-sm font-medium uppercase transition-colors duration-200 ${isActive
+        ? 'text-blue-600 border-b-2 border-blue-600'
+        : 'text-gray-600 hover:text-blue-600 hover:border-b-2 hover:border-blue-600'
+        }`}
     >
       {children}
     </Link>
@@ -194,26 +200,25 @@ const NavLink = ({ href, children, isActive }: { href: string; children: React.R
 };
 
 // Dropdown link for desktop portfolio menu
-const DropdownLink = ({ 
-  href, 
-  children, 
+const DropdownLink = ({
+  href,
+  children,
   isActive,
   onClick
-}: { 
-  href: string; 
-  children: React.ReactNode; 
+}: {
+  href: string;
+  children: React.ReactNode;
   isActive: boolean;
   onClick: () => void;
 }) => {
   return (
-    <Link 
-      href={href} 
+    <Link
+      href={href}
       onClick={onClick}
-      className={`block px-4 py-2 text-sm ${
-        isActive 
-          ? 'text-blue-600 bg-blue-50' 
-          : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
-      }`}
+      className={`block px-4 py-2 text-sm ${isActive
+        ? 'text-blue-600 bg-blue-50'
+        : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
+        }`}
     >
       {children}
     </Link>
@@ -235,26 +240,25 @@ const ExternalNavLink = ({ href, children }: { href: string; children: React.Rea
 };
 
 // Mobile navigation link
-const MobileNavLink = ({ 
-  href, 
-  children, 
-  isActive, 
-  onClick 
-}: { 
-  href: string; 
-  children: React.ReactNode; 
+const MobileNavLink = ({
+  href,
+  children,
+  isActive,
+  onClick
+}: {
+  href: string;
+  children: React.ReactNode;
   isActive: boolean;
   onClick: () => void;
 }) => {
   return (
-    <Link 
-      href={href} 
+    <Link
+      href={href}
       onClick={onClick}
-      className={`block text-base font-medium uppercase py-2 px-4 rounded transition-colors duration-200 ${
-        isActive 
-          ? 'bg-blue-50 text-blue-600' 
-          : 'text-gray-600 hover:bg-gray-100'
-      }`}
+      className={`block text-base font-medium uppercase py-2 px-4 rounded transition-colors duration-200 ${isActive
+        ? 'bg-blue-50 text-blue-600'
+        : 'text-gray-600 hover:bg-gray-100'
+        }`}
     >
       {children}
     </Link>
@@ -262,12 +266,12 @@ const MobileNavLink = ({
 };
 
 // External mobile navigation link (opens in new tab)
-const ExternalMobileNavLink = ({ 
-  href, 
+const ExternalMobileNavLink = ({
+  href,
   children,
   onClick
-}: { 
-  href: string; 
+}: {
+  href: string;
   children: React.ReactNode;
   onClick: () => void;
 }) => {
