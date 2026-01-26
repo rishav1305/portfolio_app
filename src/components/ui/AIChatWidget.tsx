@@ -65,7 +65,7 @@ const AIChatWidget = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 w-[350px] md:w-[400px] mb-4 overflow-hidden flex flex-col h-[550px]"
+                        className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-[350px] md:w-[400px] mb-4 overflow-hidden flex flex-col h-[550px]"
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 text-white flex justify-between items-center shadow-md">
@@ -91,23 +91,23 @@ const AIChatWidget = () => {
                         </div>
 
                         {/* Messages Area */}
-                        <div className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-950 space-y-4">
+                        <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
                             {messages.map((m) => (
                                 <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     <div className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed shadow-sm ${m.role === 'user'
                                         ? 'bg-blue-600 text-white rounded-br-none'
-                                        : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-100 dark:border-gray-700 rounded-bl-none'
+                                        : 'bg-white text-gray-800 border border-gray-100 rounded-bl-none'
                                         }`}>
                                         {m.role === 'assistant' && (
                                             <div className="flex items-center gap-1.5 mb-1 opacity-50 text-[10px] uppercase tracking-wider font-bold">
                                                 <Sparkles className="w-3 h-3" /> AI Assistant
                                             </div>
                                         )}
-                                        <div className="prose prose-sm dark:prose-invert max-w-none">
+                                        <div className="max-w-none [&>p]:mb-1 [&>p:last-child]:mb-0">
                                             {m.parts
                                                 .filter(part => part.type === 'text')
                                                 .map((part, i) => (
-                                                    <p key={i} className="mb-1 last:mb-0">{part.text}</p>
+                                                    <p key={i}>{part.text}</p>
                                                 ))
                                             }
                                         </div>
@@ -116,7 +116,7 @@ const AIChatWidget = () => {
                             ))}
                             {isLoading && (
                                 <div className="flex justify-start">
-                                    <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl rounded-bl-none p-4 shadow-sm flex items-center gap-1.5">
+                                    <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-none p-4 shadow-sm flex items-center gap-1.5">
                                         <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
                                         <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-100"></div>
                                         <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-200"></div>
@@ -128,14 +128,14 @@ const AIChatWidget = () => {
 
                         {/* Suggestions */}
                         {messages.length === 1 && (
-                            <div className="px-4 pb-2 bg-gray-50 dark:bg-gray-950">
+                            <div className="px-4 pb-2 bg-gray-50">
                                 <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider px-1">Suggested Questions</p>
                                 <div className="flex flex-wrap gap-2">
                                     {suggestions.map((q, i) => (
                                         <button
                                             key={i}
                                             onClick={() => handleSuggestionClick(q)}
-                                            className="text-left text-xs bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-blue-600 border border-gray-200 dark:border-gray-700 hover:border-blue-200 rounded-lg px-3 py-2 transition-all shadow-sm"
+                                            className="text-left text-xs bg-white hover:bg-blue-50 text-gray-600 hover:text-blue-600 border border-gray-200 hover:border-blue-200 rounded-lg px-3 py-2 transition-all shadow-sm"
                                         >
                                             {q}
                                         </button>
@@ -145,13 +145,13 @@ const AIChatWidget = () => {
                         )}
 
                         {/* Input Area */}
-                        <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+                        <div className="p-4 bg-white border-t border-gray-100">
                             <form onSubmit={handleSubmit} className="flex gap-2 relative">
                                 <input
                                     value={input}
                                     onChange={handleInputChange}
                                     placeholder="Type your question..."
-                                    className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-gray-400"
+                                    className="flex-1 bg-gray-100 text-gray-900 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-gray-400"
                                 />
                                 <button
                                     type="submit"
