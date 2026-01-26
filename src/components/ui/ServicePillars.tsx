@@ -1,5 +1,9 @@
-import React from 'react';
-import portfolioData from '@/data/portfolioData';
+
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { getServices } from '@/services/services';
+import type { Service } from '@/data/portfolioData';
 
 const ServiceIcon = ({ name }: { name: string }) => {
     switch (name) {
@@ -27,8 +31,11 @@ const ServiceIcon = ({ name }: { name: string }) => {
 };
 
 const ServicePillars = () => {
-    // Fallback if services data isn't fully propagated yet
-    const services = portfolioData.services || [];
+    const [services, setServices] = useState<Service[]>([]);
+
+    useEffect(() => {
+        getServices().then(data => setServices(data));
+    }, []);
 
     return (
         <section className="py-20 px-6 md:px-20 bg-gray-50" id="services-section">
@@ -45,7 +52,7 @@ const ServicePillars = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {services.map((service) => (
                         <div
-                            key={service.id}
+                            key={service.id || service.title}
                             className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
                         >
                             <ServiceIcon name={service.iconName} />

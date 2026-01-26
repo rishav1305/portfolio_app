@@ -1,10 +1,21 @@
 import React from 'react';
-import portfolioData from "@/data/portfolioData";
+import { getExperience } from '@/services/experience';
+import { getEducation } from '@/services/education';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ExperienceTimeline from '@/components/ui/ExperienceTimeline';
 
-export default function Experience() {
-    const { professionalExperience, freelanceExperience, education } = portfolioData;
+export default async function Experience() {
+
+    // Fetch dynamic data
+    const allExperience = await getExperience();
+    const education = await getEducation();
+
+    // Filter by type
+    const professionalExperience = allExperience.filter(e => e.experienceType === 'professional');
+    const freelanceExperience = allExperience.filter(e => e.experienceType === 'freelance');
+
+    // No longer using portfolioData for these sections
+    // const { professionalExperience, freelanceExperience, education } = portfolioData;
 
     return (
         <div className="min-h-screen bg-gray-50 pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">

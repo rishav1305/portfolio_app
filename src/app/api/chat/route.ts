@@ -1,7 +1,7 @@
 
 import { google } from '@ai-sdk/google';
 import { streamText } from 'ai';
-import { supabase } from '@/lib/supabaseClient';
+import { supabase } from '@/lib/supabaseAdmin';
 import { GoogleGenerativeAIEmbeddings } from '@langchain/google-genai';
 
 // Allow streaming responses up to 30 seconds

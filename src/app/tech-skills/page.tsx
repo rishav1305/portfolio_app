@@ -1,10 +1,15 @@
 import React from 'react';
 import portfolioData from "@/data/portfolioData";
-import Image from 'next/image';
+import { getSkillCategories } from '@/services/skills';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import BrandHexagonGrid from '@/components/ui/BrandHexagonGrid';
 
-export default function TechSkills() {
-  const { skills } = portfolioData;
+export default async function TechSkills() {
+  // Dynamic skills
+  const skills = await getSkillCategories();
+
+  // Static data from file for now (radar charts etc might still use it if not migrated)
+  const { skillRadarData } = portfolioData;
 
   // Calculate percentage for progress bar
   const getPercentage = (level: number) => {
@@ -75,8 +80,8 @@ export default function TechSkills() {
                       {/* Modern Progress Bar */}
                       <div className="h-2 w-full bg-slate-700/50 rounded-full overflow-hidden backdrop-blur-sm shadow-inner">
                         <div
-                          className={`h-full rounded-full bg-gradient-to-r ${getLevelColor(skill.level)} shadow-lg transform origin-left transition-transform duration-1000 ease-out`}
-                          style={{ width: `${getPercentage(skill.level)}%` }}
+                          className={`h - full rounded - full bg - gradient - to - r ${getLevelColor(skill.level)} shadow - lg transform origin - left transition - transform duration - 1000 ease - out`}
+                          style={{ width: `${getPercentage(skill.level)}% ` }}
                         ></div>
                       </div>
 

@@ -15,7 +15,7 @@ import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
 
 async function ingestData() {
     // Dynamically import supabase client to ensure it reads the *populated* process.env
-    const { supabase } = await import('../src/lib/supabaseClient');
+    const { supabase } = await import('../src/lib/supabaseAdmin');
 
     console.log('🚀 Starting ingestion...');
 
