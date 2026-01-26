@@ -36,3 +36,8 @@ With AI, I am able to
 - Reduce delivery time by 50%
 - Reduce resources cost by 60%
 
+
+## Skills
+- Agentic AI : LangGraph(4/5), LangChain(4/5), Ollama(3/5)
+- DevOps : Git(5/5), Docker(4/5), Jenkins(3/5), Kubernetes(3/5)
+- AI Coding Agent : Claude Code(5/5), Gemini CLI(4/5), Codex(4/5)

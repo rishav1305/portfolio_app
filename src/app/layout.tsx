@@ -4,6 +4,7 @@ import "./globals.css";
 import "../styles/custom-fonts.css";
 import Navbar from "@/components/navbar/Navbar";
 import ContactSidebar from "@/components/ui/ContactSidebar";
+import AIChatWidget from "@/components/ui/AIChatWidget";
 import Script from "next/script";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 import { Toaster } from "react-hot-toast";
@@ -160,6 +161,7 @@ export default function RootLayout({
           <Navbar />
           <ContactSidebar />
           {children}
+          <AIChatWidget />
           <Toaster position="bottom-right" toastOptions={{
             duration: 5000,
             style: {

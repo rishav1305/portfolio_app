@@ -353,7 +353,8 @@ export default function Home() {
         </div>
       </footer>
       {/* AI Chat Widget - Fixed Position */}
-      {portfolioData.chatSimulation && <AIChatWidget questions={portfolioData.chatSimulation} />}
+      {/* AI Chat Widget - Fixed Position */}
+      <AIChatWidget />
     </div>
   );
 }
