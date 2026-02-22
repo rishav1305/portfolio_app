@@ -145,7 +145,7 @@ export type FAQItem = {
 const portfolioData = {
   personalInfo: {
     name: "RISHAV",
-    title: "AI Engineer | Consultant | Researcher",
+    title: "AI Engineer | AI Consultant | AI Researcher",
     email: "mail@rishavchatterjee.com",
     shortBio: "I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment. 6 years of Python, SQL, and data platform engineering give me the domain knowledge to direct AI effectively.",
     longBio: [
