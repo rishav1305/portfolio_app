@@ -1,11 +1,11 @@
 "use client";
 
 import React from 'react';
-import portfolioData from "@/data/portfolioData";
+import { useSiteConfig } from '@/contexts/SiteConfigContext';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function Contact() {
-  const { personalInfo } = portfolioData;
+  const siteConfig = useSiteConfig();
 
   const [submitStatus, setSubmitStatus] = React.useState<{
     type: 'success' | 'error' | null;
@@ -34,7 +34,7 @@ export default function Contact() {
     const body = `Message:\n${message}\n\nFrom: ${name ? name + ' ' : ''}(${email})`;
     
     // Open the user's mail client
-    window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     // Reset form
     event.currentTarget.reset();
@@ -123,7 +123,7 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">Location</h3>
-                  <p className="opacity-90">{personalInfo.location}</p>
+                  <p className="opacity-90">{siteConfig.location}</p>
                 </div>
               </div>
               
@@ -136,8 +136,8 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">Email</h3>
-                  <a href={`mailto:${personalInfo.email}`} className="opacity-90 hover:opacity-100 hover:underline">
-                    {personalInfo.email}
+                  <a href={`mailto:${siteConfig.email}`} className="opacity-90 hover:opacity-100 hover:underline">
+                    {siteConfig.email}
                   </a>
                 </div>
               </div>
@@ -151,8 +151,8 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">WhatsApp</h3>
-                  <a href={`https://wa.me/${personalInfo.whatsapp.replace(/[^0-9]/g, '')}`} className="opacity-90 hover:opacity-100 hover:underline">
-                    {personalInfo.whatsapp}
+                  <a href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`} className="opacity-90 hover:opacity-100 hover:underline">
+                    {siteConfig.whatsapp}
                   </a>
                 </div>
               </div>
@@ -166,12 +166,12 @@ export default function Contact() {
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">GitHub</h3>
                   <a 
-                    href={personalInfo.socialMedia.github}
+                    href={siteConfig.social_media.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="opacity-90 hover:opacity-100 hover:underline"
                   >
-                    {personalInfo.socialMedia.github}
+                    {siteConfig.social_media.github}
                   </a>
                 </div>
               </div>
@@ -185,12 +185,12 @@ export default function Contact() {
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">LinkedIn</h3>
                   <a 
-                    href={personalInfo.socialMedia.linkedin}
+                    href={siteConfig.social_media.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="opacity-90 hover:opacity-100 hover:underline"
                   >
-                    {personalInfo.socialMedia.linkedin}
+                    {siteConfig.social_media.linkedin}
                   </a>
                 </div>
               </div>
@@ -204,12 +204,12 @@ export default function Contact() {
                 <div className="ml-4">
                   <h3 className="font-medium text-xl mb-1">LeetCode</h3>
                   <a 
-                    href={personalInfo.socialMedia.leetcode}
+                    href={siteConfig.social_media.leetcode}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="opacity-90 hover:opacity-100 hover:underline"
                   >
-                    {personalInfo.socialMedia.leetcode}
+                    {siteConfig.social_media.leetcode}
                   </a>
                 </div>
               </div>

@@ -1,11 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import portfolioData, { getYearsOfExperience } from '@/data/portfolioData';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { getSiteConfig } from '@/services/siteConfig';
+import { getExperience } from '@/services/experience';
+import { getEducation } from '@/services/education';
 
-export default function About() {
-  const { personalInfo, professionalExperience, freelanceExperience, education } = portfolioData;
-  const yearsOfExperience = getYearsOfExperience();
+export default async function About() {
+  const [siteConfig, experience, education] = await Promise.all([
+    getSiteConfig(),
+    getExperience(),
+    getEducation(),
+  ]);
+
+  const personalName = siteConfig?.name || 'RISHAV';
+  const personalTitle = siteConfig?.title || 'AI Engineer | AI Consultant | AI Researcher';
+  const personalEmail = siteConfig?.email || '';
+  const personalLocation = siteConfig?.location || '';
+  const longBio = siteConfig?.long_bio || [];
+  const socialMedia = siteConfig?.social_media || { github: '', linkedin: '', leetcode: '', medium: '' };
+  const yearsOfExperience = new Date().getFullYear() - (siteConfig?.years_experience_start_year || 2018);
+
+  const professionalExperience = experience.filter(e => e.experienceType === 'professional');
+  const freelanceExperience = experience.filter(e => e.experienceType === 'freelance');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -16,7 +32,7 @@ export default function About() {
           <div className="w-40 h-40 rounded-full border-4 border-white overflow-hidden">
             <Image
               src="/images/profile.png"
-              alt={personalInfo.name}
+              alt={personalName}
               width={160}
               height={160}
               className="object-cover"
@@ -31,9 +47,9 @@ export default function About() {
           <Breadcrumb overrides={{ about: 'About Me' }} />
         </div>
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">{personalInfo.name}</h1>
-          <p className="text-xl text-blue-600">{personalInfo.title}</p>
-          <p className="text-lg text-gray-600 mt-2">{personalInfo.location} • {yearsOfExperience}+ Years Experience</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">{personalName}</h1>
+          <p className="text-xl text-blue-600">{personalTitle}</p>
+          <p className="text-lg text-gray-600 mt-2">{personalLocation} &bull; {yearsOfExperience}+ Years Experience</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
@@ -41,7 +57,7 @@ export default function About() {
           <div className="md:col-span-2">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">About Me</h2>
             <div className="space-y-4">
-              {personalInfo.longBio.map((paragraph, index) => (
+              {longBio.map((paragraph: string, index: number) => (
                 <p key={index} className="text-gray-700 text-[17px] text-justify leading-relaxed">
                   {paragraph}
                 </p>
@@ -64,8 +80,8 @@ export default function About() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <a href={`mailto:${personalInfo.email}`} className="text-blue-600 hover:underline">
-                    {personalInfo.email}
+                  <a href={`mailto:${personalEmail}`} className="text-blue-600 hover:underline">
+                    {personalEmail}
                   </a>
                 </div>
               </div>
@@ -79,7 +95,7 @@ export default function About() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">LinkedIn</h3>
-                  <a href={personalInfo.socialMedia.linkedin} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                  <a href={socialMedia.linkedin} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                     View Profile
                   </a>
                 </div>
@@ -94,7 +110,7 @@ export default function About() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">GitHub</h3>
-                  <a href={personalInfo.socialMedia.github} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                  <a href={socialMedia.github} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                     View Repositories
                   </a>
                 </div>
@@ -109,7 +125,7 @@ export default function About() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">LeetCode</h3>
-                  <a href={personalInfo.socialMedia.leetcode} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                  <a href={socialMedia.leetcode} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                     View Profile
                   </a>
                 </div>
@@ -123,16 +139,14 @@ export default function About() {
           <h2 className="text-2xl font-bold mb-8 text-gray-800 text-center">My Journey</h2>
 
           <div className="relative">
-            {/* Vertical line - simplified to always be on the left */}
+            {/* Vertical line */}
             <div className="absolute left-4 md:left-4 top-0 h-full w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-indigo-400"></div>
 
             <div className="space-y-12">
-              {/* Combined and sorted timeline */}
               {[
-                // Work experiences with date conversion for sorting
                 ...professionalExperience.map(job => ({
                   ...job,
-                  type: 'work',
+                  type: 'work' as const,
                   sortDate: new Date(job.startDate),
                   displayData: {
                     title: job.company,
@@ -145,7 +159,7 @@ export default function About() {
                 })),
                 ...freelanceExperience.map(job => ({
                   ...job,
-                  type: 'freelance',
+                  type: 'freelance' as const,
                   sortDate: new Date(job.startDate),
                   displayData: {
                     title: job.company,
@@ -156,14 +170,11 @@ export default function About() {
                     badgeColor: 'purple'
                   }
                 })),
-                // Education with date extraction for sorting
                 ...education.map(edu => {
-                  // Extract year from period (format: "Apr 2013 - Mar 2014")
                   const startYear = parseInt(edu.period.split(' ').pop() || '0');
                   return {
                     ...edu,
-                    type: 'education',
-                    // Create a date object for sorting (Jan 1 of the start year)
+                    type: 'education' as const,
                     sortDate: new Date(startYear, 0, 1),
                     displayData: {
                       title: edu.institution,
@@ -176,25 +187,17 @@ export default function About() {
                   };
                 })
               ]
-                // Sort by date in descending order (most recent first)
                 .sort((a, b) => b.sortDate.getTime() - a.sortDate.getTime())
                 .map((item, index) => (
                   <div key={`timeline-${index}`} className="relative pl-12 md:pl-16">
-
-                    <div className="absolute left-0 md:left-0 top-1.5 w-8 h-8 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center z-10 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute left-0 md:left-0 top-1.5 w-8 h-8 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center z-10 shadow-sm">
                       <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${item.type === 'work' ? 'from-blue-500 to-blue-600' :
                         item.type === 'freelance' ? 'from-purple-500 to-purple-600' :
                           'from-emerald-400 to-emerald-600'
-                        } shadow-sm group-hover:ring-2 ring-offset-2 ring-opacity-50 ${item.type === 'work' ? 'ring-blue-200' :
-                          item.type === 'freelance' ? 'ring-purple-200' :
-                            'ring-emerald-200'
-                        } transition-all duration-300`}></div>
+                        }`}></div>
                     </div>
 
-
-                    {/* Content box - Glassmorphic feel with hover lift */}
                     <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 relative overflow-hidden group">
-                      {/* Subtle gradient overlay on hover */}
                       <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-r ${item.type === 'work' ? 'from-blue-400 to-transparent' :
                         item.type === 'freelance' ? 'from-purple-400 to-transparent' :
                           'from-emerald-400 to-transparent'
@@ -212,7 +215,7 @@ export default function About() {
                         <span className="text-lg text-gray-700 font-medium flex items-center gap-2">
                           {item.displayData.title}
                         </span>
-                        <span className="hidden md:block text-gray-300">•</span>
+                        <span className="hidden md:block text-gray-300">&bull;</span>
                         <span className="text-sm text-gray-500 italic">{item.displayData.location}</span>
                       </div>
 

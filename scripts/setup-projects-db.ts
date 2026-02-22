@@ -1,9 +1,9 @@
 
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 // Disable strict SSL check for this script (needed for some Supabase pooler setups)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+if (process.env.NODE_ENV !== 'production') { process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; }
 
 import { Client } from 'pg';
 

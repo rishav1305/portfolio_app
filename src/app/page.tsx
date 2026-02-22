@@ -1,36 +1,45 @@
-'use client';
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-// import HeroSectionWithHexagons from "@/components/ui/HeroSectionWithHexagons"; // Replaced by V3 Hero
 import BrandMarquee from "@/components/ui/BrandMarquee";
-import portfolioData, { getYearsOfExperience, getAverageSkillRatings } from "@/data/portfolioData";
 import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
-import ContactLink from "@/components/ui/ContactLink";
 import DomainExpertise from "@/components/ui/DomainExpertise";
 import ExperienceTimeline from "@/components/ui/ExperienceTimeline";
 import ImpactMetricCard from "@/components/ui/ImpactMetricCard";
 import AboutStats from "@/components/ui/AboutStats";
 import EducationHighlight from "@/components/ui/EducationHighlight";
 import FreelanceGrid from "@/components/ui/FreelanceGrid";
-
 import ServicePillars from "@/components/ui/ServicePillars";
 import BlogPreview from "@/components/ui/BlogPreview";
+import { SkillsRadar, AIChatWidget, WavesBackground } from "@/components/ui/ClientDynamicImports";
 
-// Dynamically import Recharts component to avoid SSR issues
-const SkillsRadar = dynamic(() => import("@/components/ui/SkillsRadar"), { ssr: false });
-// Dynamic import for Chat Widget to keep initial bundle small
-const AIChatWidget = dynamic(() => import("@/components/ui/AIChatWidget"), { ssr: false });
-const WavesBackground = dynamic(() => import("@/components/ui/WavesBackground"), { ssr: false }); // Added for V3 Hero
-// import ServiceGrid from "@/components/ui/ServiceGrid"; // Removed as per request
+import { getSiteConfig } from "@/services/siteConfig";
+import { getTestimonials } from "@/services/testimonials";
+import { getCaseStudies } from "@/services/caseStudies";
+import { getBrands } from "@/services/brands";
+import { getSkillRadarData } from "@/services/skillRadar";
+import { getExperience } from "@/services/experience";
+import { getEducation } from "@/services/education";
 
-export default function Home() {
-  const yearsOfExperience = getYearsOfExperience();
-  const skillCategories = getAverageSkillRatings();
-  const { personalInfo, professionalExperience, freelanceExperience, skillRadarData } = portfolioData;
+export default async function Home() {
+  const [siteConfig, testimonials, caseStudies, brands, skillRadarData, experience, education] =
+    await Promise.all([
+      getSiteConfig(),
+      getTestimonials(),
+      getCaseStudies(),
+      getBrands(),
+      getSkillRadarData(),
+      getExperience(),
+      getEducation(),
+    ]);
 
+  const personalName = siteConfig?.name || 'RISHAV';
+  const personalEmail = siteConfig?.email || 'mail@rishavchatterjee.com';
+  const longBio = siteConfig?.long_bio || [];
+  const socialMedia = siteConfig?.social_media || { github: '', linkedin: '', leetcode: '', medium: '' };
+
+  const professionalExperience = experience.filter(e => e.experienceType === 'professional');
+  const freelanceExperience = experience.filter(e => e.experienceType === 'freelance');
 
   return (
     <div className="min-h-screen bg-white font-[family-name:var(--font-geist-sans)]">
@@ -51,7 +60,7 @@ export default function Home() {
             I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment.
           </p>
 
-          {/* Benefit Statement (New) */}
+          {/* Benefit Statement */}
           <p className="text-lg md:text-xl text-blue-200 mb-10 font-bold bg-blue-900/30 inline-block px-6 py-2 rounded-full border border-blue-500/30">
             6 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
           </p>
@@ -79,7 +88,7 @@ export default function Home() {
       </section>
       {/* Social Proof: Brands Section */}
       <section className="bg-slate-50 border-b border-gray-200">
-        <BrandMarquee />
+        <BrandMarquee brands={brands} />
       </section>
 
       {/* Credibility: About & High-Impact Stats */}
@@ -95,25 +104,24 @@ export default function Home() {
           itemProp="mainEntity"
         >
           <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-xl overflow-hidden flex-shrink-0 relative border-4 border-white ring-1 ring-gray-100">
-            {/* Using the uploaded profile image */}
             <Image
               src="/images/profile.png"
-              alt={`${personalInfo.name} - AI Tech Lead & Data Specialist`}
+              alt={`${personalName} - AI Tech Lead & Data Specialist`}
               fill
               sizes="(max-width: 768px) 10rem, 14rem"
               className="object-cover"
               priority
               itemProp="image"
             />
-            <meta itemProp="name" content={personalInfo.name} />
+            <meta itemProp="name" content={personalName} />
             <meta itemProp="jobTitle" content="AI Engineer | AI Consultant | AI Researcher" />
           </div>
           <div className="flex-grow text-center md:text-left">
             <h2 id="about-heading" className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-              Hi, I'm <span className="text-blue-600" itemProp="givenName">{personalInfo.name.split(' ')[0]}</span>.
+              Hi, I&apos;m <span className="text-blue-600" itemProp="givenName">{personalName.split(' ')[0]}</span>.
             </h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed" itemProp="description">
-              {personalInfo.longBio[1]}
+              {longBio[1] || ''}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
@@ -128,17 +136,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Stats Row - Immediately visible to prove seniority */}
+            {/* Stats Row */}
             <AboutStats />
           </div>
         </div>
       </section>
 
       {/* Services: How I Can Help */}
-      {/* Services: How I Can Help (Moved up ServicePillars) */}
       <ServicePillars />
 
-      {/* Social Proof: Testimonials (Moved Up) */}
+      {/* Social Proof: Testimonials */}
       <section className="py-16 px-6 md:px-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
@@ -146,7 +153,7 @@ export default function Home() {
               Trusted by Technical Leaders
             </h2>
           </div>
-          <AutoScrollTestimonials testimonials={portfolioData.testimonials || []} />
+          <AutoScrollTestimonials testimonials={testimonials} />
 
           <div className="text-center mt-8">
             <Link
@@ -162,7 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ROI & Impact: Strategic Wins (Moved Up) */}
+      {/* ROI & Impact: Strategic Wins */}
       <section className="py-20 px-6 md:px-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -175,22 +182,12 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {portfolioData.caseStudies?.map((study) => (
+            {caseStudies.map((study) => (
               <ImpactMetricCard key={study.id} study={study} />
             ))}
           </div>
         </div>
       </section>
-
-      {/* "How I Can Help": Service Pillars (NEW) */}
-      {/* "How I Can Help": Service Pillars (Moved up) */}
-      {/* <ServicePillars /> */}
-
-      {/* Education - Moved down but still accessible */}
-      {/* Kept Technical Proficiency mainly for SEO/Completeness, but deemphasized? 
-          Actually, the plan said "Replace or augment SkillsRadar". 
-          Let's keep the Radar as a visual data point but maybe after Services.
-      */}
 
       {/* Professional Depth: Journey */}
       <section className="py-20 px-6 md:px-20 bg-white">
@@ -204,7 +201,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ExperienceTimeline experiences={portfolioData.professionalExperience} showClients={false} />
+          <ExperienceTimeline experiences={professionalExperience} showClients={false} />
         </div>
       </section>
 
@@ -220,7 +217,7 @@ export default function Home() {
             </p>
           </div>
 
-          <FreelanceGrid experiences={portfolioData.freelanceExperience} />
+          <FreelanceGrid experiences={freelanceExperience} />
         </div>
       </section>
 
@@ -256,7 +253,7 @@ export default function Home() {
 
           <div className="flex flex-col items-center">
             <div className="w-full max-w-2xl h-[400px]">
-              {skillRadarData && <SkillsRadar data={skillRadarData} />}
+              {skillRadarData && skillRadarData.length > 0 && <SkillsRadar data={skillRadarData} />}
             </div>
             <div className="text-center mt-8">
               <Link href="/tech-skills" className="inline-flex items-center text-blue-600 font-bold hover:underline">
@@ -276,7 +273,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-800">Education</h2>
           </div>
-          <EducationHighlight education={portfolioData.education} />
+          <EducationHighlight education={education} />
         </div>
       </section>
 
@@ -291,7 +288,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Build Something With AI?</h2>
           <p className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed">
-            Whether you need AI system architecture, data platform consulting, or a production AI solution — let's start a conversation.
+            Whether you need AI system architecture, data platform consulting, or a production AI solution — let&apos;s start a conversation.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-6">
@@ -302,7 +299,7 @@ export default function Home() {
               Book a Consultation
             </Link>
             <Link
-              href={`mailto:${personalInfo.email}`}
+              href={`mailto:${personalEmail}`}
               className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white border-2 border-white rounded-xl hover:bg-white/10 transition-all"
             >
               Email Me
@@ -310,11 +307,10 @@ export default function Home() {
           </div>
 
           <div className="mt-12 flex justify-center gap-8">
-            {/* Social Icons (Simplified) */}
-            <a href={personalInfo.socialMedia.linkedin} aria-label="LinkedIn" className="text-blue-200 hover:text-white transition-colors">
+            <a href={socialMedia.linkedin} aria-label="LinkedIn" className="text-blue-200 hover:text-white transition-colors">
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
             </a>
-            <a href={personalInfo.socialMedia.github} aria-label="GitHub" className="text-blue-200 hover:text-white transition-colors">
+            <a href={socialMedia.github} aria-label="GitHub" className="text-blue-200 hover:text-white transition-colors">
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
             </a>
           </div>
@@ -329,7 +325,7 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 mb-4 md:mb-0">
-            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {personalName}. All rights reserved.
           </p>
           <nav
             className="flex gap-6"
@@ -352,7 +348,6 @@ export default function Home() {
           </nav>
         </div>
       </footer>
-      {/* AI Chat Widget - Fixed Position */}
       {/* AI Chat Widget - Fixed Position */}
       <AIChatWidget />
     </div>

@@ -11,6 +11,10 @@ import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import StructuredData from "@/components/seo/StructuredData";
 import RegisterServiceWorker from "@/components/seo/RegisterServiceWorker";
+import { SiteConfigProvider } from "@/contexts/SiteConfigContext";
+import { getExperience } from "@/services/experience";
+import { getProjects } from "@/services/projects";
+import { getSiteConfig } from "@/services/siteConfig";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -127,11 +131,17 @@ const forceLightModeStyles = `
   }
 `;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [siteConfig, experience, projects] = await Promise.all([
+    getSiteConfig(),
+    getExperience(),
+    getProjects(),
+  ]);
+
   return (
     <html lang="en" className="scroll-smooth light" style={{ colorScheme: 'light' }} suppressHydrationWarning={true}>
       <head>
@@ -157,6 +167,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <HydrationErrorSuppressor>
+          <SiteConfigProvider initialConfig={siteConfig}>
           <Navbar />
           <ContactSidebar />
           {children}
@@ -179,8 +190,9 @@ export default function RootLayout({
             }
           }} />
           <SpeedInsights />
-          <StructuredData />
+          <StructuredData experience={experience} projects={projects} />
           <RegisterServiceWorker />
+          </SiteConfigProvider>
         </HydrationErrorSuppressor>
       </body>
     </html>

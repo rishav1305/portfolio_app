@@ -1,5 +1,5 @@
 import React from 'react';
-import { CaseStudy } from '@/data/portfolioData';
+import type { CaseStudy } from '@/types/portfolio';
 
 interface ImpactMetricCardProps {
     study: CaseStudy;

@@ -1,6 +1,6 @@
 
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 import portfolioData from '../src/data/portfolioData';
 
@@ -18,7 +18,7 @@ async function seedExperience() {
     // Combine professional and freelance
     const allExperience = [...portfolioData.professionalExperience, ...portfolioData.freelanceExperience];
 
-    const payload = allExperience.map(exp => ({
+    const payload = allExperience.map((exp: Record<string, any>) => ({
         company: exp.company,
         role: exp.role,
         period: exp.period,
@@ -32,6 +32,10 @@ async function seedExperience() {
         remote_work: exp.remoteWork,
         team_size: exp.teamSize,
         tech_stack: exp.technicalEnvironment || [],
+        clients: exp.clients || null,
+        managerial_achievements: exp.managerialAchievements || null,
+        ai_enablement: exp.aiEnablement || null,
+        key_metrics: exp.keyMetrics || null,
     }));
 
     console.log(`Payload prepared with ${payload.length} items.`);

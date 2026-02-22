@@ -1,30 +1,38 @@
 'use client';
 
 import React from 'react';
-import portfolioData from '@/data/portfolioData';
+import { useSiteConfig } from '@/contexts/SiteConfigContext';
+import type { WorkExperience, Project } from '@/types/portfolio';
 
-const StructuredData = () => {
-  const { personalInfo, professionalExperience, freelanceExperience, projects } = portfolioData;
+type StructuredDataProps = {
+  experience?: WorkExperience[];
+  projects?: Project[];
+};
+
+const StructuredData = ({ experience = [], projects = [] }: StructuredDataProps) => {
+  const siteConfig = useSiteConfig();
+  const professionalExperience = experience.filter(e => e.experienceType === 'professional');
+  const freelanceExperience = experience.filter(e => e.experienceType === 'freelance');
 
   // Person Schema
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: personalInfo.name,
-    jobTitle: personalInfo.title,
-    description: personalInfo.shortBio,
-    email: personalInfo.email,
-    telephone: personalInfo.whatsapp,
+    name: siteConfig.name,
+    jobTitle: siteConfig.title,
+    description: siteConfig.short_bio,
+    email: siteConfig.email,
+    telephone: siteConfig.whatsapp,
     url: 'https://rishavchatterjee.com',
     sameAs: [
-      personalInfo.socialMedia.github,
-      personalInfo.socialMedia.linkedin,
-      personalInfo.socialMedia.medium,
-      personalInfo.socialMedia.leetcode,
+      siteConfig.social_media.github,
+      siteConfig.social_media.linkedin,
+      siteConfig.social_media.medium,
+      siteConfig.social_media.leetcode,
     ],
     address: {
       '@type': 'PostalAddress',
-      addressLocality: personalInfo.location,
+      addressLocality: siteConfig.location,
       addressCountry: 'India'
     },
     alumniOf: {
@@ -37,13 +45,13 @@ const StructuredData = () => {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: `${personalInfo.name} - AI Engineer | AI Consultant | AI Researcher`,
-    description: personalInfo.shortBio,
+    name: `${siteConfig.name} - AI Engineer | AI Consultant | AI Researcher`,
+    description: siteConfig.short_bio,
     url: 'https://rishavchatterjee.com',
-    telephone: personalInfo.whatsapp,
+    telephone: siteConfig.whatsapp,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: personalInfo.location,
+      addressLocality: siteConfig.location,
       addressCountry: 'India'
     },
     geo: {
@@ -56,11 +64,11 @@ const StructuredData = () => {
     image: 'https://rishavchatterjee.com/images/profile.png',
     founder: {
       '@type': 'Person',
-      name: personalInfo.name
+      name: siteConfig.name
     },
     sameAs: [
-      personalInfo.socialMedia.github,
-      personalInfo.socialMedia.linkedin
+      siteConfig.social_media.github,
+      siteConfig.social_media.linkedin
     ],
     areaServed: {
       '@type': 'GeoCircle',
@@ -143,7 +151,7 @@ const StructuredData = () => {
         image: `https://rishavchatterjee.com${project.image}`,
         author: {
           '@type': 'Person',
-          name: personalInfo.name
+          name: siteConfig.name
         }
       }
     }))

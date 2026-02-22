@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import portfolioData from '@/data/portfolioData';
+import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 type DomainExpertiseProps = {
   className?: string;
@@ -20,7 +22,8 @@ const getIconForDomain = (domain: string) => {
 };
 
 const DomainExpertise: React.FC<DomainExpertiseProps> = ({ className = '', compact = false }) => {
-  const { domainExpertise } = portfolioData.personalInfo;
+  const siteConfig = useSiteConfig();
+  const domainExpertise = siteConfig.domain_expertise;
 
   if (!domainExpertise || domainExpertise.length === 0) {
     return null;

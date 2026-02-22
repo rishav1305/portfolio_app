@@ -1,9 +1,9 @@
 
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 // Disable strict SSL check for this script
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+if (process.env.NODE_ENV !== 'production') { process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; }
 
 import { Client } from 'pg';
 
@@ -36,12 +36,28 @@ async function setupDatabase() {
         remote_work BOOLEAN DEFAULT false,
         team_size INTEGER,
         tech_stack TEXT[], -- mapped from technicalEnvironment
+        clients JSONB, -- array of {name, description} objects
+        managerial_achievements TEXT[],
+        ai_enablement TEXT[],
+        key_metrics JSONB, -- array of {label, value} objects
         created_at TIMESTAMPTZ DEFAULT NOW(),
         updated_at TIMESTAMPTZ DEFAULT NOW()
       );
     `;
         await client.query(createTableQuery);
         console.log("✅ Table 'experience' created (or exists)");
+
+        // 1b. Add missing columns if they don't exist
+        const alterQueries = [
+            `ALTER TABLE experience ADD COLUMN IF NOT EXISTS clients JSONB`,
+            `ALTER TABLE experience ADD COLUMN IF NOT EXISTS managerial_achievements TEXT[]`,
+            `ALTER TABLE experience ADD COLUMN IF NOT EXISTS ai_enablement TEXT[]`,
+            `ALTER TABLE experience ADD COLUMN IF NOT EXISTS key_metrics JSONB`,
+        ];
+        for (const q of alterQueries) {
+            await client.query(q);
+        }
+        console.log("✅ Missing columns added (if needed)");
 
         // 2. Enable RLS
         await client.query(`ALTER TABLE experience ENABLE ROW LEVEL SECURITY;`);

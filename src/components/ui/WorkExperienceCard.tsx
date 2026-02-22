@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { WorkExperience } from '@/data/portfolioData';
+import type { WorkExperience } from '@/types/portfolio';
 
 interface WorkExperienceCardProps {
   job: WorkExperience;

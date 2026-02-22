@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import type { Testimonial } from '@/data/portfolioData';
+import type { Testimonial } from '@/types/portfolio';
 
 interface AutoScrollTestimonialsProps {
   testimonials: Testimonial[];

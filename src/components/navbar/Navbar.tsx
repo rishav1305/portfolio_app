@@ -4,10 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavbarName from './NavbarName';
-import portfolioData from '@/data/portfolioData';
+import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 const Navbar = () => {
-  const { personalInfo } = portfolioData;
+  const siteConfig = useSiteConfig();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <Link href="/" onClick={closeMenu}>
-            <NavbarName name={personalInfo.name} isScrolled={scrolled} />
+            <NavbarName name={siteConfig.name} isScrolled={scrolled} />
           </Link>
         </div>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <ExternalNavLink href={personalInfo.socialMedia.medium}>BLOG</ExternalNavLink>
+          <ExternalNavLink href={siteConfig.social_media.medium}>BLOG</ExternalNavLink>
           <NavLink href="/contact" isActive={pathname === '/contact'}>Contact</NavLink>
         </div>
       </div>
@@ -166,7 +166,7 @@ const Navbar = () => {
             <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
           </div>
 
-          <ExternalMobileNavLink href={personalInfo.socialMedia.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
+          <ExternalMobileNavLink href={siteConfig.social_media.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
           <MobileNavLink href="/contact" isActive={pathname === '/contact'} onClick={closeMenu}>Contact</MobileNavLink>
           <div className="px-4 pt-2">
             <Link

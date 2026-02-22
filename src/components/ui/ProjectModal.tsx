@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from '@/data/portfolioData';
+import type { Project } from '@/types/portfolio';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 

@@ -1,8 +1,11 @@
 import React from 'react';
-import portfolioData from '@/data/portfolioData';
+import type { StatItem } from '@/types/portfolio';
 
-const StatsDashboard = () => {
-    const stats = portfolioData.statsDashboard || [];
+interface StatsDashboardProps {
+    stats?: StatItem[];
+}
+
+const StatsDashboard = ({ stats = [] }: StatsDashboardProps) => {
 
     return (
         <div className="w-full bg-white border-y border-gray-100 py-8">

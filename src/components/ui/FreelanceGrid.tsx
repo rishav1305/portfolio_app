@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { WorkExperience } from "@/data/portfolioData";
+import type { WorkExperience } from "@/types/portfolio";
 
 interface FreelanceGridProps {
     experiences: WorkExperience[];
