@@ -43,17 +43,17 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
             RISHAV CHATTERJEE
-            <span className="block text-blue-400 mt-2 text-3xl md:text-5xl">Lead AI Engineer & Data Architect</span>
+            <span className="block text-blue-400 mt-2 text-3xl md:text-5xl">AI Engineer | AI Consultant | AI Researcher</span>
           </h1>
           <div className="w-32 h-1.5 bg-blue-500 mx-auto mb-8 rounded-full"></div>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-6 max-w-3xl mx-auto leading-relaxed">
-            I specialize in architecting scalable Agentic AI ecosystems and high-performance data pipelines.
+            I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment.
           </p>
 
           {/* Benefit Statement (New) */}
           <p className="text-lg md:text-xl text-blue-200 mb-10 font-bold bg-blue-900/30 inline-block px-6 py-2 rounded-full border border-blue-500/30">
-            Reducing data pipeline costs by 30-60% while cutting processing time in half.
+            6 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -106,7 +106,7 @@ export default function Home() {
               itemProp="image"
             />
             <meta itemProp="name" content={personalInfo.name} />
-            <meta itemProp="jobTitle" content="AI Tech Lead" />
+            <meta itemProp="jobTitle" content="AI Engineer | AI Consultant | AI Researcher" />
           </div>
           <div className="flex-grow text-center md:text-left">
             <h2 id="about-heading" className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
@@ -250,7 +250,7 @@ export default function Home() {
               Technical Map
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
-              A balanced mix of Data Engineering solidity and Agentic AI innovation.
+              What I write, what I build with AI tools, and what I architect.
             </p>
           </div>
 
@@ -289,9 +289,9 @@ export default function Home() {
         id="connect-section"
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Accelerate Your Data Strategy?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Build Something With AI?</h2>
           <p className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed">
-            Whether you need a fractional AI Lead or an expert to untangle your data pipeline, let's start a conversation.
+            Whether you need AI system architecture, data platform consulting, or a production AI solution — let's start a conversation.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-6">

@@ -37,7 +37,7 @@ const StructuredData = () => {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: `${personalInfo.name} - Freelance Data Consultant`,
+    name: `${personalInfo.name} - AI Engineer | AI Consultant | AI Researcher`,
     description: personalInfo.shortBio,
     url: 'https://rishavchatterjee.com',
     telephone: personalInfo.whatsapp,

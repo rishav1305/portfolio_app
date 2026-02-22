@@ -23,25 +23,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rishav Chatterjee | Technology Leader & Freelance Data Consultant",
-  description: "Expert freelance data consultant specializing in cloud-based solutions, data engineering, and visualization with extensive experience working with top-tier organizations.",
+  title: "Rishav Chatterjee | AI Engineer | AI Consultant | AI Researcher",
+  description: "AI-augmented architect who builds production AI systems with AI coding tools. 6 years of Python, SQL, and data platform engineering. 31 interconnected projects in the Soul ecosystem.",
   keywords: [
-    "freelance data consultant",
+    "AI engineer",
+    "AI consultant",
+    "AI researcher",
+    "Claude Code",
+    "AI coding tools",
     "data engineering",
-    "cloud solutions",
-    "data visualization",
     "Python",
     "SQL",
     "AWS",
-    "Azure",
-    "Tableau CRM",
     "Snowflake",
     "Delhi",
     "India",
-    "technology leadership",
-    "data pipelines",
-    "ETL processes",
-    "business intelligence"
+    "AI systems architecture",
+    "distributed systems",
+    "autonomous agents"
   ],
   authors: [{ name: "Rishav Chatterjee", url: "https://www.linkedin.com/in/rishavchatterjee/" }],
   creator: "Rishav Chatterjee",
@@ -55,14 +54,14 @@ export const metadata: Metadata = {
     telephone: true,
   },
   openGraph: {
-    title: "Rishav Chatterjee | Technology Leader & Freelance Data Consultant",
-    description: "Expert in scalable data solutions that align technology with business goals. Specializing in AWS, Python, SQL, and data visualization.",
+    title: "Rishav Chatterjee | AI Engineer | AI Consultant | AI Researcher",
+    description: "AI-augmented architect building production AI systems with AI coding tools. 6 years Python/SQL, 31 projects in the Soul ecosystem.",
     images: [
       {
         url: "/images/profile.png",
         width: 1200,
         height: 630,
-        alt: "Rishav Chatterjee - Freelance Data Consultant",
+        alt: "Rishav Chatterjee - AI Engineer | AI Consultant | AI Researcher",
       }
     ],
     type: "website",
@@ -71,8 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rishav Chatterjee | Technology Leader & Freelance Data Consultant",
-    description: "Expert in scalable data solutions that align technology with business goals.",
+    title: "Rishav Chatterjee | AI Engineer | AI Consultant | AI Researcher",
+    description: "AI-augmented architect building production AI systems with AI coding tools.",
     images: ["/images/profile.png"],
     creator: "@rishav_chat",
     site: "@rishav_chat",
