@@ -145,13 +145,14 @@ export type FAQItem = {
 const portfolioData = {
   personalInfo: {
     name: "RISHAV",
-    title: "Lead AI Engineer",
+    title: "AI Engineer | Consultant | Researcher",
     email: "mail@rishavchatterjee.com",
-    shortBio: "Hi! I'm a Lead AI Engineer, I specialize in architecting scalable Agentic AI ecosystems across cloud and on-premise environments. I bridge the gap between complex data engineering and actionable business intelligence to build autonomous systems that solve high-stakes enterprise challenges.",
+    shortBio: "I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment. 6 years of Python, SQL, and data platform engineering give me the domain knowledge to direct AI effectively.",
     longBio: [
-      "I am a Lead AI Engineer, dedicated to engineering multi-agent frameworks and scalable AI solutions. By leveraging a deep foundation in data architecture and BI, I transform raw data into intelligent, self-correcting agents deployed seamlessly in cloud and hybrid infrastructures.",
-      "To thrive in today's fast-paced landscape, I treat AI as a core component of my delivery process. Beyond leveraging Copilot, Claude, Gemini, and ChatGPT for accelerated development and debugging, I specialize in orchestrating autonomous agents using LangGraph, Ollama and AutoGen. These frameworks allow me to automate complex analytical workflows and scale intelligence across the enterprise.",
-      "My track record includes delivering high-impact AI frameworks—such as LLM-based adaptive testing and conversational analytics systems—that fundamentally transform how teams engage with data. I am driven to merge the structural rigor of enterprise systems with the frontier of AI innovation to deliver scalable, future-ready solutions."
+      "I architect and ship production AI systems using AI coding tools as my primary development environment. 31 interconnected projects: distributed mesh networks, autonomous agents, self-healing infrastructure, multi-model orchestration. I design every system and direct AI tools to build it.",
+      "I solve AI infrastructure problems for enterprises. GOAT agentic AI platform at Gartner (5,000+ users, 88% query resolution improvement), data quality frameworks at IBM-TWC (60% processing time reduction), data platforms at Novartis (15 pharmaceutical brands, 99.5% accuracy). 6 years of data engineering domain knowledge, now multiplied by AI tooling.",
+      "CARS (Cost-Aware Reasoning Score) is an original efficiency metric I created for evaluating local AI models against resource cost. 10-task benchmark suite with Claude baselines. I study how to measure and optimize AI systems, not just build them.",
+      "I am transparent about how I work: I write Python, SQL, and Bash (6 years hands-on). I build React, FastAPI, Tauri, and distributed systems with AI coding tools. I architect and configure Claude Code with custom agents, hooks, CLAUDE.md workflows, and commands. Primary tool: Claude Code. Also: Google Copilot, Cline, Kilo Code."
     ],
     location: "Delhi",
     yearsExperienceStartYear: 2018,
@@ -186,58 +187,58 @@ const portfolioData = {
   services: [
     {
       id: "s1",
-      title: "Agentic AI Development",
-      description: "Building autonomous, self-correcting AI systems that solve complex enterprise workflows. I move beyond simple chatbots to architect multi-agent ecosystems that can reason, plan, and execute tasks.",
-      iconName: "Cpu", // Lucide icon name or path
-      skills: ["LangGraph", "AutoGen", "OpenAI/Claude API", "RAG Pipelines"]
+      title: "AI System Architecture",
+      description: "I architect production AI systems — from multi-agent orchestration to distributed mesh networks — using AI coding tools as my development environment. 31 interconnected projects shipped, 9,700 lines of production code running autonomously.",
+      iconName: "Cpu",
+      skills: ["Claude Code", "System Design", "Multi-Agent Orchestration", "Distributed Systems"]
     },
     {
       id: "s2",
-      title: "Data Pipeline Optimization",
-      description: "Transforming sluggish, legacy ETL processes into high-performance, real-time data streams. I optimize for cost, latency, and reliability, ensuring your data is ready when you need it.",
+      title: "Data Platform Consulting",
+      description: "I solve data infrastructure problems for enterprises. 6 years of hands-on Python, SQL, Airflow, Snowflake, and AWS experience across healthcare, advertising, and enterprise platforms.",
       iconName: "Database",
-      skills: ["Snowflake", "AWS Glue/Batch", "Airflow", "Python/SQL"]
+      skills: ["Python", "SQL", "Snowflake", "AWS", "Airflow", "dbt"]
     },
     {
       id: "s3",
-      title: "Cloud Migration Strategy",
-      description: "Leading safe, efficient migrations from on-premise to cloud (AWS/Azure). I handle the architecture, security, and cost-modeling to ensure a seamless transition with zero downtime.",
-      iconName: "Cloud",
-      skills: ["AWS", "Azure", "Docker/Kubernetes", "Infrastructure as Code"]
+      title: "AI Research & Evaluation",
+      description: "CARS metric — an original efficiency metric for evaluating local AI models. I study how to measure and optimize AI systems with reproducible benchmarks and Claude baselines.",
+      iconName: "FlaskConical",
+      skills: ["CARS Metric", "Model Evaluation", "Benchmarking", "Claude Baselines"]
     }
   ],
 
   // New data for Skills Radar Chart
   skillRadarData: [
-    { subject: 'Data Engineer', A: 95, fullMark: 100 },
-    { subject: 'Cloud Architect', A: 85, fullMark: 100 },
-    { subject: 'AI Engineer', A: 90, fullMark: 100 },
-    { subject: 'Tech Lead', A: 80, fullMark: 100 },
-    { subject: 'DevOps Engineer', A: 75, fullMark: 100 },
-    { subject: "Data Scientist", A: 70, fullMark: 100 },
+    { subject: 'AI Tool Mastery', A: 95, fullMark: 100 },
+    { subject: 'System Architecture', A: 90, fullMark: 100 },
+    { subject: 'Data Engineering', A: 90, fullMark: 100 },
+    { subject: 'AI/ML Engineering', A: 85, fullMark: 100 },
+    { subject: 'Cloud Infrastructure', A: 80, fullMark: 100 },
+    { subject: 'Problem Solving', A: 95, fullMark: 100 },
   ],
 
   // AI Chat Simulation Data
   chatSimulation: [
     {
       id: "q1",
-      text: "What is Rishav's experience with large-scale data teams?",
-      response: "Rishav has led cross-functional teams of up to 8 engineers at IBM - TWC and Novatis. He specializes in bridging the gap between Data Engineering and QA, reducing delivery times by 60% through better orchestration."
+      text: "How does Rishav build his projects?",
+      response: "Rishav uses AI coding tools — primarily Claude Code — as his development environment. He writes Python and SQL by hand (6 years experience), but builds React, FastAPI, distributed systems, and desktop apps by directing AI tools with architectural intent. He configures Claude Code with custom agents, hooks, and CLAUDE.md workflows."
     },
     {
       id: "q2",
-      text: "Can you tell me about a complex problem he solved?",
-      response: "At IBM - TWC, he optimized a Programmatic Advertisers pipeline that was causing SLAs breaches. By re-architecting the flow using AWS Batch and improving the SQL logic, he reduced processing time by 60% and infrastructure costs by 30%."
+      text: "What is the Soul ecosystem?",
+      response: "Soul is a 31-project AI ecosystem Rishav architects and maintains — 20 public repositories covering agent safety, distributed mesh networking, self-healing infrastructure, model evaluation, and an AI outreach platform. soul-os is the production core: 9,700 lines running autonomously on a Raspberry Pi."
     },
     {
       id: "q3",
-      text: "What makes him an 'Agentic AI' engineer?",
-      response: "Beyond using LLMs for code, Rishav builds autonomous systems. He created 'GOAT' (Gartner's Own Agentic Tech), a serverless multi-agent system that helps associates retrieve complex client data instantly, replacing manual searches."
+      text: "What enterprise experience does he have?",
+      response: "Rishav launched GOAT, Gartner's agentic AI platform serving 5,000+ users (88% query resolution improvement). At IBM-TWC, he reduced processing time by 60% and infrastructure costs by 30%. At Novartis, he maintained 99.5% data accuracy across 15 pharmaceutical brands."
     },
     {
       id: "q4",
-      text: "Is he open to freelance work?",
-      response: "Yes! Rishav specializes in high-impact freelance consulting for Enterprise Data Architecture and GenAI solutions. You can book a consultation directly through the 'Contact' section."
+      text: "What is the CARS metric?",
+      response: "CARS (Cost-Aware Reasoning Score) is an original metric Rishav created: Reasoning Accuracy / (VRAM_GB x Latency_s). It measures whether a local AI model gives enough cognitive capability per unit of hardware cost. He built a 10-task benchmark suite with Claude baselines to test this."
     }
   ],
 
@@ -634,10 +635,12 @@ const portfolioData = {
       { name: 'Jenkins', level: 3 },
       { name: 'Kubernetes', level: 3 },
     ],
-    'AI Coding Agent': [
+    'AI Tool Mastery': [
       { name: 'Claude Code', level: 5 },
-      { name: 'Gemini CLI', level: 4 },
-      { name: 'Codex', level: 4 },
+      { name: 'CLAUDE.md Configuration', level: 5 },
+      { name: 'Google Copilot', level: 4 },
+      { name: 'Cline', level: 4 },
+      { name: 'Kilo Code', level: 3.5 },
     ],
     'Python': [
       { name: 'Pandas', level: 4.5 },
