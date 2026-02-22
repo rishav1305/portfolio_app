@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getServices } from '@/services/services';
-import type { Service } from '@/data/portfolioData';
+import type { Service } from '@/types/portfolio';
 
 const ServiceIcon = ({ name }: { name: string }) => {
     switch (name) {

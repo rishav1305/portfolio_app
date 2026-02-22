@@ -1,11 +1,13 @@
 
 import { supabase } from '@/lib/supabase';
-import type { Service } from '@/data/portfolioData';
+import type { Service, ServiceV3 } from '@/types/portfolio';
+import type { ServiceRow } from '@/types/db-rows';
 
 export async function getServices(): Promise<Service[]> {
     const { data, error } = await supabase
         .from('services')
         .select('*')
+        .is('service_type', null)
         .order('display_order', { ascending: true });
 
     if (error) {
@@ -13,11 +15,32 @@ export async function getServices(): Promise<Service[]> {
         return [];
     }
 
-    return data.map((item: any) => ({
+    return (data as ServiceRow[]).map((item) => ({
+        id: item.id,
         title: item.title,
         description: item.description,
-        icon: item.icon_name, // Returning string name, component handling needs to be done in UI
+        iconName: item.icon_name || '',
         skills: item.skills || [],
+    }));
+}
+
+export async function getServicesV3(): Promise<ServiceV3[]> {
+    const { data, error } = await supabase
+        .from('services')
+        .select('*')
+        .eq('service_type', 'v3')
+        .order('display_order', { ascending: true });
+
+    if (error) {
+        console.error("Error fetching services v3:", error);
+        return [];
+    }
+
+    return (data as ServiceRow[]).map((item) => ({
+        title: item.title,
+        description: item.description,
+        priceRange: item.price_range || '',
+        timeline: item.timeline || '',
         features: item.features || [],
-    })) as unknown as Service[]; // Cast as unknown first because Service interface might expect ReactNode for icon
+    }));
 }

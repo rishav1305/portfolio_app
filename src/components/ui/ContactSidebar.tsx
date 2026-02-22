@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { toast } from 'react-hot-toast';
-import portfolioData from '@/data/portfolioData';
+import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 export default function ContactSidebar() {
-  const { personalInfo } = portfolioData;
+  const siteConfig = useSiteConfig();
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const pathname = usePathname();
@@ -111,7 +111,7 @@ export default function ContactSidebar() {
                       {/* WhatsApp - Crystal Card */}
                       <div className="group relative p-3 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 border border-transparent hover:border-green-200/50 shadow-sm hover:shadow-md">
                         <a
-                          href={`https://wa.me/${personalInfo.whatsapp.replace(/\D/g, '')}`}
+                          href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, '')}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center"
@@ -123,11 +123,11 @@ export default function ContactSidebar() {
                           </div>
                           <div className="ml-3 flex-1">
                             <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">WhatsApp</span>
-                            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 font-mono tracking-tight">{personalInfo.whatsapp}</p>
+                            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 font-mono tracking-tight">{siteConfig.whatsapp}</p>
                           </div>
                         </a>
                         <button
-                          onClick={(e) => handleCopy(e, personalInfo.whatsapp, 'WhatsApp number')}
+                          onClick={(e) => handleCopy(e, siteConfig.whatsapp, 'WhatsApp number')}
                           className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-green-600 transition-colors opacity-0 group-hover:opacity-100"
                           title="Copy"
                         >
@@ -140,7 +140,7 @@ export default function ContactSidebar() {
                       {/* Email - Crystal Card */}
                       <div className="group relative p-3 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 border border-transparent hover:border-red-200/50 shadow-sm hover:shadow-md">
                         <a
-                          href={`mailto:${personalInfo.email}`}
+                          href={`mailto:${siteConfig.email}`}
                           className="flex items-center"
                         >
                           <div className="bg-gradient-to-br from-red-400 to-red-600 p-2 rounded-lg shadow-lg shadow-red-500/20 group-hover:scale-105 transition-transform duration-300 max-w-min">
@@ -150,11 +150,11 @@ export default function ContactSidebar() {
                           </div>
                           <div className="ml-3 flex-1 overflow-hidden">
                             <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Email</span>
-                            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate pr-6">{personalInfo.email}</p>
+                            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate pr-6">{siteConfig.email}</p>
                           </div>
                         </a>
                         <button
-                          onClick={(e) => handleCopy(e, personalInfo.email, 'Email')}
+                          onClick={(e) => handleCopy(e, siteConfig.email, 'Email')}
                           className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-red-600 transition-colors opacity-0 group-hover:opacity-100"
                           title="Copy"
                         >
@@ -168,7 +168,7 @@ export default function ContactSidebar() {
                       <div className="pt-2 grid grid-cols-3 gap-2">
                         {/* LinkedIn */}
                         <a
-                          href={personalInfo.socialMedia.linkedin}
+                          href={siteConfig.social_media.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex flex-col items-center justify-center p-3 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 border border-transparent hover:border-blue-200/50 transition-all hover:-translate-y-1"
@@ -183,7 +183,7 @@ export default function ContactSidebar() {
 
                         {/* GitHub */}
                         <a
-                          href={personalInfo.socialMedia.github}
+                          href={siteConfig.social_media.github}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex flex-col items-center justify-center p-3 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-gray-700/50 border border-transparent hover:border-gray-200/50 transition-all hover:-translate-y-1"
@@ -198,7 +198,7 @@ export default function ContactSidebar() {
 
                         {/* LeetCode */}
                         <a
-                          href={personalInfo.socialMedia.leetcode}
+                          href={siteConfig.social_media.leetcode}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group flex flex-col items-center justify-center p-3 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 border border-transparent hover:border-yellow-200/50 transition-all hover:-translate-y-1"

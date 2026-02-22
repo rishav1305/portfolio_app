@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { WorkExperience } from "@/data/portfolioData";
+import type { WorkExperience } from "@/types/portfolio";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ExperienceTimelineProps {

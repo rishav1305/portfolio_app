@@ -1,5 +1,5 @@
 import React from 'react';
-import { WorkExperience } from '@/data/portfolioData';
+import type { WorkExperience } from '@/types/portfolio';
 
 interface ExperienceCardWithRemoteProps {
   job: WorkExperience;

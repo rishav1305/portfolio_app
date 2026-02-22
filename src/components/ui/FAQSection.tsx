@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import portfolioData from '@/data/portfolioData';
+import type { FAQItem as FAQItemType } from '@/types/portfolio';
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +27,11 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
     );
 };
 
-const FAQSection = () => {
-    const faqs = portfolioData.faqs || [];
+interface FAQSectionProps {
+    faqs?: FAQItemType[];
+}
+
+const FAQSection = ({ faqs = [] }: FAQSectionProps) => {
 
     return (
         <section className="py-20 px-6 bg-white">

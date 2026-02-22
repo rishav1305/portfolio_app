@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import portfolioData, { SkillRating } from '@/data/portfolioData';
+import portfolioData from '@/data/portfolioData';
+import type { SkillRating } from '@/types/portfolio';
 
 // Inline Icons to avoid extra dependencies
 const PrinterIcon = ({ size = 18 }: { size?: number }) => (
@@ -120,7 +121,9 @@ export default function ResumePage() {
                                 <ul className="list-disc list-outside ml-4 space-y-1.5">
                                     {job.achievements.map((achievement, i) => (
                                         <li key={i} className="text-sm text-gray-700 leading-snug pl-1">
-                                            <span dangerouslySetInnerHTML={{ __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                                            <span>{achievement.split(/\*\*(.*?)\*\*/g).map((part, j) =>
+                                                j % 2 === 1 ? <strong key={j}>{part}</strong> : part
+                                            )}</span>
                                         </li>
                                     ))}
                                 </ul>

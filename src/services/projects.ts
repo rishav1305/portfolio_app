@@ -1,6 +1,7 @@
 
 import { supabase } from '@/lib/supabase';
-import type { Project } from '@/data/portfolioData';
+import type { Project } from '@/types/portfolio';
+import type { ProjectRow } from '@/types/db-rows';
 
 export async function getProjects(): Promise<Project[]> {
     const { data, error } = await supabase
@@ -13,24 +14,21 @@ export async function getProjects(): Promise<Project[]> {
         return [];
     }
 
-    // Map DB snake_case columns back to CamelCase TS types if needed
-    // Our seeding script mapped camel->snake, so we need snake->camel here to match the type
-    // OR just use 'any' for now to speed up, or better: adjust the type or map it properly.
-
-    // Let's do a proper map to be safe
-    return data.map((p: any) => ({
-        ...p,
-        techStack: p.tech_stack, // DB uses snake_case
-    })) as Project[];
+    return (data as ProjectRow[]).map((item) => ({
+        title: item.title,
+        description: item.description,
+        short_description: item.short_description ?? undefined,
+        image: item.image,
+        thumbnail: item.thumbnail ?? undefined,
+        techStack: item.tech_stack,
+        link: item.link,
+        category: item.category,
+        company: item.company ?? undefined,
+        clients: item.clients ?? undefined,
+    }));
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
-    // Assuming 'link' is used as slug or we just filter by title-slug?
-    // The current data uses "link": "projects/foo-bar". 
-    // We should query where link LIKE %slug or just fetch all and find?
-    // Ideally we should have a 'slug' column. For now let's loosely match or fetch all.
-
-    // Efficient way: Fetch all (since it's small) and find match
     const projects = await getProjects();
     return projects.find(p => p.link.includes(slug)) || null;
 }
@@ -47,8 +45,17 @@ export async function getProjectById(id: string): Promise<Project | null> {
         return null;
     }
 
+    const item = data as ProjectRow;
     return {
-        ...data,
-        techStack: data.tech_stack,
-    } as Project;
+        title: item.title,
+        description: item.description,
+        short_description: item.short_description ?? undefined,
+        image: item.image,
+        thumbnail: item.thumbnail ?? undefined,
+        techStack: item.tech_stack,
+        link: item.link,
+        category: item.category,
+        company: item.company ?? undefined,
+        clients: item.clients ?? undefined,
+    };
 }

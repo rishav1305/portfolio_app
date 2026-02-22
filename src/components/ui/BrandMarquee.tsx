@@ -2,10 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
-import portfolioData from '@/data/portfolioData';
+import type { Brand } from '@/types/portfolio';
 
-const BrandMarquee = () => {
-    const brands = portfolioData.brands || [];
+interface BrandMarqueeProps {
+    brands?: Brand[];
+}
+
+const BrandMarquee = ({ brands = [] }: BrandMarqueeProps) => {
     // Create 4 identical sets for the seamless loop on wide screens
     // Using 4 sets ensures we can scroll -50% or -25% safely without running out of items
     const loopBrands = [...brands, ...brands, ...brands, ...brands];

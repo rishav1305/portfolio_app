@@ -1,32 +1,9 @@
 import React from 'react';
-import portfolioData from "@/data/portfolioData";
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { getTestimonials } from '@/services/testimonials';
 
-export default function Testimonials() {
-  // Create testimonial data structure - we'll update the data file later
-  const testimonials = portfolioData.testimonials || [
-    {
-      name: "John Doe",
-      position: "CEO, Tech Innovations",
-      company: "Tech Innovations",
-      text: "Rishav is an exceptional talent who consistently delivers high-quality solutions. His technical expertise and problem-solving skills make him an invaluable asset to any team.",
-      image: "/images/testimonial1.jpg"
-    },
-    {
-      name: "Jane Smith",
-      position: "CTO, DataViz Corp",
-      company: "DataViz Corp",
-      text: "Working with Rishav was a game-changer for our data visualization projects. His innovative approach and attention to detail resulted in solutions that exceeded our expectations.",
-      image: "/images/testimonial2.jpg"
-    },
-    {
-      name: "Michael Johnson",
-      position: "Project Manager, Enterprise Solutions",
-      company: "Enterprise Solutions",
-      text: "Rishav's technical leadership and cloud expertise transformed our infrastructure. He has a unique ability to align technology solutions with business objectives, driving significant value.",
-      image: "/images/testimonial3.jpg"
-    }
-  ];
+export default async function Testimonials() {
+  const testimonials = await getTestimonials();
 
   return (
     <div className="min-h-screen pt-20">

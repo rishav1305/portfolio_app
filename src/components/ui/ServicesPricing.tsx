@@ -1,5 +1,5 @@
 import React from 'react';
-import portfolioData, { ServiceV3 } from '@/data/portfolioData';
+import type { ServiceV3 } from '@/types/portfolio';
 
 const ServicePricingCard = ({ service }: { service: ServiceV3 }) => (
     <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
@@ -40,8 +40,11 @@ const ServicePricingCard = ({ service }: { service: ServiceV3 }) => (
     </div>
 );
 
-const ServicesPricing = () => {
-    const services = portfolioData.servicesV3 || [];
+interface ServicesPricingProps {
+    services?: ServiceV3[];
+}
+
+const ServicesPricing = ({ services = [] }: ServicesPricingProps) => {
 
     return (
         <section className="py-20 px-6 bg-gray-50">
