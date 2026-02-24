@@ -2,12 +2,19 @@
 """Backup all Supabase portfolio data to a local PostgreSQL database on titan-pc."""
 
 import json
+import os
 import subprocess
 import sys
 import urllib.request
 
-SUPABASE_URL = "https://trwoxcbqbskpaxcldyje.supabase.co"
-SVC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyd294Y2JxYnNrcGF4Y2xkeWplIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2OTQyMjYzNSwiZXhwIjoyMDg0OTk4NjM1fQ.9M-_f5rTss7PWto-75V8yKDVfimt5XvsBQkSrJ0HgPc"
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
+SVC_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
+
+if not SUPABASE_URL or not SVC_KEY:
+    print("Error: Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables.")
+    print("  export SUPABASE_URL='https://your-project.supabase.co'")
+    print("  export SUPABASE_SERVICE_ROLE_KEY='your-service-role-key'")
+    sys.exit(1)
 
 TABLES = [
     "site_config",
