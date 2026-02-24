@@ -8,12 +8,12 @@ import sys
 import urllib.request
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
-SVC_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
+SVC_KEY = os.environ.get("SUPABASE_SECRET_KEY", "") or os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
 
 if not SUPABASE_URL or not SVC_KEY:
-    print("Error: Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables.")
+    print("Error: Set SUPABASE_URL and SUPABASE_SECRET_KEY environment variables.")
     print("  export SUPABASE_URL='https://your-project.supabase.co'")
-    print("  export SUPABASE_SERVICE_ROLE_KEY='your-service-role-key'")
+    print("  export SUPABASE_SECRET_KEY='your-secret-key'")
     sys.exit(1)
 
 TABLES = [
