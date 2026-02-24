@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rishav Chatterjee | AI Engineer | AI Consultant | AI Researcher",
-  description: "AI-augmented architect who builds production AI systems with AI coding tools. 6 years of Python, SQL, and data platform engineering. 31 interconnected projects in the Soul ecosystem.",
+  description: "AI-augmented architect who builds production AI systems with AI coding tools. 8 years of Python, SQL, and data platform engineering. 31 interconnected projects in the Soul ecosystem.",
   keywords: [
     "AI engineer",
     "AI consultant",
