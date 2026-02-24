@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import portfolioData from "@/data/portfolioData";
 import { getProjects } from '@/services/projects'; // Import Fetcher
@@ -57,20 +56,11 @@ export default async function Projects() {
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow"
             >
-              <Link href={`/${project.link}`}>
-                <div className="relative" style={{ paddingTop: '66.67%' }}> {/* 3:2 aspect ratio */}
-                  <Image
-                    src={project.thumbnail || project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className={`absolute top-0 right-0 ${getCategoryBadgeColor(project.category)} text-white text-xs font-bold px-2 py-1`}>
-                    {project.category}
-                  </div>
-                </div>
-              </Link>
+              <div className="px-6 pt-4">
+                <span className={`${getCategoryBadgeColor(project.category)} text-white text-xs font-bold px-2 py-1 rounded`}>
+                  {project.category}
+                </span>
+              </div>
               <div className="p-6 flex-grow">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="text-gray-600 mb-4">{project.short_description || project.description}</p>

@@ -62,7 +62,7 @@ export default async function Home() {
 
           {/* Benefit Statement */}
           <p className="text-lg md:text-xl text-blue-200 mb-10 font-bold bg-blue-900/30 inline-block px-6 py-2 rounded-full border border-blue-500/30">
-            6 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
+            8 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -147,7 +147,7 @@ const portfolioData = {
     name: "RISHAV",
     title: "AI Engineer | AI Consultant | AI Researcher",
     email: "mail@rishavchatterjee.com",
-    shortBio: "I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment. 6 years of Python, SQL, and data platform engineering give me the domain knowledge to direct AI effectively.",
+    shortBio: "I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment. 8 years of Python, SQL, and data platform engineering give me the domain knowledge to direct AI effectively.",
     longBio: [
       "I architect and ship production AI systems using AI coding tools as my primary development environment. 31 interconnected projects: distributed mesh networks, autonomous agents, self-healing infrastructure, multi-model orchestration. I design every system and direct AI tools to build it.",
       "I solve AI infrastructure problems for enterprises. GOAT agentic AI platform at Gartner (5,000+ users, 88% query resolution improvement), data quality frameworks at IBM-TWC (60% processing time reduction), data platforms at Novartis (15 pharmaceutical brands, 99.5% accuracy). 6 years of data engineering domain knowledge, now multiplied by AI tooling.",
@@ -274,17 +274,45 @@ const portfolioData = {
     },
     {
       id: "cs4",
-      title: "Agentic AI Customer Support",
-      role: "Lead AI Engineer",
-      challenge: "Customer support agents were spending 40% of time searching for policy info across scattered PDFs and Notion docs.",
-      solution: "Deployed a RAG-based multi-agent system (LangGraph) that retrieves context and drafts responses, with a human-in-the-loop review step.",
-      impact: "Reduced average handling time (AHT) by 45% and improved first-contact resolution by 25%.",
+      title: "GOAT - Gartner's Own Agentic Tech",
+      role: "AI Platform Lead",
+      challenge: "Gartner associates needed quick access to client information, engagement data, and research materials but relied on fragmented internal tools.",
+      solution: "Built GOAT, a conversational agentic AI assistant with RAG pipelines, multi-agent orchestration, and re-architected infrastructure from AWS EKS to serverless Lambda.",
+      impact: "Serving 5,000+ concurrent users with 88% query resolution improvement, 35% infrastructure cost reduction, and 40% token efficiency via A/B testing.",
       metrics: [
-        { label: "AHT Reduction", value: "45%" },
-        { label: "Resolution Rate", value: "+25%" },
-        { label: "Docs Indexed", value: "10k+" }
+        { label: "Users", value: "5,000+" },
+        { label: "Resolution", value: "+88%" },
+        { label: "Cost Saved", value: "35%" }
       ],
-      techStack: ["LangGraph", "Pinecone", "FastAPI", "React"]
+      techStack: ["Python", "AWS Lambda", "RAG", "Multi-Agent System"]
+    },
+    {
+      id: "cs5",
+      title: "Soul Mesh - Distributed Compute Network",
+      role: "Architect",
+      challenge: "Multiple low-powered devices (Raspberry Pi, old PCs) sitting idle while cloud GPU costs for LLM inference are prohibitive.",
+      solution: "Built a distributed compute mesh that combines multiple devices into one virtual machine using hub-agent model with WebSocket heartbeats, JWT auth, and mDNS discovery.",
+      impact: "v0.2.0 with 253 tests passing, live-tested across 2 devices. Enables local LLM inference without cloud costs.",
+      metrics: [
+        { label: "Tests", value: "253" },
+        { label: "Devices", value: "2+" },
+        { label: "Cloud Cost", value: "$0" }
+      ],
+      techStack: ["Python", "FastAPI", "WebSocket", "JWT", "mDNS"]
+    },
+    {
+      id: "cs6",
+      title: "Soul Outreach - AI Marketing Pipeline",
+      role: "Architect",
+      challenge: "Manual outreach workflows — finding contacts, researching them, drafting personalized messages — take hours per prospect and don't scale.",
+      solution: "Building a CLI pipeline that automates the full outreach flow: import contacts, enrich with AI research, draft personalized messages, and send — all from the terminal.",
+      impact: "End-to-end automation of outreach workflows, from contact import to personalized message delivery.",
+      metrics: [
+        { label: "Pipeline", value: "End-to-End" },
+        { label: "Steps", value: "4-Stage" },
+        { label: "Interface", value: "CLI" }
+      ],
+      techStack: ["Python", "FastAPI", "Pydantic", "aiosqlite", "structlog"]
     }
   ],
 
