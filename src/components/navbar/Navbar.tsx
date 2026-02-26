@@ -143,7 +143,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <ExternalNavLink href={siteConfig.social_media.medium}>BLOG</ExternalNavLink>
+          <NavLink href="/blog" isActive={pathname.startsWith('/blog')}>Blog</NavLink>
           <NavLink href="/contact" isActive={pathname === '/contact'}>Contact</NavLink>
         </div>
       </div>
@@ -166,7 +166,7 @@ const Navbar = () => {
             <MobileNavLink href="/timeline" isActive={pathname === '/timeline'} onClick={closeMenu}>Timeline</MobileNavLink>
           </div>
 
-          <ExternalMobileNavLink href={siteConfig.social_media.medium} onClick={closeMenu}>BLOG</ExternalMobileNavLink>
+          <MobileNavLink href="/blog" isActive={pathname.startsWith('/blog')} onClick={closeMenu}>Blog</MobileNavLink>
           <MobileNavLink href="/contact" isActive={pathname === '/contact'} onClick={closeMenu}>Contact</MobileNavLink>
           <div className="px-4 pt-2">
             <Link
