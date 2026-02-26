@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Ubuntu } from "next/font/google";
 import "./globals.css";
 import "../styles/custom-fonts.css";
 import Navbar from "@/components/navbar/Navbar";
@@ -24,6 +24,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -163,7 +169,7 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ubuntu.variable} antialiased min-h-screen`}
         suppressHydrationWarning={true}
       >
         <HydrationErrorSuppressor>
