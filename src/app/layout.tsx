@@ -5,7 +5,6 @@ import "../styles/custom-fonts.css";
 import Navbar from "@/components/navbar/Navbar";
 import ContactSidebar from "@/components/ui/ContactSidebar";
 import AIChatWidget from "@/components/ui/AIChatWidget";
-import Script from "next/script";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -151,10 +150,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth light" style={{ colorScheme: 'light' }} suppressHydrationWarning={true}>
       <head>
-        {/* Add these scripts for Vanta.js */}
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" strategy="beforeInteractive" />
-        <Script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js" strategy="beforeInteractive" />
-        <Script src="/vantaInit.js" strategy="afterInteractive" />
+        {/* Safe: static CSS string defined in this file, not user input */}
         <style dangerouslySetInnerHTML={{ __html: forceLightModeStyles }} />
 
         {/* Essential SEO link tags */}
@@ -166,7 +162,6 @@ export default async function RootLayout({
         {/* Preconnect to important third-party domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ubuntu.variable} antialiased min-h-screen`}

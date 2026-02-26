@@ -11,7 +11,9 @@ import EducationHighlight from "@/components/ui/EducationHighlight";
 import FreelanceGrid from "@/components/ui/FreelanceGrid";
 import ServicePillars from "@/components/ui/ServicePillars";
 import BlogPreview from "@/components/ui/BlogPreview";
-import { SkillsRadar, AIChatWidget, WavesBackground } from "@/components/ui/ClientDynamicImports";
+import { SkillsRadar, AIChatWidget } from "@/components/ui/ClientDynamicImports";
+import ParticleField from "@/components/ui/ParticleField";
+import TypewriterRole from "@/components/ui/TypewriterRole";
 
 import { getSiteConfig } from "@/services/siteConfig";
 import { getTestimonials } from "@/services/testimonials";
@@ -42,41 +44,40 @@ export default async function Home() {
   const freelanceExperience = experience.filter(e => e.experienceType === 'freelance');
 
   return (
-    <div className="min-h-screen bg-white font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
-        <div className="absolute inset-0 w-full h-full z-0 opacity-40">
-          <WavesBackground />
+      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
+        <div className="absolute inset-0 z-0 opacity-60">
+          <ParticleField />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl py-20">
+          <h1 className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)]">
             RISHAV CHATTERJEE
-            <span className="block text-blue-400 mt-2 text-3xl md:text-5xl">AI Engineer | AI Consultant | AI Researcher</span>
           </h1>
+
+          <div className="text-3xl md:text-5xl mb-8 min-h-[1.4em]">
+            <TypewriterRole />
+          </div>
+
           <div className="w-32 h-1.5 bg-blue-500 mx-auto mb-8 rounded-full"></div>
 
-          <p className="text-xl md:text-2xl text-gray-200 mb-6 max-w-3xl mx-auto leading-relaxed">
-            I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment.
-          </p>
-
-          {/* Benefit Statement */}
-          <p className="text-lg md:text-xl text-blue-200 mb-10 font-bold bg-blue-900/30 inline-block px-6 py-2 rounded-full border border-blue-500/30">
-            8 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
+          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Building production AI systems — 8 years of Python, SQL, and data engineering.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="#contact"
+              href="/contact"
               className="px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
             >
               Schedule Consultation
             </Link>
             <Link
-              href="#case-studies"
+              href="/blog"
               className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-lg font-bold text-lg hover:bg-white hover:text-gray-900 transition-all"
             >
-              View Case Studies
+              Read Blog
             </Link>
           </div>
 
