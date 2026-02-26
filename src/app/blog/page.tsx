@@ -20,6 +20,12 @@ export default async function BlogPage() {
   const localPosts = getAllPosts();
   const mediumPosts = await getMediumPosts();
 
+  // Deduplicate: if a local post title matches a Medium post, keep only the local version
+  const localTitles = new Set(localPosts.map((p) => p.title.toLowerCase().trim()));
+  const dedupedMediumPosts = mediumPosts.filter(
+    (p) => !localTitles.has(p.title.toLowerCase().trim())
+  );
+
   // Unify all posts into a single feed sorted by date
   const allPosts: UnifiedPost[] = [
     ...localPosts.map((p) => ({
@@ -33,7 +39,7 @@ export default async function BlogPage() {
       featured: p.featured,
       link: `/blog/${p.slug}`,
     })),
-    ...mediumPosts.map((p) => ({
+    ...dedupedMediumPosts.map((p) => ({
       type: 'medium' as const,
       slug: p.guid,
       title: p.title,
