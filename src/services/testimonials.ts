@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { Testimonial } from '@/types/portfolio';
 import type { TestimonialRow } from '@/types/db-rows';
 
-export async function getTestimonials(): Promise<Testimonial[]> {
+export const getTestimonials = cache(async (): Promise<Testimonial[]> => {
     const { data, error } = await supabase
         .from('testimonials')
         .select('*')
@@ -22,4 +23,4 @@ export async function getTestimonials(): Promise<Testimonial[]> {
         image: item.image ?? undefined,
         location: item.location ?? undefined,
     }));
-}
+});

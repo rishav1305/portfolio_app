@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { StatItem } from '@/types/portfolio';
 import type { StatsDashboardRow } from '@/types/db-rows';
 
-export async function getStatsDashboard(): Promise<StatItem[]> {
+export const getStatsDashboard = cache(async (): Promise<StatItem[]> => {
     const { data, error } = await supabase
         .from('stats_dashboard')
         .select('*')
@@ -19,4 +20,4 @@ export async function getStatsDashboard(): Promise<StatItem[]> {
         value: item.value,
         icon: item.icon ?? undefined,
     }));
-}
+});

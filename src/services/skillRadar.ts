@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { SkillRadarDataPoint } from '@/types/portfolio';
 import type { SkillRadarRow } from '@/types/db-rows';
 
-export async function getSkillRadarData(): Promise<SkillRadarDataPoint[]> {
+export const getSkillRadarData = cache(async (): Promise<SkillRadarDataPoint[]> => {
     const { data, error } = await supabase
         .from('skill_radar_data')
         .select('*')
@@ -19,4 +20,4 @@ export async function getSkillRadarData(): Promise<SkillRadarDataPoint[]> {
         A: item.value,
         fullMark: item.full_mark,
     }));
-}
+});

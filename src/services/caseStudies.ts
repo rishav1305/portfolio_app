@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { CaseStudy } from '@/types/portfolio';
 import type { CaseStudyRow } from '@/types/db-rows';
 
-export async function getCaseStudies(): Promise<CaseStudy[]> {
+export const getCaseStudies = cache(async (): Promise<CaseStudy[]> => {
     const { data, error } = await supabase
         .from('case_studies')
         .select('*')
@@ -24,4 +25,4 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
         metrics: item.metrics || [],
         techStack: item.tech_stack || [],
     }));
-}
+});

@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { Project } from '@/types/portfolio';
 import type { ProjectRow } from '@/types/db-rows';
 
-export async function getProjects(): Promise<Project[]> {
+export const getProjects = cache(async (): Promise<Project[]> => {
     const { data, error } = await supabase
         .from('projects')
         .select('*')
@@ -26,14 +27,14 @@ export async function getProjects(): Promise<Project[]> {
         company: item.company ?? undefined,
         clients: item.clients ?? undefined,
     }));
-}
+});
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
+export const getProjectBySlug = cache(async (slug: string): Promise<Project | null> => {
     const projects = await getProjects();
     return projects.find(p => p.link.includes(slug)) || null;
-}
+});
 
-export async function getProjectById(id: string): Promise<Project | null> {
+export const getProjectById = cache(async (id: string): Promise<Project | null> => {
     const { data, error } = await supabase
         .from('projects')
         .select('*')
@@ -58,4 +59,4 @@ export async function getProjectById(id: string): Promise<Project | null> {
         company: item.company ?? undefined,
         clients: item.clients ?? undefined,
     };
-}
+});

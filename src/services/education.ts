@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { Education } from '@/types/portfolio';
 import type { EducationRow } from '@/types/db-rows';
 
-export async function getEducation(): Promise<Education[]> {
+export const getEducation = cache(async (): Promise<Education[]> => {
     const { data, error } = await supabase
         .from('education')
         .select('*')
@@ -22,4 +23,4 @@ export async function getEducation(): Promise<Education[]> {
         focusArea: item.focus_area,
         description: item.description ?? undefined,
     }));
-}
+});

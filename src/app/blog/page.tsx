@@ -4,6 +4,8 @@ import { getMediumPosts } from '@/lib/utils/medium-feed';
 import { getAllPosts } from '@/lib/markdown';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
+export const revalidate = 3600; // Revalidate every hour (caches Medium RSS)
+
 type UnifiedPost = {
   type: 'local' | 'medium';
   slug: string;

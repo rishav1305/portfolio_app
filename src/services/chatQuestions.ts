@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { ChatQuestion } from '@/types/portfolio';
 import type { ChatQuestionRow } from '@/types/db-rows';
 
-export async function getChatQuestions(): Promise<ChatQuestion[]> {
+export const getChatQuestions = cache(async (): Promise<ChatQuestion[]> => {
     const { data, error } = await supabase
         .from('chat_questions')
         .select('*')
@@ -19,4 +20,4 @@ export async function getChatQuestions(): Promise<ChatQuestion[]> {
         text: item.text,
         response: item.response,
     }));
-}
+});

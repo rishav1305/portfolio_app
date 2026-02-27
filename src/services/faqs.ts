@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { FAQItem } from '@/types/portfolio';
 import type { FAQRow } from '@/types/db-rows';
 
-export async function getFaqs(): Promise<FAQItem[]> {
+export const getFaqs = cache(async (): Promise<FAQItem[]> => {
     const { data, error } = await supabase
         .from('faqs')
         .select('*')
@@ -18,4 +19,4 @@ export async function getFaqs(): Promise<FAQItem[]> {
         question: item.question,
         answer: item.answer,
     }));
-}
+});

@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { WorkExperience } from '@/types/portfolio';
 import type { ExperienceRow } from '@/types/db-rows';
 
-export async function getExperience(): Promise<WorkExperience[]> {
+export const getExperience = cache(async (): Promise<WorkExperience[]> => {
     const { data, error } = await supabase
         .from('experience')
         .select('*')
@@ -33,4 +34,4 @@ export async function getExperience(): Promise<WorkExperience[]> {
         details: item.details || [],
         tags: item.tags || [],
     }));
-}
+});

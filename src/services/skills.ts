@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { SkillCategory } from '@/types/portfolio';
 import type { SkillCategoryRow } from '@/types/db-rows';
 
-export async function getSkillCategories(): Promise<SkillCategory> {
+export const getSkillCategories = cache(async (): Promise<SkillCategory> => {
     const { data, error } = await supabase
         .from('skill_categories')
         .select('*')
@@ -20,4 +21,4 @@ export async function getSkillCategories(): Promise<SkillCategory> {
     });
 
     return skillsMap;
-}
+});

@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { Service, ServiceV3 } from '@/types/portfolio';
 import type { ServiceRow } from '@/types/db-rows';
 
-export async function getServices(): Promise<Service[]> {
+export const getServices = cache(async (): Promise<Service[]> => {
     const { data, error } = await supabase
         .from('services')
         .select('*')
@@ -22,9 +23,9 @@ export async function getServices(): Promise<Service[]> {
         iconName: item.icon_name || '',
         skills: item.skills || [],
     }));
-}
+});
 
-export async function getServicesV3(): Promise<ServiceV3[]> {
+export const getServicesV3 = cache(async (): Promise<ServiceV3[]> => {
     const { data, error } = await supabase
         .from('services')
         .select('*')
@@ -43,4 +44,4 @@ export async function getServicesV3(): Promise<ServiceV3[]> {
         timeline: item.timeline || '',
         features: item.features || [],
     }));
-}
+});

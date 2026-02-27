@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { SiteConfig } from '@/types/portfolio';
 import type { SiteConfigRow } from '@/types/db-rows';
 
-export async function getSiteConfig(): Promise<SiteConfig | null> {
+export const getSiteConfig = cache(async (): Promise<SiteConfig | null> => {
     const { data, error } = await supabase
         .from('site_config')
         .select('*')
@@ -29,4 +30,4 @@ export async function getSiteConfig(): Promise<SiteConfig | null> {
         social_media: item.social_media || { github: '', linkedin: '', leetcode: '', medium: '' },
         domain_expertise: item.domain_expertise || [],
     };
-}
+});

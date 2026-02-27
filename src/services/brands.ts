@@ -1,9 +1,10 @@
 
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { Brand } from '@/types/portfolio';
 import type { BrandRow } from '@/types/db-rows';
 
-export async function getBrands(): Promise<Brand[]> {
+export const getBrands = cache(async (): Promise<Brand[]> => {
     const { data, error } = await supabase
         .from('brands')
         .select('*')
@@ -20,4 +21,4 @@ export async function getBrands(): Promise<Brand[]> {
         logo: item.logo,
         color: item.color ?? undefined,
     }));
-}
+});
