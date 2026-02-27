@@ -52,11 +52,11 @@ export default async function Home() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl py-20">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)]">
-            RISHAV CHATTERJEE
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)] text-gray-200">
+            Rishav Chatterjee
           </h1>
 
-          <div className="text-3xl md:text-5xl mb-8 min-h-[1.4em]">
+          <div className="text-5xl md:text-7xl font-extrabold mb-8 min-h-[1.4em] uppercase tracking-wide">
             <TypewriterRole />
           </div>
 
