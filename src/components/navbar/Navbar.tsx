@@ -80,12 +80,14 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link href="/" onClick={closeMenu}>
             <span
-              className={`text-lg md:text-xl font-semibold transition-all duration-300 ease-out whitespace-nowrap ${
-                !heroVisible
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 -translate-x-5 pointer-events-none'
-              }`}
-              style={{ fontFamily: 'var(--font-ubuntu)' }}
+              className="text-lg md:text-xl font-semibold whitespace-nowrap"
+              style={{
+                fontFamily: 'var(--font-ubuntu)',
+                opacity: !heroVisible ? 1 : 0,
+                transform: !heroVisible ? 'translateX(0)' : 'translateX(-20px)',
+                pointerEvents: !heroVisible ? 'auto' : 'none',
+                transition: 'opacity 300ms ease-out, transform 300ms ease-out',
+              }}
             >
               Rishav Chatterjee
             </span>
