@@ -52,7 +52,7 @@ export default async function Home() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl py-20">
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)]">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)]">
             RISHAV CHATTERJEE
           </h1>
 
@@ -62,8 +62,12 @@ export default async function Home() {
 
           <div className="w-32 h-1.5 bg-blue-500 mx-auto mb-8 rounded-full"></div>
 
-          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Building production AI systems — 8 years of Python, SQL, and data engineering.
+          <p className="text-xl md:text-2xl text-gray-200 mb-6 max-w-3xl mx-auto leading-relaxed">
+            I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment.
+          </p>
+
+          <p className="text-lg md:text-xl text-blue-200 mb-10 font-bold bg-blue-900/30 inline-block px-6 py-2 rounded-full border border-blue-500/30">
+            8 years of Python, SQL, and data platform engineering — now multiplied by AI tooling.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

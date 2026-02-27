@@ -42,12 +42,12 @@ export default function ParticleField({ className = '' }: { className?: string }
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       const area = rect.width * rect.height;
-      const count = Math.min(Math.max(Math.floor(area / 12000), 40), 120);
+      const count = Math.min(Math.max(Math.floor(area / 5000), 80), 250);
       particlesRef.current = Array.from({ length: count }, () => ({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
         radius: Math.random() * 1.2 + 0.8,
         opacity: Math.random() * 0.5 + 0.2,
       }));
@@ -77,9 +77,17 @@ export default function ParticleField({ className = '' }: { className?: string }
           p.vy += (dy / dist) * force;
         }
 
-        // Damping
-        p.vx *= 0.98;
-        p.vy *= 0.98;
+        // Damping — gentle so drift stays visible
+        p.vx *= 0.995;
+        p.vy *= 0.995;
+
+        // Keep minimum speed so particles always drift
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed < 0.15) {
+          const angle = Math.random() * Math.PI * 2;
+          p.vx += Math.cos(angle) * 0.05;
+          p.vy += Math.sin(angle) * 0.05;
+        }
 
         // Move
         p.x += p.vx;
