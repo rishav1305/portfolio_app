@@ -26,3 +26,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-ubuntu), Arial, Helvetica, sans-serif;
 }
+
+/* Scroll-triggered animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

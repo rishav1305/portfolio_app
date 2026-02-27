@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from '@/hooks/useInView';
 import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 type StatItemUI = {
@@ -13,6 +13,7 @@ type StatItemUI = {
 const AboutStats = () => {
     const siteConfig = useSiteConfig();
     const yearsOfExperience = new Date().getFullYear() - siteConfig.years_experience_start_year;
+    const { ref, isInView } = useInView();
 
     const stats: StatItemUI[] = [
         {
@@ -54,22 +55,19 @@ const AboutStats = () => {
     ];
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
             {stats.map((stat, index) => (
-                <motion.div
+                <div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow"
+                    className={`bg-white p-4 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}
+                    style={{ animationDelay: `${index * 100}ms` }}
                 >
                     <div className="flex justify-center mb-2 text-blue-600">
                         {stat.icon}
                     </div>
                     <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
                     <div className="text-xs text-gray-500 uppercase tracking-wide">{stat.label}</div>
-                </motion.div>
+                </div>
             ))}
         </div>
     );

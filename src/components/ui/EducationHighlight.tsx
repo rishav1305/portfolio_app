@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from '@/hooks/useInView';
 import type { Education } from '@/types/portfolio';
 
 type EducationHighlightProps = {
@@ -9,16 +9,15 @@ type EducationHighlightProps = {
 };
 
 const EducationHighlight: React.FC<EducationHighlightProps> = ({ education }) => {
+    const { ref, isInView } = useInView();
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {education.map((edu, index) => (
-                <motion.div
+                <div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group"
+                    className={`bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}
+                    style={{ animationDelay: `${index * 100}ms` }}
                 >
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                         <svg className="w-24 h-24 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +46,7 @@ const EducationHighlight: React.FC<EducationHighlightProps> = ({ education }) =>
                             {edu.location}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             ))}
         </div>
     );

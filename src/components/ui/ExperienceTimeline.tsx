@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import type { WorkExperience } from "@/types/portfolio";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface ExperienceTimelineProps {
     experiences: WorkExperience[];
@@ -116,166 +115,158 @@ const ExperienceCard: React.FC<{ job: WorkExperience; showClients: boolean; inde
                     </div>
 
                     {/* Collapsible Section */}
-                    <AnimatePresence>
-                        {isExpanded && (
-                            <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
-                                className="overflow-hidden space-y-8"
-                            >
-                                {/* Remaining Achievements */}
-                                {hiddenAchievements.length > 0 && (
-                                    <div className="relative pl-6">
-                                        <ul className="space-y-4">
-                                            {hiddenAchievements.map((item, i) => (
-                                                <li key={i + 3} className="flex items-start text-gray-700 group/item">
-                                                    <span className="text-blue-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-blue-600 group-hover/item:scale-125">•</span>
-                                                    <span className="leading-relaxed">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {/* Managerial / Leadership Section */}
-                                {job.managerialAchievements && job.managerialAchievements.length > 0 && (
-                                    <div className="relative pt-4">
-                                        <div className="absolute left-0 top-4 bottom-0 w-1 bg-gradient-to-b from-purple-400 to-transparent rounded-full opacity-30"></div>
-                                        <div className="pl-6">
-                                            <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
-                                                <span className="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                                    </svg>
-                                                </span>
-                                                Leadership & Strategy
-                                            </h4>
-                                            <ul className="space-y-4">
-                                                {job.managerialAchievements.map((item, i) => (
-                                                    <li key={i} className="flex items-start text-gray-700 group/item">
-                                                        <span className="text-purple-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-purple-600 group-hover/item:scale-125">•</span>
-                                                        <span className="leading-relaxed">{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* AI Enablement Section */}
-                                {job.aiEnablement && job.aiEnablement.length > 0 && (
-                                    <div className="relative">
-                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-transparent rounded-full opacity-30"></div>
-                                        <div className="pl-6">
-                                            <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
-                                                <span className="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                                    </svg>
-                                                </span>
-                                                AI Enablement
-                                            </h4>
-                                            <ul className="space-y-4">
-                                                {job.aiEnablement.map((item, i) => (
-                                                    <li key={i} className="flex items-start text-gray-700 group/item">
-                                                        <span className="text-indigo-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-indigo-600 group-hover/item:scale-125">•</span>
-                                                        <span className="leading-relaxed">{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Technical Execution (Details) Section */}
-                                {job.details && job.details.length > 0 && (
-                                    <div className="relative">
-                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-400 to-transparent rounded-full opacity-30"></div>
-                                        <div className="pl-6">
-                                            <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
-                                                <span className="bg-emerald-100 text-emerald-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                                    </svg>
-                                                </span>
-                                                Technical Execution
-                                            </h4>
-                                            <ul className="space-y-4">
-                                                {job.details.map((item, i) => (
-                                                    <li key={i} className="flex items-start text-gray-700 group/item">
-                                                        <span className="text-emerald-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-emerald-600 group-hover/item:scale-125">•</span>
-                                                        <span className="leading-relaxed">{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Key Clients Section */}
-                                {showClients && job.clients && job.clients.length > 0 && (
-                                    <div className="relative">
-                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full opacity-30"></div>
-                                        <div className="pl-6">
-                                            <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
-                                                <span className="bg-orange-100 text-orange-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                    </svg>
-                                                </span>
-                                                Key Clients
-                                            </h4>
-                                            <div className="grid gap-4 md:grid-cols-2">
-                                                {job.clients.map((client, i) => (
-                                                    <div key={i} className="bg-orange-50/50 p-4 rounded-xl border border-orange-100/50 hover:bg-orange-50 transition-colors duration-300">
-                                                        <h5 className="font-bold text-gray-800 mb-2">{client.name}</h5>
-                                                        {Array.isArray(client.description) ? (
-                                                            <ul className="space-y-2">
-                                                                {client.description.map((desc, j) => (
-                                                                    <li key={j} className="flex items-start text-sm text-gray-600">
-                                                                        <span className="text-orange-400 mr-2 mt-1">•</span>
-                                                                        <span>{desc}</span>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        ) : (
-                                                            <p className="text-sm text-gray-600 leading-relaxed">{client.description}</p>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Technology Stack Section */}
-                                {(job.technicalEnvironment || job.tags) && (
-                                    <div className="relative">
-                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-teal-400 to-transparent rounded-full opacity-30"></div>
-                                        <div className="pl-6">
-                                            <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
-                                                <span className="bg-teal-100 text-teal-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                    </svg>
-                                                </span>
-                                                Technology Stack
-                                            </h4>
-                                            <div className="flex flex-wrap gap-2">
-                                                {(job.technicalEnvironment || job.tags)?.map((tag, i) => (
-                                                    <span key={i} className="px-3 py-1.5 bg-gray-50 hover:bg-white text-gray-600 text-sm rounded-lg border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:shadow-sm transition-all duration-200 font-medium cursor-default">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </motion.div>
+                    <div
+                        className={`overflow-hidden transition-all duration-400 ease-in-out space-y-8 ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    >
+                        {/* Remaining Achievements */}
+                        {hiddenAchievements.length > 0 && (
+                            <div className="relative pl-6">
+                                <ul className="space-y-4">
+                                    {hiddenAchievements.map((item, i) => (
+                                        <li key={i + 3} className="flex items-start text-gray-700 group/item">
+                                            <span className="text-blue-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-blue-600 group-hover/item:scale-125">•</span>
+                                            <span className="leading-relaxed">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         )}
-                    </AnimatePresence>
+
+                        {/* Managerial / Leadership Section */}
+                        {job.managerialAchievements && job.managerialAchievements.length > 0 && (
+                            <div className="relative pt-4">
+                                <div className="absolute left-0 top-4 bottom-0 w-1 bg-gradient-to-b from-purple-400 to-transparent rounded-full opacity-30"></div>
+                                <div className="pl-6">
+                                    <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
+                                        <span className="bg-purple-100 text-purple-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                            </svg>
+                                        </span>
+                                        Leadership & Strategy
+                                    </h4>
+                                    <ul className="space-y-4">
+                                        {job.managerialAchievements.map((item, i) => (
+                                            <li key={i} className="flex items-start text-gray-700 group/item">
+                                                <span className="text-purple-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-purple-600 group-hover/item:scale-125">•</span>
+                                                <span className="leading-relaxed">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* AI Enablement Section */}
+                        {job.aiEnablement && job.aiEnablement.length > 0 && (
+                            <div className="relative">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-transparent rounded-full opacity-30"></div>
+                                <div className="pl-6">
+                                    <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
+                                        <span className="bg-indigo-100 text-indigo-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                            </svg>
+                                        </span>
+                                        AI Enablement
+                                    </h4>
+                                    <ul className="space-y-4">
+                                        {job.aiEnablement.map((item, i) => (
+                                            <li key={i} className="flex items-start text-gray-700 group/item">
+                                                <span className="text-indigo-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-indigo-600 group-hover/item:scale-125">•</span>
+                                                <span className="leading-relaxed">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Technical Execution (Details) Section */}
+                        {job.details && job.details.length > 0 && (
+                            <div className="relative">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-400 to-transparent rounded-full opacity-30"></div>
+                                <div className="pl-6">
+                                    <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
+                                        <span className="bg-emerald-100 text-emerald-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                            </svg>
+                                        </span>
+                                        Technical Execution
+                                    </h4>
+                                    <ul className="space-y-4">
+                                        {job.details.map((item, i) => (
+                                            <li key={i} className="flex items-start text-gray-700 group/item">
+                                                <span className="text-emerald-400 mr-3 mt-1.5 transition-transform duration-300 group-hover/item:text-emerald-600 group-hover/item:scale-125">•</span>
+                                                <span className="leading-relaxed">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Key Clients Section */}
+                        {showClients && job.clients && job.clients.length > 0 && (
+                            <div className="relative">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full opacity-30"></div>
+                                <div className="pl-6">
+                                    <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
+                                        <span className="bg-orange-100 text-orange-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </span>
+                                        Key Clients
+                                    </h4>
+                                    <div className="grid gap-4 md:grid-cols-2">
+                                        {job.clients.map((client, i) => (
+                                            <div key={i} className="bg-orange-50/50 p-4 rounded-xl border border-orange-100/50 hover:bg-orange-50 transition-colors duration-300">
+                                                <h5 className="font-bold text-gray-800 mb-2">{client.name}</h5>
+                                                {Array.isArray(client.description) ? (
+                                                    <ul className="space-y-2">
+                                                        {client.description.map((desc, j) => (
+                                                            <li key={j} className="flex items-start text-sm text-gray-600">
+                                                                <span className="text-orange-400 mr-2 mt-1">•</span>
+                                                                <span>{desc}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                ) : (
+                                                    <p className="text-sm text-gray-600 leading-relaxed">{client.description}</p>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Technology Stack Section */}
+                        {(job.technicalEnvironment || job.tags) && (
+                            <div className="relative">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-teal-400 to-transparent rounded-full opacity-30"></div>
+                                <div className="pl-6">
+                                    <h4 className="flex items-center text-lg font-bold text-gray-800 mb-4 group/header">
+                                        <span className="bg-teal-100 text-teal-700 p-2 rounded-lg mr-3 group-hover/header:rotate-6 transition-transform duration-300 shadow-sm">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                            </svg>
+                                        </span>
+                                        Technology Stack
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {(job.technicalEnvironment || job.tags)?.map((tag, i) => (
+                                            <span key={i} className="px-3 py-1.5 bg-gray-50 hover:bg-white text-gray-600 text-sm rounded-lg border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:shadow-sm transition-all duration-200 font-medium cursor-default">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Expand/Collapse Toggle Button */}
                     {hasMoreContent && (

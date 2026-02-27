@@ -2,29 +2,16 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useInView } from '@/hooks/useInView';
 import portfolioData, { Brand } from '@/data/portfolioData';
 
-const BrandHexagon = ({ brand, index }: { brand: Brand; index: number }) => {
+const BrandHexagon = ({ brand, index, isInView }: { brand: Brand; index: number; isInView: boolean }) => {
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
-                delay: index * 0.05
-            }}
-            whileHover={{
-                scale: 1.15,
-                zIndex: 20,
-                filter: "drop-shadow(0px 10px 10px rgba(0,0,0,0.2))"
-            }}
-            className="relative w-32 h-36 md:w-36 md:h-40 flex items-center justify-center m-[-8px] md:m-[-12px] transition-all duration-300 group"
+        <div
+            className={`relative w-32 h-36 md:w-36 md:h-40 flex items-center justify-center m-[-8px] md:m-[-12px] transition-all duration-300 group hover:scale-[1.15] hover:z-20 hover:drop-shadow-[0px_10px_10px_rgba(0,0,0,0.2)] ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{
-                filter: "drop-shadow(0px 4px 6px rgba(0,0,0,0.05))"
+                filter: "drop-shadow(0px 4px 6px rgba(0,0,0,0.05))",
+                animationDelay: `${index * 50}ms`,
             }}
         >
             {/* Hexagon Shape Container */}
@@ -51,24 +38,25 @@ const BrandHexagon = ({ brand, index }: { brand: Brand; index: number }) => {
                     style={{ backgroundColor: brand.color }}
                 />
             </div>
-        </motion.div>
+        </div>
     );
 };
 
 const BrandHexagonGrid = () => {
     const brands = portfolioData.brands || [];
+    const { ref, isInView } = useInView();
 
     return (
         <div className="flex flex-col items-center justify-center py-12 w-full overflow-hidden">
-            {/* 
+            {/*
               Hexagon Hive Layout:
               - Flex container with wrapping
               - Negative margins on items to make them overlap/touch
               - Max-width constrained to force ~4 items per row on desktop (4 * ~130px approx)
             */}
-            <div className="flex flex-wrap justify-center items-center max-w-[380px] md:max-w-[600px] mx-auto px-2 perspective-[1000px]">
+            <div ref={ref} className="flex flex-wrap justify-center items-center max-w-[380px] md:max-w-[600px] mx-auto px-2 perspective-[1000px]">
                 {brands.map((brand, index) => (
-                    <BrandHexagon key={brand.id} brand={brand} index={index} />
+                    <BrandHexagon key={brand.id} brand={brand} index={index} isInView={isInView} />
                 ))}
             </div>
 
