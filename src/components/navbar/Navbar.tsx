@@ -3,13 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import NavbarName from './NavbarName';
-import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 const Navbar = () => {
-  const siteConfig = useSiteConfig();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(true);
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
   const pathname = usePathname();
   const portfolioDropdownRef = useRef<HTMLDivElement>(null);
@@ -34,6 +32,25 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const heroEl = document.getElementById('hero-name');
+    if (!heroEl) {
+      // Not on homepage — always show name in navbar
+      setHeroVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(heroEl);
+    return () => observer.disconnect();
+  }, [pathname]);
+
   // Close portfolio dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,13 +72,23 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 bg-white ${scrolled || isOpen ? 'shadow-lg' : ''
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 py-2 px-4 transition-all duration-300 bg-white ${
+        scrolled || isOpen ? 'shadow-md' : ''
+      }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center">
           <Link href="/" onClick={closeMenu}>
-            <NavbarName name={siteConfig.name} isScrolled={scrolled} />
+            <span
+              className={`text-lg md:text-xl font-semibold transition-all duration-300 ease-out whitespace-nowrap ${
+                !heroVisible
+                  ? 'opacity-100 translate-x-0'
+                  : 'opacity-0 -translate-x-5 pointer-events-none'
+              }`}
+              style={{ fontFamily: 'var(--font-ubuntu)' }}
+            >
+              Rishav Chatterjee
+            </span>
           </Link>
         </div>
 
