@@ -27,6 +27,25 @@ body {
   font-family: var(--font-ubuntu), Arial, Helvetica, sans-serif;
 }
 
+/* Force light mode overrides */
+:root {
+  --background: #ffffff !important;
+  --foreground: #171717 !important;
+  color-scheme: light !important;
+}
+
+.dark\:bg-gray-700, .dark\:bg-gray-800, .dark\:bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+.dark\:text-gray-200, .dark\:text-gray-300, .dark\:text-gray-400, .dark\:text-blue-400 {
+  color: #374151 !important;
+}
+
+.dark\:border-gray-600, .dark\:border-gray-700, .dark\:border-gray-800 {
+  border-color: #e5e7eb !important;
+}
+
 /* Scroll-triggered animations */
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease-out forwards;

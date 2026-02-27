@@ -116,26 +116,6 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-// Force light mode styles
-const forceLightModeStyles = `
-  :root {
-    --background: #ffffff !important;
-    --foreground: #171717 !important;
-    color-scheme: light !important;
-  }
-  
-  .dark\\:bg-gray-700, .dark\\:bg-gray-800, .dark\\:bg-gray-900 {
-    background-color: #f9fafb !important;
-  }
-  
-  .dark\\:text-gray-200, .dark\\:text-gray-300, .dark\\:text-gray-400, .dark\\:text-blue-400 {
-    color: #374151 !important;
-  }
-  
-  .dark\\:border-gray-600, .dark\\:border-gray-700, .dark\\:border-gray-800 {
-    border-color: #e5e7eb !important;
-  }
-`;
 
 export default async function RootLayout({
   children,
@@ -151,9 +131,6 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth light" style={{ colorScheme: 'light' }} suppressHydrationWarning={true}>
       <head>
-        {/* Safe: static CSS string defined in this file, not user input */}
-        <style dangerouslySetInnerHTML={{ __html: forceLightModeStyles }} />
-
         {/* Essential SEO link tags */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
