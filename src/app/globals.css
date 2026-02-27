@@ -46,6 +46,21 @@ body {
   border-color: #e5e7eb !important;
 }
 
+/* Navbar name slide-in transition */
+.navbar-name {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+.navbar-name[data-visible="false"] {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+.navbar-name[data-visible="true"] {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
 /* Scroll-triggered animations */
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease-out forwards;
