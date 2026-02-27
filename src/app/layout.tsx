@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Ubuntu } from "next/font/google";
 import "./globals.css";
-import "../styles/custom-fonts.css";
 import Navbar from "@/components/navbar/Navbar";
 import dynamic from 'next/dynamic';
 const ContactSidebar = dynamic(() => import('@/components/ui/ContactSidebar'));

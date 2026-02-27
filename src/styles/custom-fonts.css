@@ -1,8 +1,0 @@
-/* Custom font for Navbar name effect */
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
-
-.font-braggadocio {
-  font-family: 'Bungee Shade', 'Impact', 'Arial Black', sans-serif;
-  letter-spacing: 1px;
-  font-weight: normal;
-}
