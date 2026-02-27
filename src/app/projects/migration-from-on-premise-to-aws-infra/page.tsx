@@ -118,7 +118,7 @@ export default function AwsMigrationProject() {
           </p>
           <div className="relative h-[350px] mb-4 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/projects/images/aws_migration.png"
+                  src="/images/projects/thumbnail/im_aws_migration.png"
                   alt="AWS Migration Architecture"
                   fill
                   className="object-cover object-center"
