@@ -11,6 +11,8 @@ const Navbar = () => {
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
   const pathname = usePathname();
   const portfolioDropdownRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLSpanElement>(null);
+  const heroVisibleRef = useRef(true);
 
   // Check if current page is in the portfolio section
   const isInPortfolioSection = ['/experience', '/tech-skills', '/projects', '/timeline'].includes(pathname);
@@ -51,6 +53,34 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, [pathname]);
 
+  // Animate navbar name via ref (avoids CSS transition/animation throttling)
+  useEffect(() => {
+    const el = nameRef.current;
+    if (!el) return;
+    const show = !heroVisible;
+    // Skip animation on initial render
+    if (heroVisibleRef.current === heroVisible) return;
+    heroVisibleRef.current = heroVisible;
+    if (show) {
+      // Animate in: opacity 0→1, translateX -20→0 over 300ms
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(-20px)';
+      // Force reflow so the starting position is applied
+      el.offsetHeight;
+      el.style.transition = 'opacity 300ms ease-out, transform 300ms ease-out';
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0)';
+      el.style.pointerEvents = 'auto';
+    } else {
+      // Snap hide immediately
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(-20px)';
+      el.style.pointerEvents = 'none';
+    }
+  }, [heroVisible]);
+
   // Close portfolio dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -80,9 +110,14 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link href="/" onClick={closeMenu}>
             <span
-              className="navbar-name text-lg md:text-xl font-semibold whitespace-nowrap"
-              data-visible={!heroVisible ? "true" : "false"}
-              style={{ fontFamily: 'var(--font-ubuntu)' }}
+              ref={nameRef}
+              className="text-lg md:text-xl font-semibold whitespace-nowrap"
+              style={{
+                fontFamily: 'var(--font-ubuntu)',
+                opacity: 0,
+                transform: 'translateX(-20px)',
+                pointerEvents: 'none' as const,
+              }}
             >
               Rishav Chatterjee
             </span>
