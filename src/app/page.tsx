@@ -49,7 +49,7 @@ export default async function Home() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl py-20">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight font-[family-name:var(--font-geist-sans)] text-gray-200">
+          <h1 id="hero-name" className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-gray-200" style={{ fontFamily: 'var(--font-ubuntu)' }}>
             Rishav Chatterjee
           </h1>
 
