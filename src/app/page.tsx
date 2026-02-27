@@ -2,17 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BrandMarquee from "@/components/ui/BrandMarquee";
-import AutoScrollTestimonials from "@/components/ui/AutoScrollTestimonials";
 import DomainExpertise from "@/components/ui/DomainExpertise";
-import ExperienceTimeline from "@/components/ui/ExperienceTimeline";
 import ImpactMetricCard from "@/components/ui/ImpactMetricCard";
 import AboutStats from "@/components/ui/AboutStats";
 import EducationHighlight from "@/components/ui/EducationHighlight";
 import FreelanceGrid from "@/components/ui/FreelanceGrid";
 import ServicePillars from "@/components/ui/ServicePillars";
 import BlogPreview from "@/components/ui/BlogPreview";
-import { SkillsRadar, AIChatWidget } from "@/components/ui/ClientDynamicImports";
-import ParticleField from "@/components/ui/ParticleField";
+import { SkillsRadar, AIChatWidget, ParticleField, AutoScrollTestimonials, ExperienceTimeline } from "@/components/ui/ClientDynamicImports";
 import TypewriterRole from "@/components/ui/TypewriterRole";
 
 import { getSiteConfig } from "@/services/siteConfig";
