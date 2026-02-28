@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const roles = ['AI Engineer', 'AI Consultant', 'AI Researcher'];
+const roles = ['Engineer', 'Consultant', 'Researcher'];
 
 export default function TypewriterRole() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -39,7 +39,7 @@ export default function TypewriterRole() {
 
   return (
     <span className="text-[#CA8A04]">
-      {text}
+      AI {text}
       <span className="animate-pulse">|</span>
     </span>
   );
