@@ -9,10 +9,10 @@ const MAX_ACHIEVEMENTS = 5;
 
 // Consolidated skill categories for resume (merges related categories, drops Soft Skills)
 const RESUME_SKILLS: Record<string, string[]> = {
-    'Agentic AI': ['LangGraph', 'LangChain', 'Ollama'],
-    'AI Tools': ['Claude Code', 'CLAUDE.md Configuration', 'Google Copilot', 'Cline', 'Kilo Code'],
-    'Python': ['Pandas', 'SQLAlchemy', 'Pyspark', 'Sklearn', 'Selenium'],
     'SQL': ['SQL Server', 'PostgreSQL', 'Spark SQL', 'SnowSQL'],
+    'Agentic AI': ['LangGraph', 'LangChain', 'Ollama'],
+    'Python': ['Pandas', 'SQLAlchemy', 'Pyspark', 'Sklearn', 'Selenium'],
+    'AI Tools': ['Claude Code', 'CLAUDE.md Configuration', 'Google Copilot', 'Cline', 'Kilo Code'],
     'Data Engineering': ['AWS Glue', 'Azure Databricks', 'AWS Lambda', 'AWS Batch', 'Alteryx'],
     'Cloud & Data Infra': ['AWS', 'Azure', 'Redshift', 'Snowflake', 'Apache Spark', 'HIVE'],
     'MLOps': ['Git', 'Docker', 'Kubeflow', 'DVC', 'vLLM'],
