@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
-import dynamic from 'next/dynamic';
-const ContactSidebar = dynamic(() => import('@/components/ui/ContactSidebar'));
-import AIChatWidget from "@/components/ui/AIChatWidget";
 import HydrationErrorSuppressor from "@/components/ui/HydrationErrorSuppressor";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -126,7 +123,7 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="en" className="scroll-smooth light" style={{ colorScheme: 'light' }} suppressHydrationWarning={true}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning={true}>
       <head>
         {/* Essential SEO link tags */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -145,9 +142,7 @@ export default async function RootLayout({
         <HydrationErrorSuppressor>
           <SiteConfigProvider initialConfig={siteConfig}>
           <Navbar />
-          <ContactSidebar />
           {children}
-          <AIChatWidget />
           <Toaster position="bottom-right" toastOptions={{
             duration: 5000,
             style: {
