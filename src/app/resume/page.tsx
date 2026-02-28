@@ -15,7 +15,7 @@ const RESUME_SKILLS: Record<string, string[]> = {
     'SQL': ['SQL Server', 'PostgreSQL', 'Spark SQL', 'SnowSQL'],
     'Data Engineering': ['AWS Glue', 'Azure Databricks', 'AWS Lambda', 'AWS Batch', 'Alteryx'],
     'Cloud & Data Infra': ['AWS', 'Azure', 'Redshift', 'Snowflake', 'Apache Spark', 'HIVE'],
-    'MLOps': ['Git', 'Docker', 'Jenkins', 'Kubernetes'],
+    'MLOps': ['Git', 'Docker', 'Kubeflow', 'DVC', 'vLLM'],
     'Analytics & Tools': ['Tableau CRM', 'Qlik Sense', 'Power BI', 'JIRA', 'Confluence'],
 };
 

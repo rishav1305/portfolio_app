@@ -660,8 +660,9 @@ const portfolioData = {
     'MLOps': [
       { name: 'Git', level: 5 },
       { name: 'Docker', level: 4 },
-      { name: 'Jenkins', level: 3 },
-      { name: 'Kubernetes', level: 3 },
+      { name: 'Kubeflow', level: 3 },
+      { name: 'DVC', level: 3 },
+      { name: 'vLLM', level: 3 },
     ],
     'AI Tool Mastery': [
       { name: 'Claude Code', level: 5 },
