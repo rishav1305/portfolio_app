@@ -14,11 +14,13 @@ export default async function Experience() {
     const professionalExperience = allExperience.filter(e => e.experienceType === 'professional');
     const freelanceExperience = allExperience.filter(e => e.experienceType === 'freelance');
 
-    // Sort: ongoing roles (no end date) first, then by start date descending
+    // Sort: ongoing roles first, then by start date descending
+    const isOngoing = (e: typeof allExperience[0]) =>
+        !e.endDate || e.endDate.toLowerCase() === 'present' || e.period?.toLowerCase().includes('present');
     const sortExperiences = (exps: typeof allExperience) =>
         [...exps].sort((a, b) => {
-            const aOngoing = !a.endDate;
-            const bOngoing = !b.endDate;
+            const aOngoing = isOngoing(a);
+            const bOngoing = isOngoing(b);
             if (aOngoing !== bOngoing) return aOngoing ? -1 : 1;
             return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
         });
