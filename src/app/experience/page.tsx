@@ -14,6 +14,18 @@ export default async function Experience() {
     const professionalExperience = allExperience.filter(e => e.experienceType === 'professional');
     const freelanceExperience = allExperience.filter(e => e.experienceType === 'freelance');
 
+    // Sort: ongoing roles (no end date) first, then by start date descending
+    const sortExperiences = (exps: typeof allExperience) =>
+        [...exps].sort((a, b) => {
+            const aOngoing = !a.endDate;
+            const bOngoing = !b.endDate;
+            if (aOngoing !== bOngoing) return aOngoing ? -1 : 1;
+            return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+        });
+
+    const sortedProfessional = sortExperiences(professionalExperience);
+    const sortedFreelance = sortExperiences(freelanceExperience);
+
     return (
         <div className="min-h-screen bg-[#0F172A] pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Background Decorations */}
@@ -49,7 +61,7 @@ export default async function Experience() {
                             <p className="text-[#64748B] mt-1">Full-time roles & key organizational leadership</p>
                         </div>
                     </div>
-                    <ExperienceTimeline experiences={professionalExperience} showClients={true} />
+                    <ExperienceTimeline experiences={sortedProfessional} showClients={true} />
                 </div>
 
                 {/* Freelance Section */}
@@ -65,7 +77,7 @@ export default async function Experience() {
                             <p className="text-[#64748B] mt-1">Independent consulting & specialized projects</p>
                         </div>
                     </div>
-                    <ExperienceTimeline experiences={freelanceExperience} />
+                    <ExperienceTimeline experiences={sortedFreelance} />
                 </div>
 
                 {/* Education Section */}

@@ -127,6 +127,7 @@ const Navbar = () => {
             <NavLink href="/projects" isActive={pathname === '/projects'}>Work</NavLink>
             <NavLink href="/about" isActive={pathname === '/about'}>About</NavLink>
             <NavLink href="/blog" isActive={pathname.startsWith('/blog')}>Blog</NavLink>
+            <NavLink href="/resume" isActive={pathname === '/resume'}>Resume</NavLink>
             <Link
               href="/contact"
               className="border border-[#CA8A04] text-[#CA8A04] rounded-full px-4 py-1 hover:bg-[#CA8A04] hover:text-[#020617] transition-colors text-sm font-medium uppercase"
@@ -160,6 +161,7 @@ const Navbar = () => {
             <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Work</MobileNavLink>
             <MobileNavLink href="/about" isActive={pathname === '/about'} onClick={closeMenu}>About</MobileNavLink>
             <MobileNavLink href="/blog" isActive={pathname.startsWith('/blog')} onClick={closeMenu}>Blog</MobileNavLink>
+            <MobileNavLink href="/resume" isActive={pathname === '/resume'} onClick={closeMenu}>Resume</MobileNavLink>
             <Link
               href="/contact"
               onClick={closeMenu}
