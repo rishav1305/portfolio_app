@@ -15,7 +15,7 @@ export const getExperience = cache(async (): Promise<WorkExperience[]> => {
         return [];
     }
 
-    return (data as ExperienceRow[]).map((item) => ({
+    const mapped = (data as ExperienceRow[]).map((item) => ({
         period: item.period,
         startDate: item.start_date,
         endDate: item.end_date,
@@ -34,4 +34,12 @@ export const getExperience = cache(async (): Promise<WorkExperience[]> => {
         details: item.details || [],
         tags: item.tags || [],
     }));
+
+    // Sort: ongoing roles first (null end_date or "Present" in period), then by start_date descending
+    return mapped.sort((a, b) => {
+        const aOngoing = !a.endDate || a.endDate.toLowerCase() === 'present' || (a.period?.toLowerCase().includes('present') ?? false);
+        const bOngoing = !b.endDate || b.endDate.toLowerCase() === 'present' || (b.period?.toLowerCase().includes('present') ?? false);
+        if (aOngoing !== bOngoing) return aOngoing ? -1 : 1;
+        return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+    });
 });

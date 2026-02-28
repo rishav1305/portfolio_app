@@ -144,9 +144,9 @@ export type FAQItem = {
 // The main data object
 const portfolioData = {
   personalInfo: {
-    name: "RISHAV",
+    name: "RISHAV CHATTERJEE",
     title: "AI Engineer | AI Consultant | AI Researcher",
-    email: "mail@rishavchatterjee.com",
+    email: "rishav.chatt@gmail.com",
     shortBio: "I architect and ship production AI systems — from mesh networks to autonomous agents — using AI coding tools as my development environment. 8 years of Python, SQL, and data platform engineering give me the domain knowledge to direct AI effectively.",
     longBio: [
       "I architect and ship production AI systems using AI coding tools as my primary development environment. 31 interconnected projects: distributed mesh networks, autonomous agents, self-healing infrastructure, multi-model orchestration. I design every system and direct AI tools to build it.",
@@ -156,7 +156,7 @@ const portfolioData = {
     ],
     location: "Delhi",
     yearsExperienceStartYear: 2018,
-    whatsapp: "+91 9560382351",
+    whatsapp: "+91 9871257448",
     contactInfo: {
       sidebarTitle: "CONNECT WITH RISHAV",
       buttonText: "CONNECT WITH RISHAV"

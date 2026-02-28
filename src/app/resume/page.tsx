@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import portfolioData from '@/data/portfolioData';
 import type { SkillRating } from '@/types/portfolio';
 
@@ -49,14 +50,27 @@ export default function ResumePage() {
 
                 {/* Header */}
                 <header className="border-b-2 border-gray-900 pb-8 mb-8">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight uppercase mb-2">
-                        {personalInfo.name}
-                    </h1>
-                    <p className="text-xl text-gray-600 font-light tracking-wide mb-6">
-                        {personalInfo.title}
-                    </p>
+                    <div className="flex items-start gap-6">
+                        <div className="shrink-0 print:w-20 print:h-20">
+                            <Image
+                                src="/images/profile.webp"
+                                alt={personalInfo.name}
+                                width={96}
+                                height={96}
+                                className="w-24 h-24 rounded-full object-cover border-2 border-gray-200 print:w-20 print:h-20"
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight uppercase mb-2">
+                                {personalInfo.name}
+                            </h1>
+                            <p className="text-xl text-gray-600 font-light tracking-wide">
+                                {personalInfo.title}
+                            </p>
+                        </div>
+                    </div>
 
-                    <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-gray-600">
+                    <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-gray-600 mt-6">
                         {personalInfo.email && (
                             <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 hover:text-black transition-colors">
                                 <MailIcon size={14} />

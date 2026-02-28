@@ -12,10 +12,7 @@ const Navbar = () => {
   const nameRef = useRef<HTMLSpanElement>(null);
   const heroVisibleRef = useRef(true);
 
-  // Check if current page is in the portfolio section
-  const isInPortfolioSection = ['/projects', '/about', '/blog', '/contact'].includes(pathname);
-
-  if (pathname === '/resume') return null;
+  const isHomepage = pathname === '/';
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -124,7 +121,10 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
+            {!isHomepage && <NavLink href="/" isActive={false}>Home</NavLink>}
+            <NavLink href="/experience" isActive={pathname === '/experience'}>Experience</NavLink>
             <NavLink href="/projects" isActive={pathname === '/projects'}>Work</NavLink>
+            <NavLink href="/tech-skills" isActive={pathname === '/tech-skills'}>Skills</NavLink>
             <NavLink href="/about" isActive={pathname === '/about'}>About</NavLink>
             <NavLink href="/blog" isActive={pathname.startsWith('/blog')}>Blog</NavLink>
             <NavLink href="/resume" isActive={pathname === '/resume'}>Resume</NavLink>
@@ -158,7 +158,10 @@ const Navbar = () => {
           </button>
 
           <div className="flex flex-col items-center space-y-8">
+            {!isHomepage && <MobileNavLink href="/" isActive={false} onClick={closeMenu}>Home</MobileNavLink>}
+            <MobileNavLink href="/experience" isActive={pathname === '/experience'} onClick={closeMenu}>Experience</MobileNavLink>
             <MobileNavLink href="/projects" isActive={pathname === '/projects'} onClick={closeMenu}>Work</MobileNavLink>
+            <MobileNavLink href="/tech-skills" isActive={pathname === '/tech-skills'} onClick={closeMenu}>Skills</MobileNavLink>
             <MobileNavLink href="/about" isActive={pathname === '/about'} onClick={closeMenu}>About</MobileNavLink>
             <MobileNavLink href="/blog" isActive={pathname.startsWith('/blog')} onClick={closeMenu}>Blog</MobileNavLink>
             <MobileNavLink href="/resume" isActive={pathname === '/resume'} onClick={closeMenu}>Resume</MobileNavLink>

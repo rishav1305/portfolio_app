@@ -10,23 +10,9 @@ export default async function Experience() {
     const allExperience = await getExperience();
     const education = await getEducation();
 
-    // Filter by type
-    const professionalExperience = allExperience.filter(e => e.experienceType === 'professional');
-    const freelanceExperience = allExperience.filter(e => e.experienceType === 'freelance');
-
-    // Sort: ongoing roles first, then by start date descending
-    const isOngoing = (e: typeof allExperience[0]) =>
-        !e.endDate || e.endDate.toLowerCase() === 'present' || e.period?.toLowerCase().includes('present');
-    const sortExperiences = (exps: typeof allExperience) =>
-        [...exps].sort((a, b) => {
-            const aOngoing = isOngoing(a);
-            const bOngoing = isOngoing(b);
-            if (aOngoing !== bOngoing) return aOngoing ? -1 : 1;
-            return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-        });
-
-    const sortedProfessional = sortExperiences(professionalExperience);
-    const sortedFreelance = sortExperiences(freelanceExperience);
+    // Filter by type (already sorted: ongoing first, then by start date desc)
+    const sortedProfessional = allExperience.filter(e => e.experienceType === 'professional');
+    const sortedFreelance = allExperience.filter(e => e.experienceType === 'freelance');
 
     return (
         <div className="min-h-screen bg-[#0F172A] pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
