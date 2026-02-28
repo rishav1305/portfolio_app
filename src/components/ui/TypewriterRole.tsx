@@ -11,18 +11,26 @@ export default function TypewriterRole() {
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
+
+    // Finished typing — pause then start deleting
+    if (!isDeleting && text === currentRole) {
+      const pause = setTimeout(() => setIsDeleting(true), 2000);
+      return () => clearTimeout(pause);
+    }
+
+    // Finished deleting — move to next role
+    if (isDeleting && text === '') {
+      setIsDeleting(false);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+      return;
+    }
+
+    // Type or delete one character
     const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setText(currentRole.slice(0, text.length + 1));
-        if (text.length === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
+      if (isDeleting) {
+        setText(text.slice(0, -1));
       } else {
-        setText(currentRole.slice(0, text.length - 1));
-        if (text.length === 0) {
-          setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % roles.length);
-        }
+        setText(currentRole.slice(0, text.length + 1));
       }
     }, isDeleting ? 50 : 100);
 
