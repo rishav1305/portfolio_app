@@ -95,17 +95,17 @@ export default async function Home() {
       </section>
 
       {/* Proof Bar */}
-      <section className="bg-[#0F172A] border-t border-b border-[#1E293B] py-6">
-        <p className="text-center text-[10px] font-semibold text-slate-500 uppercase tracking-[0.25em] mb-5">
+      <section className="bg-[#0F172A] border-t border-b border-[#1E293B] py-8">
+        <p className="text-center text-[10px] font-semibold text-slate-500 uppercase tracking-[0.25em] mb-6">
           Trusted by Industry Leaders
         </p>
-        <div className="max-w-7xl mx-auto px-8 flex items-center justify-center gap-6 md:gap-8 flex-wrap">
+        <div className="max-w-5xl mx-auto px-8 flex items-center justify-center gap-6 md:gap-10 flex-wrap">
           {brands.map((brand) => (
             <img
               key={brand.name}
               src={brand.logo}
               alt={brand.name}
-              className="h-5 md:h-6 object-contain brightness-0 invert opacity-40 hover:opacity-90 transition-opacity duration-300"
+              className="h-7 md:h-9 max-w-[120px] md:max-w-[150px] object-contain brightness-0 invert opacity-40 hover:opacity-90 transition-opacity duration-300"
             />
           ))}
         </div>
