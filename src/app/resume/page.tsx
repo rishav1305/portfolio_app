@@ -4,8 +4,8 @@ import React from 'react';
 import portfolioData from '@/data/portfolioData';
 import type { SkillRating } from '@/types/portfolio';
 
-// Max achievements per job to keep resume compact
-const MAX_ACHIEVEMENTS = 5;
+// Max achievements per job to keep resume on 1 page
+const MAX_ACHIEVEMENTS = 4;
 
 // Inline Icons
 const PrinterIcon = ({ size = 18 }: { size?: number }) => (
@@ -50,11 +50,11 @@ export default function ResumePage() {
                 </button>
             </div>
 
-            {/* Resume Container */}
-            <div className="max-w-[210mm] mx-auto bg-white p-8 md:p-12 lg:p-14 my-8 shadow-xl print:shadow-none print:m-0 print:p-0 print:w-full print:max-w-none">
+            {/* Resume Container — print:p uses internal padding since @page margin is 0 */}
+            <div className="max-w-[210mm] mx-auto bg-white p-8 md:p-12 lg:p-14 my-8 shadow-xl print:shadow-none print:m-0 print:py-[10mm] print:px-[12mm] print:w-full print:max-w-none">
 
                 {/* Header */}
-                <header className="border-b-2 border-gray-900 pb-5 mb-5">
+                <header className="border-b-2 border-gray-900 pb-2 mb-3">
                     <div className="flex items-start gap-5">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -107,8 +107,8 @@ export default function ResumePage() {
                 </header>
 
                 {/* Summary */}
-                <section className="mb-5">
-                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
+                <section className="mb-3">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 border-b border-gray-200 pb-0.5">
                         Professional Summary
                     </h2>
                     <p className="text-gray-800 leading-snug text-xs text-justify">
@@ -117,11 +117,11 @@ export default function ResumePage() {
                 </section>
 
                 {/* Experience */}
-                <section className="mb-5">
-                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 border-b border-gray-200 pb-1">
+                <section className="mb-3">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-0.5">
                         Work Experience
                     </h2>
-                    <div className="space-y-5">
+                    <div className="space-y-3">
                         {professionalExperience.map((job, index) => (
                             <div key={index}>
                                 <div className="flex justify-between items-baseline mb-0.5">
@@ -147,8 +147,8 @@ export default function ResumePage() {
                 </section>
 
                 {/* Skills - Compact inline */}
-                <section className="mb-5">
-                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
+                <section className="mb-3">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 border-b border-gray-200 pb-0.5">
                         Technical Skills
                     </h2>
                     <div className="text-xs space-y-0.5">
@@ -163,7 +163,7 @@ export default function ResumePage() {
 
                 {/* Education - Only Bachelor's */}
                 <section>
-                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 border-b border-gray-200 pb-0.5">
                         Education
                     </h2>
                     <div className="space-y-2">
@@ -184,17 +184,16 @@ export default function ResumePage() {
 
             </div>
 
-            {/* Print Styles */}
+            {/* Print Styles — margin:0 removes browser header/footer */}
             <style jsx global>{`
                 @media print {
                     @page {
-                        margin: 10mm 12mm;
+                        margin: 0;
                         size: A4;
                     }
                     body {
                         background-color: white;
                         color: black;
-                        font-size: 11px;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
                     }

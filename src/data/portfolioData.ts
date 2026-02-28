@@ -491,7 +491,7 @@ const portfolioData = {
       endDate: null,
       location: "Gurugram, Haryana",
       company: "Gartner India (Bitwise)",
-      role: "Project Leader",
+      role: "Project Leader - AI Engineer",
       experienceType: "professional" as const,
       achievements: [
         "Spearheaded the company-wide launch of GOAT (Gartner’s Own Agentic Tech), an enterprise-grade Agentic AI platform, **reducing internal query resolution time by 88%**.",
