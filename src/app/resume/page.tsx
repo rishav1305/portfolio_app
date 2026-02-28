@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import portfolioData from '@/data/portfolioData';
 import type { SkillRating } from '@/types/portfolio';
 
-// Inline Icons to avoid extra dependencies
+// Max achievements per job to keep resume compact
+const MAX_ACHIEVEMENTS = 5;
+
+// Inline Icons
 const PrinterIcon = ({ size = 18 }: { size?: number }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
 );
@@ -32,9 +34,12 @@ export default function ResumePage() {
         window.print();
     };
 
+    // Only show BTech for a professional resume
+    const relevantEducation = education.filter(e => e.degree.toLowerCase().includes('bachelor'));
+
     return (
         <div className="min-h-screen bg-white text-black font-sans selection:bg-gray-200 print:p-0">
-            {/* Print Controls - Hidden when printing */}
+            {/* Print Controls */}
             <div className="fixed top-6 right-6 z-50 flex gap-4 print:hidden">
                 <button
                     onClick={handlePrint}
@@ -46,58 +51,55 @@ export default function ResumePage() {
             </div>
 
             {/* Resume Container */}
-            <div className="max-w-[210mm] mx-auto bg-white p-8 md:p-12 lg:p-16 my-8 shadow-xl print:shadow-none print:m-0 print:p-8 print:w-full print:max-w-none">
+            <div className="max-w-[210mm] mx-auto bg-white p-8 md:p-12 lg:p-14 my-8 shadow-xl print:shadow-none print:m-0 print:p-0 print:w-full print:max-w-none">
 
                 {/* Header */}
-                <header className="border-b-2 border-gray-900 pb-8 mb-8">
-                    <div className="flex items-start gap-6">
-                        <div className="shrink-0 print:w-20 print:h-20">
-                            <Image
-                                src="/images/profile.webp"
-                                alt={personalInfo.name}
-                                width={96}
-                                height={96}
-                                className="w-24 h-24 rounded-full object-cover border-2 border-gray-200 print:w-20 print:h-20"
-                            />
-                        </div>
+                <header className="border-b-2 border-gray-900 pb-5 mb-5">
+                    <div className="flex items-start gap-5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/images/profile.webp"
+                            alt={personalInfo.name}
+                            className="w-20 h-20 rounded-full object-cover border-2 border-gray-200 shrink-0"
+                        />
                         <div className="flex-1">
-                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight uppercase mb-2">
+                            <h1 className="text-3xl md:text-4xl font-bold tracking-tight uppercase mb-1">
                                 {personalInfo.name}
                             </h1>
-                            <p className="text-xl text-gray-600 font-light tracking-wide">
+                            <p className="text-lg text-gray-600 font-light tracking-wide">
                                 {personalInfo.title}
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-gray-600 mt-6">
+                    <div className="flex flex-wrap gap-y-1.5 gap-x-5 text-xs text-gray-600 mt-4">
                         {personalInfo.email && (
-                            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 hover:text-black transition-colors">
-                                <MailIcon size={14} />
+                            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-1.5 hover:text-black transition-colors">
+                                <MailIcon size={12} />
                                 {personalInfo.email}
                             </a>
                         )}
                         {personalInfo.whatsapp && (
-                            <div className="flex items-center gap-2">
-                                <PhoneIcon size={14} />
+                            <div className="flex items-center gap-1.5">
+                                <PhoneIcon size={12} />
                                 {personalInfo.whatsapp}
                             </div>
                         )}
                         {personalInfo.location && (
-                            <div className="flex items-center gap-2">
-                                <MapPinIcon size={14} />
+                            <div className="flex items-center gap-1.5">
+                                <MapPinIcon size={12} />
                                 {personalInfo.location}
                             </div>
                         )}
                         {personalInfo.socialMedia.linkedin && (
-                            <a href={personalInfo.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-black transition-colors">
-                                <LinkedinIcon size={14} />
+                            <a href={personalInfo.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-black transition-colors">
+                                <LinkedinIcon size={12} />
                                 LinkedIn
                             </a>
                         )}
                         {personalInfo.socialMedia.github && (
-                            <a href={personalInfo.socialMedia.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-black transition-colors">
-                                <GithubIcon size={14} />
+                            <a href={personalInfo.socialMedia.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-black transition-colors">
+                                <GithubIcon size={12} />
                                 GitHub
                             </a>
                         )}
@@ -105,36 +107,34 @@ export default function ResumePage() {
                 </header>
 
                 {/* Summary */}
-                <section className="mb-8">
-                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 border-b border-gray-200 pb-1">
+                <section className="mb-5">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
                         Professional Summary
                     </h2>
-                    <p className="text-gray-800 leading-relaxed text-sm text-justify">
+                    <p className="text-gray-800 leading-snug text-xs text-justify">
                         {personalInfo.shortBio}
                     </p>
                 </section>
 
                 {/* Experience */}
-                <section className="mb-8">
-                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-6 border-b border-gray-200 pb-1">
+                <section className="mb-5">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 border-b border-gray-200 pb-1">
                         Work Experience
                     </h2>
-                    <div className="space-y-8">
+                    <div className="space-y-5">
                         {professionalExperience.map((job, index) => (
-                            <div key={index} className="break-inside-avoid">
-                                <div className="flex justify-between items-baseline mb-2">
-                                    <h3 className="font-bold text-lg text-black">{job.role}</h3>
-                                    <span className="text-sm text-gray-500 whitespace-nowrap">{job.period}</span>
+                            <div key={index}>
+                                <div className="flex justify-between items-baseline mb-0.5">
+                                    <h3 className="font-bold text-sm text-black">{job.role}</h3>
+                                    <span className="text-xs text-gray-500 whitespace-nowrap ml-4">{job.period}</span>
                                 </div>
-                                <div className="flex justify-between items-center mb-3">
-                                    <span className="text-gray-700 font-medium">{job.company}</span>
+                                <div className="flex justify-between items-center mb-1.5">
+                                    <span className="text-xs text-gray-700 font-medium">{job.company}</span>
                                     <span className="text-xs text-gray-500">{job.location}</span>
                                 </div>
-
-                                {/* Achievements */}
-                                <ul className="list-disc list-outside ml-4 space-y-1.5">
-                                    {job.achievements.map((achievement, i) => (
-                                        <li key={i} className="text-sm text-gray-700 leading-snug pl-1">
+                                <ul className="list-disc list-outside ml-4 space-y-0.5">
+                                    {job.achievements.slice(0, MAX_ACHIEVEMENTS).map((achievement, i) => (
+                                        <li key={i} className="text-xs text-gray-700 leading-snug pl-0.5">
                                             <span>{achievement.split(/\*\*(.*?)\*\*/g).map((part, j) =>
                                                 j % 2 === 1 ? <strong key={j}>{part}</strong> : part
                                             )}</span>
@@ -146,12 +146,12 @@ export default function ResumePage() {
                     </div>
                 </section>
 
-                {/* Skills - Compact inline layout */}
-                <section className="mb-8 break-inside-avoid">
-                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 border-b border-gray-200 pb-1">
+                {/* Skills - Compact inline */}
+                <section className="mb-5">
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
                         Technical Skills
                     </h2>
-                    <div className="text-sm space-y-1.5">
+                    <div className="text-xs space-y-0.5">
                         {Object.entries(skills).map(([category, items]) => (
                             <p key={category} className="text-gray-700 leading-snug">
                                 <span className="font-semibold text-gray-900">{category}:</span>{' '}
@@ -161,20 +161,20 @@ export default function ResumePage() {
                     </div>
                 </section>
 
-                {/* Education */}
-                <section className="mb-8 break-inside-avoid">
-                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 border-b border-gray-200 pb-1">
+                {/* Education - Only Bachelor's */}
+                <section>
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 border-b border-gray-200 pb-1">
                         Education
                     </h2>
-                    <div className="space-y-4">
-                        {education.map((edu, index) => (
+                    <div className="space-y-2">
+                        {relevantEducation.map((edu, index) => (
                             <div key={index}>
                                 <div className="flex justify-between items-baseline">
-                                    <h3 className="font-bold text-gray-900">{edu.institution}</h3>
-                                    <span className="text-sm text-gray-500">{edu.period}</span>
+                                    <h3 className="font-bold text-xs text-gray-900">{edu.institution}</h3>
+                                    <span className="text-xs text-gray-500">{edu.period}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-sm text-gray-700">{edu.degree} in {edu.focusArea}</span>
+                                    <span className="text-xs text-gray-700">{edu.degree} in {edu.focusArea}</span>
                                     <span className="text-xs text-gray-500">{edu.location}</span>
                                 </div>
                             </div>
@@ -184,22 +184,25 @@ export default function ResumePage() {
 
             </div>
 
-            {/* Global Print Styles Override */}
+            {/* Print Styles */}
             <style jsx global>{`
-        @media print {
-          @page {
-            margin: 12mm 10mm;
-            size: A4;
-          }
-          body {
-            background-color: white;
-            color: black;
-          }
-          nav, aside, footer, [class*="navbar"], [class*="sidebar"] {
-            display: none !important;
-          }
-        }
-      `}</style>
+                @media print {
+                    @page {
+                        margin: 10mm 12mm;
+                        size: A4;
+                    }
+                    body {
+                        background-color: white;
+                        color: black;
+                        font-size: 11px;
+                        -webkit-print-color-adjust: exact;
+                        print-color-adjust: exact;
+                    }
+                    nav, aside, footer, [class*="navbar"], [class*="sidebar"] {
+                        display: none !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }
