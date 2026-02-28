@@ -6,18 +6,21 @@ export default async function Testimonials() {
   const testimonials = await getTestimonials();
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-[#0F172A] pt-20">
       <section className="py-16 px-6 md:px-20">
         <div className="max-w-4xl mx-auto">
           <Breadcrumb />
-          <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Client Testimonials</h1>
+          <h1 className="text-4xl font-serif font-bold text-center mb-12 text-[#F8FAFC]">Client Testimonials</h1>
 
           <div className="space-y-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-lg flex flex-col border border-gray-100">
-                <div className="mb-6 flex items-center justify-between">
+              <div key={index} className="glass-card p-8 flex flex-col relative">
+                {/* Gold quote mark */}
+                <div className="text-[#CA8A04] text-6xl font-serif leading-none absolute top-4 right-6 opacity-30">&ldquo;</div>
+
+                <div className="mb-6 flex items-center">
                   <div className="flex items-center">
-                    <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 flex-shrink-0 border-2 border-blue-100 shadow-md">
+                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#CA8A04]/30">
                       {testimonial.image ? (
                         <img
                           src={testimonial.image}
@@ -25,57 +28,45 @@ export default async function Testimonials() {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 text-white text-2xl font-bold">
+                        <div className="w-full h-full flex items-center justify-center bg-[#CA8A04]/20 text-[#CA8A04] text-2xl font-bold">
                           {testimonial.name.charAt(0)}
                         </div>
                       )}
                     </div>
                     <div className="ml-6">
-                      <h3 className="font-bold text-2xl text-gray-900">{testimonial.name}</h3>
-                      <p className="text-gray-600">{testimonial.position}</p>
+                      <h3 className="font-bold text-2xl text-[#F8FAFC]">{testimonial.name}</h3>
+                      <p className="text-[#94A3B8]">{testimonial.position}</p>
                       <div className="flex items-center">
-                        <p className="text-blue-600 font-medium">{testimonial.company}</p>
+                        <p className="text-[#CA8A04] font-medium">{testimonial.company}</p>
                         {testimonial.location && (
-                          <p className="text-gray-500 ml-2">
-                            <span className="mx-1">•</span>
+                          <p className="text-[#64748B] ml-2">
+                            <span className="mx-1">&bull;</span>
                             {testimonial.location}
                           </p>
                         )}
                       </div>
                     </div>
                   </div>
-                  <div className="text-blue-200 hidden md:block">
-                    <svg className="w-12 h-12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                      <path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z" />
-                    </svg>
-                  </div>
                 </div>
 
-                <div className="my-6 pl-4 border-l-4 border-blue-100">
-                  <p className="text-gray-700 italic text-lg leading-relaxed">"{testimonial.text}"</p>
+                <div className="my-6 pl-4 border-l-4 border-[#CA8A04]/30">
+                  <p className="text-[#F8FAFC] font-serif italic text-lg leading-relaxed">&ldquo;{testimonial.text}&rdquo;</p>
                 </div>
 
-                <div className="mt-4 flex justify-between items-center">
-                  <div className="flex text-yellow-500">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                      </svg>
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-500 font-medium tracking-wider px-3 py-1 bg-gray-100 rounded-full">VERIFIED CLIENT</div>
+                <div className="mt-4 flex justify-end items-center">
+                  <div className="text-xs text-[#64748B] font-medium tracking-wider px-3 py-1 bg-[#020617] border border-[#1E293B] rounded-full">VERIFIED CLIENT</div>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-700 max-w-2xl mx-auto mb-8">
-              These are just a few of the clients I've had the pleasure of working with. I pride myself on building strong professional relationships and delivering results that exceed expectations.
+            <p className="text-[#94A3B8] max-w-2xl mx-auto mb-8">
+              These are just a few of the clients I&apos;ve had the pleasure of working with. I pride myself on building strong professional relationships and delivering results that exceed expectations.
             </p>
             <a
               href="mailto:mail@rishavchatterjee.com"
-              className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-[#CA8A04] text-[#020617] rounded-md hover:bg-[#EAB308] transition-colors font-medium"
             >
               Request a Reference
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -62,20 +62,20 @@ export default async function BlogPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0F172A]">
       {/* Dark Hero Header */}
-      <section className="bg-gray-900 pt-32 pb-16 px-6 md:px-20">
+      <section className="bg-[#020617] pt-32 pb-16 px-6 md:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="mb-6">
-            <Breadcrumb overrides={{ blog: 'Blog' }} className="text-white" />
+            <Breadcrumb overrides={{ blog: 'Blog' }} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-geist-sans)]">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#F8FAFC] mb-4">
             Blog
           </h1>
-          <p className="text-lg text-blue-200/70 max-w-2xl">
+          <p className="text-lg text-[#94A3B8] max-w-2xl">
             Research, articles, and technical deep-dives on AI systems, data engineering, and distributed computing.
           </p>
-          <div className="w-20 h-1 bg-blue-500 mt-6 rounded-full"></div>
+          <div className="w-20 h-1 bg-[#CA8A04] mt-6 rounded-full"></div>
         </div>
       </section>
 
@@ -93,43 +93,43 @@ export default async function BlogPage() {
                   rel={featuredPost.type === 'medium' ? 'noopener noreferrer' : undefined}
                   className="lg:col-span-3 group"
                 >
-                  <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 rounded-2xl p-8 md:p-10 h-full min-h-[340px] flex flex-col justify-end overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-900/20">
+                  <div className="relative glass-card p-8 md:p-10 h-full min-h-[340px] flex flex-col justify-end overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#CA8A04]/10">
                     {/* Decorative blurs */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#CA8A04]/5 rounded-full blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#CA8A04]/5 rounded-full blur-3xl" />
 
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
                         {featuredPost.featured && (
-                          <span className="px-3 py-1 text-xs font-semibold bg-blue-500 text-white rounded-full">
+                          <span className="px-3 py-1 text-xs font-semibold bg-[#CA8A04] text-[#020617] rounded-full">
                             Featured
                           </span>
                         )}
                         {featuredPost.type === 'medium' && (
-                          <span className="px-3 py-1 text-xs font-medium bg-white/10 text-white/80 rounded-full backdrop-blur-sm">
+                          <span className="px-3 py-1 text-xs font-medium bg-white/10 text-[#94A3B8] rounded-full backdrop-blur-sm">
                             Medium
                           </span>
                         )}
                         {featuredPost.categories.slice(0, 2).map((cat) => (
                           <span
                             key={cat}
-                            className="px-3 py-1 text-xs font-medium bg-white/10 text-white/80 rounded-full backdrop-blur-sm"
+                            className="px-3 py-1 text-xs font-medium bg-[#CA8A04]/20 text-[#CA8A04] rounded-full"
                           >
                             {cat}
                           </span>
                         ))}
                       </div>
 
-                      <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors font-[family-name:var(--font-geist-sans)]">
+                      <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#F8FAFC] mb-3 group-hover:text-[#CA8A04] transition-colors">
                         {featuredPost.title}
                       </h2>
 
-                      <p className="text-white/60 mb-6 line-clamp-2 text-base">
+                      <p className="text-[#94A3B8] mb-6 line-clamp-2 text-base">
                         {featuredPost.description}
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 text-sm text-white/50">
+                        <div className="flex items-center gap-4 text-sm text-[#64748B]">
                           <span>
                             {new Date(featuredPost.date).toLocaleDateString('en-US', {
                               year: 'numeric',
@@ -137,10 +137,10 @@ export default async function BlogPage() {
                               day: 'numeric',
                             })}
                           </span>
-                          <span className="w-1 h-1 bg-white/30 rounded-full" />
+                          <span className="w-1 h-1 bg-[#64748B] rounded-full" />
                           <span>{featuredPost.readingTime} min read</span>
                         </div>
-                        <span className="text-blue-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                        <span className="text-[#CA8A04] text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                           Read
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -152,7 +152,7 @@ export default async function BlogPage() {
                 </Link>
               )}
 
-              {/* Sidebar — Recent Posts */}
+              {/* Sidebar -- Recent Posts */}
               <div className="lg:col-span-2 flex flex-col gap-4">
                 {sidebarPosts.map((post) => (
                   <Link
@@ -160,39 +160,39 @@ export default async function BlogPage() {
                     href={post.link}
                     target={post.type === 'medium' ? '_blank' : undefined}
                     rel={post.type === 'medium' ? 'noopener noreferrer' : undefined}
-                    className="group bg-white rounded-xl p-5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-gray-100 hover:-translate-y-0.5"
+                    className="group glass-card p-5 flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-2.5 flex-wrap">
                         {post.categories.slice(0, 1).map((cat) => (
                           <span
                             key={cat}
-                            className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 text-blue-700 rounded-full"
+                            className="px-2.5 py-0.5 text-xs font-medium bg-[#CA8A04]/20 text-[#CA8A04] rounded-full"
                           >
                             {cat}
                           </span>
                         ))}
                         {post.type === 'medium' && (
-                          <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded-full">
+                          <span className="px-2 py-0.5 text-xs font-medium bg-white/5 text-[#64748B] rounded-full">
                             Medium
                           </span>
                         )}
                       </div>
-                      <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition-colors line-clamp-2 font-[family-name:var(--font-geist-sans)]">
+                      <h3 className="text-base font-bold text-[#F8FAFC] mb-1.5 group-hover:text-[#CA8A04] transition-colors line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-sm text-gray-500 line-clamp-2">
+                      <p className="text-sm text-[#94A3B8] line-clamp-2">
                         {post.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-gray-400 mt-3 pt-3 border-t border-gray-50">
+                    <div className="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-3 border-t border-[#1E293B]">
                       <span>
                         {new Date(post.date).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
                         })}
                       </span>
-                      <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                      <span className="w-1 h-1 bg-[#64748B] rounded-full" />
                       <span>{post.readingTime} min</span>
                     </div>
                   </Link>
@@ -200,14 +200,14 @@ export default async function BlogPage() {
               </div>
             </div>
 
-            {/* Grid Section — Remaining Posts */}
+            {/* Grid Section -- Remaining Posts */}
             {gridPosts.length > 0 && (
               <>
                 <div className="flex items-center gap-4 mb-8">
-                  <h2 className="text-xl font-semibold text-gray-800 font-[family-name:var(--font-geist-sans)]">
+                  <h2 className="text-xl font-serif font-semibold text-[#F8FAFC]">
                     All Posts
                   </h2>
-                  <div className="flex-1 h-px bg-gray-200" />
+                  <div className="flex-1 h-px bg-[#1E293B]" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,33 +217,33 @@ export default async function BlogPage() {
                       href={post.link}
                       target={post.type === 'medium' ? '_blank' : undefined}
                       rel={post.type === 'medium' ? 'noopener noreferrer' : undefined}
-                      className="group bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 hover:-translate-y-0.5"
+                      className="group glass-card p-6"
                     >
                       <div className="flex items-center gap-2 mb-3 flex-wrap">
                         {post.categories.slice(0, 2).map((cat) => (
                           <span
                             key={cat}
-                            className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 text-blue-700 rounded-full"
+                            className="px-2.5 py-0.5 text-xs font-medium bg-[#CA8A04]/20 text-[#CA8A04] rounded-full"
                           >
                             {cat}
                           </span>
                         ))}
                         {post.type === 'medium' && (
-                          <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded-full">
+                          <span className="px-2 py-0.5 text-xs font-medium bg-white/5 text-[#64748B] rounded-full">
                             Medium
                           </span>
                         )}
                       </div>
 
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 font-[family-name:var(--font-geist-sans)]">
+                      <h3 className="text-lg font-bold text-[#F8FAFC] mb-2 group-hover:text-[#CA8A04] transition-colors line-clamp-2">
                         {post.title}
                       </h3>
 
-                      <p className="text-sm text-gray-500 line-clamp-2 mb-4">
+                      <p className="text-sm text-[#94A3B8] line-clamp-2 mb-4">
                         {post.description}
                       </p>
 
-                      <div className="flex items-center justify-between text-xs text-gray-400 pt-4 border-t border-gray-50">
+                      <div className="flex items-center justify-between text-xs text-[#64748B] pt-4 border-t border-[#1E293B]">
                         <div className="flex items-center gap-3">
                           <span>
                             {new Date(post.date).toLocaleDateString('en-US', {
@@ -252,10 +252,10 @@ export default async function BlogPage() {
                               day: 'numeric',
                             })}
                           </span>
-                          <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                          <span className="w-1 h-1 bg-[#64748B] rounded-full" />
                           <span>{post.readingTime} min read</span>
                         </div>
-                        <span className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        <span className="text-[#CA8A04] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -272,18 +272,18 @@ export default async function BlogPage() {
         <section className="px-6 md:px-20 py-20">
           <div className="max-w-6xl mx-auto text-center">
             <div className="mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-[#64748B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
               </svg>
             </div>
-            <p className="text-xl text-gray-500">No blog posts available yet.</p>
-            <p className="mt-2 text-gray-400">
+            <p className="text-xl text-[#94A3B8]">No blog posts available yet.</p>
+            <p className="mt-2 text-[#64748B]">
               Visit my{' '}
               <a
                 href="https://medium.com/@chatterjeerishav96"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+                className="text-[#CA8A04] hover:text-[#EAB308] hover:underline"
               >
                 Medium profile
               </a>{' '}
