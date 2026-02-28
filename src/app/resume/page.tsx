@@ -5,7 +5,19 @@ import portfolioData from '@/data/portfolioData';
 import type { SkillRating } from '@/types/portfolio';
 
 // Max achievements per job to keep resume on 1 page
-const MAX_ACHIEVEMENTS = 4;
+const MAX_ACHIEVEMENTS = 5;
+
+// Consolidated skill categories for resume (merges related categories, drops Soft Skills)
+const RESUME_SKILLS: Record<string, string[]> = {
+    'Agentic AI': ['LangGraph', 'LangChain', 'Ollama'],
+    'AI Tools': ['Claude Code', 'CLAUDE.md Configuration', 'Google Copilot', 'Cline', 'Kilo Code'],
+    'Python': ['Pandas', 'SQLAlchemy', 'Pyspark', 'Sklearn', 'Selenium'],
+    'SQL': ['SQL Server', 'PostgreSQL', 'Spark SQL', 'SnowSQL'],
+    'Data Engineering': ['AWS Glue', 'Azure Databricks', 'AWS Lambda', 'AWS Batch', 'Alteryx'],
+    'Cloud & Data Infra': ['AWS', 'Azure', 'Redshift', 'Snowflake', 'Apache Spark', 'HIVE'],
+    'MLOps': ['Git', 'Docker', 'Jenkins', 'Kubernetes'],
+    'Analytics & Tools': ['Tableau CRM', 'Qlik Sense', 'Power BI', 'JIRA', 'Confluence'],
+};
 
 // Inline Icons
 const PrinterIcon = ({ size = 18 }: { size?: number }) => (
@@ -146,16 +158,16 @@ export default function ResumePage() {
                     </div>
                 </section>
 
-                {/* Skills - Compact inline */}
+                {/* Skills - 2-column merged layout */}
                 <section className="mb-3">
                     <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 border-b border-gray-200 pb-0.5">
                         Technical Skills
                     </h2>
-                    <div className="text-xs space-y-0.5">
-                        {Object.entries(skills).map(([category, items]) => (
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-xs">
+                        {Object.entries(RESUME_SKILLS).map(([category, items]) => (
                             <p key={category} className="text-gray-700 leading-snug">
                                 <span className="font-semibold text-gray-900">{category}:</span>{' '}
-                                {(items as SkillRating[]).map(skill => skill.name).join(', ')}
+                                {items.join(', ')}
                             </p>
                         ))}
                     </div>
