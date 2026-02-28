@@ -657,7 +657,7 @@ const portfolioData = {
       { name: 'LangChain', level: 4 },
       { name: 'Ollama', level: 3 },
     ],
-    'DevOps': [
+    'MLOps': [
       { name: 'Git', level: 5 },
       { name: 'Docker', level: 4 },
       { name: 'Jenkins', level: 3 },

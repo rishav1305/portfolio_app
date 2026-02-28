@@ -146,19 +146,17 @@ export default function ResumePage() {
                     </div>
                 </section>
 
-                {/* Skills */}
+                {/* Skills - Compact inline layout */}
                 <section className="mb-8 break-inside-avoid">
-                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 border-b border-gray-200 pb-1">
+                    <h2 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 border-b border-gray-200 pb-1">
                         Technical Skills
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+                    <div className="text-sm space-y-1.5">
                         {Object.entries(skills).map(([category, items]) => (
-                            <div key={category}>
-                                <h3 className="font-semibold text-gray-900 mb-1">{category}</h3>
-                                <p className="text-gray-600 leading-relaxed">
-                                    {(items as SkillRating[]).map(skill => skill.name).join(', ')}
-                                </p>
-                            </div>
+                            <p key={category} className="text-gray-700 leading-snug">
+                                <span className="font-semibold text-gray-900">{category}:</span>{' '}
+                                {(items as SkillRating[]).map(skill => skill.name).join(', ')}
+                            </p>
                         ))}
                     </div>
                 </section>
@@ -186,18 +184,17 @@ export default function ResumePage() {
 
             </div>
 
-            {/* Global Print Styles Override - kept for safety although navbar handles itself now */}
+            {/* Global Print Styles Override */}
             <style jsx global>{`
         @media print {
           @page {
-            margin: 0;
-            size: auto;
+            margin: 12mm 10mm;
+            size: A4;
           }
           body {
             background-color: white;
             color: black;
           }
-          /* Hide global elements by heuristics if they don't respond to print:hidden */
           nav, aside, footer, [class*="navbar"], [class*="sidebar"] {
             display: none !important;
           }
